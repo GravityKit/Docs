@@ -1,0 +1,54 @@
+---
+id: "5a98512004286374f70876b5"
+number: "447"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.3"
+publicUrl: "https://docs.gravitykit.com/article/447-filtering-entries-by-wordpress-user-roles"
+viewCount: "1690"
+lastPublishedAt: "2022-10-07T22:54:10Z"
+changeOrigin: "unknown"
+name: "Filtering entries by WordPress User Roles"
+slug: "447-filtering-entries-by-wordpress-user-roles"
+status: "published"
+categories: 
+  - "566dfec2c6979143615564e3"
+  - "579aa9b2903360293603a8f0"
+keywords: 
+  - "members"
+  - "roles"
+  - "user"
+  - "user roles"
+  - "wordpress users"
+  - "custom roles"
+createdBy: "80506"
+createdAt: "2018-03-01T19:14:40Z"
+updatedBy: "80506"
+updatedAt: "2022-10-07T22:54:10Z"
+title: "Filtering entries by WordPress User Roles"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5a98512004286374f70876b5"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-07T22:54:10Z
+  author: "Rafael Ehlers"
+---
+
+# Filtering entries by WordPress User Roles
+
+If you want to display different entries for different user roles, we suggest you create one View for each user role and then use this shortcode from this fantastic plugin called [Members](https://wordpress.org/plugins/members/):
+
+```
+[members_access role="editor"]Hide this content from everyone but editors.[/members_access]
+```
+
+Since you can specify the role, you can create a View for each.
+
+Example:
+
+```
+[members_access role="subscriber"][gravityview id="12"][/members_access]
+[members_access role="author"][gravityview id="13"][/members_access]
+[members_access role="administrator"][gravityview id="14"][/members_access]
+```
+
+You can [read more about the usage of the \[members\_access\] shortcode](https://github.com/justintadlock/members/blob/master/readme.md#shortcodes).

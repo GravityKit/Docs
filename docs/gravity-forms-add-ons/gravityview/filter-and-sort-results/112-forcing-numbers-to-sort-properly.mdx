@@ -1,0 +1,68 @@
+---
+id: "54c67bcde4b051242988553f"
+number: "112"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.2"
+publicUrl: "https://docs.gravitykit.com/article/112-forcing-numbers-to-sort-properly"
+viewCount: "961"
+lastPublishedAt: "2023-01-02T18:49:07Z"
+changeOrigin: "hsapp-js"
+name: "Forcing numbers to sort properly"
+slug: "112-forcing-numbers-to-sort-properly"
+status: "published"
+categories: 
+  - "566dfec2c6979143615564e3"
+createdBy: "59634"
+updatedBy: "59634"
+updatedAt: "2023-01-02T18:49:07Z"
+title: "Forcing numbers to sort properly"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/54c67bcde4b051242988553f"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2023-01-02T18:49:07Z
+  author: "Zack Katz"
+---
+
+# Forcing numbers to sort properly
+
+Let's say you have a drop-down field on your form with choices ranging from 1 to 10 or greater.
+
+![Screenshot showing the options for a drop down field inside the form editor](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/635073918a552811521e6b1a/file-4Eu7yXGKwR.png)
+
+And you try to sort your View by this field:
+
+![Screenshot showing the View Settings panel inside the View editor](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/635074019471985a5ac53c98/file-zrR1ffDZKt.png)
+
+GravityView can't sort text-based fields as if they were numbers. So your View will probably appear like this, with the Order column not correctly sorted.
+
+![Screenshot of a View](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/635074718a552811521e6b22/file-Zkf71aORlJ.png)
+
+There's a way to force GravityView to interpret those fields as if they were numbers by using a special filter:
+
+```php
+
+add_filter( 'gravityview_search_criteria', 'gravityview_force_numeric_sort', 10, 3 );
+function gravityview_force_numeric_sort( $criteria, $form_ids = array(), $context_view_id = 0 ) {
+	$criteria['sorting']['is_numeric'] = true;
+	return $criteria;
+}
+```
+
+
+:::info
+
+[Click here](https://docs.gravitykit.com/article/210-where-to-put-code-samples) to see here where to add this code snippet.
+
+:::
+
+  This will force the View to sort these choices as if they were numbers:
+
+
+:::danger
+
+This filter doesn't work for sorting a secondary field, unfortunately.
+
+:::
+
+ 

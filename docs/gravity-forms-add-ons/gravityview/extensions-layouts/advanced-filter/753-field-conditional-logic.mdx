@@ -1,0 +1,56 @@
+---
+id: "6037f2f3b3ebfb109b58623a"
+number: "753"
+collectionId: "54d1a05ce4b086c0c0964ccd"
+popularity: "0.1"
+publicUrl: "https://docs.gravitykit.com/article/753-field-conditional-logic"
+viewCount: "1315"
+lastPublishedAt: "2022-10-13T22:45:45Z"
+changeOrigin: "unknown"
+name: "Field Conditional Logic"
+slug: "753-field-conditional-logic"
+status: "published"
+categories: 
+  - "54d1a064e4b086c0c0964ccf"
+createdBy: "80506"
+createdAt: "2021-02-25T18:56:51Z"
+updatedBy: "80506"
+updatedAt: "2022-10-13T22:45:45Z"
+title: "Field Conditional Logic"
+hsEditUrl: "https://secure.helpscout.net/docs/54d1a05ce4b086c0c0964ccd/article/6037f2f3b3ebfb109b58623a"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-13T22:45:45Z
+  author: "Rafael Ehlers"
+---
+
+# Field Conditional Logic
+
+Version 2.1 of the Advanced Filter extension brought a new functionality called Field Conditional Logic.
+
+This functionality is more accessible than using the [\[gvlogic\] shortcode](https://docs.gravitykit.com/article/252-gvlogic-shortcode) because it doesn't require any previous knowledge of the shortcode parameters; it's as simple as specifying the conditions for each field on the View editor.
+
+## How to use it
+
+In this View, the cat named "Charlie" doesn't have a photo:
+
+![Screenshot of a View showing 4 entries, 3 of them have photos of cats except one](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/60f8047264a230081ba174bf/file-tqpBhDbUw0.jpg)
+
+We'll now use Field Conditional Logic on the Cat Photo field to display a placeholder image when no photos are present:
+
+![Screenshot of the View editor showing two fields added to the Entries Fields section](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/604269b5b3ebfb109b589139/file-Ikgs4ndVpU.png)
+
+Once the field configuration panel shows up, we specify the condition only to display the field if it's not empty. If it's empty, we'll display the placeholder image instead:
+
+![Screenshot of the field settings](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/604269e60a2dae5b58fb66c3/file-a0bJPgHdfT.png)
+
+![Screenshot of the field settings modal highlighting the field conditional logic section](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/60426a29661b720174a73e5c/file-AEkajcCWr2.png)
+
+And here's our View now with a placeholder image for the cat named Charlie:
+
+![Screenshot of the View showing 4 entries, 3 of them have photos of cats, one of them has a placeholder image](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/60f804a9b55c2b04bf6d6628/file-X5BG4WOehV.jpg)
+
+This functionality works for all field types, including [Custom Content fields](https://docs.gravitykit.com/article/111-using-the-custom-content-field). You can also combine multiple clauses using our AND and OR operators:
+
+![Screenshot of the Conditional Logic section from the field configuration panel](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/604140468502d1120e90dc62/file-QcJUtukOzD.png)

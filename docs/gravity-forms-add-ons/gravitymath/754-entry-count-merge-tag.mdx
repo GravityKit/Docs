@@ -1,0 +1,64 @@
+---
+id: "603812080a2dae5b58fb3963"
+number: "754"
+collectionId: "6076f9478996210f18bd33df"
+popularity: "0.1"
+publicUrl: "https://docs.gravitykit.com/article/754-entry-count-merge-tag"
+viewCount: "968"
+lastPublishedAt: "2022-12-27T20:43:14Z"
+changeOrigin: "external"
+name: "The {entry_count} Merge Tag in Math by GravityView"
+slug: "754-entry-count-merge-tag"
+status: "published"
+categories: 
+  - "6155b0bf2b380503dfdf63f0"
+createdBy: "59634"
+createdAt: "2021-02-25T21:09:28Z"
+updatedBy: "59634"
+updatedAt: "2022-12-27T20:43:14Z"
+title: "The {entry_count} Merge Tag in Math by GravityView"
+hsEditUrl: "https://secure.helpscout.net/docs/6076f9478996210f18bd33df/article/603812080a2dae5b58fb3963"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-12-27T20:43:14Z
+  author: "Zack Katz"
+---
+
+# The {entry_count} Merge Tag in Math by GravityView
+
+When creating Gravity Forms calculations with the [GravityMath add-on](https://www.gravitykit.com/extensions/math), it's often important to know how many total entries are used in the calculation.
+
+Use the `{entry_count}` Merge Tag inside a `[gravitymath]` shortcode to help calculate averages.
+
+### Average order value of my Gravity Forms form
+
+The shortcode below will take the total value of the Product field and divide it by the number of entries.
+
+`[gravitymath scope="form" id="123"]{Product:1:sum} / {entry_count}[/gravitymath]`
+
+
+:::caution
+
+Note: `{entry_count}` here is the same as `{entry_count:form}` because it uses the scope value passed by the shortcode (`scope="form"`)
+
+:::
+
+ ## Scopes
+
+`{entry_count}` will switch automatically between three numbers based on the `scope` attribute used in the `[gravitymath]` shortcode:
+
+- Form
+- View
+- Visible
+
+## A Gravity Forms Merge Tag that shows the number of entries in a form
+
+To show the number of entries in a Gravity Forms form, use `{entry_count:form}` The number of entries in a Gravity Forms form (not spam or in the trash).
+
+## The `{entry_count}` Merge Tag to show the number of entries in a View—or currently visible in a View
+
+The Merge Tag also includes "modifiers" that allow you to display different information.
+
+- `{entry_count:visible}` The number of visible entries in a View
+- `{entry_count:view}` The number of total entries for a View (or search result)

@@ -1,0 +1,57 @@
+---
+id: "5e1b6c3704286364bc93c662"
+number: "667"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.1"
+publicUrl: "https://docs.gravitykit.com/article/667-edit-entry-multiple-pages"
+viewCount: "552"
+lastPublishedAt: "2022-10-07T20:31:23Z"
+changeOrigin: "unknown"
+name: "How to support multiple form pages in Edit Entry"
+slug: "667-edit-entry-multiple-pages"
+status: "published"
+categories: 
+  - "579aa642c6979160ca148ba9"
+  - "5e1b6d5d04286364bc93c665"
+keywords: 
+  - "edit entry"
+  - "multi-page"
+  - "multiple pages"
+  - "multi page form"
+related: 
+  - "54c67bb9e4b0512429885513"
+  - "5c91928c2c7d3a15446115f5"
+  - "61c227e27a51e86e8d223ff9"
+createdBy: "59634"
+createdAt: "2020-01-12T18:57:59Z"
+updatedBy: "80506"
+updatedAt: "2022-10-07T20:31:23Z"
+title: "How to support multiple form pages in Edit Entry"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5e1b6c3704286364bc93c662"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-07T20:31:23Z
+  author: "Rafael Ehlers"
+---
+
+# How to support multiple form pages in Edit Entry
+
+
+:::caution
+
+This functionality is currently in testing and may have bugs. If you encounter any issues while running this code, please let us know!
+
+:::
+
+
+
+By default, Edit Entry doesn't support multi-page forms; we are currently developing support for this functionality.
+
+If you would like to enable support, add the following code to your site ( [here's how to add the code](https://docs.gravitykit.com/article/210-where-to-put-code-samples)):
+
+```php
+add_filter( 'gravityview/features/paged-edit', '__return_true' );
+```
+
+When enabled, there are some [differences in behavior that you should be aware of](https://docs.gravitykit.com/article/819-edit-entry-multi-page-forms).

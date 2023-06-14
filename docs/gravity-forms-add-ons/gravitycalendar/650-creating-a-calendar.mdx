@@ -1,0 +1,102 @@
+---
+id: "5db790cc04286364bc9101df"
+number: "650"
+collectionId: "6076f9478996210f18bd33df"
+popularity: "0.3"
+publicUrl: "https://docs.gravitykit.com/article/650-creating-a-calendar"
+viewCount: "2468"
+lastPublishedAt: "2022-10-18T23:51:58Z"
+changeOrigin: "unknown"
+name: "Creating a Calendar with Gravity Forms"
+slug: "650-creating-a-calendar"
+status: "published"
+categories: 
+  - "6076f9544466ce6ddc5f484b"
+keywords: 
+  - "GravityCiew calendar"
+  - "creating a calendar"
+  - "adding a calendar"
+  - "saving a calendar"
+  - "calendar settings"
+  - "calendar configuration"
+  - "configuring calendar"
+  - "multiple calendars"
+createdBy: "336675"
+createdAt: "2019-10-29T01:07:24Z"
+updatedBy: "80506"
+updatedAt: "2022-10-18T23:51:58Z"
+title: "Creating a Calendar with Gravity Forms"
+hsEditUrl: "https://secure.helpscout.net/docs/6076f9478996210f18bd33df/article/5db790cc04286364bc9101df"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-18T23:51:58Z
+  author: "Rafael Ehlers"
+---
+
+# Creating a Calendar with Gravity Forms
+
+### Prefer to Watch the Video?
+
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/_Uok7E2Yg0c" title="YouTube video player" width="560"></iframe>
+
+A calendar can be created by clicking on the *Create a Calendar* link available by navigating to the *Forms* list and hovering over a form record:
+
+![The 'Create a Calendar' link on the Gravity Forms Forms page](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/621f3cb9ab585b230a89c4a0/file-1KVKX04Ugu.png)
+
+A form can have multiple calendars that are configured as a [form feed](https://docs.gravityforms.com/what-is-a-feed/). After clicking the *Create a Calendar* link, you will see an option to add a new feed or edit an existing one:
+
+![Screenshot of the calendar feed creation screen inside the form settings](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/634f3b99927a2c1634dfba08/file-xKBlFUaQAw.png)
+
+Go ahead and create your first feed (a.k.a. calendar). A `Feed Settings` screen will open, where you will be asked to configure mandatory and optional fields, as well as to customize the appearance of your calendar.
+
+![Gravity Forms Calendar fields and options](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/621f3cf7ab585b230a89c4a1/file-rOCqwiMIFZ.png)
+
+There are four mandatory fields denoted with an asterisk:
+
+- **Feed name** specifies the feed (a.k.a. Calendar) name and is not displayed publicly to visitors
+- **Start Date** *(`Date` field type)* specifies the date the event starts
+- **End Date** *(`Date` field type)* specifies the date the event ends
+- **Event Title** displays the event title in the Calendar (merge tags are supported) 
+   - Clicking on the Merge Tag icon on the right of the input field will present you with a list of fields from the form that can be added to display event title
+
+Optional fields include:
+
+- **Start Time** *(`Time` field type)* specifies the time the event starts
+- **End Time** *(`Time` field type)* specifies the time the event ends
+- **Event Description** displays a tooltip with additional information when hovering the event (merge tags are supported) 
+   - Clicking on the Merge Tag icon on the right of the input field will present you with a list of fields from the form that can be added to display event description
+- **Event URL** *(`Website` field type)* opens a link when clicking the event
+- **Event Color** sets the background and border colors for all events on the calendar
+
+You can customize your calendar by enabling/disabling editing, using custom logic to exclude/include events, and modifying the appearance.
+
+**![Gravity Forms Calendar Layout options and settings](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/621f3d10c1688a6d26a71031/file-KLyZiCvmur.png)**
+
+**Layout -** set the default view of your calendar:
+
+- *Grid* is a typical and default calendar view
+- *Agenda* is similar to the grid but adds a time column
+- *List* shows all events as a simple list
+
+**Calendar Controls** let you add user controls, such as selecting the current date, displaying the current month name, and navigating between months/years. These controls can be dragged and dropped into one of the six region boxes that correspond to the location of elements inside the calendar:
+
+![Calendar controls](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/621f400eab585b230a89c4b0/file-IIsSz7wWcp.png)**Allow Event Editing** lets users change events by moving (via drag and drop) around the calendar; if enabled, you can limit this feature to users with specific Roles.
+
+Sizing** lets you control the height of your calendar, which is either automatic or fixed (custom pixel value).
+
+**Conditional Logic** provides granular control over which events are included or excluded.
+
+Changes to calendar controls and event color are displayed immediately in the preview window below the settings. Calendar preview will display sample data until you have added events (i.e., entries) and they match conditional logic (if configured):
+
+![Calendar preview on the Gravity Forms Calendar feed page](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/621f3e5b1e2a777301b742cb/file-Jtm7wLPEA9.png)
+
+There are several other options as well that enable you to allow HTML content, dynamically load events, and enable the [calendar subscription URL](https://docs.gravitykit.com/article/829-subscribing-vs-downloading).
+
+![Calendar subscription setting for enabling the subscription link](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/621f431a2ce7ed0fb091109b/file-T54hVPXOO2.png)
+
+Once you have configured the calendar and clicked *Update Settings* to save the changes, you will be taken back to the feeds page and should see your newly created calendar listed in the feeds table:
+
+![Screenshot of a calendar feed created](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/634f3c0a927a2c1634dfba0a/file-hOXGoiOt8f.png)
+
+Now that you have added a calendar, please read about the multiple ways you can [display a calendar on your website](https://docs.gravitykit.com/article/651-displaying-a-calendar).

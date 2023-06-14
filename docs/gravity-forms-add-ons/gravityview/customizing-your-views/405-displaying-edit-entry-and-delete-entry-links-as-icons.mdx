@@ -1,0 +1,112 @@
+---
+id: "589382b0dd8c8e73b3e94195"
+number: "405"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.7"
+publicUrl: "https://docs.gravitykit.com/article/405-displaying-edit-entry-and-delete-entry-links-as-icons"
+viewCount: "3850"
+lastPublishedAt: "2022-12-27T20:44:33Z"
+changeOrigin: "external"
+name: "Displaying Edit Entry and Delete Entry links as icons"
+slug: "405-displaying-edit-entry-and-delete-entry-links-as-icons"
+status: "published"
+categories: 
+  - "579aa76f903360293603a8e7"
+  - "5e1b6d5d04286364bc93c665"
+keywords: 
+  - "edit entry"
+  - "delete entry"
+  - "style"
+  - "icons"
+  - "icon"
+related: 
+  - "54c67bb7e4b051242988550f"
+  - "54ff77e7e4b034c37ea94d09"
+  - "555673bae4b01a224b424927"
+createdBy: "59634"
+createdAt: "2017-02-02T19:04:16Z"
+updatedBy: "59634"
+updatedAt: "2022-12-27T20:44:33Z"
+title: "Displaying Edit Entry and Delete Entry links as icons"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/589382b0dd8c8e73b3e94195"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-12-27T20:44:33Z
+  author: "Zack Katz"
+---
+
+# Displaying Edit Entry and Delete Entry links as icons
+
+
+
+### We are going to change these text links to icons
+
+![Screenshot of the Edit Entry and Delete Entry as shown on the front-end; they are text links](https://www.gravitykit.com/wp-content/uploads/2018/01/screenshot-of-the-edit-entry-and-delete-entry-as-shown-on-the-front-end-they-are-text-links.png?1486062750)
+
+### First, edit the View you want to update
+
+![The Edit View View Configuration screen in the Admin](https://www.gravitykit.com/wp-content/uploads/2018/01/the-edit-view-view-configuration-screen-in-the-admin.png?1486062751)
+
+### Click on the gear icon next to Edit Entry
+
+![The Edit Entry gear icon being clicked](https://www.gravitykit.com/wp-content/uploads/2018/01/the-edit-entry-gear-icon-being-clicked.png?1486062751)
+
+### Modify the Edit Entry settings to use a pencil icon instead of text
+
+![The Edit Entry settings being updated](https://www.gravitykit.com/wp-content/uploads/2018/01/the-edit-entry-settings-being-updated.png?1486062752)
+
+Use the following code for the "Edit Link Text" field:
+
+```
+<i class="dashicons dashicons-edit" title="Edit Entry" style="color: #dda100;"></i><br>
+				
+```
+
+The `style="..."` part will make the icon yellow. If you prefer to leave it the original color, you can delete that part.
+
+### Close the Field Options box
+
+![The Close button being clicked](https://www.gravitykit.com/wp-content/uploads/2018/01/the-close-button-being-clicked.png?1486062752)
+
+### Next, let's update the Delete Entry field settings
+
+![The Delete Entry field options gear icon being clicked](https://www.gravitykit.com/wp-content/uploads/2018/01/the-delete-entry-field-options-gear-icon-being-clicked.png?1486062753)
+
+### Modify the Delete Entry field to show a trashcan icon instead of text
+
+![The Delete Entry "Delete Link Text" setting being updated](https://www.gravitykit.com/wp-content/uploads/2018/01/the-delete-entry-delete-link-text-setting-being-updated.png?1486062754)
+
+Use the following code for the "Delete Link Text" field:
+
+```
+<i class="dashicons dashicons-trash" title="Delete Entry" style="color: #a00;"></i>
+				
+```
+
+The `style="..."` part will make the icon red. If you prefer to leave it the original color, you can delete that part.
+
+### Close the Field Options box
+
+![The Close button being clicked](https://www.gravitykit.com/wp-content/uploads/2018/01/the-close-button-being-clicked-1.png?1486062755)
+
+### Click Update to save the View
+
+![The Update button being clicked](https://www.gravitykit.com/wp-content/uploads/2018/01/the-update-button-being-clicked.png?1486062755)
+
+None of this will matter if we don't save the View!
+
+### And now you see the icons instead of the text
+
+![The front-end now showing Edit Entry and Delete Entry links as icons instead of text](https://www.gravitykit.com/wp-content/uploads/2018/01/the-front-end-now-showing-edit-entry-and-delete-entry-links-as-icons-instead-of-text.png?1486062756)
+
+If the icons aren't visible, install this plugin: [Frontend Dashicons](https://wordpress.org/plugins/frontend-dashicons/), and they will be visible.
+
+### Want to use different icons?
+
+![Dashicons home page with the icon name circled and an arrow pointing to the circled text](https://www.gravitykit.com/wp-content/uploads/2018/01/dashicons-home-page-with-the-icon-name-circled-and-an-arrow-pointing-to-the-circled-text.png?1486062758)
+
+Visit [https://developer.wordpress.org/resource/dashicons/](https://developer.wordpress.org/resource/dashicons/) and then click on the icon you want. The icon will appear bigger on the page, and the icon's name will show next to it. We have circled the name of the icon in the example shown.
+
+Replace `dashicons-trash` or `dashicons-edit` in the examples above with the new icon name and you will see that icon instead. Don't delete the `dashicons` value, though! Using the example above should look like `class="dashicons dashicons-no"`.
+

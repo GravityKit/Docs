@@ -1,0 +1,68 @@
+---
+id: "63533637927a2c1634dfcd9d"
+number: "880"
+collectionId: "6076f9478996210f18bd33df"
+publicUrl: "https://docs.gravitykit.com/article/880-import-has-finished-with-errors-http-404"
+viewCount: "17"
+lastPublishedAt: "2023-02-21T20:43:36Z"
+changeOrigin: "hsapp-js"
+name: "Error: Import has finished with errors - HTTP 404"
+slug: "880-import-has-finished-with-errors-http-404"
+status: "published"
+categories: 
+  - "6155b0dee5648623c88e04fa"
+createdBy: "80506"
+createdAt: "2022-10-22T00:15:51Z"
+updatedBy: "80506"
+updatedAt: "2023-02-21T20:43:36Z"
+title: "Error: Import has finished with errors - HTTP 404"
+hsEditUrl: "https://secure.helpscout.net/docs/6076f9478996210f18bd33df/article/63533637927a2c1634dfcd9d"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2023-02-21T20:43:36Z
+  author: "Rafael Ehlers"
+---
+
+# Error: Import has finished with errors - HTTP 404
+
+When there's an error importing one or more lines from your CSV file, you'll see the message below at the end of the import process:
+
+![Screenshot from the Import has finished with errors message](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/635336de4d805871ceaa5c12/file-HNy9ImHT8f.png)
+
+By clicking on the "view log" link, you'll be able to see what went wrong with each line (entry) of your CSV. If you see this specific error message below:
+
+![Screenshot of the HTTP 404 error ](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/635337d0927a2c1634dfcda6/file-6OA2ncV8wO.png)
+
+That means you are trying to import a broken URL into a file upload field or any other field that stores URLs, like the Signature field, for example.
+
+There are two ways to fix this error: By correcting the broken link, which means pointing to the correct URL on your CSV file, or by using the code snippet below to instruct the importer to ignore the URL check it performs.
+
+```
+add_filter( 'gravityview/import/run/batch', function ( $batch ) {
+	if ( empty( $batch['schema'] ) ) {
+		return $batch;
+	}
+
+	foreach ( $batch['schema'] as &$schema ) {
+		if ( ! isset( $schema['flags'] ) ) {
+			$schema['flags'] = [];
+		}
+
+		$schema['flags'][] = 'keeplinks';
+	}
+
+	return $batch;
+} );
+```
+
+
+:::info
+
+[See here where to put these code samples.](https://docs.gravitykit.com/article/210-where-to-put-code-samples)
+
+:::
+
+  Correcting the URLs or using the code snippet above and re-running the import process will thus result in a successful message like this:
+
+![Screenshot showing the Import has finished message free of errors](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/6353394b4d805871ceaa5c18/file-rpxyCNDz6k.png)

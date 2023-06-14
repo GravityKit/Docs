@@ -1,0 +1,66 @@
+---
+id: "6376ab51e1486a4bddba7bf2"
+number: "891"
+collectionId: "566dfabbc6979143615564bf"
+publicUrl: "https://docs.gravitykit.com/article/891-using-shortcodes-inside-gravity-forms-notifications"
+viewCount: "67"
+lastPublishedAt: "2022-11-17T23:10:59Z"
+changeOrigin: "unknown"
+name: "Using shortcodes inside Gravity Forms notifications"
+slug: "891-using-shortcodes-inside-gravity-forms-notifications"
+status: "published"
+categories: 
+  - "579aa748903360293603a8e5"
+  - "566dfe4fc6979143615564d9"
+related: 
+  - "5a2ef2872c7d3a46d595eb9c"
+  - "5d0cfbb404286305cb878aaa"
+  - "552355bfe4b0221aadf2572b"
+  - "54d3a075e4b086c0c09652f4"
+createdBy: "59634"
+createdAt: "2022-11-17T21:44:49Z"
+updatedBy: "59634"
+updatedAt: "2022-11-17T23:10:59Z"
+title: "Using shortcodes inside Gravity Forms notifications"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/6376ab51e1486a4bddba7bf2"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-11-17T23:10:59Z
+  author: "Zack Katz"
+---
+
+# Using shortcodes inside Gravity Forms notifications
+
+When sending a notification, you may want to have a different email subject line based on the value of a field. In that case, [you can use \[gvlogic\]](https://docs.gravitykit.com/article/252-gvlogic-shortcode). Unfortunately, Gravity Forms only processes shortcodes inside a notification's Message field (the email body). It does ***not*** process shortcodes inside other fields, such as the Subject.
+
+To process shortcodes inside other notification fields, we will use Gravity Forms’ [gform\_notification](https://docs.gravityforms.com/gform_notification/) filter. Here's an example of processing shortcodes inside the **To**, **Subject,** and **From Name** fields:
+
+
+:::info
+
+ℹ️ Only run shortcodes that you know contain safe output! Using a shortcode in these fields has the potential to break the Notifications functionality.
+
+:::
+
+ ```php
+/**
+* @param array $notification
+*/
+add_filter( 'gform_notification', function( $notification ) {
+
+	$notification['to']       = do_shortcode( $notification['to'] );
+	$notification['subject']  = do_shortcode( $notification['subject'] );
+	$notification['fromName'] = do_shortcode( $notification['fromName'] );
+
+	return $notification;
+} );
+```
+
+Now, you can use shortcodes inside your subject line like this:
+
+```html
+[gvlogic if="{Industry:3}" is="Automobiles"]🚘 Drive in![else]🚴 Bike in![/gvlogic]
+```
+
+![Screenshot of the subject field of a form notification containing the [gvlogic] shortcode](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/6376b4673fc88c6e0f006e5a/file-59POaYOh3h.png)

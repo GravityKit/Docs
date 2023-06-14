@@ -1,0 +1,56 @@
+---
+id: "556a5db8e4b027e1978e3cc2"
+number: "278"
+collectionId: "6076f9478996210f18bd33df"
+popularity: "0.2"
+publicUrl: "https://docs.gravitykit.com/article/278-allow-for-non-standard-imported-values-for-checkbox-fields"
+viewCount: "1587"
+lastPublishedAt: "2021-09-30T13:25:58Z"
+changeOrigin: "unknown"
+name: "Allow for non-standard imported values for checkbox fields"
+slug: "278-allow-for-non-standard-imported-values-for-checkbox-fields"
+status: "published"
+categories: 
+  - "6155b0dee5648623c88e04fa"
+createdBy: "59634"
+createdAt: "2015-05-31T01:02:48Z"
+updatedBy: "59634"
+updatedAt: "2021-09-30T13:25:58Z"
+title: "Allow for non-standard imported values for checkbox fields"
+hsEditUrl: "https://secure.helpscout.net/docs/6076f9478996210f18bd33df/article/556a5db8e4b027e1978e3cc2"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2021-09-30T13:25:58Z
+  author: "Zack Katz"
+---
+
+# Allow for non-standard imported values for checkbox fields
+
+![Numbers screenshot showing checkboxes](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/556a607ce4b027e1978e3cc5/file-HuLj9bvwql.png) Normally, the imported value should match the checkbox input's value. If the checkbox in Gravity Forms has a value of "Apple", the imported cell value should also be "Apple". If the CSV value is "Apples" or "True" or "YES" or "1", the import will not check the checkbox in Gravity Forms.
+
+The [Numbers app](http://www.apple.com/mac/numbers/) for Mac and iOS has checkbox cell formats (see screenshot). When exported to CSV, these checked or unchecked checkboxes are represented by "TRUE" or "FALSE" text values. If you are importing a CSV from Numbers that uses these special fields, then "TRUE" should be considered valid during import.
+
+### Allow any non-empty value to be valid
+
+These following values will be interpreted as empty, and **the checkbox will not be checked**:
+
+```
+"" // Empty
+"0" // Zero
+"FALSE" // Upper-case "false"
+```
+
+Any other value will be interpreted as not empty, and the checkbox will be checked.
+
+### Enable the functionality
+
+![Have a column in your file for each checkbox option.](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/556a6309e4b027e1978e3cc8/file-DapYUVBZMD.png)
+
+![The checkbox options.](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/556a6349e4b027e1978e3cc9/file-8PxzfYl5KL.png)
+
+ **Each checkbox value must be mapped separately during the Import Entries configuration.**
+
+If the `gravityview-importer/strict-mode/fill-checkbox-choices` filter returns `true`, the correct value will be filled. See below code:
+
+<script src="https://gist.github.com/zackkatz/fb68f381959bf0d687a1.js" type="text/javascript"></script>

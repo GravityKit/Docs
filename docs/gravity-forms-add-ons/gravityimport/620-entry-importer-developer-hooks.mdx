@@ -1,0 +1,541 @@
+---
+id: "5d555c322c7d3a68825eb694"
+number: "620"
+collectionId: "6076f9478996210f18bd33df"
+popularity: "0.1"
+publicUrl: "https://docs.gravitykit.com/article/620-entry-importer-developer-hooks"
+viewCount: "870"
+lastPublishedAt: "2023-02-21T20:41:55Z"
+changeOrigin: "hsapp-js"
+name: "GravityImport Developer Hooks"
+slug: "620-entry-importer-developer-hooks"
+status: "published"
+categories: 
+  - "6155b0dee5648623c88e04fa"
+keywords: 
+  - "delimiter"
+  - "dilimeter"
+createdBy: "59634"
+createdAt: "2019-08-15T13:20:50Z"
+updatedBy: "80506"
+updatedAt: "2023-02-21T20:41:55Z"
+title: "GravityImport Developer Hooks"
+hsEditUrl: "https://secure.helpscout.net/docs/6076f9478996210f18bd33df/article/5d555c322c7d3a68825eb694"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2023-02-21T20:41:55Z
+  author: "Rafael Ehlers"
+---
+
+# GravityImport Developer Hooks
+
+This document contains a complete list of past and present actions and filters in the GravityImport plugin.
+
+## Filters
+
+#### `gravityview/import/meta_fields`
+
+Filter the known meta fields. This is useful for cases where they are not registered via Gravity Forms APIs.
+
+Parameters:
+
+- `$fields` (array) An array of strings of known meta keys.
+
+#### `gravityview/import/batch/create`
+
+A batch is about to be created. Filter the arguments.
+
+- `$batch` (array) The batch.
+
+#### `gravityview/export/note_types/blacklist`
+
+The types of notes to not export from Gravity Forms. By default only note types of `gravityview` are not exported.
+
+Parameters:
+
+- `$blacklist` (array) An array of type strings. Default: \[ gravityview \].
+
+#### `gravityview/import/processor/args`
+
+Modify the processor arguments upon creation.
+
+Parameters:
+
+- `$args` (array) The arguments. See the `Processor::__construct` docblock for available arguments.
+
+#### `gravityview/import/has_resources`
+
+Filter whether the current processor has resources or not. Low-level stuff, be careful.
+
+Parameters:
+
+- `$has_resources` (boolean|null) Return `true` or `false` to control process loop. Default: null to use internal logic.
+- `$processor` (Processor) The processor being used.
+
+#### `gravityview/import/parse/excerpt`
+
+How many excerpt rows to return in the batch after parsing. This is mainly used in the REST API as a small shortcut to access headers and the first rows without doing any extra calls.
+
+Parameters:
+
+- `$size` (int) How many rows to return. Default: 20
+- `$batch` (array) The batch.
+
+#### `gravityview/import/parse/typemap`
+
+Helps the parser to automap the type of the field for new forms from the headers by specific keywords. Supports an undefined subset of regular expression characters. Is an associative array where the key is the keyword to check against and the value is the field type that should be suggested. Used in the UI mainly.
+
+Parameters:
+
+- `$typemap` (array) The typemap with the keyword in key and the field type in value.
+- `$column` (string) The column header.
+- `$batch` (array) The batch.
+
+#### `gravityview/import/halt/timeout`
+
+Controls the amount of seconds that need to pass before a batch is force-halted. When a batch is being processed and a `halt` status is set on it it will be set as `halting`. If the batch cannot autohalt itself (runaway PHP processes, etc.) then the batch is forced to the `error` state (runaway processes are uncontrollable, there may still be activity in them but the batch can no longer be updated). Halting can only be possible when there are no `processing` rows.
+
+Parameters:
+
+- `$timeout` (int) The timeout in seconds. Default: 10
+- `$batch` (array) The batch.
+
+#### `gravityview/import/halt/sleep`
+
+The amount of time to retry halting (i.e. checking for `processing` rows). Default: 1 second if there are resources left, 0 if Processor should end work immediately due to timeouts, memory constraints.
+
+Parameters:
+
+- `$sleep` (int) The sleep time in seconds. Default: 0 or 1 depending on Processor resource consumption and thresholds.
+- `$batch` (array) The batch.
+
+#### `gravityview/import/column/multiselect/delimiter`
+
+The delimiter being used for multiselect field cells. By default this is the comma character (,) as Gravity Forms exports it.
+
+Parameters:
+
+- `$delimiter` (string) The delimiter. Default: ,
+- `$field` (GF\_Field) The field.
+- `$column` (array) The column from the schema.
+- `$batch` (array) The batch.
+
+#### `gravityview/import/column/checkbox/unchecked`
+
+Modify the list of checkbox values that should be considered as unset/unchecked for a column. By default the importer will consider any value set in a cell as a checked value, except: an empty string, "false", "null", "0" and "no". Case-insensitively, of course.
+
+Parameters:
+
+- `$unchecked` (array) An array for strings that should be considered as unchecked.
+- `$field` (GF\_Field) The field.
+- `$column` (array) The column from the schema.
+- `$batch` (array) The batch.
+
+#### `gravityview/import/column/consent/checked`
+
+Used for Consent checkbox inputs only. Filters what the value of a checked Consent input is. By default this is the localized version of the "Checked" string. Preprocessing may be required for the value for normalization purposes. This can be done via the `gravityview/import/column/data` filter.
+
+Parameters:
+
+- `$checked` (string) The checked value. Default: "Checked"
+- `$field` (GF\_Field) The field.
+- `$column` (array) The column from the schema.
+- `$batch` (array) The batch.
+
+#### `gravityview/import/fields/multi-input`
+
+A low-level filter that discriminates field types based on whether they're multi-input or not. Gravity Forms does not provide a good way to find out automatically so we list them all here.
+
+Parameters:
+
+- `$fields` (array) The fields that are considered multi-input. Default: address, password, ... and many more
+- `$batch` (array) The batch.
+
+#### `gravityview/import/field/unrequire`
+
+Allow the importer to set the `isRequired` property of this field to false. This happens only if the `required` flag is not set on the batch. This flag unrequires all the fields by default.
+
+Paramters: - `$unrequire` (boolean) Unrequire this field if the `required` flag is not set. Default: true, all fields are not required if the `required` flag is not set. - `$field` (GF\_Field) The field. - `$batch` (array) The batch.
+
+#### `gravityview/import/column/data`
+
+A very important and useful filter that allows developers to transform, normalize, monkeypatch row data that is about to be processed.
+
+Parameters:
+
+- `$data` (string) The cell data.
+- `$column` (array) The column schema.
+- `$batch` (array) The batch.
+
+#### `gravityview/import/column/file/source`
+
+Transform the source listed in a cell to a local source. Useful if remote URLs already exist locally.
+
+Parameters:
+
+- `$source` (string) The local source. Default: empty, fetch remotely.
+- `$url` (string) The URL.
+- `$field` (GF\_Field) The field.
+- `$column` (array) The column from the schema.
+- `$batch` (array) The batch.
+
+#### `gravityview/import/column/file/name`
+
+Transform the name of the file. By default we try to figure it out from the URL.
+
+Parameters:
+
+- `$name` (string) The local source. Default: empty, fetch remotely.
+- `$url` (string) The URL.
+- `$field` (GF\_Field) The field.
+- `$column` (array) The column from the schema.
+- `$batch` (array) The batch.
+
+#### `gravityview/import/column/signature/source`
+
+Transform the source of the signature field listed in a cell to a local source. Useful if remote URLs already exist locally.
+
+Parameters:
+
+- `$source` (string) The local source. Default: empty, fetch remotely.
+- `$url` (string) The URL.
+- `$field` (GF\_Field) The field.
+- `$column` (array) The column from the schema.
+- `$batch` (array) The batch.
+
+#### `gravityview/import/column/notes/user`
+
+Overrides the note user. By default the note user will be looked up by note email, note username, then the current logged in user will be set.
+
+Parameters:
+
+- `$user` (WP\_User) The user object.
+- `$note` (object) The note as stored in the database.
+- `$entry` (array) The created/updated entry array.
+- `$batch` (array) The batch.
+
+#### `gravityview/import/column/signature/name`
+
+Transform the name of the signature file. By default we try to figure it out from the URL.
+
+Parameters:
+
+- `$name` (string) The local source. Default: empty, fetch remotely.
+- `$url` (string) The URL.
+- `$field` (GF\_Field) The field.
+- `$column` (array) The column from the schema.
+- `$batch` (array) The batch.
+
+#### `gravityview/import/user-agent`
+
+Set the default User Agent for an Entry when one is not mapped during the import. Default: "GravityView Import"
+
+Parameters:
+
+- `$user_agent` (string) The User-Agent string.
+- `$entry` (array) The entry object that has been created.
+- `$batch` (array) The import batch.
+- `$data` (array) The CSV import data for this entry.
+
+Note: this is not an override, if you are supplying the User-Agent in your CSV it will be used as is. The `gravityview/import/column/data` filter can also be leveraged to modify User Agent strings that are supplied in the import CSV.
+
+#### `gravityview/import/rest/cap`
+
+The REST API capability requirements map. By default we require the `gravityforms_edit_entries` capability (or `gform_full_access`). Please be careful with this: no special permissions are required to manage import batches and run processors via PHP code. If you are writing your own wrappers please make sure to check capabilities in your code.
+
+For new forms the `gravityforms_create_form` is required (also implied under `gform_full_access`).
+
+Parameters:
+
+- `$cap` (string) The capability.
+- `$permission` (string) The accessed permission (one of `can_create_batch`, `can_delete_batch`, `can_delete_batched`, `can_update_batch`, `can_get_batch`, `can_get_batches`, `can_process_batch`)
+- `$request` (WP\_REST\_Request) The REST request we're checking the capabilities for.
+
+#### `gravityview/import/unstrict`
+
+This filter allows importing rows that aren't the same size as the headers. This is true by default.
+
+Parameters:
+
+- `$allow_mismatched_rows` (boolean) Allow or not.
+- `$batch` (array) The batch.
+
+#### `gravityview/import/column/default`
+
+Whether to use the default value for a field when empty in the CSV or not. Default: false, unless the column flag `default` is set. If you need to change the default value use the `gravityview/import/column/data` filter.
+
+Parameters:
+
+- `$use_default` (boolean) Use or not.
+- `$column` (array) The column.
+- `$batch` (array) The batch.
+
+#### `gravityview/import/entry/validate`
+
+Allows the suppression of global validation for a row. Please use the `gform_validation` filter to return custom error messages for rows, etc.
+
+Parameters:
+
+- `$validate` (boolean) Whether to validate or not. Default: true.
+- `$result` (array) The current validation result from the `gform_validation` filter.
+- `$row` (object) The row from the rows table.
+- `$batch` (array) The batch.
+
+#### `gravityview/import/field/validate`
+
+Allows the suppression of global validation for a specific field on a per-row basis. Please use the `gform_field_validation` filter to return custom error messages for fields, etc.
+
+Parameters:
+
+- `$validate` (boolean) Whether to validate or not. Default: true.
+- `$result` (array) The current validation result from the `gform_validation` filter.
+- `$field` (GF\_Field) The field.
+- `$row` (object) The row from the rows table.
+- `$batch` (array) The batch.
+
+#### `gravityview/import/column/( radio|select|multiselect|checkbox )/strict`
+
+The imported chioces will be strictly validated. This is not the case in Gravity Forms by deafult, but when importing this is the default. This only happens in strict mode ( `soft` flag is absent). In non-strict mode (`soft` flag is present) this filter is not called. If needed use the `gform_field_validate` filter and implement your own checking.
+
+Parameters:
+
+- `$strict` (boolean) Whether to check or not. Default: true.
+- `$field` (GF\_Field) The field.
+- `$batch` (array) The batch.
+
+#### `gravityview/import/settings/enabled`
+
+Whether to show the settings screen or not (Forms / Settings / Import Entries).
+
+Parameters:
+
+- `$show` Show or not. Default: true.
+
+#### `gravityview/import/capabilities`
+
+One of the capabilities required to access the Import UI in the WordPress Dashboard. Please make sure that `gravityview/import/rest/cap` is also set correctly if you're going to fiddle with this filter.
+
+Parameters:
+
+- `$capabilities` (array) A list of capabilities to let us through. Default: \[ manage\_options, gravityforms\_import\_entries \]
+
+#### `gravityview-importer/use-default-value`
+
+*Deprecated* since version 2.0. Use `gravityview/import/column/default`.
+
+#### `gravityview-import/user-agent`
+
+*Deprecated* since version 2.0. Use `gravityview/import/user-agent` instead.
+
+#### `gravityview-import/import-cap`
+
+*Deprecated* since version 2.0. Use `gravityview/import/rest/cap` for REST permissions. This deprecated filter is not granular and applies to all REST actions.
+
+#### `gravityview-importer/unstrict`
+
+*Deprecated* since version 2.0. Use `gravityview/import/unstrict`. The default is now `true`.
+
+#### `gravityview-importer/unstrict`
+
+*Deprecated* since version 2.0. Use `gravityview/import/unstrict`.
+
+#### `gravityview-importer/strict-mode`
+
+*Deprecated* since version 2.0. Use `gravityview/import/.*/strict` filters.
+
+#### `gravityview-import/show-settings`
+
+*Deprecated*. Renamed to `gravityview/import/settings/enabled` since version 2.0.
+
+#### `gravityview-importer/ignore-user-abort`
+
+*Removed* since version 2.0. User aborts no longer work as batch processing is now asynchronous. Halting can be done by setting 'halt' on a particular batch.
+
+#### `gravityview/importer/log_count`
+
+*Removed*. Not used since version 2.0.
+
+#### `gravityview-importer/default-charset`
+
+*Removed* since version 2.0. We no longer detect the character set from the filename. The default input character set is UTF-8. Use The parse character sets and conversions should be set via the `gravityview/import/config` directly from now on.
+
+#### `gravityview/importer/validate-entry`
+
+*Removed* since version 2.0. We are no longer able to provide the `$entry` object as validation happens early on. Use the standard `gform_validation` filter or the newer `gravityview/import/entry/validate` filter.
+
+#### `gravityview/importer/validate-field`
+
+*Removed* since version 2.0. We are no longer able to provide the `$entry` object as validation happens early on. Use the standard `gform_field_validation` filter or the newer `gravityview/import/field/validate` filter.
+
+#### `gravityview-importer/strict-mode/fill-checkbox-choices`
+
+*Removed* since version 2.0. The correct checkbox value is always filled in regardless of the input value (unless "falsey", see `gravityview/import/column/checkbox/unchecked` filter) from 2.0 and on.
+
+#### `gravityview-importer/strict-mode/field-maxrows`
+
+*Removed* since version 2.0. Use the `gform_field_validation` Gravity Forms filter to implement your own `maxRows` validation.
+
+#### `gravityview-importer/remove-update-hooks`
+
+*Pending* since version 2.0. Patience: https://github.com/gravityview/Import-Entries/issues/225
+
+#### `gravityview-import/recalculate-totals`
+
+*Pending* since version 2.0. Patience: https://github.com/gravityview/Import-Entries/issues/297
+
+## Actions
+
+#### `gravityview/import/process/$status`
+
+Called when an import batch status is suddenly set. `$status` is one of `parsed`, `process`, `processing`, `halted`, `done`, `rolledback`, `error`. Some action statuses may not be triggered as they can be set outside of the import flow.
+
+Parameters:
+
+- `$batch` (array) The batch.
+
+#### `gravityview/import/config`
+
+Modify the CSV lexer import configuration used to parse the CSV data. This can be used to switch encoding, etc. See https://github.com/goodby/csv#configuration for various options. This is a low level filter and may change rapidly and without warning in the future. Avoid using if possible.
+
+Parameters:
+
+- `&$config` (\\Goodby\\CSV\\Import\\Standard\\Lexer\\Config) The Lexer Config object reference.
+- `$batch` (array) The batch.
+
+#### `gravityview/import/process/row`
+
+Triggered every parsing CSV row.
+
+Parameters:
+
+- `$row` (array) The row.
+- `$number` (int) The row number (starts from 1, headers first).
+- `$batch` (array) The current batch.
+
+#### `gravityview/import/process/row/error`
+
+Triggered when a row could not be processed correctly. There are many reasons for this to happen.
+
+Parameters:
+
+- `$row` (object) The database row stored.
+- `$error` (string) The error message.
+- `$batch` (array) The batch.
+
+#### `gravityview/import/process/row/skipped`
+
+Triggered when conditional logic fails and the row is skipped.
+
+Parameters:
+
+- `$row` (object) The database row stored.
+- `$batch` (array) The batch.
+
+#### `gravityview/import/processor/init`
+
+Called when a Processor object has been created.
+
+Parameters:
+
+- `$processor` (Processor) The Processor object that has been created.
+- `$args` (array) The processor arguments. To change these use the `gravityview/import/processor/args` filter.
+
+#### `gravityview/import/entry/updated`
+
+The entry has been updated. It is tempting to use Gravity Forms filters for this, but don't. Many of the filters can be triggered several times for a single row due to how the entries are imported.
+
+Parameters:
+
+- `$entry` (array) The updated entry.
+- `$old_entry` (array) The previous entry.
+- `$batch` (array) The batch.
+
+#### `gravityview/import/entry/created`
+
+The entry has been added. It is tempting to use Gravity Forms filters for this, but don't: filters may be triggered several times for a single row due to how the entries are imported. Use this action instead.
+
+Parameters:
+
+- `$entry` (array) The updated entry.
+- `$batch` (array) The batch.
+
+#### `gravityview/import/batch/created`
+
+A batch has been created and assigned an ID, contrary to the `gravityview/import/batch/create` filter, where the ID is not available yet.
+
+Parameters:
+
+- `$batch` (array) The batch.
+
+#### `gravityview/import/ui/before`
+
+Output your own content on the import configuration screen, before the main UI wrapper.
+
+#### `gravityview/import/ui/after`
+
+Output your own content on the import configuration screen, after the main UI wrapper.
+
+#### `gravityview-importer/end-of-file`
+
+*Deprecated* since version 2.0. Use `gravityview/import/process/parsed` instead (see `gravityview/import/process/$status`).
+
+#### `gravityview-importer/config`
+
+*Deprecated* since 2.0. Use `gravityview/import/config` instead.
+
+#### `gravityview-importer/process-row`
+
+*Deprecated* since 2.0. Use `gravityview/import/process/row` instead.
+
+#### `gravityview-importer/after-add`
+
+*Deprecated* since 2.0. Use `gravityview/import/entry/created` instead.
+
+#### `gravityview-importer/after-update`
+
+*Deprecated* since 2.0. Use `gravityview/import/entry/updated` instead.
+
+#### `gravityview-import/before-import`
+
+*Deprecated*. Use `gravityview/import/ui/before` since version 2.0.
+
+#### `gravityview-import/after-import`
+
+*Deprecated*. Use `gravityview/import/ui/after` since version 2.0.
+
+#### `gravityview-import/before-settings`
+
+*Deprecated*. Renamed to `gravityview/import/settings/before` since version 2.0.
+
+#### `gravityview-import/after-settings`
+
+*Deprecated*. Renamed to `gravityview/import/settings/after` since version 2.0.
+
+#### `gravityview-import/print-ul`
+
+*Removed*. Not used since version 2.0. The UI is now on the client-side.
+
+#### `gravityview-import/report/after`
+
+*Removed*. Not used since version 2.0. The UI is now on the client-side.
+
+#### `gravityview-import/report/after-errors`
+
+*Removed*. Not used since version 2.0. The UI is now on the client-side.
+
+#### `gravityview-importer/import`
+
+*Removed*. Not used since version 2.0. The UI is now on the client-side.
+
+#### `gravityview-importer/add-entry/error`
+
+*Removed* since 2.0. Use `gravityview/import/process/row/error` instead. We no longer have an entry object inside the process context unless it has been created.
+
+#### `gravityview-importer/invalid-row`
+
+*Removed* since 2.0. Use `gravityview/import/process/row/skipped` instead. We can no longer satisfy the third parameter in this filter.
+
+#### `gravityview-importer/add-hooks`
+
+*Removed* since 2.0. This action is neither required, nor satisfiable by the new version. A good alternative is to hook into `gravityview/import/processor/init`.

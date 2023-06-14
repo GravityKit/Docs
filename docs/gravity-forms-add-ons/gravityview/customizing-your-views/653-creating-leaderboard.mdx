@@ -1,0 +1,82 @@
+---
+id: "5dcaacdc2c7d3a7e9ae3d488"
+number: "653"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.1"
+publicUrl: "https://docs.gravitykit.com/article/653-creating-leaderboard"
+viewCount: "558"
+lastPublishedAt: "2022-10-07T22:09:36Z"
+changeOrigin: "unknown"
+name: "Creating a leaderboard with GravityView"
+slug: "653-creating-leaderboard"
+status: "published"
+categories: 
+  - "579aa76f903360293603a8e7"
+createdBy: "365564"
+createdAt: "2019-11-12T13:00:12Z"
+updatedBy: "80506"
+updatedAt: "2022-10-07T22:09:36Z"
+title: "Creating a leaderboard with GravityView"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5dcaacdc2c7d3a7e9ae3d488"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-07T22:09:36Z
+  author: "Rafael Ehlers"
+---
+
+# Creating a leaderboard with GravityView
+
+You can use GravityView to create a leaderboard from your Gravity Forms entries based on points, sales totals, or any Number field:
+
+![Example of a leaderboard sorted by a Number field in descending order](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5dcab14704286364bc91a37f/file-HBndHvLFTJ.png)
+
+Here's how to create a leaderboard using GravityView and your Gravity Forms data:
+
+### 1. Create a new View
+
+To get started, create a new View by going to **Views &gt; New View**:
+
+![Creating a new View to use as a leaderboard](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5dcb09af2c7d3a7e9ae3db3e/file-lzIMSrDxPL.png)
+
+### 2. Choose your Data Source and View Type
+
+For this example, we're using an existing Gravity Forms form called Monthly Tracker and the **Table** View Type:
+
+![Choosing a data source and View type for a leaderboard](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5dcb0bde04286364bc91a997/file-IEUjvr9irq.png)
+
+If you have the [DataTables extension](https://www.gravitykit.com/extensions/datatables/) installed, you can use a DataTables View Type for your leaderboard.
+
+### 3. Add fields to your View
+
+In the **View Configuration** box, under the **Multiple Entries** tab, click the "Add Field" button to choose the fields you wish to display on your leaderboard. Include the Number field you wish to use for ranking entries.
+
+![Adding fields from the Gravity Forms form to a leaderboard View](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5dcb180704286364bc91aa5b/file-A1C2YR40HP.png)
+
+The Gravity Forms Number field used for leaderboard rankings can be a standalone number field or a calculated field. Numeric and Currency formats can be used as well.
+
+![Using a currency Number field with a formula for a leaderboard](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5dcb1cc72c7d3a7e9ae3dc69/file-Nhfc2rz5jo.png)
+
+You can add fields under the **Single Entry** and **Edit Entry** tabs for viewing and editing single entries
+
+### 4. Set your sorting options
+
+Under **View Settings &gt; Filter &amp; Sort**, set your View to sort by the Number field you're using to rank entries. Example:
+
+![Sorting a View by a Number field in Descending order to create a leaderboard](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5dcab33904286364bc91a399/file-HG0xoLwr6M.png)
+
+### 5. Limit the number of entries (optional)
+
+If you want to create a Top X style leaderboard, you can limit the number of entries that appear in the View by entering a number in the "Number of entries per page" field under View Settings:
+
+![Limiting the number of entries to 10 for a leaderboard style View](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5dcab49204286364bc91a3a7/file-m8NzsP8IRx.png)
+
+With a Top X leaderboard, you'll also want to **exclude any pagination or page size widgets** so only your top X entries are displayed at all times.
+
+###  6. Publish your leaderboard View
+
+Once you have your fields and sorting in place, click the blue Publish button to publish your leaderboard:
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5dcb1e382c7d3a7e9ae3dc78/file-X8KBpfOcst.png)
+
+Please note that your leaderboard does not update in real-time. Users will need to refresh the View to see the most up-to-date results.

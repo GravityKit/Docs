@@ -1,0 +1,46 @@
+---
+id: "63f58fc081d3090330dcaa51"
+number: "914"
+collectionId: "6076f9478996210f18bd33df"
+publicUrl: "https://docs.gravitykit.com/article/914-restarting-a-gravity-flow-workflow-after-import"
+viewCount: "2"
+lastPublishedAt: "2023-02-22T03:47:11Z"
+changeOrigin: "hsapp-js"
+name: "Restarting a Gravity Flow workflow after import"
+slug: "914-restarting-a-gravity-flow-workflow-after-import"
+status: "published"
+categories: 
+  - "6155b0dee5648623c88e04fa"
+createdBy: "80506"
+createdAt: "2023-02-22T03:45:04Z"
+updatedBy: "80506"
+updatedAt: "2023-02-22T03:47:11Z"
+title: "Restarting a Gravity Flow workflow after import"
+hsEditUrl: "https://secure.helpscout.net/docs/6076f9478996210f18bd33df/article/63f58fc081d3090330dcaa51"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2023-02-22T03:47:11Z
+  author: "Rafael Ehlers"
+---
+
+# Restarting a Gravity Flow workflow after import
+
+The code below restarts a Gravity Flow workflow after each row of a CSV file has been imported into a form as a new entry with GravityImport.
+
+```
+add_action( 'gravityview/import/entry/created', 'gravityimport_after_entry_created', 10, 2 );
+function gravityimport_after_entry_created ( $entry, $batch ){
+	
+	if( ! class_exists( 'Gravity_Flow_API' ) ) {
+		return;
+	}
+	
+	$form_id = $entry['form_id'];	
+	$api = new Gravity_Flow_API( $form_id );
+	$api->restart_workflow( $entry );
+
+}
+```
+
+If you are not sure how to add custom code to your theme, please [take a look at this article](https://docs.gravitykit.com/article/210-where-to-put-code-samples).

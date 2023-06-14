@@ -1,0 +1,98 @@
+---
+id: "5d9398ac2c7d3a7e9ae1dfbd"
+number: "635"
+collectionId: "54d1a05ce4b086c0c0964ccd"
+popularity: "0.1"
+publicUrl: "https://docs.gravitykit.com/article/635-getting-started-with-maps"
+viewCount: "1364"
+lastPublishedAt: "2022-12-15T11:50:28Z"
+changeOrigin: "hsapp-js"
+name: "Getting Started With the Maps Layout"
+slug: "635-getting-started-with-maps"
+status: "published"
+categories: 
+  - "55b67132e4b0e667e2a44567"
+createdBy: "365564"
+createdAt: "2019-10-01T18:19:24Z"
+updatedBy: "543004"
+updatedAt: "2022-12-15T11:50:28Z"
+title: "Getting Started With the Maps Layout"
+hsEditUrl: "https://secure.helpscout.net/docs/54d1a05ce4b086c0c0964ccd/article/5d9398ac2c7d3a7e9ae1dfbd"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-12-15T11:50:28Z
+  author: "Casey Burridge"
+---
+
+# Getting Started With the Maps Layout
+
+In this article, we’ll show you how to get set up with the GravityView Maps Layout.
+
+
+:::info
+
+**Note**: The Maps Layout is included in [GravityKit's All Access license](https://www.gravitykit.com/pricing/?focus=all-access).
+
+:::
+
+ ### Prefer to Watch the Video?
+
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/bULRI9vCV2M" title="YouTube video player" width="560"></iframe>
+
+##  Installing the Maps Premium View
+
+You can install the Maps Premium from inside WordPress. Simply hover over *GravityKit*, click *Products &amp; Licenses*, scroll down to the “Maps Premium View” and click *Install*.
+
+![The 'Install' button for the Maps Premium View on the GravityKit Products & Licenses page](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/639af2c9ce7c3c61d800bf7e/file-PKTuHQp5fU.png)
+
+For the Maps layout to work correctly, you'll need a valid Google Maps API key.
+
+##  Signing up for a Google Maps API key
+
+If you don't already have one, [click here to go to the Google Maps Geocoding API page,](https://developers.google.com/maps/documentation/geocoding/get-api-key) then click the "Get started" button at the top right.
+
+![Signing up for a Google Maps API key](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5d93af5a2c7d3a7e9ae1e12b/file-NJaTf7TFp1.png)
+
+After creating your API key, ensure you enable both the Geocoding API and the Geolocation API.
+
+![The Google Geocoding API and Geolocations API](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/623c37182ce7ed0fb0919100/file-Rf6mbdcmAh.jpg)
+
+For step-by-step instructions on obtaining your Google Maps API key, please see the following article: [Signing up for a Google Maps API Key](https://docs.gravitykit.com/article/306-signing-up-for-a-google-maps-api-key)
+
+## Create a Form With an Address Field
+
+To display Gravity Forms entries on a map, your form must have an Address field. GravityView will then geocode the address and display it as a marker on your map.
+
+![The Gravity Forms Address field](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/623c38ef2ce7ed0fb091910a/file-OdZY9i5YOg.png)
+
+If you're using a different field type to capture address information (e.g. Single Line Text), it is still possible to use the Maps extension, but you'll have to override the Address Field setting. Please see this article for instructions on how to do this: [How can I pull the address from a field type that is not Address?](https://docs.gravitykit.com/article/292-how-can-i-pull-the-address-from-a-field-type-that-is-not-address)
+
+## Enter Your Google Maps API Key on the GravityView Settings Page
+
+Hover over "GravityKit" and click "Settings". Now click on "GravityView Maps" on the left and enter your API key in the box.
+
+![The GravityView Maps settings in GravityKit, including the box for entering a Google Maps API key](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/639b09cb2e586565571c20ea/file-Q3JzhMmAT6.png)
+
+You can now create a View using the Maps layout!
+
+## Create a View Using the Maps Layout
+
+Hover over *Views* and click *New View*. Next, give your View a name and select a data source. Now, select your View type. While you can use the "Map" View type itself, it's important to know that the Map can be added to ANY View type in GravityView (Table, List, DataTables or DIY) simply by adding the "Multiple Entries Map" widget to your View configuration.
+
+![Choosing a View type in GravityView](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/623c3a3baf6f8700f6db2d5f/file-c7LZnMKCc0.png)
+
+Now you can start configuring your View using the GravityView drag-and-drop editor. When you're done, scroll down to the View Settings and click on the *Maps* tab. Here you'll find a range of options for customizing your map.
+
+![The Maps settings panel](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/623c3b33ab585b230a8a4490/file-noj7vWTBJA.png)That's it! Now open your View on the front end. Your form entries should be displayed as markers on a Google Map.
+
+![Example map displaying on a View](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5d93b7482c7d3a7e9ae1e1b1/file-mbIaDXtgPx.png)
+
+## Troubleshooting the Maps Premium View Extension
+
+Are you having trouble getting your map to display correctly? There are several possible reasons for this. Here are some common issues and their solutions:
+
+- [I see a warning "Google Maps API warning: NoApiKeys"](https://docs.gravitykit.com/article/344-google-maps-api-warning-noapikeys)
+- [Google Maps Javascript API Error "RefererNotAllowedMapError"](https://docs.gravitykit.com/article/626-google-maps-error-referernotallowedmaperror)
+- [Why aren't some of my entries showing up on the map?](https://docs.gravitykit.com/article/379-why-arent-some-of-my-entries-showing-up-on-the-map)
+- [Premium themes and the Maps extension](https://docs.gravitykit.com/article/639-premium-themes-and-the-maps-plugin)

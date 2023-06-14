@@ -1,0 +1,48 @@
+---
+id: "5db3438a04286364bc90e94a"
+number: "649"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.1"
+publicUrl: "https://docs.gravitykit.com/article/649-changing-the-text-when-an-entry-is-pending-approval"
+viewCount: "346"
+lastPublishedAt: "2021-10-07T19:33:56Z"
+changeOrigin: "unknown"
+name: "Changing the \"You are not allowed to view this content\" text when an entry is pending approval"
+slug: "649-changing-the-text-when-an-entry-is-pending-approval"
+status: "published"
+categories: 
+  - "582140d9c697914aa8381617"
+createdBy: "365564"
+createdAt: "2019-10-25T18:48:42Z"
+updatedBy: "80506"
+updatedAt: "2021-10-07T19:33:56Z"
+title: "Changing the \"You are not allowed to view this content\" text when an entry is pending approval"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5db3438a04286364bc90e94a"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2021-10-07T19:33:56Z
+  author: "Rafael Ehlers"
+---
+
+# Changing the "You are not allowed to view this content" text when an entry is pending approval
+
+If you're using GravityView to create user profiles and you have your View set to show only Approved entries, a user will see the following message if they attempt to view their profile before the entry has been approved:
+
+![The "You are not allowed to view this content" message when an entry is pending approval](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5db345f204286364bc90e968/file-ASblKsHHxm.png)
+
+You can use this filter to change the "You are not allowed to view this content" text:
+
+```
+add_filter( 'gettext', 'gv_modify_text', 20, 3 );
+function gv_modify_text( $translated_text, $text, $domain ) {
+   if ( $translated_text === "You are not allowed to view this content.") {
+       $translated_text = __( "Your entry hasn't been approved yet!", 'gravityview' );
+   }
+   return $translated_text;
+}
+```
+
+With the filter in place, the user will see the following message:
+
+!["Your entry hasn't been approved yet" message when accessing a profile page](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5db34bd504286364bc90ea50/file-lL3Mq1EPf0.png)

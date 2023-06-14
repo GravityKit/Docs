@@ -1,0 +1,49 @@
+---
+id: "5b7c9bf02c7d3a03f89df947"
+number: "476"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.1"
+publicUrl: "https://docs.gravitykit.com/article/476-404-error-csv-endpoint"
+viewCount: "689"
+lastPublishedAt: "2022-10-07T21:36:34Z"
+changeOrigin: "unknown"
+name: "Getting a 404 error when accessing CSV endpoint"
+slug: "476-404-error-csv-endpoint"
+status: "published"
+categories: 
+  - "579aab1cc6979160ca148bba"
+keywords: 
+  - "csv"
+  - "404"
+createdBy: "59634"
+createdAt: "2018-08-21T23:10:40Z"
+updatedBy: "80506"
+updatedAt: "2022-10-07T21:36:34Z"
+title: "Getting a 404 error when accessing CSV endpoint"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5b7c9bf02c7d3a03f89df947"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-07T21:36:34Z
+  author: "Rafael Ehlers"
+---
+
+# Getting a 404 error when accessing CSV endpoint
+
+In Version 2.1, GravityView added the ability to export a CSV of View results.
+
+The CSV can be accessed by adding "/csv/" to the end of the View URL.
+
+- Before: [https://example.com/view/my-example-view/](https://example.com/view/my-example-view/)
+- After: [https://example.com/view/my-example-view/](https://example.com/view/my-example-view/)**csv/**
+
+If you are getting a 404 error when trying to access the CSV, there may be two reasons:
+
+1. Permalinks need to be re-saved 
+   1. Go to your Dashboard
+   2. Click on the Settings menu item in the sidebar
+   3. Click on "Permalinks"
+   4. Click the "Save Changes" button to save the form
+   5. Now the /csv/ URL should work!
+2. **The View is embedded in a post or a page**  
+   Follow these instructions to correctly link to the CSV file when a View is embedded on a page or post: [Exporting entries as CSV](https://docs.gravitykit.com/article/491-csv-export)

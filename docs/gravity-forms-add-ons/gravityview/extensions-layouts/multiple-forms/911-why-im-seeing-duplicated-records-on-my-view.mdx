@@ -1,0 +1,44 @@
+---
+id: "63e2bac2ef30c96ab33bcaec"
+number: "911"
+hasDraft: "1"
+collectionId: "54d1a05ce4b086c0c0964ccd"
+publicUrl: "https://docs.gravitykit.com/article/911-why-im-seeing-duplicated-records-on-my-view"
+viewCount: "5"
+lastPublishedAt: "2023-02-07T21:40:31Z"
+changeOrigin: "hsapp-js"
+name: "Why I'm seeing duplicated records on my View?"
+slug: "911-why-im-seeing-duplicated-records-on-my-view"
+status: "published"
+categories: 
+  - "5c00781104286304a71cd192"
+createdBy: "80506"
+createdAt: "2023-02-07T20:55:30Z"
+updatedBy: "80506"
+updatedAt: "2023-02-07T21:40:31Z"
+title: "Why I'm seeing duplicated records on my View?"
+hsEditUrl: "https://secure.helpscout.net/docs/54d1a05ce4b086c0c0964ccd/article/63e2bac2ef30c96ab33bcaec"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2023-02-07T21:40:31Z
+  author: "Rafael Ehlers"
+---
+
+# Why I'm seeing duplicated records on my View?
+
+If your View is using Multiple Forms, then you might see duplicated entries from the main form showing up.
+
+Let's assume we have two forms: Teams and Players.
+
+On the Teams form, we have **two** entries: Arizona Rockets and New York Comets.
+
+On the Players form, we have **five** entries. Three are associated with the Arizona Rockets, and two entries are associated with the New York Comets.
+
+The Player form entries are connected with the Teams form by the same Team Number field.
+
+Connecting these two forms:
+
+![Screenshot of the joined forms in the View editor](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/63e2c452f5e6e535e1a964a5/file-sKEmfXqC2y.png)The expected result is five entries showing up on the View, because the joined form, Players, has five entries associated with the main form Teams.
+
+![Screenshot of the View showing 5 entries in total](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/63e2c49bd2459a27d10c8e2a/file-AdgdMTjqLv.png)

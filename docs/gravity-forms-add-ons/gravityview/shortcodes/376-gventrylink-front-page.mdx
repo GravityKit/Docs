@@ -1,0 +1,88 @@
+---
+id: "57c61c85c69791083999e22a"
+number: "376"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.3"
+publicUrl: "https://docs.gravitykit.com/article/376-gventrylink-front-page"
+viewCount: "1759"
+lastPublishedAt: "2022-12-27T20:44:39Z"
+changeOrigin: "external"
+name: "Using the [gv_entry_link] on your home page"
+slug: "376-gventrylink-front-page"
+status: "published"
+categories: 
+  - "566dfe4fc6979143615564d9"
+  - "579aab1cc6979160ca148bba"
+keywords: 
+  - "gv_entry_link"
+  - "home page"
+  - "front page"
+  - "link"
+  - "url"
+  - "single entry link"
+related: 
+  - "54c67bcce4b051242988553c"
+createdBy: "59634"
+createdAt: "2016-08-30T23:53:41Z"
+updatedBy: "59634"
+updatedAt: "2022-12-27T20:44:39Z"
+title: "Using the [gv_entry_link] on your home page"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/57c61c85c69791083999e22a"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-12-27T20:44:39Z
+  author: "Zack Katz"
+---
+
+# Using the [gv_entry_link] on your home page
+
+
+
+### Here's a \[gv\_entry\_link\] shortcode in a Custom Content field
+
+![](https://www.gravitykit.com/wp-content/uploads/2018/01/here-s-a-gv_entry_link-shortcode-in-a-custom-content-field.png?1472600558)
+
+### The link points to the View, not to the home page.
+
+Even though the View is embedded on the home page, the link is pointing to the View.
+
+![](https://www.gravitykit.com/wp-content/uploads/2018/01/the-link-points-to-the-view-not-to-the-home-page.png?1472600558)
+
+### So how to fix this?
+
+**We need to update the `[gv_entry_link]` shortcode** to be `[gv_entry_link post_id="#"]`, where the number is the page ID of the front page.
+
+### Getting the Page ID
+
+If you know the page ID of the front page, update the shortcode to use it. For example, if the page ID is 2, the shortcode would be `[gv_entry_link post_id="2"]`. **The link should work now.**
+
+If you need help finding the page ID, read on!
+
+#### Go to the Settings &gt; Reading page from your Dashboard
+
+There, you will see the "Front page" setting. That is the page we want to find more information about.
+
+![](https://www.gravitykit.com/wp-content/uploads/2018/01/go-to-the-settings-gt-reading-page-from-your-dashboard.png?1472600560)
+
+#### Click on the name of the page in the "Pages &gt; All Pages" list
+
+![](https://www.gravitykit.com/wp-content/uploads/2018/01/click-on-the-name-of-the-page-in-the-pages-gt-all-pages-list.png?1472600561)
+
+#### The page ID will be in the URL as "post=\[number\]"
+
+But this won't work for everyone, because browsers don't always show the full URL.
+
+![](https://www.gravitykit.com/wp-content/uploads/2018/01/the-page-id-will-be-in-the-url-as-post-number-.png?1472600561)
+
+#### Don't see the full URL and need to find the Page ID?
+
+Go to Plugins &gt; Add New, then search for "Reveal IDs". Click the Install Now button, then click Activate to activate the plugin.
+
+![](https://www.gravitykit.com/wp-content/uploads/2018/01/don-t-see-the-full-url-and-need-to-find-the-page-id-.png?1472600562)
+
+#### You will now see an ID column next to each page.
+
+That number is the page ID we've been looking for. Sorry it's so hard to find!
+
+![](https://www.gravitykit.com/wp-content/uploads/2018/01/you-will-now-see-an-id-column-next-to-each-page.png?1472600563)

@@ -1,0 +1,61 @@
+---
+id: "6384ff85c2fe52587019ed31"
+number: "892"
+collectionId: "566dfabbc6979143615564bf"
+publicUrl: "https://docs.gravitykit.com/article/892-modifying-the-go-back-link-to-avoid-losing-search-parameters"
+viewCount: "47"
+lastPublishedAt: "2022-12-07T18:13:41Z"
+changeOrigin: "hsapp-js"
+name: "Modifying the Go Back link to avoid losing search parameters"
+slug: "892-modifying-the-go-back-link-to-avoid-losing-search-parameters"
+status: "published"
+categories: 
+  - "579aa642c6979160ca148ba9"
+  - "566dff159033603f7da27def"
+  - "579aa76f903360293603a8e7"
+createdBy: "80506"
+createdAt: "2022-11-28T18:35:49Z"
+updatedBy: "80506"
+updatedAt: "2022-12-07T18:13:41Z"
+title: "Modifying the Go Back link to avoid losing search parameters"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/6384ff85c2fe52587019ed31"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-12-07T18:13:41Z
+  author: "Rafael Ehlers"
+---
+
+# Modifying the Go Back link to avoid losing search parameters
+
+![Screenshot of the Go Back link](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/6385004ff0954016ebbb5ec1/file-FOZNAHt69R.png)
+
+The Go Back link of the Single Entry page redirects the user to the Multiple Entries page. However, if the user performs a search, the Go Back link will lose the search parameters when returning to the Multiple Entries page.
+
+Using the code snippet below, these search parameters will be kept, and the user will be redirected to the search results.
+
+```php
+add_filter( 'gravityview/template/field/entry_link', function ( $output, $href ) {
+	if ( empty( $_GET ) ) {
+		return $output;
+	}
+	$new_href = add_query_arg( (array) $_GET, $href );
+	return str_replace( $href, $new_href, $output );	
+}, 10, 2 );
+
+add_filter( 'gravityview/template/links/back/url', function ( $href ) {
+	if ( empty( $_GET ) ) {
+		return $href;
+	}
+	return add_query_arg( (array) $_GET, $href );
+}, 10, 2 );
+```
+
+
+:::info
+
+See how to add this code snippet to your website: [Where to put code samples](https://docs.gravitykit.com/article/210-where-to-put-code-samples).
+
+:::
+
+ 

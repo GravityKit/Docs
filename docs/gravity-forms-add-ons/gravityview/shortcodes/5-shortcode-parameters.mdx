@@ -1,0 +1,69 @@
+---
+id: "54c5867fe4b0512429885344"
+number: "5"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.1"
+publicUrl: "https://docs.gravitykit.com/article/5-shortcode-parameters"
+viewCount: "730"
+lastPublishedAt: "2016-07-29T00:49:39Z"
+changeOrigin: "unknown"
+name: "Refer to http://docs.gravityview.co/article/73-using-the-shortcode"
+slug: "5-shortcode-parameters"
+status: "notpublished"
+categories: 
+  - "566dfe4fc6979143615564d9"
+createdBy: "59634"
+createdAt: "2015-01-26T00:12:47Z"
+updatedBy: "80506"
+updatedAt: "2016-07-29T00:49:39Z"
+title: "Refer to http://docs.gravityview.co/article/73-using-the-shortcode"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/54c5867fe4b0512429885344"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2016-07-29T00:49:39Z
+  author: "Rafael Ehlers"
+---
+
+# Refer to http://docs.gravityview.co/article/73-using-the-shortcode
+
+### You can embed GravityView in a post or page.
+
+You can embed GravityView Views in posts or pages by using the `[gravityview]` shortcode.
+
+### Shortcode Parameters
+
+- `id` - The ID of the View you want to display *(required)*
+- `page_size` - Number of entries to show at a time *(Defaults to View setting)*
+- `sort_field` - What form field id should be used to sort? *(See note)*
+- `sort_direction` - ASC / DESC
+- `search_field` - Only display entries with this text in the value *(See note)*
+- `search_value` - Only display entries with this text in the value
+- `start_date` - Filter the results by date. This sets a limit on the earliest results shown. In `YYYY-MM-DD` format.
+- `end_date` - Filter the results by date. This sets a limit on the latest results shown. In `YYYY-MM-DD` format.
+- `class` - Add a HTML class to the view wrapper
+- `offset` - This is the start point in the current data set (Count starts with `0`)
+- `single_title` - Define a custom single entry view title (default: post/page title)
+- `back_link_label` - Define a custom single entry back link label (default: ← Go back)
+- `post_id` - When using the shortcode in a widget or template, you may want to specify a page where a View is embedded as the base URL for entry links. Default: `NULL` (\*added in Version 1.4\*)
+
+
+:::note
+
+**Note**: You can find the field ID by looking at each field's title in the Gravity Forms Form Editor
+
+:::
+
+ ### Examples
+
+This shortcode will display entries for View #123
+
+`	[gravityview id="123" search_value="example" start_date="2014-06-16" end_date="2014-06-17" /]	`
+
+Only search for "Example" in the field ID #5 for View #123.
+
+`	[gravityview id="123" search_field="5" search_value="Example"]	`
+
+Display the View, but have entries link to the post with ID of 40. Instead of `yoursite.com/view/123/entry/5/`, the entry would link to `yoursite.com/post-40-url/entry/5/`.
+
+`	[gravityview id="123" post_id="40"]	`

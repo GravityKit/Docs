@@ -1,0 +1,128 @@
+---
+id: "595d32c82c7d3a707d7b738a"
+number: "417"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "1.1"
+publicUrl: "https://docs.gravitykit.com/article/417-creating-an-edit-your-profile-link"
+viewCount: "6030"
+lastPublishedAt: "2023-01-02T20:07:56Z"
+changeOrigin: "hsapp-js"
+name: "Creating an \"Edit Your Profile\" link"
+slug: "417-creating-an-edit-your-profile-link"
+status: "published"
+categories: 
+  - "566dfec2c6979143615564e3"
+  - "5e1b6d5d04286364bc93c665"
+keywords: 
+  - "edit your profile"
+  - "profile"
+  - "link"
+  - "entry edit"
+  - "user registration"
+  - "user"
+  - "login"
+related: 
+  - "57ef23539033602e61d4a560"
+  - "554351cbe4b01a224b421c6b"
+  - "54c67bc2e4b0512429885527"
+  - "57bdf6d3903360342852cfbf"
+  - "5835ca67c6979106d3735ac8"
+  - "54c67bbae4b0512429885519"
+  - "54c67bbbe4b07997ea3f3f6b"
+  - "558c76c0e4b01a224b42ec16"
+  - "54c67bcde4b051242988553e"
+  - "5a2ef2872c7d3a46d595eb9c"
+createdBy: "80506"
+createdAt: "2017-07-05T18:41:12Z"
+updatedBy: "59634"
+updatedAt: "2023-01-02T20:07:56Z"
+title: "Creating an \"Edit Your Profile\" link"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/595d32c82c7d3a707d7b738a"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2023-01-02T20:07:56Z
+  author: "Zack Katz"
+---
+
+# Creating an "Edit Your Profile" link
+
+
+:::info
+
+Since GravityView version 2.14.6, it is now possible to embed the Edit Entry page directly into a Page or Post using the [\[gventry\] shortcode](https://docs.gravitykit.com/article/463-gventry-shortcode).
+
+:::
+
+
+
+So you're using Gravity Forms and the [User Registration add-on](http://www.gravityforms.com/add-ons/user-registration/) to register new WordPress users on your website. Do you want to create an "Edit profile" link that directs users to the Edit Entry page where they can edit their profile from the front end?
+
+That's easy to accomplish using GravityView and the [Advanced Filtering](https://www.gravitykit.com/extensions/advanced-filter/) extension.
+
+### Prefer to Watch the Video?
+
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/_lfXn_Q0-vk" title="YouTube video player" width="560"></iframe>
+
+##  Step 1: Creating a View
+
+Start by creating a new View using the List View layout. The View layout should be completely empty except for a single [Custom Content](https://docs.gravitykit.com/article/111-using-the-custom-content-field) field. You can use [the \[gv\_entry\_link\] Shortcode](https://docs.gravitykit.com/article/287-gv-entry-link) inside this Custom Content field to construct the "Edit Your Profile" link.
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/61b33cdbe04bc573c8d0408a/file-gHsvOpPysa.png)Inside the Custom Content text editor, add the following shortcode:
+
+```html
+
+[gv_entry_link action="edit"] Edit your profile [/gv_entry_link]<br>
+```
+
+## Step 2: Filtering the View
+
+Next, add an advanced filtering rule to ensure that users can only see the entries they create. To do this, scroll down to the View Settings, click on the *Filter &amp; Sort* tab and add the following condition:
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/61b33f5277c88e1adaf601a0/file-cRppsIvr4x.png)
+
+
+:::info
+
+**Note**: to learn more about restricting entries to those created by the logged-in user, read [How to show only results submitted by the current user](https://docs.gravitykit.com/article/203-how-to-show-only-results-submitted-by-the-current-user).
+
+:::
+
+ ##  Step 3: Embedding the View
+
+Now, embed your View wherever you want the "Edit profile" link to show up. To embed it into your sidebar, simply add a *Shortcode* module and paste the GravityView embed shortcode inside. If you want to hide the link for logged-out users, wrap the shortcode inside the `[members_logged_in]` shortcode that comes with the free [Members plugin](https://wordpress.org/plugins/members/). ![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/61b33e2b97682b790dad3896/file-RBdFnU1A2l.png)
+
+
+:::info
+
+**Note**: Instead of the `[members_logged_in]` shortcode, you can also use the built-in `[gvlogic]` shortcode to [achieve the same result](https://docs.gravitykit.com/article/433-show-or-hide-content-on-your-site).
+
+:::
+
+  To display a welcome message above the "edit profile" link in your sidebar, add the "Login" widget that comes with the Gravity Forms User Registration Add-On.
+
+## Step 4: Style the Link
+
+You may have noticed that your link has a border around it. To remove it, add the following CSS to your theme's stylesheet:
+
+```html
+
+.gv-list-view { border: none !important; }
+```
+
+Feel free to add other styles if you so desire.
+
+## Step 5: Check it Out on the Front End
+
+When you're done, preview your new "Edit profile" link on the front end.
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/61b341cf77c88e1adaf601a7/file-XpdXUq5j4i.jpg)
+
+
+:::info
+
+**Note**: For a more in-depth tutorial, read our blog post [How to Add an “Edit profile” Link to your GravityView Directory](https://www.gravitykit.com/gravityview-edit-profile-link/).
+
+:::
+
+ 

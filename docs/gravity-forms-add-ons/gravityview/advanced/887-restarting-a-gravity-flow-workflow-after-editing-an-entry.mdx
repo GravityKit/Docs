@@ -1,0 +1,71 @@
+---
+id: "635b02b873d6a22819f071df"
+number: "887"
+collectionId: "566dfabbc6979143615564bf"
+publicUrl: "https://docs.gravitykit.com/article/887-restarting-a-gravity-flow-workflow-after-editing-an-entry"
+viewCount: "66"
+lastPublishedAt: "2022-11-15T22:44:56Z"
+changeOrigin: "unknown"
+name: "Restarting a Gravity Flow workflow after editing an entry"
+slug: "887-restarting-a-gravity-flow-workflow-after-editing-an-entry"
+status: "published"
+categories: 
+  - "579aa642c6979160ca148ba9"
+createdBy: "80506"
+createdAt: "2022-10-27T22:14:16Z"
+updatedBy: "80506"
+updatedAt: "2022-11-15T22:44:56Z"
+title: "Restarting a Gravity Flow workflow after editing an entry"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/635b02b873d6a22819f071df"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-11-15T22:44:56Z
+  author: "Rafael Ehlers"
+---
+
+# Restarting a Gravity Flow workflow after editing an entry
+
+
+:::caution
+
+The code sample below targets specific forms by their IDs. Make sure to change those to the specific form ID connected to your View.
+
+:::
+
+
+
+The code below restarts a Gravity Flow workflow after editing an entry in [GravityView's Edit Entry](https://docs.gravitykit.com/article/77-user-edit-allow-users-to-edit-their-own-entries) page.
+
+```
+add_action('gravityview/edit_entry/after_update', function ( $form = array(), $entry_id = array(), $object ) {
+
+	//The IDs of the Forms you'd like to affect. To target more forms, use [36,81,12] as an example
+	$run_on_forms = [36]; 
+	
+	if(!in_array($form['id'], $run_on_forms)){
+		return;
+       }
+
+       if( ! class_exists('Gravity_Flow_API') ) {
+		return;
+	}
+
+	add_filter( 'gform_is_feed_asynchronous', '__return_false', 1294873 );
+
+	$api = new Gravity_Flow_API( $form['id'] );
+	$api->restart_workflow( $object->entry );
+	
+	remove_filter( 'gform_is_feed_asynchronous', '__return_false', 1294873 );
+
+}, 10, 3 );
+```
+
+
+:::danger
+
+This code **doesn't work** when editing entries with **GravityEdit** (formerly known as Inline Edit). We have [another code snippet](https://docs.gravitykit.com/article/886-restarting-a-gravity-flow-workflow-after-editing-a-field-with-gravityedit) for that.
+
+:::
+
+  If you are not sure how to add custom code to your theme, please [take a look at this article](https://docs.gravitykit.com/article/210-where-to-put-code-samples).

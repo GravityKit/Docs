@@ -1,0 +1,48 @@
+---
+id: "5e69ee8504286364bc969604"
+number: "693"
+collectionId: "566dfabbc6979143615564bf"
+publicUrl: "https://docs.gravitykit.com/article/693-strange-display-issues-inside-the-view-editor"
+viewCount: "243"
+lastPublishedAt: "2020-03-12T08:20:00Z"
+changeOrigin: "unknown"
+name: "Strange display issues inside the View editor"
+slug: "693-strange-display-issues-inside-the-view-editor"
+status: "published"
+categories: 
+  - "579aab1cc6979160ca148bba"
+createdBy: "80506"
+createdAt: "2020-03-12T08:10:45Z"
+updatedBy: "80506"
+updatedAt: "2020-03-12T08:20:00Z"
+title: "Strange display issues inside the View editor"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5e69ee8504286364bc969604"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2020-03-12T08:20:00Z
+  author: "Rafael Ehlers"
+---
+
+# Strange display issues inside the View editor
+
+If you spot something weird, like partially hidden texts and fields (see the image below), inside your GravityView's View editor page, don't worry! That's just our No-Conflict mode in action.
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5e69eecc2c7d3a7e9ae90f51/file-lzs1GjHthS.png)
+
+Those pieces of text and fields are just metaboxes from your theme or another plugin that were improperly loaded inside the View editor.
+
+**They shouldn't be there in the first place.**
+
+If you wish to "correct" that, go to GravityView's Settings page and disable the No-Conflict mode:
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5e69efac04286364bc96961d/file-WBHgH31WmC.png)
+
+
+:::caution
+
+Disabling the No-Conflict mode will allow your theme and other plugins to load any scripts and styles inside the View editor, which can also create a conflict with our View Editor scripts and styles and end up preventing you from working on your Views.
+
+:::
+
+ 

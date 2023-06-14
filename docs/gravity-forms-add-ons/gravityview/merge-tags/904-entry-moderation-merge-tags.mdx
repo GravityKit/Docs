@@ -1,0 +1,61 @@
+---
+id: "63c049f6e7d8d33cfa685096"
+number: "904"
+collectionId: "566dfabbc6979143615564bf"
+publicUrl: "https://docs.gravitykit.com/article/904-entry-moderation-merge-tags"
+viewCount: "26"
+lastPublishedAt: "2023-02-08T15:19:10Z"
+changeOrigin: "hsapp-js"
+name: "Entry moderation Merge Tags"
+slug: "904-entry-moderation-merge-tags"
+status: "published"
+categories: 
+  - "566dfe9bc6979143615564df"
+createdBy: "59634"
+createdAt: "2023-01-12T17:57:10Z"
+updatedBy: "80506"
+updatedAt: "2023-02-08T15:19:10Z"
+title: "Entry moderation Merge Tags"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/63c049f6e7d8d33cfa685096"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2023-02-08T15:19:10Z
+  author: "Rafael Ehlers"
+---
+
+# Entry moderation Merge Tags
+
+To enable users to moderate entries from emailed notifications, you can use entry moderation Merge Tags, added in GravityView 2.17. The Merge Tags are replaced in the notification emails with links to approve, disapporve, or reset approval of an entry.
+
+### Merge Tags
+
+- `{gv_approve_entry}` Link to approve an entry
+- `{gv_disapprove_entry}` Link to *dis*approve an entry
+- `{gv_unapprove_entry}` Link to *un*approve an entry (reset approval)
+
+### Modifiers
+
+- `:[\d+d|h|m|s]` Number followed by unit (`d` day, `h` hour, `m` minute, `s` second) of hours the approval link is valid for. `24h` by default.
+- `:public` Make the link clickable by anyone, even users who are logged-out. (Requires the "Enable Public Entry Moderation" GravityView setting or per-form setting to be enabled).
+
+#### Example usage
+
+- `{gv_approve_entry}` - Valid for default (24 hours). Private.
+- `{gv_approve_entry:48h}` - Valid for 48 hours. Private.
+- `{gv_approve_entry:20m}` - valid for 10 minutes. Private.
+- `{gv_approve_entry:public}` - Valid for default (24 hours), public
+- `{gv_approve_entry:2h:public}` - valid for 2 hours, public
+- `{gv_approve_entry:20m:public}` - valid for 20 minutes, public
+
+The same usage pattern applies for `{gv_disapprove_entry}` and `{gv_unapprove_entry}` Merge Tags.
+
+### Permissions
+
+For these Merge Tags to work, the "Enable Public Entry Moderation" option must be activated on GravityKit's Settings page &gt; GravityView tab:
+
+![Screenshot showing GravityKit's Settings page](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/63e3bd30f19b3c454741d81a/file-A0LV6eEYO2.png)
+
+## Security
+
+Tokens are in [JWT](https://jwt.io) format. The secret used to generate the token is `wp_salt('auth')`.

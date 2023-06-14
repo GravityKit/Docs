@@ -1,0 +1,59 @@
+---
+id: "55684b20e4b027e1978e3891"
+number: "277"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.4"
+publicUrl: "https://docs.gravitykit.com/article/277-using-the-foobox-lightbox-plugin-instead-of-the-default"
+viewCount: "1856"
+lastPublishedAt: "2022-10-07T22:02:57Z"
+changeOrigin: "unknown"
+name: "[Deprecated] Using the FooBox Lightbox plugin instead of the default Thickbox"
+slug: "277-using-the-foobox-lightbox-plugin-instead-of-the-default"
+status: "published"
+categories: 
+  - "579aa76f903360293603a8e7"
+related: 
+  - "5bdb5a5c04286356f0a557b9"
+  - "54ffd868e4b034c37ea94e3c"
+createdBy: "59635"
+createdAt: "2015-05-29T11:18:56Z"
+updatedBy: "80506"
+updatedAt: "2022-10-07T22:02:57Z"
+title: "[Deprecated] Using the FooBox Lightbox plugin instead of the default Thickbox"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/55684b20e4b027e1978e3891"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-07T22:02:57Z
+  author: "Rafael Ehlers"
+---
+
+# [Deprecated] Using the FooBox Lightbox plugin instead of the default Thickbox
+
+
+:::caution
+
+**If you use GravityView 2.10 or newer, this article is not relevant.** GravityView now uses the Fancybox lightbox script and has a framework for adding new lightbox script support.   
+  
+[Here's a plugin to have GravityView use the Featherlight lightbox instead of Fancybox](https://github.com/gravityview/gv-snippets/tree/addon/featherlight-lightbox).
+
+:::
+
+
+
+GravityView uses the WordPress-included [Thickbox](http://codex.wordpress.org/ThickBox) plugin to generate the lightbox for images and PDFs.
+
+You may want to use a different lightbox solution. If you use the [FooBox Image Lightbox](https://wordpress.org/plugins/foobox-image-lightbox/) plugin, this is how you can override the GravityView lightbox to use the FooBox lightbox instead:
+
+Paste the following code into your theme's functions.php file ([see how](https://docs.gravitykit.com/article/210-where-to-put-code-samples)):
+
+```
+// GravityView: Override the default lightbox by FooBox
+add_filter( 'gravityview/fields/fileupload/link_atts', 'my_gv_image_link_atts', 10, 2 );
+function my_gv_image_link_atts( $link_atts, $field ) { 	
+   $link_atts['class'] = 'foobox';
+   return $link_atts;
+}
+```
+
+And there you go: images will now be using Foobox instead of the GravityView (and WordPress) default!

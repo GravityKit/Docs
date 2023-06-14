@@ -1,0 +1,118 @@
+---
+id: "616f35da2b380503dfdfc033"
+number: "805"
+collectionId: "6076f9478996210f18bd33df"
+publicUrl: "https://docs.gravitykit.com/article/805-styling-pdf-files"
+viewCount: "290"
+lastPublishedAt: "2023-01-02T19:59:30Z"
+changeOrigin: "hsapp-js"
+name: "Styling PDF file exports"
+slug: "805-styling-pdf-files"
+status: "published"
+categories: 
+  - "6155b0850754e74465f1541b"
+keywords: 
+  - "CSS"
+  - "styling"
+  - "PDF"
+  - "custom styles"
+createdBy: "336675"
+createdAt: "2021-10-19T21:17:14Z"
+updatedBy: "59634"
+updatedAt: "2023-01-02T19:59:30Z"
+title: "Styling PDF file exports"
+hsEditUrl: "https://secure.helpscout.net/docs/6076f9478996210f18bd33df/article/616f35da2b380503dfdfc033"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2023-01-02T19:59:30Z
+  author: "Zack Katz"
+---
+
+# Styling PDF file exports
+
+GravityExport gives you full control over the look and feel of PDF file exports. Before the PDF is rendered, an HTML table is constructed:
+
+```html
+
+<table border="0" cellpadding="0" cellspacing="0" id="sheet0" class="sheet0">
+  <thead>
+     <tr class="row0">
+        <th class="column0">Form Field 1</th>
+        <th class="column1">Form Field 2</th>
+        <th class="column2">Form Field 3</th>
+     </tr>
+  </thead>
+  <tbody>
+     <tr class="row1">
+        <td class="column0">Entry 1 - Field 1 Value</td>
+        <td class="column1">Entry 1 - Field 2 Value</td>
+        <td class="column2">Entry 1 - Field 3 Value</td>
+     </tr>
+     <tr class="row2">
+        <td class="column0">Entry 2 - Field 1 Value</td>
+        <td class="column1">Entry 2 - Field 2 Value</td>
+        <td class="column2">Entry 2 - Field 3 Value</td>
+     </tr>
+     <tr class="row3">
+        <td class="column0">Entry 3 - Field 1 Value</td>
+        <td class="column1">Entry 3 - Field 2 Value</td>
+        <td class="column2">Entry 3 - Field 3 Value</td>
+     </tr>
+  </tbody>
+</table>
+```
+
+Using the barebones stylesheet that's included with GravityExport, the end result will look as follows:
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/616f37baefc78d0553e51474/file-EogEmxNpa2.png)
+
+To customize header columns and rows, you need to create your own CSS file with custom styles that target HTML table element selectors/classes. For example, your `custom_stylesheet.css` may look as follows:
+
+```
+<pre class="prettyprint">
+table.sheet0 {
+   font-size: 14px;
+   font-weight: bolder;
+   table-layout: fixed;
+   width: 60%;
+}
+
+table.sheet0 th, table.sheet0 td {
+   text-align: left;
+   border: none;
+   padding: 5px 0 5px 0;
+}
+
+table.sheet0 tr {
+   background-color: white;
+}
+
+table.sheet0 tr:nth-child(odd) {
+   background-color: #F3F3F3;
+}
+
+table.sheet0 th {
+   font-size: 15px;
+   font-weight: bold;
+   color: white;
+   background-color: #2D4154;
+}
+```
+
+For GravityExport to apply these styles, you need to use a custom filter to specify where that file is located:
+
+```php
+
+add_filter( 'gravitykit/gravityexport/pdf/styles', function ( $styles ) {
+	$styles[] = '/path/to/your/custom_stylesheet.css';
+       
+       return $styles;
+} );
+```
+
+This will apply styles to PDF exports from all forms. If you want to target a single form, suffix the filter with the form's ID: `'gravitykit/gravityexport/pdf/styles_100'`. If you wish to override the base styles completely, change the above code sample to read `$styles = '/path/to/your/custom_stylesheet.css';`  
+  
+Once done, your PDF will look as follows:
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/616f3a7f2b380503dfdfc055/file-8T8FBH8myf.png)

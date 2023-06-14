@@ -1,0 +1,109 @@
+---
+id: "5e4f37582c7d3a7e9ae815dd"
+number: "678"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.4"
+publicUrl: "https://docs.gravitykit.com/article/678-edit-entry-hidden-fields-field-visibility"
+viewCount: "2116"
+lastPublishedAt: "2022-12-27T21:05:46Z"
+changeOrigin: "external"
+name: "How does Edit Entry handle hidden fields and field visibility settings?"
+slug: "678-edit-entry-hidden-fields-field-visibility"
+status: "published"
+categories: 
+  - "579aa642c6979160ca148ba9"
+  - "5e1b6d5d04286364bc93c665"
+createdBy: "59634"
+createdAt: "2020-02-21T01:50:16Z"
+updatedBy: "59634"
+updatedAt: "2022-12-27T21:05:46Z"
+title: "How does Edit Entry handle hidden fields and field visibility settings?"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5e4f37582c7d3a7e9ae815dd"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-12-27T21:05:46Z
+  author: "Zack Katz"
+---
+
+# How does Edit Entry handle hidden fields and field visibility settings?
+
+Currently, there are two ways to include hidden fields on your form:
+
+- By using the **Hidden field type**;
+- By changing the **field visibility** on the "Advanced" tab of each field's settings to either "Hidden" or "Administrative."
+
+GravityView does allow these fields to be **visible** and/or **editable** on the Edit Entry page of a View; however, there are some special conditions for that to happen.
+
+See below how that works for each field type:
+
+---
+
+## Hidden field type
+
+If the form has a [Hidden Field](https://docs.gravityforms.com/hidden/), the Hidden field will only show up when using the `gravityview/edit_entry/render_hidden_field` filter (see code below). It doesn't matter if you manually added this field to the Edit Entry tab, its visibility is determined by the filter.
+
+![Screenshot of the Standard Fields tab inside the Form Editor](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/62fe891e502e69288e0e10ca/file-cEfqKKfC1L.png)
+
+## Field with visibility settings
+
+Visibility settings are found in each field's "Advanced" tab when editing a form in Gravity Forms. You can set the visibility for each type of field in Gravity Forms.
+
+![Screenshot of the Field Settings panel on the form editor](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/62fe897086337c0b7a87a9b6/file-4EwcSsoj09.png)
+
+#### Fields with "Hidden" visibility 
+
+![The Visibility field setting, with 'Hidden' radio button selected.](https://i.gravitykit.com/JPwDRb+)
+
+These fields will only appear on the Edit Entry page if they have been manually added to the Edit Entry tab on the View editor:
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5f16259504286306f80722c4/file-twtmNTn2GL.png)
+
+####  Fields with "Administrative" visibility 
+
+![The Visibility field setting, with 'Administrative' radio button selected.](https://i.gravitykit.com/nVNRN6+)
+
+These fields will only appear when manually added to the Edit Entry tab or when the Edit Entry tab is empty. However, they are only visible to users within the Administrator role.
+
+---
+
+## For developers: Filters to modify this behavior
+
+
+:::caution
+
+These filters only work for Hidden fields. They don't work on fields with visibility set to Hidden or Administrative.
+
+:::
+
+  To make Hidden fields **visible** and **editable** in Edit Entry:
+
+```php
+// Converts `<input type="hidden">` to `<input type="text">`
+add_filter( 'gravityview/edit_entry/reveal_hidden_field', '__return_true' );
+```
+
+To prevent Hidden fields from being output on the Edit Entry form HTML, add the following filter:
+
+```php
+// Prevent hidden fields from being output in HTML at all
+add_filter( 'gravityview/edit_entry/render_hidden_field', '__return_false' );
+```
+
+Note: you can also modify fields displayed in Edit Entry by using the `gravityview/edit_entry/form_fields` filter.
+
+---
+
+## A timeline of changes regarding rendering Hidden Field fields in Edit Entry
+
+When Edit Entry is not configured, all form fields show by default. The way GravityView has handled Hidden Field fields has changed over time.
+
+Before Version 2.5 of GravityView, when Hidden Field fields were converted to text inputs, they were visible and editable.
+
+To allow modifying this behavior, the `gravityview/edit_entry/reveal_hidden_field` filter was added in 1.22.6. The filter could prevent Edit Entry from converting `<input type="hidden">` to `<input type="text">`. If the filter returned false, the Hidden Field input would still be rendered in HTML, but would not be visible.
+
+With Version 2.5 in December 2019, GravityView changed how Hidden Fields behaved when Edit Entry was not configured: Hidden Field fields would no longer be rendered in the form's HTML. The input value would no longer be visible in the webpage code, and the Hidden Field value would no longer be editable.
+
+In Version 2.7 in February 2020, GravityView added the `gravityview/edit_entry/render_hidden_field` filter to control whether the Hidden fields are included in the HTML output or not. The default is set to `true`: render the input, but do not make it visible.
+
+By using the `gravityview/edit_entry/render_hidden_field` and `gravityview/edit_entry/reveal_hidden_field` filters, you control how Hidden Field fields are displayed in Edit Entry.

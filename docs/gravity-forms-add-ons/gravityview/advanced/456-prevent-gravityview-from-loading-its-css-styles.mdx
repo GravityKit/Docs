@@ -1,0 +1,110 @@
+---
+id: "5acbe0172c7d3a0e9367252e"
+number: "456"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.2"
+publicUrl: "https://docs.gravitykit.com/article/456-prevent-gravityview-from-loading-its-css-styles"
+viewCount: "892"
+lastPublishedAt: "2021-05-26T23:30:34Z"
+changeOrigin: "unknown"
+name: "Prevent GravityView from loading its CSS styles"
+slug: "456-prevent-gravityview-from-loading-its-css-styles"
+status: "published"
+categories: 
+  - "579aa76f903360293603a8e7"
+  - "579aa642c6979160ca148ba9"
+keywords: 
+  - "css"
+  - "prevent"
+  - "dequeue"
+  - "enqueue"
+  - "load"
+  - "styles"
+related: 
+  - "54d3a075e4b086c0c09652f4"
+createdBy: "80506"
+createdAt: "2018-04-09T21:50:15Z"
+updatedBy: "59634"
+updatedAt: "2021-05-26T23:30:34Z"
+title: "Prevent GravityView from loading its CSS styles"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5acbe0172c7d3a0e9367252e"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2021-05-26T23:30:34Z
+  author: "Zack Katz"
+---
+
+# Prevent GravityView from loading its CSS styles
+
+If you want to apply your own CSS styles to your Views and stop bothering with the default styles loaded by GravityView then that can be easily achieved with the code snippet below:
+
+```php
+
+add_action( 'wp_enqueue_scripts', 'gv_dequeue_main_css', 30 );
+add_action( 'wp_print_scripts', 'gv_dequeue_main_css', 2 );
+
+function gv_dequeue_main_css() {
+
+	wp_dequeue_style( 'gravityview_default_style' );
+	wp_dequeue_style( 'gravityview_style_default_table' );
+	wp_dequeue_style( 'gravityview_style_default_list' );
+	wp_dequeue_style( 'gravityview_style_datatables_table' );
+	wp_dequeue_style( 'gv-dt_buttons_style' );
+	wp_dequeue_style( 'gv-dt_fixedheader_style' );
+	wp_dequeue_style( 'gv-dt_fixedcolumns_style' );
+	wp_dequeue_style( 'gv-dt_responsive_style' );
+	wp_dequeue_style( 'gv-dt_scroller_style' );
+	wp_dequeue_style( 'gv-datatables-featured-entries' );
+	wp_dequeue_style( 'gravityview_az_entry_filter' );
+	wp_dequeue_style( 'gravityview-featured-entries' );
+	wp_dequeue_style( 'gravityview-field-approval' );
+	wp_dequeue_style( 'gravityview-field-approval-tippy' );
+	wp_dequeue_style( 'gravityview_font' );
+	wp_dequeue_style( 'gravityview_social_wordpress' );
+
+}
+```
+
+However, if you wish to only load GravityView's styles on pages where the View is embedded, then use the function below by replacing the array containing the IDs of the pages below:
+
+```php
+
+add_action( 'wp_enqueue_scripts', 'gv_dequeue_main_css', 30 );
+add_action( 'wp_print_scripts', 'gv_dequeue_main_css', 2 );
+
+function gv_dequeue_main_css() {
+	
+	global $post;
+	$post_ids = array( 13 , 23 ); 
+
+       // 13 and 23 are the IDs of the pages where the View is embedded. 
+       // You can add more IDs as well by separating them with commas.
+
+	if( in_array($post->ID, $post_ids) ) {
+
+		wp_dequeue_style( 'gravityview_default_style' );
+		wp_dequeue_style( 'gravityview_style_default_table' );
+		wp_dequeue_style( 'gravityview_style_default_list' );
+		wp_dequeue_style( 'gravityview_style_datatables_table' );
+		wp_dequeue_style( 'gv-dt_buttons_style' );
+		wp_dequeue_style( 'gv-dt_fixedheader_style' );
+		wp_dequeue_style( 'gv-dt_fixedcolumns_style' );
+		wp_dequeue_style( 'gv-dt_responsive_style' );
+		wp_dequeue_style( 'gv-dt_scroller_style' );
+		wp_dequeue_style( 'gv-datatables-featured-entries' );
+		wp_dequeue_style( 'gravityview_az_entry_filter' );
+		wp_dequeue_style( 'gravityview-featured-entries' );
+		wp_dequeue_style( 'gravityview-field-approval' );
+		wp_dequeue_style( 'gravityview-field-approval-tippy' );
+		wp_dequeue_style( 'gravityview_font' );
+		wp_dequeue_style( 'gravityview_social_wordpress' );
+
+	}
+
+}
+```
+
+## Here's how to prevent scripts from being loaded as well:
+
+<script src="https://gist.github.com/rafaehlers/506ffd95d7a2b8f4f07fc05a3f4c2a62.js" type="text/javascript"></script>

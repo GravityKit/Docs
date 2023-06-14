@@ -1,0 +1,117 @@
+---
+id: "60a4e03313fd125a39b450a7"
+number: "768"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.1"
+publicUrl: "https://docs.gravitykit.com/article/768-styling-the-search-bar-widget"
+viewCount: "384"
+lastPublishedAt: "2022-10-07T22:12:25Z"
+changeOrigin: "unknown"
+name: "Styling the Search Bar Widget"
+slug: "768-styling-the-search-bar-widget"
+status: "published"
+categories: 
+  - "579aa76f903360293603a8e7"
+keywords: 
+  - "search bar"
+  - "css"
+  - "style"
+  - "custom styles"
+  - "styling the search bar"
+  - "how to style gravityview"
+related: 
+  - "54ff77e7e4b034c37ea94d09"
+  - "54c67bb7e4b051242988550f"
+  - "6079be814466ce6ddc5f575a"
+  - "54d17005e4b086c0c0964c8a"
+  - "5df60b1d04286364bc92deac"
+  - "54d11911e4b086c0c0964b1a"
+createdBy: "543004"
+createdAt: "2021-05-19T09:53:55Z"
+updatedBy: "80506"
+updatedAt: "2022-10-07T22:12:25Z"
+title: "Styling the Search Bar Widget"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/60a4e03313fd125a39b450a7"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-07T22:12:25Z
+  author: "Rafael Ehlers"
+---
+
+# Styling the Search Bar Widget
+
+GravityView includes a Search Bar [widget](https://docs.gravitykit.com/article/381-what-are-view-widgets-useful-for) that you can add to your View to improve your navigation among entries. Sometimes you may need to override the search bar default styling by adding your own custom CSS.
+
+
+:::note
+
+Not sure how to add custom CSS to your website? Read [Adding custom CSS to your website](https://docs.gravitykit.com/article/246-adding-custom-css-to-your-website).
+
+:::
+
+ 
+ **Search Bar widget without any styles applied (Divi theme):**
+
+[![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/60a4e8f6dca0fd46b9356b9f/file-RaQ4YEnXb0.png)](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/60a4e8f6dca0fd46b9356b9f/file-RaQ4YEnXb0.png)
+
+**Search Bar widget after applying custom styles:**
+
+[![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/60a4e9201df47a61c5ad2e1f/file-UGiSWapML4.png)](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/60a4e9201df47a61c5ad2e1f/file-UGiSWapML4.png)
+
+## Styling the Search Bar with Custom CSS
+
+
+:::info
+
+**Note**: Consult our [CSS guide](https://docs.gravitykit.com/article/63-css-guide#search-bar) for a list of all the CSS IDs and classes used in GravityView, grouped by element type.
+
+:::
+
+  As you can see, the outer container `<div>` has a different class depending on whether you're displaying a horizontal or vertical search bar.
+
+- Horizontal: `.gv-search-horizontal`
+- Vertical: `.gv-search-vertical`
+
+To style the search box, you need to target the search input inside the `.gv-search-box` default search container.
+
+` .gv-search-box input[type=search] { // your CSS code here }`
+
+To add focus styles to the search box, use the CSS `:focus` selector, like so:
+
+`.gv-search-box input[type=search]:focus { // your CSS code here }`
+
+## Styling the Search Button
+
+To style the search button, target the `.gv-search-button` class, like so:
+
+`.gv-search-box .gv-search-button { // your CSS code here }`
+
+You can add hover styles to the button using the CSS `:hover` selector.
+
+`.gv-search-box .gv-search-button:hover { // your CSS code here }`
+
+
+:::info
+
+**Note**: Add `cursor:pointer`, to force the mouse to change to a hand when hovering over the search button.
+
+:::
+
+ ### Styling Additional Search Fields
+
+The GravityView Search Bar widget supports multiple search fields. You can add new input fields to the by opening the Widget Settings and clicking on the green plus icon.
+
+[![The Search Bar widget settings with a box drawn around the add field (+) and remove field (-) icons.](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/60a4e86127c86942e80696da/file-gWKwidW2KK.png)](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/60a4e86127c86942e80696da/file-gWKwidW2KK.png)
+
+Regular search fields are text inputs rather than search inputs:
+
+`.gv-search-box input[type=text] { // your CSS code here }`
+
+If you want to change the label font and size, you can target the label element:
+
+`.gv-search-box label { // your CSS code here }`
+
+###  Example Styles 
+
+<script src="https://gist.github.com/crbdev/ef6abae284ba16b5bdba1da264785e29.js" type="text/javascript"></script>

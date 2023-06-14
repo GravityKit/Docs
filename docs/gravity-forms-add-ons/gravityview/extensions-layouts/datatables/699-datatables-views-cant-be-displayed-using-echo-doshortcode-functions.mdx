@@ -1,0 +1,36 @@
+---
+id: "5e7235b92c7d3a7e9ae95e9f"
+number: "699"
+collectionId: "54d1a05ce4b086c0c0964ccd"
+publicUrl: "https://docs.gravitykit.com/article/699-datatables-views-cant-be-displayed-using-echo-doshortcode-functions"
+viewCount: "457"
+lastPublishedAt: "2020-03-18T14:54:33Z"
+changeOrigin: "unknown"
+name: "DataTables Views can't be displayed using echo do_shortcode functions"
+slug: "699-datatables-views-cant-be-displayed-using-echo-doshortcode-functions"
+status: "published"
+categories: 
+  - "54d1a06ee4b086c0c0964cd1"
+createdBy: "80506"
+createdAt: "2020-03-18T14:52:41Z"
+updatedBy: "80506"
+updatedAt: "2020-03-18T14:54:33Z"
+title: "DataTables Views can't be displayed using echo do_shortcode functions"
+hsEditUrl: "https://secure.helpscout.net/docs/54d1a05ce4b086c0c0964ccd/article/5e7235b92c7d3a7e9ae95e9f"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2020-03-18T14:54:33Z
+  author: "Rafael Ehlers"
+---
+
+# DataTables Views can't be displayed using echo do_shortcode functions
+
+If you are trying to call the ` [gravityview]` shortcode inside a theme template file by using the `echo do_shortcode` PHP functions, like in the example below, it won't work:
+
+```
+
+echo do_shortcode('[gravityview id="12"]');
+```
+
+The reason is that the [DataTables library](https://datatables.net/) heavily relies on Ajax requests (and other javascript methods) to load entries on the table.

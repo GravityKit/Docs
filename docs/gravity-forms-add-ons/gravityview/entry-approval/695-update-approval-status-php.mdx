@@ -1,0 +1,42 @@
+---
+id: "5e704bbf04286364bc96c966"
+number: "695"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.4"
+publicUrl: "https://docs.gravitykit.com/article/695-update-approval-status-php"
+viewCount: "2032"
+lastPublishedAt: "2022-09-21T23:09:16Z"
+changeOrigin: "unknown"
+name: "(Advanced) How to update entry approval status using PHP"
+slug: "695-update-approval-status-php"
+status: "published"
+categories: 
+  - "582140d9c697914aa8381617"
+keywords: 
+  - "entry approval"
+  - "approval"
+  - "php"
+  - "approve"
+  - "entry status"
+createdBy: "59634"
+createdAt: "2020-03-17T04:02:07Z"
+updatedBy: "80506"
+updatedAt: "2022-09-21T23:09:16Z"
+title: "(Advanced) How to update entry approval status using PHP"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5e704bbf04286364bc96c966"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-09-21T23:09:16Z
+  author: "Rafael Ehlers"
+---
+
+# (Advanced) How to update entry approval status using PHP
+
+If you want to update the approval status of an entry using PHP, you should use the `GravityView_Entry_Approval::update_approved` method:
+
+<script src="https://gist.github.com/zackkatz/b97572cc11fc09a5754e6af0561fd572.js" type="text/javascript"></script> By default, this will add a note to the entry that the approval status has been updated by the current user. If you want to disable this entry note, you can do so with the `gravityview/approve_entries/add-note` filter:
+
+```php
+add_filter( 'gravityview/approve_entries/add-note', '__return_false' );
+```

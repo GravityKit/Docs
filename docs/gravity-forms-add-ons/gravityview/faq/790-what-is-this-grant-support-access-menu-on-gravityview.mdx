@@ -1,0 +1,63 @@
+---
+id: "614e26c500c03d672075a69c"
+number: "790"
+collectionId: "566dfabbc6979143615564bf"
+publicUrl: "https://docs.gravitykit.com/article/790-what-is-this-grant-support-access-menu-on-gravityview"
+viewCount: "214"
+lastPublishedAt: "2023-01-09T23:23:01Z"
+changeOrigin: "hsapp-js"
+name: "What is this \"Grant Support Access\" menu on GravityView?"
+slug: "790-what-is-this-grant-support-access-menu-on-gravityview"
+status: "published"
+categories: 
+  - "5c79bfda04286350d0888d07"
+keywords: 
+  - "trustedlogin"
+  - "access"
+  - "grant"
+  - "security"
+  - "support"
+createdBy: "80506"
+createdAt: "2021-09-24T19:28:05Z"
+updatedBy: "80506"
+updatedAt: "2023-01-09T23:23:01Z"
+title: "What is this \"Grant Support Access\" menu on GravityView?"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/614e26c500c03d672075a69c"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2023-01-09T23:23:01Z
+  author: "Rafael Ehlers"
+---
+
+# What is this "Grant Support Access" menu on GravityView?
+
+![Screenshot of the GravityView menu](https://d33v4339jhl8k0.cloudfront.net/docs/assets/54c58489e4b051242988532c/images/63510f77927a2c1634dfc1a2/file-jFOUoLyJZz.png)
+
+GravityView 2.13 introduced a new link on its menu named "Grant Support Access". This functionality is part of a service called TrustedLogin. TrustedLogin is a secure method to share website access with our support team without having to create an administrator password on your website.
+
+[Read more about TrustedLogin on their website](https://www.trustedlogin.com/about/easy-and-safe/).
+
+## Why is the link there?
+
+Our goal is to provide the best fast support possible. TrustedLogin makes it easy and secure to grant support access to your site. This helps us support you better.
+
+## Who can see the link?
+
+Grant Support Access link is only shown to users who have the capability to create new users. By default, in WordPress, **only administrators will see the link**.
+
+## What is a Site Access Key?
+
+When TrustedLogin grants support access, an encrypted Site Access Key is created instead of a password. **The Site Access Key is not a password**. The Key can only be decrypted by our support team while they're logged into our website.
+
+Unlike a temporary login link that automatically logs anyone in who has the link, TrustedLogin's Site Access Key requires our support user to be logged into the GravityView website with the correct permissions.
+
+## Can I disable TrustedLogin on GravityView?
+
+In case you want to remove that link from the GravityView menu, you need to simply add this line of code below to your website's wp-config.php:
+
+`define( 'TRUSTEDLOGIN_DISABLE_GRAVITYVIEW', true );`
+
+Your wp-config.php file should look [similar to this image](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/614e28c20332cb5b9e9ade25/file-jikrclNvba.png).
+
+Related: [Disabling TrustedLogin](https://help.trustedlogin.com/article/788-disabling-trustedlogin)

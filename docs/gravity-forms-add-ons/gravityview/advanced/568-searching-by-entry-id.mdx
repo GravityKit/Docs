@@ -1,0 +1,54 @@
+---
+id: "5c9aa4f70428633d2cf415a4"
+number: "568"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.3"
+publicUrl: "https://docs.gravitykit.com/article/568-searching-by-entry-id"
+viewCount: "1612"
+lastPublishedAt: "2022-12-28T22:33:18Z"
+changeOrigin: "hsapp-js"
+name: "How do I filter by a specific entry ID?"
+slug: "568-searching-by-entry-id"
+status: "published"
+categories: 
+  - "579aa642c6979160ca148ba9"
+  - "566dfec2c6979143615564e3"
+related: 
+  - "5c9191e42c7d3a15446115e6"
+createdBy: "59634"
+createdAt: "2019-03-26T22:17:27Z"
+updatedBy: "59634"
+updatedAt: "2022-12-28T22:33:18Z"
+title: "How do I filter by a specific entry ID?"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5c9aa4f70428633d2cf415a4"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-12-28T22:33:18Z
+  author: "Zack Katz"
+---
+
+# How do I filter by a specific entry ID?
+
+If you want to create a link to a View that goes to the Multiple Entries context but only shows entries that are pre-filtered to a single entry based on its ID, you can do that two different ways:
+
+### 1. Using the Search Bar
+
+1. Add a Search Bar widget to your View
+2. Add an Entry ID field
+3. Save the View
+4. Go to your View URL and add `?gv_id=123` to the page URL, where `123` is the number of the entry
+
+### 2. Using Advanced Filtering
+
+*Note: This requires the [Advanced Filter extension](https://www.gravitykit.com/extensions/advanced-filter/), included in the GravityView + Extensions Bundle and All Access licenses.*
+
+1. Edit the View and go to View Settings
+2. Click on Filter &amp; Sort
+3. Add a filter to the View where "Entry ID" "is"
+4. Choose the name of the URL filter you would like to use. In this example, we are using a placeholder `ParameterName`
+5. Add a [{get} Merge Tag](https://docs.gravitykit.com/article/314-the-get-merge-tag) as to the filter value, using your parameter name (in this example, `{get:ParameterName}`
+6. Save your View
+7. Access your View and add the Entry ID to the URL like this: `https://example.com/view-page/?ParameterName=123`, where `123` is the Entry ID.
+
+![the Sort & Filter View Settings pane, with Advanced Filtering configured to filter by 'Entry ID' 'is' '{get:ParameterName}'](https://i.gravitykit.com/MHl9nQ+)

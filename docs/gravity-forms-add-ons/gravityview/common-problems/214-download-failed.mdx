@@ -1,0 +1,74 @@
+---
+id: "54d7948ae4b034c37ea8df97"
+number: "214"
+hasDraft: "1"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.2"
+publicUrl: "https://docs.gravitykit.com/article/214-download-failed"
+viewCount: "961"
+lastPublishedAt: "2016-07-29T01:02:20Z"
+changeOrigin: "unknown"
+name: "I get this error when auto-updating the plugin: \"Download failed. SSL peer certificate or SSH remote key was not OK\""
+slug: "214-download-failed"
+status: "published"
+categories: 
+  - "579aab1cc6979160ca148bba"
+createdBy: "59634"
+createdAt: "2015-02-08T16:53:30Z"
+updatedBy: "80506"
+updatedAt: "2016-07-29T01:02:20Z"
+title: "I get this error when auto-updating the plugin: \"Download failed. SSL peer certificate or SSH remote key was not OK\""
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/54d7948ae4b034c37ea8df97"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2016-07-29T01:02:20Z
+  author: "Rafael Ehlers"
+---
+
+# I get this error when auto-updating the plugin: "Download failed. SSL peer certificate or SSH remote key was not OK"
+
+
+:::note
+
+ **If you are using shared or managed hosting, contact your host's customer support department, provide them with this information and ask them to do it for you.**
+
+:::
+
+
+
+Some customers have reported receiving the following error when attempting to auto-update GravityView:
+
+
+:::danger
+
+“Download failed. SSL peer certificate or SSH remote key was not OK”
+
+:::
+
+ ### This is an OpenDNS issue
+
+The server is using OpenDNS to look up information about domains; this error is specific to OpenDNS. This is not an issue with your website or with GravityView's SSL certificate, the problem is with OpenDNS. The changes below will have your server use [Google's Public DNS servers](https://developers.google.com/speed/public-dns/) instead of [OpenDNS DNS servers](https://www.opendns.com/home-internet-security/opendns-ip-addresses/) to look up information about a domain.
+
+### To fix the issue:
+
+1. FTP or SSH into your server
+2. Go to <tt>/etc/resolv.conf</tt>
+3. Replace this code: ```
+   nameserver 208.67.222.222
+   nameserver 208.67.220.220
+   	
+   ```
+   
+    With this code:
+   
+    ```
+   nameserver 8.8.4.4
+   nameserver 8.8.8.8
+   	
+   ```
+4. Save the resolv.conf file
+5. Restart the Apache server (the commands vary, based on your server software)
+6. You should now be able to update GravityView!
+
+<small>This article's information is based on the article on [Siteber](http://siteber.com/download-failed-ssl-peer-certificate-or-ssh-remote-key-was-not-ok/) and [this WordPress.org thread](https://wordpress.org/support/topic/download-failed-ssl-peer-certificate-or-ssh-remote-key-was-not-ok).</small>

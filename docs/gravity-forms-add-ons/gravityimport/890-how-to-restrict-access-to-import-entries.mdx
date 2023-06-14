@@ -1,0 +1,67 @@
+---
+id: "637578e2b00eaf68a3f3df81"
+number: "890"
+collectionId: "6076f9478996210f18bd33df"
+publicUrl: "https://docs.gravitykit.com/article/890-how-to-restrict-access-to-import-entries"
+viewCount: "10"
+lastPublishedAt: "2022-11-17T00:04:03Z"
+changeOrigin: "unknown"
+name: "How to restrict access to Import Entries"
+slug: "890-how-to-restrict-access-to-import-entries"
+status: "published"
+categories: 
+  - "6155b0dee5648623c88e04fa"
+createdBy: "80506"
+createdAt: "2022-11-16T23:57:22Z"
+updatedBy: "80506"
+updatedAt: "2022-11-17T00:04:03Z"
+title: "How to restrict access to Import Entries"
+hsEditUrl: "https://secure.helpscout.net/docs/6076f9478996210f18bd33df/article/637578e2b00eaf68a3f3df81"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-11-17T00:04:03Z
+  author: "Rafael Ehlers"
+---
+
+# How to restrict access to Import Entries
+
+![Screenshot of the Import/Export page of Gravity Forms](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/63757a51fd962f4d057bb251/file-aVN46EmSnP.png)
+
+It's easy to give access to a custom user role to import entries [by adding some capabilities](https://docs.gravitykit.com/article/825-capabilities-necessary-to-import-entries) to that role. But if you want to restrict access to the Import Entries tab in the Import/Export page of Gravity Forms, then you'll need to use the code snippet below.
+
+```php
+/**
+* Remove the ability of a user to import entries based on their role.
+*
+* @param array $caps Array of capabilities required to display the UI.
+*
+* @return array
+*/
+add_filter( 'gravityview/import/capabilities', function ( $caps ) {
+
+   // REPLACE THIS with the role you want to exclude from importing entries.
+   $role = 'editor';
+
+   $user = wp_get_current_user();
+
+   if ( ! $user || ! $user->exists() ) {
+       return [];
+   }
+
+   if ( in_array( $role, $user->roles, true ) ) {
+       return [];
+   }
+
+   return $caps;
+} );
+```
+
+
+:::info
+
+See how to add this code snippet to your website: [Where to put code samples](https://docs.gravitykit.com/article/210-where-to-put-code-samples).
+
+:::
+
+ 

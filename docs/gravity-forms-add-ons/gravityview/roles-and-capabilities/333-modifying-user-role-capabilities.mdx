@@ -1,0 +1,129 @@
+---
+id: "56a7e3a9c697914361562a08"
+number: "333"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.4"
+publicUrl: "https://docs.gravitykit.com/article/333-modifying-user-role-capabilities"
+viewCount: "2033"
+lastPublishedAt: "2023-02-14T22:00:59Z"
+changeOrigin: "hsapp-js"
+name: "(Outdated) Modifying user capabilities to prevent access to GravityView settings"
+slug: "333-modifying-user-role-capabilities"
+status: "published"
+categories: 
+  - "579aa9b2903360293603a8f0"
+keywords: 
+  - "capabilities"
+  - "members"
+  - "plugin"
+  - "roles"
+  - "user capabilities"
+  - "user"
+  - "access"
+  - "settings"
+  - "gravityview_edit_settings"
+  - "gravityview_view_settings"
+  - "gravityview_full_access"
+  - "members plugin"
+related: 
+  - "561d6e199033601bfce47c01"
+  - "559666fde4b0f73dcad8393a"
+createdBy: "59634"
+updatedBy: "80506"
+updatedAt: "2023-02-14T22:00:59Z"
+title: "(Outdated) Modifying user capabilities to prevent access to GravityView settings"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/56a7e3a9c697914361562a08"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2023-02-14T22:00:59Z
+  author: "Rafael Ehlers"
+---
+
+# (Outdated) Modifying user capabilities to prevent access to GravityView settings
+
+
+:::danger
+
+⚠️This article doesn't apply to GravityView version 2.16 (or newer).
+
+:::
+
+
+
+### Click "Add New" under "Plugins"
+
+![](https://www.gravitykit.com/wp-content/uploads/2018/01/click-add-new-under-plugins-.png?1453842834)
+
+### Search for "Members"
+
+![](https://www.gravitykit.com/wp-content/uploads/2018/01/search-for-members-.png?1453842834)
+
+### Click "Install Now" to install
+
+Members should be the first result. If not, find it in the search results.
+
+![](https://www.gravitykit.com/wp-content/uploads/2018/01/click-install-now-to-install.png?1453842835)
+
+### Activate the plugin once installed
+
+![](https://www.gravitykit.com/wp-content/uploads/2018/01/activate-the-plugin-once-installed.png?1453842836)
+
+### Hover over "Users" and click on the new "Roles" submenu
+
+The Roles menu has been added by the Members plugin.
+
+![](https://www.gravitykit.com/wp-content/uploads/2018/01/hover-over-users-and-click-on-the-new-roles-submenu.png?1453842836)
+
+### Clone the Administrator role
+
+![](https://www.gravitykit.com/wp-content/uploads/2018/01/clone-the-administrator-role.png?1453842837)
+
+### Add New Role ‹ Local WordPress Dev — WordPress
+
+![](https://www.gravitykit.com/wp-content/uploads/2018/01/add-new-role-lsaquo-local-wordpress-dev-mdash-wordpress.png?1453842838)
+
+### Click on the GravityView group
+
+You can see all the GravityView capabilities in one spot by clicking on the GravityView tab. You can also see the capabilities in "All" if you want.
+
+![](https://www.gravitykit.com/wp-content/uploads/2018/01/click-on-the-gravityview-group.png?1453842838)
+
+### Check "Deny" for capabilities you wish to remove
+
+**Make sure to check "Deny" for `gravityview_full_access`**. Users with the `gravityview_full_access` capability will automatically have **all** GravityView capabilities.
+
+In this example, we want to prevent the user from seeing the GravityView Settings page, so we also uncheck `gravityview_view_settings` and `gravityview_edit_settings`.
+
+![Checking "Deny" for the mentioned permissions](https://www.gravitykit.com/wp-content/uploads/2018/01/checking-deny-for-the-mentioned-permissions.png?1453842839)
+
+### Add the Role
+
+![](https://www.gravitykit.com/wp-content/uploads/2018/01/add-the-role.png?1453842840)
+
+### Find the User you want to limit access to
+
+![](https://www.gravitykit.com/wp-content/uploads/2018/01/find-the-user-you-want-to-limit-access-to.png?1453842841)
+
+### Click their username to edit the User
+
+![](https://www.gravitykit.com/wp-content/uploads/2018/01/click-their-username-to-edit-the-user.png?1453842841)
+
+### At the bottom of their profile, select the new User Role
+
+After checking the role checkbox, click "Update User".
+
+![](https://www.gravitykit.com/wp-content/uploads/2018/01/at-the-bottom-of-their-profile-select-the-new-user-role.png?1453842842)
+
+### Now, if the user attempts to access the settings page…
+
+They'll see this message—and won't see the settings screen.
+
+![You do not have sufficient permissions to access this page.](https://www.gravitykit.com/wp-content/uploads/2018/01/you-do-not-have-sufficient-permissions-to-access-this-page.png?1453842843)
+
+### You can see all users with the new Role
+
+Go to All Users, and you'll see the new role in the role filter list. Click the link to see all users with that role at once.
+
+![](https://www.gravitykit.com/wp-content/uploads/2018/01/you-can-see-all-users-with-the-new-role.png?1453842844)
+

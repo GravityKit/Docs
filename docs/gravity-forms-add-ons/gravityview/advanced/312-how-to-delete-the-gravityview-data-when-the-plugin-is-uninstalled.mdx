@@ -1,0 +1,40 @@
+---
+id: "561ea68ec69791452ed4bc3e"
+number: "312"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.1"
+publicUrl: "https://docs.gravitykit.com/article/312-how-to-delete-the-gravityview-data-when-the-plugin-is-uninstalled"
+viewCount: "480"
+lastPublishedAt: "2022-10-07T21:07:21Z"
+changeOrigin: "unknown"
+name: "How to delete the GravityView data when the plugin is uninstalled?"
+slug: "312-how-to-delete-the-gravityview-data-when-the-plugin-is-uninstalled"
+status: "published"
+categories: 
+  - "579aa642c6979160ca148ba9"
+createdBy: "59635"
+updatedBy: "80506"
+updatedAt: "2022-10-07T21:07:21Z"
+title: "How to delete the GravityView data when the plugin is uninstalled?"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/561ea68ec69791452ed4bc3e"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-07T21:07:21Z
+  author: "Rafael Ehlers"
+---
+
+# How to delete the GravityView data when the plugin is uninstalled?
+
+*Since version 1.15.*
+
+By default, whenever you update or deactivate/delete/re-install manually the plugin, the GravityView data like the settings, the Views, the entry approvals (stored as meta), and the entry notes created by GravityView will be kept so that you keep the plugin configuration and environment from version to version.
+
+Since version 1.15 this behavior could be controlled on the plugin's settings page ( *Views &gt; Settings*) under the setting **Remove Data on Delete**.
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/561ea8ef903360610fc683da/file-4JgKg2URbZ.png)
+
+- **Keep GravityView Data:** When GravityView is deleted, all GravityView data will be kept. Views, settings, etc. will be untouched. Use this as default to avoid losing data on plugin updates.
+- **Permanently Delete:** When GravityView is uninstalled and deleted, by having this setting selected, it will delete all Views, GravityView entry approvals, GravityView-generated entry notes (including approval and entry creator changes), and GravityView plugin settings. No Gravity Forms data will be touched.
+
+Note: Only user roles with the capability ***gravityview\_uninstall*** will be able to uninstall the GravityView plugin.

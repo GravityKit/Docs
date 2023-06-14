@@ -1,0 +1,58 @@
+---
+id: "54c67bb7e4b051242988550e"
+number: "62"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.2"
+publicUrl: "https://docs.gravitykit.com/article/62-changing-the-view-slug"
+viewCount: "1193"
+lastPublishedAt: "2023-01-02T17:27:44Z"
+changeOrigin: "hsapp-js"
+name: "Changing the View slug"
+slug: "62-changing-the-view-slug"
+status: "published"
+categories: 
+  - "579aa76f903360293603a8e7"
+createdBy: "59634"
+createdAt: "2015-01-26T17:39:03Z"
+updatedBy: "59634"
+updatedAt: "2023-01-02T17:27:44Z"
+title: "Changing the View slug"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/54c67bb7e4b051242988550e"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2023-01-02T17:27:44Z
+  author: "Zack Katz"
+---
+
+# Changing the View slug
+
+By default, the plugin presents Views using the following url structure:
+
+```
+
+http://www.example.com/view/my-view-name/
+```
+
+If you'd like to change the part of the URL (known as a "slug") from `view` to a different name, then add the following code to your theme's functions.php:
+
+```php
+
+add_filter( 'gravityview_slug', 'my_gravityview_slug', 10, 1 );
+
+function my_gravityview_slug( $slug ) {
+   return 'my-new-slug'; // Set your new slug here
+}
+```
+
+#### If the code doesn't work immediately:
+
+After adding this to your theme, you may need to flush the rewrite rules.
+
+To flush the rewrite rules:
+
+1. Go to your site's WordPress Dashboard
+2. Click on the Settings menu
+3. Click on the Permalinks sub-menu link
+4. Save the form settings on that page (without changing anything)
+5. The rewrites should be updated, and the links should work!

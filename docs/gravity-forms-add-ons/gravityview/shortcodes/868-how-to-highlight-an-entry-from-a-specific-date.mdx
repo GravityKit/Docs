@@ -1,0 +1,59 @@
+---
+id: "632cb4b4c5dd38351401acd1"
+number: "868"
+collectionId: "566dfabbc6979143615564bf"
+publicUrl: "https://docs.gravitykit.com/article/868-how-to-highlight-an-entry-from-a-specific-date"
+viewCount: "53"
+lastPublishedAt: "2022-10-12T22:21:09Z"
+changeOrigin: "unknown"
+name: "How to highlight an entry from a specific date"
+slug: "868-how-to-highlight-an-entry-from-a-specific-date"
+status: "published"
+categories: 
+  - "566dfe4fc6979143615564d9"
+related: 
+  - "5a96f9552c7d3a754951338e"
+createdBy: "80506"
+createdAt: "2022-09-22T19:17:08Z"
+updatedBy: "80506"
+updatedAt: "2022-10-12T22:21:09Z"
+title: "How to highlight an entry from a specific date"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/632cb4b4c5dd38351401acd1"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-12T22:21:09Z
+  author: "Rafael Ehlers"
+---
+
+# How to highlight an entry from a specific date
+
+## You can use `[gvlogic]` shortcode to compare dates
+
+In the example below, we highlight today's entries by comparing the date stored on the field "Date B" with today's date (using the Gravity Forms Merge Tag `{date_dmy}`).
+
+Let's start by adding a [Custom Content field](https://docs.gravitykit.com/article/111-using-the-custom-content-field) to our View:
+
+![Screenshot showing the View editor with the Custom Content field added](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/632cb6728b1e2859512fcc40/file-9SJdldDWmG.png)
+
+We click the cog icon to configure the contents of the field, then add the following code:
+
+```html
+[gvlogic if="{Date B:3:dmy}" is="{date_dmy}"]
+	<span style="background-color: green; color: white; padding: 2px 5px;">
+		It’s Today
+	</span>
+[/gvlogic]
+```
+
+The code uses [the `[gvlogic]` shortcode](https://docs.gravitykit.com/article/252-gvlogic-shortcode) to check whether the date of the "Date B" field is the same as today's date. If so, the code will output HTML that shows the words "It's Today" with a green background.
+
+Here's how the Custom Content field appears, when configured:
+
+![Screenshot showing the Custom Content field with the [gvlogic] shortcode inside](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/632cb56f897d4809473f26af/file-cUIwjAiC5n.png)
+
+And this screenshot shows how the Custom Content field appears in the View:
+
+![Screenshot showing the View](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/632cb5399c3e7c7d6a1abbbb/file-cJsHsyYfaU.png)
+
+You can read more about the `[gvlogic]` shortcode and everything possible to achieve here: [Using the \[gvlogic\] shortcode](https://docs.gravitykit.com/article/252-gvlogic-shortcode#date-comparison).

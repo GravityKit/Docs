@@ -1,0 +1,152 @@
+---
+id: "5af087892c7d3a3f981f5126"
+number: "462"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.8"
+publicUrl: "https://docs.gravitykit.com/article/462-gvfield-embed-gravity-forms-field-values"
+viewCount: "4095"
+lastPublishedAt: "2022-12-28T22:23:55Z"
+changeOrigin: "hsapp-js"
+name: "Using the [gvfield] shortcode to embed single field values"
+slug: "462-gvfield-embed-gravity-forms-field-values"
+status: "published"
+categories: 
+  - "566dfe4fc6979143615564d9"
+keywords: 
+  - "shortcode"
+  - "gvfield"
+  - "embed field"
+  - "display field"
+  - "2.0"
+createdBy: "59634"
+createdAt: "2018-05-07T17:06:17Z"
+updatedBy: "59634"
+updatedAt: "2022-12-28T22:23:55Z"
+title: "Using the [gvfield] shortcode to embed single field values"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5af087892c7d3a3f981f5126"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-12-28T22:23:55Z
+  author: "Zack Katz"
+---
+
+# Using the [gvfield] shortcode to embed single field values
+
+The `[gvfield]` shortcode provides an easy way to place any field from any entry based on some View settings. This feature was added to GravityView 2.0.
+
+##  [](#use-cases)Use Cases
+
+- Outputting a link to edit or view a user profile? Check.
+- Showing the approval status of the latest entry submitted? Check.
+- Showing the latest registered user name? Check.
+- Showing the latest donation message, amount and name? Check.
+- A thousand and one other uses? Check.
+
+##  [](#usage)Usage
+
+This is a WordPress shortcode. It can be used in post content by adding `[gvfield]` (+ parameters) and in PHP code by calling [`do_shortcode`](https://developer.wordpress.org/reference/functions/do_shortcode/). The parameters are:
+
+| parameter | values | description |
+|---|---|---|
+| `view_id` | $id | The numeric View ID the entry should be displayed from. Required. |
+| `entry_id` required | $id, "last", "first" | A numeric ID or slug referencing the entry. Or the last, first entry from the View. The View's sorting and filtering settings will be applied to the entries. Required. |
+| `field_id` | $id\[,$id..\] | The field ID that should be ouput. Required. If this is a merge of several form feeds, multiple fields can be provided separated by a comma; the `entry` parameter would have to be in `last` or `first` mode. Required. |
+| $key | $value | Field setting overrides, like title, etc. These will be pulled in from the View if the field was added to the View, otherwise, defaults will be used. |
+
+##  [](#examples)Examples
+
+Let's say you have a form that collects donations. In your form, you have an "In Memory Of" field, where people can honor loved ones by attributing their donation.
+
+Here's how you would show the latest "In Memory Of" submission value (in the example, the View ID is 4, the Field ID is 49):
+
+```
+
+The latest donation received was in memory of [gvfield view_id=4 entry_id="last" field_id=49].
+```
+
+When displayed on the page, it will look like this:
+
+```
+
+The latest donation received was in memory of Dominica Wiley.
+```
+
+```
+
+The latest donation received was in memory of: [gvfield view_id=4 entry_id="last" field_id=49]
+```
+
+Outputting the latest registered member username and date registered, merged from two form feeds:
+
+```
+
+Latest registered user: [gvfield view_id=8 entry_id="last" field_id="1,5"]
+Date registered: [gvfield view_id=8 entry_id="last" field_id="date_created"]
+```
+
+Outputting the edit link for the current user where the View is filtered to display entries only for the current user:
+
+```
+
+[gvfield view_id="1" entry_id="first" field_id="5" custom_label="My Profile"]
+```
+
+### [](#choice_display)Showing the Label or the Value for a Field With Choices
+
+For radio, select, and checkbox fields, you may want to override the `choice_display` setting. To do so, pass the attribute and value to the shortcode:
+
+```
+
+[gvfield view_id="8" entry_id="first" field_id="1" choice_display="label"]
+```
+
+Note the `choice\_label` setting being set to "label". Here's how to show the value as a value:
+
+```
+
+[gvfield view_id="8" entry_id="first" field_id="1" choice_display="value"]
+```
+
+This will override the configured View settings.
+
+##  [](#security)Security
+
+The standard security rules for outputting fields apply. In short, a field will not be shown if the current user cannot see such fields in the context of the view and the entry. Unapproved entries? A no-show to non-admins. Deleted? Nope. The View is password protected, a draft, private? Nuh-uh.
+
+If you need to output a field from a View that shouldn't be accessible by frontend users, set it as "Embed-only".
+
+##  [](#advanced-usage-filters)Advanced Usage: Filters
+
+The `[gvfield]` shortcode calls upon several filters that allow developers to modify the output as needed.
+
+###  [](#gravityviewshortcodesgvfieldoutput)gravityview/shortcodes/gvfield/output
+
+Filter the final output value of the field about to be output. Useful to override empty entries; for example, for non-logged-in users, this can be used to output the registration link instead of a blank profile link.
+
+```php
+
+add_filter( 'gravityview/shortcodes/gvfield/output', function( $output, $view, $entry, $field ) {
+   if ( $view && $view->ID == MY_SECRET_VIEW ) {
+       if ( ! is_user_logged_in() ) {
+           return "<a href="#">Login</a>";
+       }
+   }
+   return $output;
+}, 10, 4 );
+```
+
+### [](#gravityviewshortcodesgvfieldatts)gravityview/shortcodes/gvfield/atts
+
+Filter the initial shortcode attributes. Helpful to tack on defaults or dynamically change IDs, etc.
+
+```php
+
+add_filter( 'gravityview/shortcodes/gvfield/atts', function( $atts ) {
+   if ( $atts['view_id'] == MY_SECRET_VIEW && $user = wp_get_current_user() ) {
+       $atts['entry_id'] = $user->secret_entry_id;
+       $atts['custom_label'] = $user->secret_label;
+   }
+   return $atts;
+} );
+```

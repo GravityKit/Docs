@@ -1,0 +1,52 @@
+---
+id: "61c24adadbfe5a232d667aa6"
+number: "820"
+collectionId: "566dfabbc6979143615564bf"
+publicUrl: "https://docs.gravitykit.com/article/820-the-isstarred-merge-tag"
+viewCount: "199"
+lastPublishedAt: "2022-10-12T21:40:30Z"
+changeOrigin: "unknown"
+name: "The {is_starred} Merge Tag"
+slug: "820-the-isstarred-merge-tag"
+status: "published"
+categories: 
+  - "566dfe9bc6979143615564df"
+createdBy: "59634"
+createdAt: "2021-12-21T21:44:58Z"
+updatedBy: "80506"
+updatedAt: "2022-10-12T21:40:30Z"
+title: "The {is_starred} Merge Tag"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/61c24adadbfe5a232d667aa6"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-12T21:40:30Z
+  author: "Rafael Ehlers"
+---
+
+# The {is_starred} Merge Tag
+
+Added in GravityView 2.14, the `{is_starred}` Merge Tag will show whether an entry has been.
+
+- If an entry **is starred**, `{is_starred}` is replaced with `1`.
+- If an entry **is not starred**, `{is_starred}` is replaced with `0`.
+
+### How to show different content based on whether an entry is starred
+
+Sometimes you want to know whether an entry has been starred [when using the \[gvlogic\] shortcode](https://docs.gravitykit.com/article/252-gvlogic-shortcode).
+
+Using the `[gvlogic]` shortcode, you don't need to add anything more than the "if" statement:
+
+```html
+[gvlogic if="{is_starred}"]
+🤩 This entry is starred!
+[else]
+🙁 This entry is not starred
+[/gvlogic]
+```
+
+Here's how to show content that will appear if an entry is starred, but no content will appear if it is not:
+
+```html
+[gvlogic if="{is_starred}"]⭐️ This entry is starred![/gvlogic]
+```

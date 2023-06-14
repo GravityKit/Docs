@@ -1,0 +1,85 @@
+---
+id: "5c9d338a2c7d3a1544617f9b"
+number: "570"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.5"
+publicUrl: "https://docs.gravitykit.com/article/570-sorting-by-multiple-columns"
+viewCount: "2469"
+lastPublishedAt: "2022-12-27T21:05:45Z"
+changeOrigin: "external"
+name: "Sorting by multiple columns"
+slug: "570-sorting-by-multiple-columns"
+status: "published"
+categories: 
+  - "566dfec2c6979143615564e3"
+keywords: 
+  - "multisort"
+  - "multi-sort"
+  - "multiple fields"
+createdBy: "59634"
+createdAt: "2019-03-28T20:50:18Z"
+updatedBy: "59634"
+updatedAt: "2022-12-27T21:05:45Z"
+title: "Sorting by multiple columns"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5c9d338a2c7d3a1544617f9b"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-12-27T21:05:45Z
+  author: "Zack Katz"
+---
+
+# Sorting by multiple columns
+
+### Setting the default sort order
+
+You can sort by multiple fields by modifying the Secondary sort setting for a View.
+
+![Screenshot of the Settings metabox with 'Sort by secondary field' selected.](https://i.gravitykit.com/WPeV6E+)
+
+1. When editing a View, scroll to the bottom of the editor to find the Settings box
+2. Click the Filter &amp; Sort tab
+3. Set the primary sort field, if desired (by default, it will sort by the ID of an entry, which is based on the order it was created)
+4. Set the secondary sort field by selecting a field in the "Sort by secondary field" setting dropdown list
+
+*Note: If you are sorting by random, the secondary sort option will be hidden.*
+
+---
+
+### On the front end of the site
+
+If your View uses the Table layout, you can sort by multiple fields.
+
+1. To enable sorting by a table column, [enable the table column sorting feature](https://docs.gravitykit.com/article/230-enabling-the-table-column-sorting-feature).
+2. Click the table column header to sort by the first column
+3. **While holding down the Shift key on your keyboard**, click the second column you want entries to be sorted by.
+
+### Examples of multi-sorting
+
+This table is sorted by year, with no secondary sort.
+
+| First | Last | Year of Birth |
+|---|---|---|
+| Tommy Lee | Jones | 1946 |
+| Jada Pinkett | Smith | 1971 |
+| Frances | **Tiafoe** | 1998 |
+| Jaden | **Smith** | 1998 |
+| Amandla | **Stenberg** | 1998 |
+| Maya | **Hawke** | 1998 |
+| You | Young | 2004 |
+
+Shift-clicking on the Last header column adds a secondary sort so that the table is first sorted by year and then sorted by last name.
+
+Note how the last names are now in alphabetical order:
+
+| First | Last | Year of Birth |
+|---|---|---|
+| Tommy Lee | Jones | 1946 |
+| Jada Pinkett | Smith | 1971 |
+| Maya | **Hawke** | 1998 |
+| Jaden | **Smith** | 1998 |
+| Amandla | **Stenberg** | 1998 |
+| Frances | **Tiafoe** | 1998 |
+| You | Young | 2004 |
+
+If you need to sort your View by two fields, multi-sort is the way to go!

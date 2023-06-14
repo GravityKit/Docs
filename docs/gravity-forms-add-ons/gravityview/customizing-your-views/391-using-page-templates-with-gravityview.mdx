@@ -1,0 +1,71 @@
+---
+id: "5825051e903360645bfa247b"
+number: "391"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.6"
+publicUrl: "https://docs.gravitykit.com/article/391-using-page-templates-with-gravityview"
+viewCount: "3305"
+lastPublishedAt: "2022-10-07T21:59:58Z"
+changeOrigin: "unknown"
+name: "Using Page Templates with GravityView"
+slug: "391-using-page-templates-with-gravityview"
+status: "published"
+categories: 
+  - "579aa76f903360293603a8e7"
+createdBy: "59634"
+createdAt: "2016-11-10T23:39:10Z"
+updatedBy: "80506"
+updatedAt: "2022-10-07T21:59:58Z"
+title: "Using Page Templates with GravityView"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5825051e903360645bfa247b"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-07T21:59:58Z
+  author: "Rafael Ehlers"
+---
+
+# Using Page Templates with GravityView
+
+**Requires WordPress 4.7+**
+
+Do you have a page template you want to use with GravityView? A full-width page layout, for example?
+
+WordPress 4.7 allows you to use your theme's page templates for GravityView! [Learn more about Post Type Templates in WordPress 4.7](https://make.wordpress.org/core/2016/11/03/post-type-templates-in-4-7/).
+
+Adding support just requires one small modification to your theme's template file:
+
+**Before**:
+
+```
+<?php
+/*
+Template Name: Full-Width Layout
+*/
+```
+
+**After** (notice the new `Template Post Type` line):
+
+```
+<?php
+/*
+Template Name: Full-Width Layout
+Template Post Type: page, gravityview
+*/
+```
+
+This will add a "Post Attributes" box to your Edit View screen that will allow you to select the layout:
+
+![Post Attributes metabox](http://share.gravityview.co/V55u/2Fz1kPFi+)
+
+---
+
+## Alternate method: the Custom Post Type Page Template plugin
+
+Don't feel comfortable modifying your template files? Aren't you running WordPress 4.7? Here's another way to achieve the same result:
+
+1. Install the [Custom Post Type Page Template](https://wordpress.org/plugins/custom-post-type-page-template/) plugin
+2. Go to Settings &gt; Custom Post Type Page Template
+3. Check `gravityview` then Save Changes  
+    ![Check gravityview](http://share.gravityview.co/6b2H/LDd5QVBA+)
+4. You should now see the box with available templates in Edit View

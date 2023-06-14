@@ -1,0 +1,130 @@
+---
+id: "5bfeec4804286304a71cc259"
+number: "523"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.2"
+publicUrl: "https://docs.gravitykit.com/article/523-created-by-text-search"
+viewCount: "901"
+lastPublishedAt: "2022-12-27T20:44:47Z"
+changeOrigin: "external"
+name: "How to change what fields are searched by the Search Bar \"Created By\" text input."
+slug: "523-created-by-text-search"
+status: "published"
+categories: 
+  - "579aa642c6979160ca148ba9"
+createdBy: "59634"
+createdAt: "2018-11-28T19:28:08Z"
+updatedBy: "59634"
+updatedAt: "2022-12-27T20:44:47Z"
+title: "How to change what fields are searched by the Search Bar \"Created By\" text input."
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5bfeec4804286304a71cc259"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-12-27T20:44:47Z
+  author: "Zack Katz"
+---
+
+# How to change what fields are searched by the Search Bar "Created By" text input.
+
+You can search entries based on the information of the WordPress user who created the entry. By default, the search includes many of the fields set in the WordPress Profile screen.
+
+## How to enable searching entries by user fields
+
+To search entries by the WordPress user fields, add an "Entry Creator" search field in the Search Bar widget, then set the Input Type to "Text":
+
+![Screenshot of the Search Bar, with "Entry Creator" as the Search Field, and "Text" as the Input Type](https://www.gravitykit.com/wp-content/uploads/2018/11/Screen-Shot-on-2018-11-28-at-12-24-31.png)
+
+## How the Created By search works
+
+Entries created by a user with the name "Dameon Berry" with the email address `dameon.berry@example.com`, username of `raspstraw` and nickname "The Berry Best" would match for the following searches:
+
+- "Dameon"
+- "Berry"
+- "@example.com"
+- "Best"
+- "rasp" or "straw"
+- Any letter in the fields; eg: "d", "a", "m", "."
+
+## User fields
+
+- Display name publicly as (`display_name`)
+- Username (`user_login`, `user_nicename`)
+- Email (`user_email`)
+
+If you want to modify the user fields that are searched, use the `gravityview/widgets/search/created_by/user_meta_fields` filter. It passes two parameters:
+
+| Parameter | Type | Description |
+|---|---|---|
+| `$user_fields` | `array` | The user fields that will be searched. Default: `[ 'nickname', 'first_name', 'last_name' ]` |
+| `$view` | `\GV\View` | The View being searched. |
+
+This allows searching entry creator by username, email address, or display name.
+
+### Code examples:
+
+#### Don't allow searching by user email
+
+The search will still query the username and display name of the user who created an entry, but the email will no longer be searched:
+
+```
+add_filter( 'gravityview/widgets/search/created_by/user_fields', 'gv_created_by_no_email_search', 10, 2 );
+
+/**
+* When searching "Created By" with a text input, don't search WordPress user email
+*/
+function gv_created_by_no_email_search( $user_fields, $view ) {
+
+   // Remove the email field from being searched
+   $return_fields = array_diff( $user_fields, array( 'user_email' ) );
+
+   return $return_fields;
+}
+	
+```
+
+## User meta fields
+
+By default the following meta fields are searched:
+
+- Nickname (`nickname`)
+- First Name (`first_name`)
+- Last Name (`last_name`)
+
+If you want to modify the user meta fields that are searched, use the `gravityview/widgets/search/created_by/user_meta_fields` filter. It passes two parameters:
+
+| Parameter | Type | Description |
+|---|---|---|
+| $user\_meta\_fields | `array` | The user meta fields that will be searched. Default: `[ 'user_nicename', 'user_login', 'display_name', 'user_email' ]` |
+| `$view` | `\GV\View` | The View being searched. |
+
+### Code examples:
+
+#### Also search the user description
+
+If you also want to search the users' description, use the code below:
+
+```
+add_filter( 'gravityview/widgets/search/created_by/user_meta_fields', 'gv_created_by_also_search_description', 10, 2 );
+
+/**
+* When searching "Created By" with a text input, also search WordPress user description
+*/
+function gv_created_by_also_search_description( $user_meta_fields, $view ) {
+
+   $user_meta_fields[] = 'description';
+
+   return $user_meta_fields;
+}
+	
+```
+
+#### Don't search names and nickname
+
+If you want to prevent the Created By search from searching any meta fields, use this code:
+
+```
+add_filter( 'gravityview/widgets/search/created_by/user_meta_fields', '__return_empty_array' );
+	
+```
+

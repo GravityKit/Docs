@@ -1,0 +1,48 @@
+---
+id: "628d49ba8bf21a2e2b6d72a9"
+number: "846"
+collectionId: "566dfabbc6979143615564bf"
+publicUrl: "https://docs.gravitykit.com/article/846-embedding-a-second-view-inside-the-single-entry-page"
+viewCount: "92"
+lastPublishedAt: "2022-10-12T22:20:26Z"
+changeOrigin: "unknown"
+name: "Embedding a second View inside the Single Entry page"
+slug: "846-embedding-a-second-view-inside-the-single-entry-page"
+status: "published"
+categories: 
+  - "566dfe4fc6979143615564d9"
+createdBy: "80506"
+createdAt: "2022-05-24T21:10:18Z"
+updatedBy: "80506"
+updatedAt: "2022-10-12T22:20:26Z"
+title: "Embedding a second View inside the Single Entry page"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/628d49ba8bf21a2e2b6d72a9"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-12T22:20:26Z
+  author: "Rafael Ehlers"
+---
+
+# Embedding a second View inside the Single Entry page
+
+
+:::info
+
+Embedding is also called "nesting".
+
+:::
+
+
+
+It's possible to embed a secondary View inside the Single Entry page of the main View by using the `[gravityview]` shortcode and a [Custom Content field](https://docs.gravitykit.com/article/111-using-the-custom-content-field) (the secondary View must use the Table or List View layouts).
+
+Also, it's possible to use a field value from the entry in question to filter this second View by using the [`search_field` and `search_value` parameters](https://docs.gravitykit.com/article/73-using-the-shortcode) of the `[gravityview]` shortcode.
+
+On the Single Entry page of the main View, we add a Custom Content code with the `[gravityview]` shortcode inside:
+
+![Screenshot showing the custom content field of the first View](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/628d4d9ec01fce37d9b16410/file-oi9dmq4w2I.png)
+
+Here's what it looks like on the front end:
+
+![Screenshot of the Single Entry page of the main View showing an embedded View](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/628d4e3268d51e77944436f2/file-TNRVrlHHIP.png)

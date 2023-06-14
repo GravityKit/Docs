@@ -1,0 +1,149 @@
+---
+id: "5b8dc6750428631d7a8aa928"
+number: "483"
+collectionId: "6076f9478996210f18bd33df"
+popularity: "0.3"
+publicUrl: "https://docs.gravitykit.com/article/483-entry-revisions-hooks"
+viewCount: "2150"
+lastPublishedAt: "2022-10-19T01:03:52Z"
+changeOrigin: "unknown"
+name: "Developer hooks for GravityRevisions"
+slug: "483-entry-revisions-hooks"
+status: "published"
+categories: 
+  - "6155b0abe5648623c88e04f9"
+createdBy: "59634"
+createdAt: "2018-09-03T23:40:37Z"
+updatedBy: "80506"
+updatedAt: "2022-10-19T01:03:52Z"
+title: "Developer hooks for GravityRevisions"
+hsEditUrl: "https://secure.helpscout.net/docs/6076f9478996210f18bd33df/article/5b8dc6750428631d7a8aa928"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-19T01:03:52Z
+  author: "Rafael Ehlers"
+---
+
+# Developer hooks for GravityRevisions
+
+This is a list of developer filters available in the GravityRevisions plugin. They use WordPress' [`add_filter()` function](https://developer.wordpress.org/reference/functions/add_filter/).
+
+---
+
+### `gravityview/entry-revisions/list-html/output`
+
+Filters the output for the revisions list HTML.
+
+| type | parameter | description |
+|---|---|---|
+| *string* | `$output` | If the entry is not found, outputs "revision not found" message. On "Entry Details" pages where the current entry is a revision, the output is a link to the entry comparison. |
+| *array* | `$entry` | The entry connected to the displayed revisions. |
+| *array* | `$revisions` | Array of revisions being rendered by the method. |
+
+### `gravityview/entry-revisions/revision-title`
+
+Filters the revision title, which is used when rendering the revision list and the comparison ("diff") table caption.
+
+| type | parameter | description |
+|---|---|---|
+| *string* | `$revision_title` | Existing revision title |
+| *array* | `$revision` | The revision entry array |
+| *array* | `$revision_details` | Additional information used in the title, passed as associative array. Keys include `format`, `gravatar`, `author`, `date`, `current_entry` |
+
+### `gravityview/entry-revisions/diff-ignored-keys`
+
+Specify the field IDs and meta keys to not display in the diff table
+
+| type | parameter | description |
+|---|---|---|
+| *array* | `$ignored_keys` | Array of field and meta keys, like `[ "id", "date_updated", "1.2" ]` |
+| *array* | `$form` | The form connected to the entry/revision diff being displayed |
+
+### `gravityview/entry-revisions/restore/remove-gf-hooks`
+
+Modify whether to remove Gravity Forms hooks when restoring an entry.
+
+| type | parameter | description |
+|---|---|---|
+| *bool* | `$remove_hooks` | Whether to remove Gravity Forms hooks when restoring an entry. \[Default: true\] |
+| *int* | `$entry_id` | ID of entry being restored to |
+
+### `gravityview/entry-revisions/restore/add-new`
+
+Modifies whether—when creating a revision—a new revision should be created with the prior state.
+
+| type | parameter | description |
+|---|---|---|
+| *bool* | `$add_new` | Should a new revision be created based on the entry before the restoration? \[Default: true\] |
+| *array* | `$prior_entry` | Entry before restoring values |
+| *array* | `$new_entry` | Current entry, after restoring values |
+
+### `gravityview/entry-revisions/restore/delete-after`
+
+Modifies whether a revision should be deleted after it has been restored.
+
+| type | parameter | description |
+|---|---|---|
+| *bool* | `$remove_after_restore` | Should a revision be deleted after restoration? \[Default: false\] |
+| *int* | `$revision_id` | ID of revision being restored |
+| *int* | `$entry_id` | ID of connected entry |
+
+### `gravityview/entry-revisions/diff-row-args`
+
+Modify how the diff rows are rendered.
+
+| type | parameter | description |
+|---|---|---|
+| *array* | `$diff_row_args` | Args passed to `GV_Entry_Revisions::text_diff_row()`.  - *string* `$empty_value` Value shown when a row is empty - *string* `$row_label` Label for the row - *bool*`$show_inputs` Whether to show the radio buttons used to restore a revision |
+| *array* | `$context` | Additional information about the current row being rendered.  - *GF\_Field* `$field` Field being rendered - *string* `$label` Label of the field being rendered - *string* `$key` Input ID of the field being rendered |
+
+**Example:**
+
+```php
+/**
+* Modify the "No Value" message in the comparison table when there was nothing set for the field
+*/
+add_filter( "gravityview/entry-revisions/diff-row-args", function( $diff_row_args ) {
+ 
+ $diff_row_args["empty_value"] = "null"; // Previously: "<em>No Value</em>"
+ 
+ return $diff_row_args;
+} );
+	
+```
+
+### `gravityview/entry-revisions/show-filter-links`
+
+In Gravity Forms' Entry List table, there are filter links to filter entries. By default, the plugin adds an "Entry Revisions" link. Use this filter to disable adding that link by returning false.
+
+| type | parameter | description |
+|---|---|---|
+| *bool* | $show\_filter\_links | True: show the "approved"/"disapproved" filter links. False: hide them. \[Default: true\] |
+| *array* | `$form` | Gravity Forms form object of the current form |
+
+**Example:**
+
+```php
+add_filter( "gravityview/entry-revisions/show-filter-links", "__return_false" );
+	
+```
+
+### `gravityview/entry-revisions/embed-css`
+
+Modify whether to include embedded `<style>` HTML tag with inline CSS rules with the output of the `{entry_revision_diff}` Merge Tag.
+
+| type | parameter | description |
+|---|---|---|
+| *bool* | $embed\_css | Whether to embed the CSS tag. \[Default is determined by whether a notification is currently being sent\] |
+
+### <a id="gravityview-entry-revisions-send-notifications"></a>`gravityview/entry-revisions/send-notifications`
+
+Whether to trigger or suppress send notifications when an entry revision is added. (Added in 1.0.2)
+
+| type | parameter | description |
+|---|---|---|
+| *bool* | `$send_notification` | Should a notification be sent when a revision is created? \[Default: true\] |
+| *array* | `$revision_to_add` | The new revision added |
+| *array* | `$current_entry` | The replaced entry |
+| *array* | `$changed_fields` | The new entry, with only the changed fields |

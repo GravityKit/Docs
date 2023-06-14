@@ -1,0 +1,144 @@
+---
+id: "5b8f4d5a0428631d7a8ab4ec"
+number: "485"
+collectionId: "6076f9478996210f18bd33df"
+popularity: "0.5"
+publicUrl: "https://docs.gravitykit.com/article/485-email-notify-entries-updated-gravity-forms"
+viewCount: "4260"
+lastPublishedAt: "2022-12-27T20:43:10Z"
+changeOrigin: "external"
+name: "How to be notified when entries are updated in Gravity Forms using the GravityRevisions plugin"
+slug: "485-email-notify-entries-updated-gravity-forms"
+status: "published"
+categories: 
+  - "6155b0abe5648623c88e04f9"
+createdBy: "59634"
+createdAt: "2018-09-05T03:28:26Z"
+updatedBy: "59634"
+updatedAt: "2022-12-27T20:43:10Z"
+title: "How to be notified when entries are updated in Gravity Forms using the GravityRevisions plugin"
+hsEditUrl: "https://secure.helpscout.net/docs/6076f9478996210f18bd33df/article/5b8f4d5a0428631d7a8ab4ec"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-12-27T20:43:10Z
+  author: "Zack Katz"
+---
+
+# How to be notified when entries are updated in Gravity Forms using the GravityRevisions plugin
+
+
+:::info
+
+The [GravityRevisions](https://www.gravitykit.com/extensions/entry-revisions/) plugin allows you to be notified by email when an entry is updated.
+
+:::
+
+
+
+This is extremely helpful when you have multiple administrators editing the same entries, or if you use [GravityView](https://www.gravitykit.com/features/) to allow your users to update their Gravity Forms entries after submitting them.
+
+In this article, we will show how to create an email notification when an entry is updated using the new [GravityRevisions](https://www.gravitykit.com/extensions/entry-revisions/) plugin. We will use [GravityRevisions Merge Tags](https://docs.gravitykit.com/article/478-entry-revision-merge-tags) to show what has changed. Then we will restore previous entry values in the WordPress Dashboard!
+
+To get started, access a form by clicking on the Forms menu in the WordPress Dashboard. Click on the form name.
+
+### In the Gravity Forms Edit Form screen, click on the "Notifications" link under "Settings."
+
+![Notifications link under the Gravity Forms Settings](https://www.gravitykit.com/wp-content/uploads/2018/09/in-gravity-forms-edit-form-screen-click-on-the-notifications-link-under-settings-.png)
+
+Hover over the "Settings" link in the Gravity Forms toolbar, and then click on the "Notifications" link.
+
+### Click the "Add New" button to create a new notification
+
+![The Add New button on the Gravity Forms Notifications page](https://www.gravitykit.com/wp-content/uploads/2018/09/click-the-add-new-button-to-create-a-new-notification.png)
+
+### Enter a name for the notification
+
+![Naming the notification 'Updated RSVP'](https://www.gravitykit.com/wp-content/uploads/2018/09/enter-a-name-for-the-notification.png)
+
+This is not important; it will only be seen to administrators. In this example, we know that when an entry is updated, a RSVP has changed for an event; we call the notification "Updated RSVP".
+
+### Select "Entry is updated, revision is saved" from the Event dropdown
+
+![Selecting an option from a dropdown menu](https://www.gravitykit.com/wp-content/uploads/2018/09/select-entry-is-updated-revision-is-saved-from-the-event-dropdown.png)
+
+By selecting this option, you are creating a notification that will send when an entry has been modified.
+
+Note: If you don't see this option, the GravityRevisions plugin may not be installed and activated.
+
+### Fill out the other details for the notification
+
+![Notification details](https://www.gravitykit.com/wp-content/uploads/2018/09/fill-out-the-other-details-for-the-notification.png)
+
+These details are just like regular Gravity Forms notifications. If you need additional information on configuring these settings, read Gravity Forms' article [Configuring Notifications in Gravity Forms](https://docs.gravityforms.com/configuring-notifications-in-gravity-forms/).
+
+### In the Message field, we add a GravityRevisions Merge Tag to show what has changed in the entry
+
+![An Entry Revisions merge tag inside the Notification message box](https://www.gravitykit.com/wp-content/uploads/2018/09/in-the-message-field-we-add-an-entry-revisions-merge-tag-to-show-what-has-changed-in-the-entry.png)
+
+The {entry\_revision\_diff} Merge Tag displays a "before and after" comparison for each field where the value has changed.
+
+The {all\_fields} Merge Tag is from Gravity Forms, and will be replaced by a pre-formatted table showing details from the full entry.
+
+#### Note: You can add Merge Tags by clicking the arrow to the right of the Message editor.
+
+![The merge tag menu](https://www.gravitykit.com/wp-content/uploads/2018/09/note-you-can-add-merge-tags-by-clicking-the-arrow-to-the-right-of-the-message-editor.png)
+
+### Save the notification by clicking "Save Notification"
+
+![The Save Notification button](https://www.gravitykit.com/wp-content/uploads/2018/09/save-the-notification-by-clicking-save-notification-.png)
+
+### You will see a notice that the Notification was saved successfully. Click the link to go back.
+
+![A link that says 'Back to Notifications'](https://www.gravitykit.com/wp-content/uploads/2018/09/you-will-see-a-notice-that-the-notification-saved-successfully-click-the-link-to-go-back.png)
+
+### The new notification we created is displayed in the Notifications table
+
+![A list of active notifications in Gravity Forms](https://www.gravitykit.com/wp-content/uploads/2018/09/the-new-notification-we-created-is-displayed-in-the-notifications-table.png)
+
+### When the reservation has been updated, you will receive an email with the changed fields
+
+![a notification email showing the output from the Entry Revisions merge tags](https://www.gravitykit.com/wp-content/uploads/2018/09/when-the-reservation-has-been-updated-you-will-receive-an-email-with-the-changed-fields.png)
+
+In the screenshot, you can see how the changed fields are displayed using the {entry\_revision\_diff} Merge Tag, and the full entry is displayed using the {all\_fields} Merge Tag.
+
+### The Entry Revision has also been saved on the site. Go to the Entries screen for the form.
+
+![The Entries link in Gravity Forms](https://www.gravitykit.com/wp-content/uploads/2018/09/the-entry-revision-has-also-been-saved-on-the-site-go-to-the-entries-screen-for-the-form.png)
+
+### We find the entry that was updated and click it
+
+![A single entry on the Entries page in Gravity Forms](https://www.gravitykit.com/wp-content/uploads/2018/09/we-find-the-entry-that-was-updated-and-click-it.png)
+
+### Underneath the Entry Notes box is an Entry Revisions box with all the updates to the entry
+
+![The Entry Revisions meta box showing all the changes made to a specific entry in Gravity Forms](https://www.gravitykit.com/wp-content/uploads/2018/09/underneath-the-entry-notes-box-is-an-entry-revisions-box-with-all-the-updates-to-the-entry.png)
+
+We can see that Adam recently updated the entry. The timestamp of the revision is a link that will take you to a comparison between the value before the update and the current entry value.
+
+### Click on the time stamp of the revision to see the comparison table
+
+![The Entry Revisions comparison table showing the entry before and after the change](https://www.gravitykit.com/wp-content/uploads/2018/09/click-on-the-time-stamp-of-the-revision-to-see-the-comparison-table.png)
+
+The current entry values are on the right, and the prior revision values are on the left.
+
+### To restore values, click each Revision field value you would like to restore, then click Restore These Values
+
+![A button that says Restore These Values](https://www.gravitykit.com/wp-content/uploads/2018/09/to-restore-values-click-each-revision-field-value-you-would-like-to-restore-then-click-restore-the.png)
+
+We know that Adam is no longer bringing guests. Events can be tricky—people change their minds a lot!
+
+### To restore the value, confirm the change
+
+![Clicking OK to the confirmation message](https://www.gravitykit.com/wp-content/uploads/2018/09/to-restore-the-value-confirm-the-change.png)
+
+### And now the values have been restored…
+
+![An entry showing the restored values](https://www.gravitykit.com/wp-content/uploads/2018/09/and-now-the-values-have-been-restored-hellip-.png)
+
+The values that we selected to restore from the revision are now the current values.
+
+### …and another revision has been saved!
+
+![The Entry Revisions metabox showing two revisions made to the entry](https://www.gravitykit.com/wp-content/uploads/2018/09/hellip-and-another-revision-has-been-saved-.png)
+

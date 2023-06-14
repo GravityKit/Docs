@@ -1,0 +1,84 @@
+---
+id: "5835ca67c6979106d3735ac8"
+number: "393"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.3"
+publicUrl: "https://docs.gravitykit.com/article/393-changing-the-entry-updated-return-to-entry-message"
+viewCount: "1675"
+lastPublishedAt: "2021-07-02T12:31:15Z"
+changeOrigin: "unknown"
+name: "Changing the \"Entry Updated. Return to Entry\" message"
+slug: "393-changing-the-entry-updated-return-to-entry-message"
+status: "published"
+categories: 
+  - "579aa76f903360293603a8e7"
+  - "5e1b6d5d04286364bc93c665"
+keywords: 
+  - "entry updated"
+  - "return to entry"
+  - "modify text"
+  - "modify link"
+  - "edit link"
+related: 
+  - "54d53121e4b086c0c096592a"
+  - "55c6353ce4b01fdb81eb1ae4"
+  - "57bdf6d3903360342852cfbf"
+createdBy: "80506"
+createdAt: "2016-11-23T16:57:11Z"
+updatedBy: "459439"
+updatedAt: "2021-07-02T12:31:15Z"
+title: "Changing the \"Entry Updated. Return to Entry\" message"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5835ca67c6979106d3735ac8"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2021-07-02T12:31:15Z
+  author: "Rafael Bennemann"
+---
+
+# Changing the "Entry Updated. Return to Entry" message
+
+After submitting an entry modification, you will see this notification message:
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5835caa99033600698171d5f/file-6YrdMEc3Dx.jpg)
+
+If you want to modify it, then you just need to use the filter `gravityview/edit_entry/success` for that.
+
+Here's an example:
+
+```php
+
+add_filter( 'gravityview/edit_entry/success', 'gv_edit_entry_success', 10, 4 );
+function gv_edit_entry_success(  $entry_updated_message , $view_id, $entry, $back_link ) {
+	$message = 'Product Updated. <a href="'.$back_link .'">Return to product\'s details page.</a>';
+	return $message;
+}
+```
+
+If you want to show a different message for a specific View, you can use this code instead:
+
+```php
+
+add_filter( 'gravityview/edit_entry/success', 'customize_gv_edit_entry_success_message', 10, 4 );
+
+/**
+* Modify the edit entry success message (including the anchor link)
+*
+* @param string $entry_updated_message Existing message
+* @param int $view_id View ID
+* @param array $entry Gravity Forms entry array
+* @param string $back_link URL to return to the original entry. @since 1.6
+*
+*/
+function customize_gv_edit_entry_success_message( $entry_updated_message, $view_id, $entry, $back_link ) {
+
+	$run_on_views = [100,200]; //Change this to the Views you'd like to run this filter [100,200,300,...]
+
+	if( in_array( $view_id, $run_on_views ) ){
+		$return_page_url = esc_url( get_permalink( 100 ) ); // Return to a different page
+		return "<a href='{$return_page_url}'>Back to the list</a>";
+	}
+	
+	return $entry_updated_message;
+}
+```

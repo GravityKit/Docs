@@ -1,0 +1,60 @@
+---
+id: "5d18fa3c04286305cb87e343"
+number: "591"
+collectionId: "6076f9478996210f18bd33df"
+publicUrl: "https://docs.gravitykit.com/article/591-importing-post-fields"
+viewCount: "347"
+lastPublishedAt: "2022-10-19T00:53:51Z"
+changeOrigin: "unknown"
+name: "Importing Gravity Forms Post Fields from CSV"
+slug: "591-importing-post-fields"
+status: "published"
+categories: 
+  - "6155b0dee5648623c88e04fa"
+createdBy: "59634"
+createdAt: "2019-06-30T18:06:52Z"
+updatedBy: "80506"
+updatedAt: "2022-10-19T00:53:51Z"
+title: "Importing Gravity Forms Post Fields from CSV"
+hsEditUrl: "https://secure.helpscout.net/docs/6076f9478996210f18bd33df/article/5d18fa3c04286305cb87e343"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-19T00:53:51Z
+  author: "Rafael Ehlers"
+---
+
+# Importing Gravity Forms Post Fields from CSV
+
+As of GravityImport version 2.0, we will no longer provide support for importing [Post Fields](https://docs.gravityforms.com/category/user-guides/post-fields/) during the field mapping stage. See "What are Post Fields" below for more information.
+
+
+:::info
+
+Gravity Forms recommends using the [Advanced Post Creation Add-On](https://www.gravityforms.com/add-ons/advanced-post-creation/) to create posts. The add-on is far more powerful and flexible than the old field-based method.
+
+:::
+
+ ### How to import WordPress Posts and Custom Post Types while importing entries
+
+When importing entries from CSV into an existing Gravity Forms form, Posts can be created in combination with the Gravity Forms Advanced Post Creation Add-On.
+
+- Before importing, [install the Advanced Post Creation Add-On](https://docs.gravityforms.com/installing-a-gravity-forms-add-on/)
+- Make sure the Gravity Forms form exists already. If not, create it.
+- [Create a Advanced Post Creation feed for the form](https://docs.gravityforms.com/creating-a-feed-for-the-advanced-post-creation-add-on/) in Gravity Forms
+- Import your CSV into Gravity Forms
+- On the Configure step, enable the "Process Form Feeds"
+- Check the box next to the feed name for the Advanced Post Creation feed
+- Complete the import
+
+### What are Post Fields?
+
+Post Fields are fields used by Gravity Forms to create WordPress Posts when a form is submitted. These field types include:
+
+- [Post Body](https://docs.gravityforms.com/post-body/)
+- [Post Category](https://docs.gravityforms.com/post-category/)
+- [Post Custom Field ](https://docs.gravityforms.com/post-custom/)
+- [Post Excerpt](https://docs.gravityforms.com/post-excerpt/)
+- [Post Image](https://docs.gravityforms.com/post-image/)
+- [Post Tags](https://docs.gravityforms.com/post-tags/)
+- [Post Title](https://docs.gravityforms.com/post-title/)

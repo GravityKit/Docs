@@ -1,0 +1,51 @@
+---
+id: "5c6118ac042863543ccccf4d"
+number: "533"
+hasDraft: "1"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.1"
+publicUrl: "https://docs.gravitykit.com/article/533-how-to-display-all-entries-by-default"
+viewCount: "780"
+lastPublishedAt: "2019-02-11T06:46:11Z"
+changeOrigin: "unknown"
+name: "How to display all entries by default"
+slug: "533-how-to-display-all-entries-by-default"
+status: "published"
+categories: 
+  - "579aa642c6979160ca148ba9"
+keywords: 
+  - "pagination"
+  - "limit"
+  - "number of entries"
+  - "25"
+  - "all"
+  - "display"
+  - "list"
+related: 
+  - "54d3a075e4b086c0c09652f4"
+createdBy: "80506"
+createdAt: "2019-02-11T06:39:40Z"
+updatedBy: "59634"
+updatedAt: "2020-11-19T04:02:33Z"
+title: "How to display all entries by default"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5c6118ac042863543ccccf4d"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2020-11-19T04:02:33Z
+  author: "Zack Katz"
+---
+
+# How to display all entries by default
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5c6119f32c7d3a66e32e41db/file-IW58wyOxgp.png)
+
+Whenever you create a new View, by default, GravityView displays only 25 records (also known as entries, or form submissions).
+
+If you want to change this default, to display all entries instead, you can use the following filter:
+
+```
+add_filter( 'gravityview_default_page_size', function( $default = 25 ) {
+   return -1;
+});
+```

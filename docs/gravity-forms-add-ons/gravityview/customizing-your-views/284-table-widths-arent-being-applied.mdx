@@ -1,0 +1,42 @@
+---
+id: "5583bac6e4b027e1978e9184"
+number: "284"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.2"
+publicUrl: "https://docs.gravitykit.com/article/284-table-widths-arent-being-applied"
+viewCount: "1106"
+lastPublishedAt: "2018-03-30T14:40:37Z"
+changeOrigin: "unknown"
+name: "Table widths aren't being applied"
+slug: "284-table-widths-arent-being-applied"
+status: "published"
+categories: 
+  - "579aa76f903360293603a8e7"
+keywords: 
+  - "table"
+  - "column width"
+  - "widths"
+createdBy: "59634"
+createdAt: "2015-06-19T06:46:30Z"
+updatedBy: "59634"
+updatedAt: "2020-08-05T11:24:36Z"
+title: "Table widths aren't being applied"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5583bac6e4b027e1978e9184"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2020-08-05T11:24:36Z
+  author: "Zack Katz"
+---
+
+# Table widths aren't being applied
+
+If you add custom table column widths and the columns aren't willing to budge, add the following line of CSS to your site ([here's how](http://docs.gravityview.co/article/246-how-to-add-custom-css-to-your-website)):
+
+```
+table.gv-table-view {
+ table-layout: fixed;
+}
+```
+
+That will force the columns to respect your width settings.

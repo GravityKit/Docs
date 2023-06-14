@@ -1,0 +1,85 @@
+---
+id: "5eb30d702c7d3a5ea54a9739"
+number: "714"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.1"
+publicUrl: "https://docs.gravitykit.com/article/714-how-to-search-for-an-exact-match"
+viewCount: "606"
+lastPublishedAt: "2022-10-12T22:01:43Z"
+changeOrigin: "unknown"
+name: "How to search for an exact match"
+slug: "714-how-to-search-for-an-exact-match"
+status: "published"
+categories: 
+  - "566dff159033603f7da27def"
+related: 
+  - "54d3a075e4b086c0c09652f4"
+createdBy: "80506"
+createdAt: "2020-05-06T19:18:08Z"
+updatedBy: "80506"
+updatedAt: "2022-10-12T22:01:44Z"
+title: "How to search for an exact match"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5eb30d702c7d3a5ea54a9739"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-12T22:01:44Z
+  author: "Rafael Ehlers"
+---
+
+# How to search for an exact match
+
+GravityView's current search functionality doesn't use an exact match, it uses the *contains* operator, so if you search for the word "Kansas", results containing that word, like "Arkansas", will also show up:
+
+![Screenshot showing search results with 2 entries where the state is Arkansas and 1 entry with state as Kansas](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/622b96c0c1688a6d26a74654/file-eXl5qDTz1R.png)
+
+If you wish to change the search functionality to look for an exact match, then you need the function below:
+
+```
+
+add_filter( 'gravityview_search_operator', function( $operator, $filter = array() ){
+
+	$run_on_views = [100,200]; //The IDs of the Views you'd like to affect [100,200,...]
+
+	if ( ! class_exists( '\GravityView_View_Data' ) ) {
+		return $operator;
+	}
+	$views  = \GravityView_View_Data::getInstance()->views->all();
+	if(sizeof($views)){
+		foreach ( $views as $view ) {
+			if( in_array( $view->ID, $run_on_views ) ){
+				$operator = 'is';
+			}
+		}		
+	}
+	return $operator;
+	
+}, 10, 2);
+```
+
+Here's the result:
+
+![Screenshot showing only one entry with Kansas as the State](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/622b972dc1e53608cf9e78e6/file-ALbjSZlE7O.png)
+
+## Searching with empty values
+
+If you have more than two fields on your Search Bar and leave one empty, the search will return the same results as before:
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/622b9874c1688a6d26a74667/file-J75A0CuA7m.png)But if you want to require users to fill all fields for results to appear, then you'll need also to add this other code snippet below:
+
+```
+// This disallows empty field values
+add_filter( 'gravityview/search/ignore-empty-values', function() {
+	return false;
+});
+```
+
+This way, the search won't return any results until both fields are filled:
+
+![Screenshot showing a View with no results because one search field is empty](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/622b991dc1688a6d26a74673/file-GNZdqCeOUO.png)![Screenshot showing a View with one result because the fields on the search bar are filled](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/622b9938af6f8700f6dae46d/file-4VB0sAbjz2.png)This is perfect for restricting entry results to only those users that know particular details from their submission, like an SSN number in conjunction with a Zip Code or date of birth.
+
+## Defining strict matches for particular fields
+
+If you need to target just a specific field from a specific form, then the code is a little bit more complex. To achieve that, we've created a simple plugin you can [download here](https://github.com/gravityview/gv-snippets/archive/addon/13644-exact-match-field.zip). You'll need to modify the Form ID and Field IDs inside that plugin's code using the plugin editor on your WordPress Dashboard:
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5eb318cd2c7d3a5ea54a981f/file-4U4Y9cVFpk.png) Please [contact our support](https://www.gravitykit.com/support/)if you need further assistance.

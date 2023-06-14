@@ -1,0 +1,56 @@
+---
+id: "54ff2b42e4b034c37ea94a93"
+number: "244"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.6"
+publicUrl: "https://docs.gravitykit.com/article/244-how-to-modify-the-settings-for-the-post-content-edit-field"
+viewCount: "3151"
+lastPublishedAt: "2022-10-07T22:21:45Z"
+changeOrigin: "unknown"
+name: "How to modify the settings for the Post Content edit field"
+slug: "244-how-to-modify-the-settings-for-the-post-content-edit-field"
+status: "published"
+categories: 
+  - "579aa7fdc6979160ca148bb0"
+  - "5e1b6d5d04286364bc93c665"
+keywords: 
+  - "filters"
+  - "rich text editor"
+  - "tinymce"
+  - "edit post"
+  - "edit entry"
+  - "live post data"
+  - "post data"
+  - "post content"
+createdBy: "59634"
+createdAt: "2015-03-10T17:34:58Z"
+updatedBy: "80506"
+updatedAt: "2022-10-07T22:21:45Z"
+title: "How to modify the settings for the Post Content edit field"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/54ff2b42e4b034c37ea94a93"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-07T22:21:45Z
+  author: "Rafael Ehlers"
+---
+
+# How to modify the settings for the Post Content edit field
+
+![Screenshot of a Post Content field being edited, with placeholder text in the editor](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/54ff2f5ce4b086c0c096c68b/file-IJ9U2PTbqq.png)
+
+GravityView uses the `wp_editor()` function provided by WordPress to enable rich text editing when editing the Post Content field. **[See what settings are available](https://developer.wordpress.org/reference/classes/_wp_editors/parse_settings/)**
+
+If you want to modify the functionality of the editor, you can use the `gravityview/edit_entry/post_content/wp_editor_settings` filter, which accepts the same parameters as the `wp_editor()` function.
+
+### Enable the "Add Media" button
+
+By default, GravityView has the "Add Media" button disabled. To enable it, use the code below:
+
+<script src="https://gist.github.com/zackkatz/460cca23a1598789b1ef.js" type="text/javascript"></script>
+
+###  Disable the Rich Text Editor
+
+If you prefer only to allow editing the text content as HTML, you can also disable the output like so:
+
+<script src="https://gist.github.com/zackkatz/c124236a68b8ad620c00.js" type="text/javascript"></script> There are many settings that you can use to customize the output of the editor. **[See what settings are available](https://developer.wordpress.org/reference/classes/_wp_editors/parse_settings/)**

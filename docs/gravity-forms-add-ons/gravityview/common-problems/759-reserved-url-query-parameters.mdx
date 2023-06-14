@@ -1,0 +1,58 @@
+---
+id: "60481c508502d1120e90f57a"
+number: "759"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.1"
+publicUrl: "https://docs.gravitykit.com/article/759-reserved-url-query-parameters"
+viewCount: "470"
+lastPublishedAt: "2021-03-10T14:14:37Z"
+changeOrigin: "unknown"
+name: "Reserved URL query parameters"
+slug: "759-reserved-url-query-parameters"
+status: "published"
+categories: 
+  - "579aab1cc6979160ca148bba"
+createdBy: "336675"
+createdAt: "2021-03-10T01:09:36Z"
+updatedBy: "336675"
+updatedAt: "2021-03-10T14:14:37Z"
+title: "Reserved URL query parameters"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/60481c508502d1120e90f57a"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2021-03-10T14:14:37Z
+  author: "Vlad K."
+---
+
+# Reserved URL query parameters
+
+GravityView uses URL query parameters to control how entries are displayed, filtered and otherwise manipulated. For example, `gv_search=cats&mode=any` is added to the URL query string when searching for entries that contain `cats` as the field value. The plugin also tries to preserve query parameters added by other plugins when navigating between pages.
+
+However, to prevent possible conflicts with other plugins that use the same URL parameter names, GravityView clears their values and prevents them from being passed from one request to another. The list of these reserved parameters includes:
+
+- `action`
+- `duplicate`
+- `entry`
+- `entry_id`
+- `gvid`
+- `gv_search`
+- `gv_start`
+- `gv_end`
+- `gv_id`
+- `gv_by`
+- `mode`
+- `status`
+- `view_id`
+Occasionally, this may affect the behavior of your website. Should this happen, you can whitelist specific parameters by using the `gravityview/api/reserved_query_args` filter as follows:
+
+```
+function gv_whitelist_url_query_parameters( $reserved_parameters ) {
+   unset( $reserved_parameters['parameter_name'] ); // replace `parameter_name` with the one being whitelisted
+
+   return $reserved_parameters;
+}
+
+add_filter( 'gravityview/api/reserved_query_args', 'gv_whitelist_url_query_parameters' );
+	
+```

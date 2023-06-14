@@ -1,0 +1,44 @@
+---
+id: "5d38abd62c7d3a2ec4bf5f97"
+number: "610"
+collectionId: "6076f9478996210f18bd33df"
+popularity: "0.1"
+publicUrl: "https://docs.gravitykit.com/article/610-import-step-continue-processing-if-error-occurs"
+viewCount: "840"
+lastPublishedAt: "2022-12-27T21:04:11Z"
+changeOrigin: "external"
+name: "Import Step: Continue Processing if Error Occurs"
+slug: "610-import-step-continue-processing-if-error-occurs"
+status: "published"
+categories: 
+  - "6155b0dee5648623c88e04fa"
+createdBy: "59634"
+createdAt: "2019-07-24T19:04:54Z"
+updatedBy: "59634"
+updatedAt: "2022-12-27T21:04:11Z"
+title: "Import Step: Continue Processing if Error Occurs"
+hsEditUrl: "https://secure.helpscout.net/docs/6076f9478996210f18bd33df/article/5d38abd62c7d3a2ec4bf5f97"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-12-27T21:04:11Z
+  author: "Zack Katz"
+---
+
+# Import Step: Continue Processing if Error Occurs
+
+## With "Continue Processing" disabled:
+
+The import will show how many rows were successfully imported before an error was reached. The import will stop at the first row that contains an error and will display the error that occured.
+
+## With "Continue Processing" enabled:
+
+**The importer will process the entire CSV file.** After the processing is complete, you will be shown a summary of the import: the total number of rows ("records") processed, the number imported, the number skipped (if Conditional Import is enabled), and the number rejected due to an error.
+
+![The Import Report screen, showing "We have processed X records: 384 imported and 1 rejected due to an error (view log)."](https://i.gravitykit.com/mKWAa4+)
+
+## If there are errors during the import
+
+If errors occur during the import, click "view log" to see all the errors. Click "Download Failed Records" to download a CSV that contains all the rows that contain errors. This allows you to fix only those rows without sorting through the rest of the CSV that was processed successfully.
+
+![Error report modal, showing a list of import errors.](https://i.gravitykit.com/utETN4+)

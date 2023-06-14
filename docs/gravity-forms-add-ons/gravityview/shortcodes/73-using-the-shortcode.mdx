@@ -1,0 +1,209 @@
+---
+id: "54c67bbae4b0512429885519"
+number: "73"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "4.1"
+publicUrl: "https://docs.gravitykit.com/article/73-using-the-shortcode"
+viewCount: "21342"
+lastPublishedAt: "2022-10-12T22:03:45Z"
+changeOrigin: "unknown"
+name: "Using the [gravityview] Shortcode"
+slug: "73-using-the-shortcode"
+status: "published"
+categories: 
+  - "566dfe4fc6979143615564d9"
+createdBy: "59634"
+updatedBy: "80506"
+updatedAt: "2022-10-12T22:03:45Z"
+title: "Using the [gravityview] Shortcode"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/54c67bbae4b0512429885519"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-12T22:03:45Z
+  author: "Rafael Ehlers"
+---
+
+# Using the [gravityview] Shortcode
+
+The `[gravityview]` shortcode allows you to embed Views on your website. But that's not all. There is also a range of parameters you can use to customize the output.
+
+You can use the `[gravityview]` shortcode on pages, posts, sidebar widgets, or even inside other Views. The `[gravityview]` shortcode is powerful and you can use it to achieve a number of different outcomes, both simple and complex.
+
+- [Tutorial Video](#tutorial-video)
+- [Common Use-Cases](#common-use-cases)
+- [Advanced Use-Cases](#advanced-use-cases)
+- [Displaying Details About a View](#displaying-details-about-a-view)
+- [All Shortcode Parameters](#all-shortcode-parameters)
+- [Shortcode Limitations](#shortcode-limitations)
+
+## Tutorial Video
+
+Here is a quick tutorial video guiding you through some of the most common uses-cases for the `[gravityview]` shortcode:
+
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/bNCnuj0btDE" title="YouTube video player" width="560"></iframe>
+
+## Common Use-Cases
+
+The most common use cases for the `[gravityview]` shortcode usually centers around displaying Views, filtering entries based on certain conditions, and modifying the entry order.
+
+Here are some of the most common use cases:
+
+#### Displaying a View:
+
+To display a View, all you need is the View ID:
+
+```
+[gravityview id="24"]
+```
+
+#### Displaying entries that contain a specific value: 
+
+```
+[gravityview id="24" search_value="Silver Member" search_field="4"]
+```
+
+This will show all entries that include the word “Silver Member”. The `search_value` parameter allows you to specify a search value and the `search_field` parameter restricts the search to a specific form field.
+
+Watch the beginning of the tutorial video above for guidance on finding the ID of a specific form field in Gravity Forms.
+
+#### Changing the Sort Direction of a View:
+
+```
+[gravityview id="24" sort_direction="ASC" sort_field="4"]
+```
+
+You can change the sort direction by specifying either “ASC” or “DESC”. If you want to sort your View by a specific field, you can define a `sort_field` value, in the form of a field ID.
+
+#### Limiting Entries by Date Created:
+
+```
+[gravityview id="24" start_date="2021-10-01" end_date="2021-10-31"]
+```
+
+The date should be written using the `yyyy-mm-dd` format. Alternatively, you can use [relative dates](https://docs.gravitykit.com/article/79-using-relative-start-dates-and-end-dates) like this:
+
+```
+[gravityview id="24" start_date="-1month" end_date="today"]
+```
+
+## Advanced Use-Cases
+
+The `[gravityview]` shortcode can also be used for more advanced use cases. Here are some examples:
+
+#### Filtering a View Using Advanced Search:
+
+The `search_operator` parameter allows you to perform more advanced searches using different filters. For example, here’s how you would display all entries that do not contain the word “Baseball”.
+
+```
+[gravityview id="24" search_value="baseball" search_operator="isnot"]
+```
+
+The `search_operator` parameter accepts the following values: `is`, `isnot`, `like`, `in`, `contains`, `starts_with`, `ends_with`, `like`.
+
+So, for example, if you wanted to display entries where the “email address” field (with an ID of “4”) ends with “@gravityview.co”, you could use the following shortcode:
+
+```
+[gravityview id="24" search_value="@gravityview.co" search_field="4" search_operator="ends_with"]
+```
+
+#### Displaying the total number of approved entries:
+
+[GravityView’s approval system](https://docs.gravitykit.com/article/88-approving-or-rejecting-entries-in-gravityview) allows you to manually approve entries before they show up inside a View. To display the number of approved entries, you can use the `detail` parameter (more on this below) along with `search_field="is_approved"`.
+
+```
+[gravityview id="100" detail="total_entries" search_field="is_approved" search_value="1"]
+```
+
+Displaying the number of disapproved or unapproved entries is also possible by changing the search value (i.e. `search_value="2"` or `search_value="3"`).
+
+#### Displaying Entries Created by a Specific User:
+
+```
+[gravityview id="42602" search_field="created_by" search_operator="is" search_value="8"]
+```
+
+In this example, we’re searching on the "created\_by" field and setting the `search_value` equal to the user ID (in this case, “8”).
+
+#### Displaying Entries Created by the Currently Logged-In User:
+
+```
+[gravityview id="42602" search_field="created_by" search_operator="is" search_value="{user:ID}"]
+```
+
+The `{user:ID}` Merge Tag will automatically pull the ID of the currently logged-in user. [More about the {user} Merge Tag.](https://docs.gravitykit.com/article/281-the-createdby-merge-tag)
+
+## Displaying Details About a View
+
+The detail parameter can be used inside a [Custom Content field](https://docs.gravitykit.com/article/111-using-the-custom-content-field) to display information about the currently-displayed View.
+
+#### Displaying the total number of entries in a View:
+
+```
+[gravityview id="10" detail="total_entries"]
+```
+
+This will display the total number of entries in the View (i.e. all entries, *not just the entries displayed*).
+
+#### Displaying the number of entries visible on a single page:
+
+If you only want to display the number of entries visible on the page, you can use the "page\_size" value:
+
+```
+[gravityview detail="page_size"]
+```
+
+#### Displaying the number of the first or last entry:
+
+You can also display the number of the first or last entry displayed on a page. If your View is embedded on a page or post, you’ll need to specify the View ID as a shortcode parameter:
+
+```
+[gravityview id="8" detail="first_entry"]
+```
+
+Let’s say you have a View displaying entries 26-50 of a total of 100 entries. In this case, the output would be “26”.
+
+You could also display the number of the last entry:
+
+```
+[gravityview id="8" detail="last_entry"]
+```
+
+In this case, the output would be “50”.
+
+## All Shortcode Parameters
+
+Here is an exhaustive list of all the available `[gravityview]` shortcode parameters:
+
+#### Required:
+
+- `id` - The ID of the View you want to display
+
+#### Searching/filtering
+
+- `search_value` - Only display entries that contain the specified value
+- `search_field` - Restrict the `search_value` to a specific form field. The value must be the field ID, unless you’re searching on a meta field (e.g. “created\_by”).
+- `search_operator` - Change the type of search to be performed. Default is "contains". Accepted values include: `is`, `isnot`, `<>`, `not in`, `in`, `>`, `<`, `contains`, `starts_with`, `ends_with`, `like`, `>=`, `<=`.
+- `start_date` - Filter the results by date. This sets a limit on the earliest results shown. Dates should be written in `YYYY-MM-DD` format. You can also use [relative dates](https://docs.gravitykit.com/article/79-using-relative-start-dates-and-end-dates).
+- `end_date` - Filter the results by date. This sets a limit on the latest results shown. Dates should be written in `YYYY-MM-DD`format. You can also use relative dates.
+
+#### Sorting
+
+- `sort_direction` - Defines how entries should be sorted. Accepted values are ‘ASC’ (for ascending) or ‘DESC’ (for descending).
+- `sort_field` - The form field that should be used to sort. The value must be a field ID.
+
+#### Other
+
+- `post_id` - When using the shortcode in a widget or template, you may want to specify a page where a View is embedded as the base URL for entry links. Default: NULL.
+- `detail` - Display specific information about a View (explained above).
+- `class` - Add an HTML class to the view wrapper.
+- `single_title` - Define a custom Single Entry page title (default: post/page title).
+- `back_link_label` - Define a custom title for the Single Entry “Go back” link (default: “← Go back”).
+- `page_size` - Defines the number of entries to display at a time. If no value is set, this will default to the value set in your [View Settings](https://docs.gravitykit.com/article/382-the-view-settings-meta-box).
+- `offset` - Defines the starting point of the View (i.e. setting the value to “12” means the View will display entries beginning with entry number 12).
+
+## Shortcode Limitations
+
+While the `[gravityview]` shortcode is suitable for a range of different use cases, it does have some limitations that you should be aware of.
+
+For example, it’s not possible to search for multiple values or specify multiple search fields. It’s also not possible to use AND/OR logic in searches. For this functionality, you’ll need our [Advanced Filtering extension](https://www.gravitykit.com/extensions/advanced-filter/).

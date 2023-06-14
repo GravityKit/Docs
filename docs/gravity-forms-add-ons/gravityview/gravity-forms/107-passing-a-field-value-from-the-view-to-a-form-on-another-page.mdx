@@ -1,0 +1,41 @@
+---
+id: "54c67bcce4b07997ea3f3f8c"
+number: "107"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "1.8"
+publicUrl: "https://docs.gravitykit.com/article/107-passing-a-field-value-from-the-view-to-a-form-on-another-page"
+viewCount: "9666"
+lastPublishedAt: "2022-10-12T21:19:43Z"
+changeOrigin: "unknown"
+name: "Passing a field value from the View to a form on another page"
+slug: "107-passing-a-field-value-from-the-view-to-a-form-on-another-page"
+status: "published"
+categories: 
+  - "579aa748903360293603a8e5"
+createdBy: "59634"
+createdAt: "2015-01-26T17:39:24Z"
+updatedBy: "80506"
+updatedAt: "2022-10-12T21:19:43Z"
+title: "Passing a field value from the View to a form on another page"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/54c67bcce4b07997ea3f3f8c"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-12T21:19:43Z
+  author: "Rafael Ehlers"
+---
+
+# Passing a field value from the View to a form on another page
+
+If you'd like to create a custom link in your View to open a new page with a form, where some fields would be dynamically populated by the entry values, you could easily do it with GravityView and the [Custom Content](https://docs.gravitykit.com/article/111-using-the-custom-content-field) field type.
+
+Let's imagine you have a Job Board, and you would like to add a link in the single-entry view (the Job description) to allow the candidate to apply to the job using a form (Gravity Forms). You would also like the form to be pre-populated with the job title or the reference (from the View).
+
+To accomplish this setup, follow these steps:
+
+1. Add a Custom Content field to the View, and add a merge tag in the GravityView field configuration (here, `{Job Title:4}`)  
+    ![Screenshot of configuration of the Custom Content field in GravityView](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/attachments/54c67be3e4b07997ea3f3fd4/screen_shot_2014-12-11_at_11.21.34_am.png)
+2. Let's say the Job Title for this entry is "Manager."
+3. Edit the form to Apply to the job, and set up the Gravity Forms field to "Allow field to be populated dynamically."![Screenshot of Gravity Forms 'Main Business Phone' field](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/attachments/54c67be5e4b0512429885581/screen_shot_2014-12-11_at_11.18.43_am.png)
+4. The value will be filled in on the Gravity Forms form. The link should generate like this:  
+    `<a href="https://example.com/page/?example=Manager" target="_blank" rel="noreferrer">example.com/page/?example=Manager</a>`

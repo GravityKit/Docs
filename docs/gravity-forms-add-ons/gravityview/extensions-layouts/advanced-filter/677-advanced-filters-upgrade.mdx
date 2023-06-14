@@ -1,0 +1,59 @@
+---
+id: "5e4b17672c7d3a7e9ae7e14a"
+number: "677"
+collectionId: "54d1a05ce4b086c0c0964ccd"
+popularity: "0.1"
+publicUrl: "https://docs.gravitykit.com/article/677-advanced-filters-upgrade"
+viewCount: "611"
+lastPublishedAt: "2022-10-14T19:21:34Z"
+changeOrigin: "unknown"
+name: "(Advanced) What changed from 1.x to 2.0?"
+slug: "677-advanced-filters-upgrade"
+status: "published"
+categories: 
+  - "54d1a064e4b086c0c0964ccf"
+createdBy: "59634"
+createdAt: "2020-02-17T22:44:55Z"
+updatedBy: "80506"
+updatedAt: "2022-10-14T19:21:34Z"
+title: "(Advanced) What changed from 1.x to 2.0?"
+hsEditUrl: "https://secure.helpscout.net/docs/54d1a05ce4b086c0c0964ccd/article/5e4b17672c7d3a7e9ae7e14a"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-14T19:21:34Z
+  author: "Rafael Ehlers"
+---
+
+# (Advanced) What changed from 1.x to 2.0?
+
+
+:::info
+
+Note: This article is for developers.
+
+:::
+
+
+
+### Hooks into a different GravityView filter
+
+We had been filtering entries using the (deprecated) `gravityview_search_criteria` filter. Now we are using the `gravityview/view/query` filter, which allows us to manipulate a `GF_Query` object instead of a simple array.
+
+### Rewrote the UI in Svelte
+
+In Version 1, we were using the Gravity Forms UI that is used on Gravity Forms' Entries pages. To allow for more advanced functionality, we developed our own "query builder".
+
+The new UI was written using [Svelte](https://svelte.dev/) and requires compilation. Make sure that you have [Node.js](https://nodejs.org/en/) and [Yarn](https://yarnpkg.com/) installed, and then:
+
+1. Navigate to `[path to plugin]/assets/js/src`
+2. Install dependencies by running `yarn install`
+3. Compile assets by running `npm run build`
+
+### Migrated to the new schema
+
+Advanced Filters stores its settings in a post meta named \_gravityview\_filters.
+
+Building more complex logic required changing the schema used to store filters. The structure of the data has changed in Version 2.
+
+Views using the old schema will have their settings converted only when that View is updated. Until a View is updated, settings will be dynamically converted from the old schema to the new one. See the `GravityView_Advanced_Filtering::convert_filters_to_nested()` method to see how the migration works.

@@ -1,0 +1,98 @@
+---
+id: "5bad2a0c042863158cc6d4ac"
+number: "491"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.9"
+publicUrl: "https://docs.gravitykit.com/article/491-csv-export"
+viewCount: "4726"
+lastPublishedAt: "2022-12-27T21:05:38Z"
+changeOrigin: "external"
+name: "View Settings: Allow Export: Exporting entries as CSV or TSV from GravityView"
+slug: "491-csv-export"
+status: "published"
+categories: 
+  - "579aa642c6979160ca148ba9"
+  - "5e9a2b7904286364bc9893f2"
+createdBy: "59634"
+createdAt: "2018-09-27T19:05:48Z"
+updatedBy: "59634"
+updatedAt: "2022-12-27T21:05:38Z"
+title: "View Settings: Allow Export: Exporting entries as CSV or TSV from GravityView"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5bad2a0c042863158cc6d4ac"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-12-27T21:05:38Z
+  author: "Zack Katz"
+---
+
+# View Settings: Allow Export: Exporting entries as CSV or TSV from GravityView
+
+
+
+### In View Settings, click on the tab named "Permissions" and check the box named "Allow Export"
+
+![Screenshot of the Permissions tab with an arrow pointing to the Allow Export option](https://i.gravitykit.com/znH09h+)
+
+### To export all entries in a View (not just one page), check the "Show all in CSV" checkbox
+
+![Arrow pointing to the setting](https://i.gravitykit.com/bakZxI+)
+
+### Update the View
+
+![The Update button](https://www.gravitykit.com/wp-content/uploads/2018/09/update-the-view.png)
+
+### Go to the View
+
+![A link that says View on Website](https://www.gravitykit.com/wp-content/uploads/2018/09/go-to-the-view.png)
+
+### To export the View as CSV, add "/csv/" to the end of the URL
+
+The URL before: http://the-cupola.dev/view/guest-list/
+
+The URL after: http://the-cupola.dev/view/guest-list/ **csv/**
+
+### To export the View as TSV, add "/tsv/" to the end of the URL
+
+The URL before: http://the-cupola.dev/view/guest-list/
+
+The URL after: http://the-cupola.dev/view/guest-list/ **tsv/**
+
+### When accessed, a file will be downloaded with the entries
+
+![Web browser download icon](https://www.gravitykit.com/wp-content/uploads/2018/09/when-accessed-a-file-will-be-downloaded-with-the-entries.png)
+
+The file's name will be the name of the View by default. Developers can modify the file name by [using this code](https://gist.github.com/zackkatz/2eceeac0a45ab992c798286304466ef8).
+
+### Click "Add Widget" in the Multiple Entries Layout tab then click the widget named "Custom Content"
+
+![A list of fields in GravityView with an arrow pointing to the Custom Content field](https://i.gravitykit.com/CnBc51+)
+
+### Click the gear icon to edit the Custom Content widget settings
+
+![An arrow pointing to the gear icon next to the field label](https://i.gravitykit.com/TgSqSm+) ![The Custom Content text editor containing an HTML anchor link](https://i.gravitykit.com/wcOnSS+)In this example, we’re using the following HTML to add the /csv/ to the View URL.
+
+```
+<a href="http://the-cupola.dev/view/guest-list/csv/">Download as CSV</a>
+				
+```
+
+We checked the box to "Automatically add paragraphs to content" to give the link more space.
+
+### Save the View
+
+![The Update button](https://www.gravitykit.com/wp-content/uploads/2018/09/save-the-view-1.png)
+
+### Now the link appears in the View. Clicking it will download the entries as CSV.
+
+![A link that says Down as CSV](https://www.gravitykit.com/wp-content/uploads/2018/09/now-the-link-appears-in-the-view-clicking-it-will-download-the-entries-as-csv.png)
+
+### If the page shows Error 404 when trying to download a CSV file
+
+- Go to your site's Dashboard
+- Click on the Settings menu
+- Click on the "Permalinks" link in the Settings menu
+- Do not make any changes, just click the "Save Changes" button
+
+You will only need to do this once, not when you configure a View.
+

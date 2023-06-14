@@ -1,0 +1,263 @@
+---
+id: "552355bfe4b0221aadf2572b"
+number: "252"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "3.9"
+publicUrl: "https://docs.gravitykit.com/article/252-gvlogic-shortcode"
+viewCount: "20219"
+lastPublishedAt: "2022-10-12T22:09:32Z"
+changeOrigin: "unknown"
+name: "Using the [gvlogic] shortcode"
+slug: "252-gvlogic-shortcode"
+status: "published"
+categories: 
+  - "566dfe4fc6979143615564d9"
+keywords: 
+  - "shortcode"
+  - "conditional display"
+  - "conditional logic"
+  - "logic"
+  - "[gvlogic]"
+  - "gvlogic"
+  - "gv_logic"
+related: 
+  - "54eb76f6e4b034c37ea9112c"
+  - "54c67bcde4b051242988553e"
+  - "5a9d94e804286374f7089182"
+createdBy: "59634"
+updatedBy: "80506"
+updatedAt: "2022-10-12T22:09:32Z"
+title: "Using the [gvlogic] shortcode"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/552355bfe4b0221aadf2572b"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-12T22:09:32Z
+  author: "Rafael Ehlers"
+---
+
+# Using the [gvlogic] shortcode
+
+### Dynamically show or hide content
+
+If you only want to show content if the value matches a specific condition, you can do that with `[gvlogic]`.
+
+---
+
+If you are using GravityView for an [Issue Tracker](https://site.try.gravitykit.com/task-management/), you may want to display content to a user based on ticket status.
+
+```html
+[gvlogic if="{Issue Status:13}" is="Closed"]
+ You are viewing a closed ticket.
+
+ {Assigned Staff:49} was working on your ticket. If you would like to get in touch with them, you can call them at {Assigned Staff Phone:54}.
+[/gvlogic]
+```
+
+You can also display alternate content if the value does not match:
+
+```html
+[gvlogic if="{Issue Status:13}" is="Closed"]
+ Your issue is closed.
+[else]
+ I see your issue is {Issue Status:13}. Please email us with any questions.
+[/gvlogic]
+```
+
+For the example above, if the "Issue Status" field value is "Closed", users will see "Your issue is closed."
+
+If the value is "Pending", users will see: "I see your issue is Pending. Please email us with any questions."
+
+---
+
+## Shortcode Parameters
+
+### The `logged_in` Parameter
+
+You can include the `logged_in` parameter to combine the logic with whether or nor the current user is logged-in. This requires GravityView 2.3 or newer.
+
+Valid values are:
+
+- "true" or "1" (only show if the user is logged-in)
+- "false" or "0" (only show if the user is logged-in)
+
+To display different content depending on whether a user is logged-in:
+
+```html
+[gvlogic logged_in="true"]
+   Hello, logged-in user!
+[else]
+   Be our guest, be our guest! Put our microgravity to the test!
+[/gvlogic]
+```
+
+You can use the `logged_in` parameters with other comparisons, as described below.
+
+### Required Parameter: `if`
+
+If you are not using the `logged_in` parameter, the `[gvlogic]` shortcode has one required parameter: `if` - it must be set so that the shortcode has something to compare against.
+
+The `if` parameter accepts Gravity Forms Merge Tags, available in the Custom Content field.
+
+## Date Comparison Examples
+
+#### Parameter: `is`
+
+```html
+[gvlogic if="{Date:3}" is="2019-01-14"]
+ The date field value is January 14, 2019.
+[else]
+ You may be relieved to know that the date field value is not January 14, 2019.
+[/gvlogic]
+```
+
+#### Parameter: `greater_than`
+
+When you want to compare multiple dates, you can do that with `greater_than` and `less_than`. Here's an example:
+
+```html
+[gvlogic if="{Date:3}" greater_than="{Second Date:5}"]
+ The first Date field is in the future, compared to the Second Date field.
+[else]
+ The first Date field is in the <em>past</em>, compared to the Second Date field.
+[/gvlogic]
+```
+
+
+:::info
+
+If you use multiple date formats, you may want to add `:mdy` [Date Field Merge Tag Modifier](https://docs.gravityforms.com/date/#h-modifiers) to the end of each merge tag to force a standardized format.
+
+:::
+
+  Here's how the previous example looks when forcing a common format:
+
+```html
+[gvlogic if="{Date:3:mdy}" greater_than="{Second Date:5:mdy}"]
+ The first Date field is in the future, compared to the Second Date field.
+[else]
+ The first Date field is in the <em>past</em>, compared to the Second Date field.
+[/gvlogic]
+```
+
+---
+
+<a id="context-examples"></a>
+
+## View Context Examples [](#)
+
+Display content based on the current View mode ("context"), which corresponds to the View layout tabs when editing an entry: Multiple Entries, Single Entry, and Edit Entry.
+
+### Available `context` values:
+
+- `multiple` - Multiple entries are visible
+- `single` - Viewing a single entry
+- `edit` - Editing a single entry
+- `singular` - Is either `single` or `edit` context
+
+#### Parameter: `is`
+
+```html
+[gvlogic if="context" is="multiple"]
+ Click the name of the person you want to learn more about!
+[/gvlogic]
+```
+
+#### Parameter: `is` (using the `else` parameter)
+
+```html
+[gvlogic if="context" is="single" else="You are viewing multiple entries."]
+ You are viewing a single entry.
+[/gvlogic]
+```
+
+#### Parameter: `isnot`
+
+```html
+[gvlogic if="context" isnot="singular"]
+ You are viewing multiple entries.
+[else]
+ You are viewing or editing a single entry.
+[/gvlogic]
+```
+
+---
+
+<a id="advanced-and-or"></a>
+
+## Advanced And/Or using `||` and `&&`
+
+
+:::info
+
+ℹ️ Whitespace is not stripped. There should be no spaces between the values being compared and the `&&` or `||` characters.
+
+:::
+
+ ### Using `||` for OR statements
+
+Sometimes you may want to compare a value against multiple other values, like if an email address ends with different domains. For example, Apple iCloud accounts can end with `@icloud.com` or `@me.com` or `@mac.com`. They all point to the same email address. The same issue exists with Google and Yahoo…they have multiple domain aliases.
+
+How can we accomplish that with `[gvlogic]`? By using the `||` characters to represent "OR":
+
+```html
+[gvlogic if="{Email:16}" ends_with="@icloud.com||@me.com||@mac.com"]
+ Your email address is from Apple.
+[else if="{Email:16}" ends_with="@gmail.com||@googlemail.com"]
+   Your email address is from Google.
+[else if="{Email:16}" ends_with="@ymail.com||@yahoo.com"]
+   Your email address is from Yahoo.
+[else]
+   Your email is not from Apple, Google, or Yahoo.
+[/gvlogic]
+```
+
+You can also use Merge Tags in the comparison. This code will check whether Field #4 is greater than Field #5 **OR** Field #6:
+
+```html
+[gvlogic if="{Number:4}" greater_than="{Another Number:5}||{Another Number:6}"]
+   {Number:4} is bigger than Field #5 OR Field #6.
+[else]
+   {Number:4} is less than or (equal to) both Field #5 and Field #6.
+[/gvlogic]
+```
+
+These examples are **true**:
+
+- `[gvlogic if="4" equals="3||4||5"]` is true because 4 equals one of the values "3" or "4" or "5".
+- `[gvlogic if="carbon" contains="car||bon"]` is true because "carbon" contains one of the values "car" or "bon".
+- `[gvlogic if="carbon" starts_with="b||car"]` is true because "carbon" starts with one of the values "b" or "car".
+- `[gvlogic if="carbon" ends_with="a||bon"]` is true because "carbon" ends with one of the values "a" or "bon".
+
+These examples are **false**:
+
+- `[gvlogic if="4" equals="asd||feigegieng"]` is false because "4" does not equal "asd" or "feigegieng"
+- `[gvlogic if="carbon" contains="donkey||egg custard"]` is false because "carbon" does not contain "donkey" or "egg custard"
+- `[gvlogic if="carbon" ends_with="lion||flower"]` is false because "carbon" does not end with "lion" or "flower"
+- `[gvlogic if="4" isnot="4||5||6"]` is false because "4" is one of the values "4", "5", or "6" and the comparison used is "isnot"
+
+### Using `&&` for AND statements
+
+When you want to test whether a value matches multiple statements at the same time, you can do that using the `&&` characters to ensure that all the values being checked match the test.
+
+Pretend that you have a job application form and want to display different content depending on whether the applicant used certain words in their submission. You asked them to mention Google Docs, Photoshop, and Excel in the field labeled "Skills". If they didn’t, they didn't meet the application criteria.
+
+```html
+[gvlogic if="{Skills:2}" contains="Google Docs&&Photoshop&&Excel"]
+   ✅ The applicant correctly referenced the skills necessary in their writing sample.
+[else]
+   ⛔️ The applicant failed to reference the correct skills.
+[/gvlogic]
+```
+
+These examples are **true**:
+
+- `[gvlogic if="carbon" contains="car&&bon"]` is true because "carbon" contains "car" and "bon"
+- `[gvlogic if="4" greater_than="1&&2"]` is true because "4" is greater than "1" and is greater than "2"
+- `[gvlogic if="4" greater_than_or_equals="1&&2&&3&&4"]` is true because "4" is greater than or equal to "1", "2", "3" and "4"
+
+These examples are **false**:
+
+- `[gvlogic if="4" isnot="4&&5&&6"]` is false because "4" is equal to "4" and the comparison used is "isnot"
+- `[gvlogic if="4" greater_than_or_is="4&&5"]` is false because "4" is not greater than or equal to "5"
+- `[gvlogic if="carbon" contains="car&&island"]` is false because the word "carbon" does not contain both "car" and "island"

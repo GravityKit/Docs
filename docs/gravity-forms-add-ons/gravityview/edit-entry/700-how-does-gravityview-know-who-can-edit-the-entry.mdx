@@ -1,0 +1,45 @@
+---
+id: "5e7a5a322c7d3a7e9ae9b27c"
+number: "700"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.1"
+publicUrl: "https://docs.gravitykit.com/article/700-how-does-gravityview-know-who-can-edit-the-entry"
+viewCount: "628"
+lastPublishedAt: "2022-10-07T20:01:43Z"
+changeOrigin: "unknown"
+name: "How does GravityView know who can edit the entry?"
+slug: "700-how-does-gravityview-know-who-can-edit-the-entry"
+status: "published"
+categories: 
+  - "5c79bfda04286350d0888d07"
+  - "5e1b6d5d04286364bc93c665"
+related: 
+  - "55b667b5e4b0e667e2a4452f"
+  - "54c67bcde4b051242988553d"
+  - "54c67bbbe4b07997ea3f3f6b"
+  - "554351cbe4b01a224b421c6b"
+  - "5ec7150b2c7d3a5ea54b8df3"
+createdBy: "80506"
+createdAt: "2020-03-24T19:06:26Z"
+updatedBy: "80506"
+updatedAt: "2022-10-07T20:01:43Z"
+title: "How does GravityView know who can edit the entry?"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5e7a5a322c7d3a7e9ae9b27c"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-07T20:01:43Z
+  author: "Rafael Ehlers"
+---
+
+# How does GravityView know who can edit the entry?
+
+GravityView performs two checks before allowing a user to edit an entry on the front end:
+
+###  1. By the entry creator 
+
+By the entry creator: [if the form was submitted while a user was logged in](https://docs.gravitykit.com/article/717-understanding-how-an-entry-gets-associated-with-a-user) on the website, then the user ID of this currently logged-in user is stored as entry meta. GravityView will compare this ID stored as an entry meta against the ID of the currently logged-in user. If it matches, then the user can edit the entry.
+
+### 2. By user capability
+
+By a specific user capability: we have a knowledge base article specifically made for this: [Allowing a user to edit all entries](https://docs.gravitykit.com/article/291-how-to-allow-a-user-to-edit-all-entries).

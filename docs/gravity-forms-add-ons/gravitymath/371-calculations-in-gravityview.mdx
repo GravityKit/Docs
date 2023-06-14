@@ -1,0 +1,139 @@
+---
+id: "57acf6b390336059d4eded9e"
+number: "371"
+collectionId: "6076f9478996210f18bd33df"
+popularity: "0.7"
+publicUrl: "https://docs.gravitykit.com/article/371-calculations-in-gravityview"
+viewCount: "5073"
+lastPublishedAt: "2022-12-27T20:42:14Z"
+changeOrigin: "external"
+name: "Calculations in GravityView"
+slug: "371-calculations-in-gravityview"
+status: "published"
+categories: 
+  - "6155b0bf2b380503dfdf63f0"
+keywords: 
+  - "calculations"
+  - "math"
+  - "gravityview calculations"
+  - "gravityview add"
+  - "sum"
+  - "total"
+  - "average"
+createdBy: "59634"
+createdAt: "2016-08-11T22:05:39Z"
+updatedBy: "59634"
+updatedAt: "2022-12-27T20:42:14Z"
+title: "Calculations in GravityView"
+hsEditUrl: "https://secure.helpscout.net/docs/6076f9478996210f18bd33df/article/57acf6b390336059d4eded9e"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-12-27T20:42:14Z
+  author: "Zack Katz"
+---
+
+# Calculations in GravityView
+
+
+
+### Our form collects information on stars
+
+![A form in Gravity Forms called Stars](https://www.gravitykit.com/wp-content/uploads/2018/01/our-form-collect-information-on-stars.png?1470955493)
+
+### For a star, there's an entry in Gravity Forms
+
+![The Entries page in Gravity Forms showing entries containing information for different stars](https://www.gravitykit.com/wp-content/uploads/2018/01/for-a-star-there-s-an-entry-in-gravity-forms.png?1470955494)
+
+### Create a View to display the Stars
+
+![Adding a new View in GravityView](https://www.gravitykit.com/wp-content/uploads/2018/01/create-a-view-to-display-the-stars.png?1470955494)
+
+### Add a Custom Content field to the layout
+
+Click the "Add Field" button to access the field picker.
+
+![The list of fields in GravityView showing the Custom Content field](https://www.gravitykit.com/wp-content/uploads/2018/01/add-a-custom-content-field-to-the-layout.png?1470955495)
+
+### Save a draft of the View
+
+Once adding the Custom Content field, the View needs to be saved. That way, Merge Tags are available in the next step.
+
+![The Save Draft button on the View Editor page](https://www.gravitykit.com/wp-content/uploads/2018/01/save-a-draft-of-the-view.png?1470955495)
+
+### The shortcode is now ready
+
+Don't forget to add `scope="entry"` inside the `[gravitymath]` shortcode.
+
+![The Custom Content text editor with the [gravitymath] shortcode inside](https://www.gravitykit.com/wp-content/uploads/2018/01/the-shortcode-is-now-ready.png?1470955496)
+
+### Insert the "Distance in Light Years" Merge Tag
+
+To add a Merge Tag, click the icon next to the text area, then click on the field you would like to add.
+
+In this case, the "Distance in Light Years" Merge Tag text will be replaced with the value entered into the form for each star.
+
+![The merge tag list on the right side of the Custom Content text editor](https://www.gravitykit.com/wp-content/uploads/2018/01/insert-the-distance-in-light-years-merge-tag.png?1470955498)
+
+### Convert the "Light Years" value into days
+
+We want to know how many days it will take to reach a star at light speed, not years. So we multiply the "Distance in Light Years" value by 365.25 days.
+
+![The Custom Content text editor](https://www.gravitykit.com/wp-content/uploads/2018/01/convert-the-light-years-value-into-days.png?1470955498)
+
+### The shortcode is now ready
+
+Don't forget to add `scope="entry"` inside the `[gravitymath]` shortcode. If you don't add this, it won't work properly.
+
+![The Custom Content text editor showing the completed [gravitymath] shortcode](https://www.gravitykit.com/wp-content/uploads/2018/01/the-shortcode-is-now-ready-1.png?1470955499)
+
+### Publish the View
+
+![The Publish button on the View Editor page](https://www.gravitykit.com/wp-content/uploads/2018/01/publish-the-view.png?1470955500)
+
+### and then click to see the live View
+
+![A link that says 'View on website' at the top of the View editor](https://www.gravitykit.com/wp-content/uploads/2018/01/and-then-click-to-see-the-live-view.png?1470955500)
+
+### Nice, our calculations are complete!
+
+We have converted the Light Years stored in Gravity Forms to days, shown on GravityView. But that's not all you can do.
+
+![A GravityView Table layout showing data about different stars](https://www.gravitykit.com/wp-content/uploads/2018/01/nice-our-calculations-are-complete-.png?1470955501)
+
+### Bonus "round"
+
+Seeing the exact number of days makes the distance too daunting for Floaty. Let's round the number of days to the nearest thousand.
+
+#### Round the days to the nearest thousand
+
+Here we wrap the number in the `round()` function. This takes whatever is inside it and rounds it. We set the "precision" of the rounding to-3, which rounds it to the nearest thousand (see the green arrow). Click here to learn more about rounding precision.
+
+![The Custom Content text editor](https://www.gravitykit.com/wp-content/uploads/2018/01/round-the-days-to-the-nearest-thousand.png?1470955502)
+
+#### Voilá: "Number of Days" is now rounded
+
+![A GravityView Table layout showing data about different stars with the Number of Days column rounded to the nearest thousand](https://www.gravitykit.com/wp-content/uploads/2018/01/voil-aacute-number-of-days-is-now-rounded.png?1470955503)
+
+### We want to display a summary of the data below the View, so we add a widget
+
+![The Add Widget button in GravityView](https://www.gravitykit.com/wp-content/uploads/2018/01/we-want-to-display-a-summary-of-the-data-below-the-view-so-we-add-a-widget.png?1470955503)
+
+### And then configure the widget
+
+Let's display the average number of light years to each star, and the total light years shown. For that, we use a different scope, called "visible". **This calculates values based on only the entries currently visible in GravityView**. Note `scope="visible"` in the screenshot below:
+
+![The Custom Content text editor](https://www.gravitykit.com/wp-content/uploads/2018/01/and-then-configure-the-widget.png?1470955504)
+
+### Showing an average and sum in a Widget
+
+Notice the `:avg` and `:sum` modifiers used in the image below (highlighted). When using `scope="form"` or `scope="visible",` this is the correct way to get averages and sums. [Read more about the modifiers here](#).
+
+![The Custom Content text editor](https://www.gravitykit.com/wp-content/uploads/2018/01/showing-an-average-and-sum-in-a-widget.png?1470955505)
+
+### The summary calculations are now visible
+
+Wow, Floaty the Astronaut has a long trip ahead of him! He better keep working on that [FTL spaceship](https://en.wikipedia.org/wiki/Faster-than-light).
+
+![Summary calculations below the table showing the average light years and total light years](https://www.gravitykit.com/wp-content/uploads/2018/01/the-summary-calculations-are-now-visible.png?1470955506)
+

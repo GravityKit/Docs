@@ -1,0 +1,62 @@
+---
+id: "5e4449d72c7d3a7e9ae7a54c"
+number: "676"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.3"
+publicUrl: "https://docs.gravitykit.com/article/676-entry-locking"
+viewCount: "1755"
+lastPublishedAt: "2022-12-27T21:05:48Z"
+changeOrigin: "external"
+name: "View Settings: Enable Edit Locking in GravityView"
+slug: "676-entry-locking"
+status: "published"
+categories: 
+  - "5e1b6d5d04286364bc93c665"
+  - "5e9a2b7904286364bc9893f2"
+createdBy: "59634"
+createdAt: "2020-02-12T18:54:15Z"
+updatedBy: "59634"
+updatedAt: "2022-12-27T21:05:48Z"
+title: "View Settings: Enable Edit Locking in GravityView"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5e4449d72c7d3a7e9ae7a54c"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-12-27T21:05:48Z
+  author: "Zack Katz"
+---
+
+# View Settings: Enable Edit Locking in GravityView
+
+Sometimes two people are editing the same entry at the same time. Gravity Forms has a system for that called Entry Locking. In Version 2.6 of GravityView, we have implemented Entry Locking.
+
+### How to enable and disable Entry Locking
+
+In GravityView 2.7, a View Setting was added to allow you to enable or disable Entry Locking. When you are editing a View, scroll down to View Settings. Click on the Edit Entry tab, and you will see a setting named "Enable Edit Locking".
+
+![Screenshot of the Enable Edit Locking setting in GravityView View Settings box](https://i.gravitykit.com/uRWbD7+)
+
+To enable Entry Locking, check the "Enable Edit Locking" checkbox. To disable Entry Locking, uncheck the "Enable Edit Locking" checkbox. Then click the Update button near the top of the screen to save the View settings.
+
+When an entry is being edited in Gravity Forms and a user tries to edit the entry in GravityView, they will be shown a notice with options to request control over the entry.
+
+### Requests may take around 15 seconds
+
+When a lock is requested by either user, it will take some time to process. That's because the Entry Locking process relies on a WordPress feature called the "Heartbeat API". The process normally takes around 15 seconds to cycle, but sometimes sites have customized the heartbeat timing, in which case the process could take longer or shorter time.
+
+### Privacy
+
+If the person attempting to edit an entry does not have the capability to edit other people's Gravity Forms entries, GravityView will strip information about who is requesting or granting access. This makes Entry Locking more secure by preventing users from gaining usernames of site administrators.
+
+This is what users without administrator-level access will see:
+
+![Screenshot showing the dialog 'This entry is currently locked. Click on the 'Request Control' button to let the person who is editing the entry know you'd like to take over.'](https://i.gravitykit.com/OJbkTl+)
+
+
+:::caution
+
+Known issue: When requesting control of an entry in GravityView, the response reads "Your request has been sent to .", with the recipient showing as blank.
+
+:::
+
+ 

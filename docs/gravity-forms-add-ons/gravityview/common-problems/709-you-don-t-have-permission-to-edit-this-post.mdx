@@ -1,0 +1,36 @@
+---
+id: "5e9f649c04286364bc98c0a2"
+number: "709"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.1"
+publicUrl: "https://docs.gravitykit.com/article/709-you-don-t-have-permission-to-edit-this-post"
+viewCount: "701"
+lastPublishedAt: "2022-10-07T21:36:13Z"
+changeOrigin: "unknown"
+name: "You don’t have permission to edit this post."
+slug: "709-you-don-t-have-permission-to-edit-this-post"
+status: "published"
+categories: 
+  - "579aab1cc6979160ca148bba"
+createdBy: "80506"
+createdAt: "2020-04-21T21:24:44Z"
+updatedBy: "80506"
+updatedAt: "2022-10-07T21:36:13Z"
+title: "You don’t have permission to edit this post."
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5e9f649c04286364bc98c0a2"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-07T21:36:13Z
+  author: "Rafael Ehlers"
+---
+
+# You don’t have permission to edit this post.
+
+If you see the *You don’t have permission to edit this post.* error message on GravityView's edit entry page, it means you are using [Post Fields](https://gravitywiz.com/use-gravity-forms-to-create-user-submitted-posts/) on your form, and you are currently logged in with an account that doesn't have [Post Editing capabilities](https://wordpress.org/support/article/roles-and-capabilities/#author).
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5e9f65782c7d3a7e9aeb5d74/file-C6GQtiYfJf.png)
+
+Whenever you use a Post Field on your form, a WordPress Post will be created during form submission. However, most of the time, the currently logged-in user that is submitting the form on your website has a [Subscriber role](https://wordpress.org/support/article/roles-and-capabilities/) which doesn't allow them to edit these Posts later, hence the error message.
+
+Only use Post Fields if you truly need their functionality. The most common mistake is using a **Post Image** field to upload documents on your form. Instead, please use the **File Upload** field for this job.

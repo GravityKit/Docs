@@ -1,0 +1,94 @@
+---
+id: "5d2cc0eb042863478674e9e8"
+number: "598"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.3"
+publicUrl: "https://docs.gravitykit.com/article/598-non-administrator-edit-view"
+viewCount: "1457"
+lastPublishedAt: "2023-02-21T18:03:45Z"
+changeOrigin: "hsapp-js"
+name: "Creating a View Editor role"
+slug: "598-non-administrator-edit-view"
+status: "published"
+categories: 
+  - "579aa9b2903360293603a8f0"
+  - "5e1b6d5d04286364bc93c665"
+related: 
+  - "5d2f2a4c2c7d3a2ec4befbfd"
+createdBy: "365564"
+createdAt: "2019-07-15T18:07:39Z"
+updatedBy: "59634"
+updatedAt: "2023-02-21T18:03:45Z"
+title: "Creating a View Editor role"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5d2cc0eb042863478674e9e8"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2023-02-21T18:03:45Z
+  author: "Zack Katz"
+---
+
+# Creating a View Editor role
+
+
+:::info
+
+These instructions only work for GravityView version 2.16 or newer.
+
+:::
+
+
+
+### 1) Install and Activate the [Members plugin](https://wordpress.org/plugins/members/)
+
+![Screenshot of the Installed Plugins page](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/637fbece23a10d7e43619e87/file-iSSqUOJxGz.png)
+
+### 2) Go to the Members menu &gt; Roles
+
+![Screenshot of the Members menu](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/63ec051c7a31233f59f6dadb/file-Dtt0d4qUW9.png)
+
+### 3) Clone the Editor role
+
+![Screenshot of the Roles page from the Members plugin](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/63ec06341aa7be0e19ffd225/file-hYyxvYtnay.png)
+
+### 4) Rename the role name and add capabilities
+
+Start by renaming the role to something easy to identify, like "View Editor."
+
+Editing a View requires permissions that are normally only assigned to Administrators.
+
+This is because Views allow users to display HTML, which is a capability that is restricted in WordPress. The required [unfiltered\_html](https://wordpress.org/support/article/roles-and-capabilities/#unfiltered_html) is already included in the Editor role.
+
+Here's a list of the capabilities necessary to be added to this role:
+
+- manage\_options
+- gravityforms\_create\_form
+- edit\_others\_gravityviews
+- edit\_private\_gravityviews
+- edit\_published\_gravityviews
+- gravityforms\_create\_form
+- gravityforms\_delete\_forms
+- gravityforms\_edit\_forms
+- gravityforms\_view\_entries
+- gravityforms\_edit\_entries
+- gravityforms\_delete\_entries
+
+![Screenshot of the role editor](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/63ec073c7a31233f59f6dadd/file-slvIvoz2p1.png)
+
+GravityView-specific capabilities:
+
+![Screenshot of the role editor](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/63ec08f6fd897d5b05cda63f/file-Mu1m9kJQzp.png)
+
+Also, when creating new Views, you can create a new Gravity Forms form directly from the View editor. These capabilities are required to create new forms when using the View editor.
+
+![Screenshot of the role editor](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/63ec0a0afd897d5b05cda642/file-FwkhwCbHIX.png)
+
+### 5) Save your new Role
+
+![Save role screenshot](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/63ec0ac07a31233f59f6dae3/file-KJ9LljWukh.png)
+
+### 6) Add users to this role
+
+Now you just need to go to the Users menu and assign the new View Editor role to your users.
+
+![Screenshot showing the Users page of WordPress](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/63ec0b401aa7be0e19ffd22b/file-FnYUIZFYh5.png)

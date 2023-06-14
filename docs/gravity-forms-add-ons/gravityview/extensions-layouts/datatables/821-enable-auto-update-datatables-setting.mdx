@@ -1,0 +1,66 @@
+---
+id: "61c2875e28e2785c351f4eae"
+number: "821"
+collectionId: "54d1a05ce4b086c0c0964ccd"
+publicUrl: "https://docs.gravitykit.com/article/821-enable-auto-update-datatables-setting"
+viewCount: "381"
+lastPublishedAt: "2022-12-27T20:43:33Z"
+changeOrigin: "external"
+name: "Enable Auto-Update (DataTables Setting)"
+slug: "821-enable-auto-update-datatables-setting"
+status: "published"
+categories: 
+  - "54d1a06ee4b086c0c0964cd1"
+createdBy: "59634"
+createdAt: "2021-12-22T02:03:10Z"
+updatedBy: "59634"
+updatedAt: "2022-12-27T20:43:33Z"
+title: "Enable Auto-Update (DataTables Setting)"
+hsEditUrl: "https://secure.helpscout.net/docs/54d1a05ce4b086c0c0964ccd/article/61c2875e28e2785c351f4eae"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-12-27T20:43:33Z
+  author: "Zack Katz"
+---
+
+# Enable Auto-Update (DataTables Setting)
+
+**The "Enable Auto-Update" setting controls whether DataTables refreshes its data automatically on a schedule.**
+
+The uses for this are limitless: display new donations on a live donation leaderboard, show new contest entries, and use it as a live-updating business dashboard.
+
+## How to enable auto-updating
+
+
+:::info
+
+Auto-updating requires the DataTables Layout. [Read how to install and activate the DataTables layout](https://docs.gravitykit.com/article/202-how-to-install-the-datatables-layout) for a View.
+
+:::
+
+  Edit your View using the DataTables layout and scroll down to the "Settings" area. Click the "DataTables" tab.
+
+![](https://www.gravitykit.com/wp-content/uploads/2021/12/Screenshot-on-2021-12-21-at-21-09-12.png)
+
+Check the box next to the label "Enable Auto-Update".
+
+When you do, another setting will appear named "Auto-Update Interval (In Minutes)". The default value is 5, which means that every five minutes, the View will reload its contents based on the current filter and search parameters.
+
+![](https://www.gravitykit.com/wp-content/uploads/2021/12/Markup-2021-12-21-at-21.13.27.png)
+
+## Auto-Update considerations
+
+### Will the refreshed data remove any filters?
+
+No, auto-update refreshes will maintain any View filters and active searches.
+
+### Responsive rows will be closed when data is refreshed
+
+If the View has Responsive mode enabled, any table rows that are currently expanded will be closed when the data is updated.
+
+### This setting has the potential to increase server load
+
+This will not affect most sites! But it's something to consider: if Auto-Update is enabled on a View that gets lots of web traffic, it can increase server load. Instead of one request per user per page load, it would be one request every five minutes. On a busy site, the Auto-Update feature could increase site requests by hundreds per day.
+
+If this is a concern, to reduce the server load, increase the "Auto-Update Interval" setting.

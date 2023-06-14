@@ -1,0 +1,106 @@
+---
+id: "631bb20a4cde766bbe143bcd"
+number: "860"
+collectionId: "566dfabbc6979143615564bf"
+publicUrl: "https://docs.gravitykit.com/article/860-creating-a-review-voting-system-by-embedding-a-form-into-a-single-entry"
+viewCount: "67"
+lastPublishedAt: "2022-09-21T22:51:59Z"
+changeOrigin: "unknown"
+name: "Creating a review/voting system by embedding a form into a single entry"
+slug: "860-creating-a-review-voting-system-by-embedding-a-form-into-a-single-entry"
+status: "published"
+categories: 
+  - "579aa748903360293603a8e5"
+createdBy: "80506"
+createdAt: "2022-09-09T21:37:14Z"
+updatedBy: "80506"
+updatedAt: "2022-09-21T22:51:59Z"
+title: "Creating a review/voting system by embedding a form into a single entry"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/631bb20a4cde766bbe143bcd"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-09-21T22:51:59Z
+  author: "Rafael Ehlers"
+---
+
+# Creating a review/voting system by embedding a form into a single entry
+
+Because GravityKit's [Ratings &amp; Reviews extension](https://www.gravitykit.com/extensions/ratings-reviews/) is based on the WordPress comments system, it is limited in some ways. For example, you can't export the reviews, or you can't generate a chart based on the votes. There are numerous other limitations besides these two ones.
+
+In this tutorial, we'll provide a workaround to these limitations by using an embedded form inside a View's Single Entry page. We will create a new form to collect these ratings (or votes) and a new View to display them.
+
+## What we'll need:
+
+- The main View, in this case, is a simple Movie Catalog;
+- A very simple form to collect movie reviews (Review this Movie);
+- A View to display those reviews (Movie Reviews). This View will use the Review This Movie form as the data source.
+
+![Screenshot of the Single Entry page from the Movie Catalog View ](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/6328d824e5ea7f482dc3cca2/file-upIdcHUApY.png)
+
+Our Review This Movie form:
+
+![Screenshot of the form editor](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/6328da00894a5358bdd77a0b/file-ZrP5ZY0VRy.png)
+
+## How are we going to do it:
+
+1. We'll start by adding a [Custom Content field](https://docs.gravitykit.com/article/111-using-the-custom-content-field) to the Single Entry page of the Movie Catalog View;
+2. The entry id of each movie will be used as a way to associate it with the reviews;
+3. Inside our Review This Movie form, we'll have a hidden field that will collect the current entry id of the Movie in question;
+4. Embed the movie reviews form into that Custom Content field using the \[gravityform\] shortcode;
+5. Pass the current entry id to that form's shortcode by using [Dynamic Population](https://docs.gravityforms.com/using-dynamic-population/); The entry id of the Moview can be pulled by using the {entry\_id} Merge Tag;
+6. Embed the movie reviews View below that form above using the [\[gravityview\] shortcode](https://docs.gravitykit.com/article/73-using-the-shortcode);
+7. Filter that View to only display reviews with the same entry id of the current Movie using the [search\_field and search\_value parameters](https://docs.gravitykit.com/article/73-using-the-shortcode).
+
+In this example, the Movie Catalog View uses the List View layout, which has the perfect place to embed the form and View for our tutorial:
+
+![Screenshot of the Single Entry layout on the View editor](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/6328d99a656bd979ec836172/file-yBBjzf0K3D.png)
+
+![Screenshot of the form editor showing the hidden field with dynamic population enabled](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/6328dba0894a5358bdd77a0c/file-GfrsxaANS5.png)
+
+![Screenshot of the Custom Content field showing the [gravityform] shortcode being used with dynamica population](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/6328dd57e5ea7f482dc3ccb7/file-bPHyoMpXZt.png)
+
+![Screenshot of the custom content field with the [gravityview] and [gravityform] shortcode](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/6323a3a793c4267ac207c1b2/file-IG56eTgKDn.png)
+
+And here's what all of that looks like:
+
+![Screenshot showing the complete Single Entry page with the review form embedded and the View showing the existing reviews](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/6328f647e5ea7f482dc3cd2e/file-Ki3PnLrERR.png)
+
+## Bonus!
+
+For the star rating on the form, we used the Rating type from the [Survey field](https://docs.gravityforms.com/survey/) (only available in the [Elite license of Gravity Forms](https://www.gravityforms.com/elite-license-plan/)), but to achieve that similar look on the View, we had to use the [\[gvlogic\] shortcode](https://docs.gravitykit.com/article/252-gvlogic-shortcode) and [dashicons](https://developer.wordpress.org/resource/dashicons/#admin-site-alt3).
+
+Here's the code we used:
+
+```
+[gvlogic if="{Your Rating:3:value}" is="Terrible"]
+<span class="dashicons dashicons-star-filled"></span>
+[/gvlogic][gvlogic if="{Your Rating:3:value}" is="Not so great"]
+<span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span>
+[/gvlogic][gvlogic if="{Your Rating:3:value}" is="Neutral"]
+<span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span>
+[/gvlogic][gvlogic if="{Your Rating:3:value}" is="Pretty good"]
+<span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span>
+[/gvlogic][gvlogic if="{Your Rating:3:value}" is="Excellent"]
+<span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span>
+[/gvlogic]
+```
+
+When using the logic above, please replace `{Your Rating:3:value}` with the proper Merge Tag of your rating field.
+
+The following CSS style was necessary to paint the stars gold:
+
+```
+.dashicons-star-filled{
+   color: gold;
+}
+```
+
+
+:::info
+
+If you have further questions, [please contact our support](https://www.gravitykit.com/support/). We'll be glad to help with your project!
+
+:::
+
+ 

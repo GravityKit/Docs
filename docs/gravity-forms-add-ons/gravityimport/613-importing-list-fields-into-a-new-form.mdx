@@ -1,0 +1,91 @@
+---
+id: "5d39382104286347867565e7"
+number: "613"
+collectionId: "6076f9478996210f18bd33df"
+popularity: "0.1"
+publicUrl: "https://docs.gravitykit.com/article/613-importing-list-fields-into-a-new-form"
+viewCount: "543"
+lastPublishedAt: "2022-12-27T21:04:13Z"
+changeOrigin: "external"
+name: "Importing List fields into a new form"
+slug: "613-importing-list-fields-into-a-new-form"
+status: "published"
+categories: 
+  - "6155b0dee5648623c88e04fa"
+createdBy: "59634"
+createdAt: "2019-07-25T05:03:29Z"
+updatedBy: "59634"
+updatedAt: "2022-12-27T21:04:13Z"
+title: "Importing List fields into a new form"
+hsEditUrl: "https://secure.helpscout.net/docs/6076f9478996210f18bd33df/article/5d39382104286347867565e7"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-12-27T21:04:13Z
+  author: "Zack Katz"
+---
+
+# Importing List fields into a new form
+
+## For single-column List fields (default):
+
+Select the List field from the "Import To…"dropdown list:
+
+![](https://i.gravitykit.com/YdF4zG+)
+
+Entry Importer will take care of the import from there!
+
+
+:::info
+
+For single-column List fields, you don't need to click the gear icon.
+
+:::
+
+ ## For multiple-column List fields:
+
+When Gravity Forms exports list fields, each row of the field will be a separate column in the CSV. If your list field has 100 rows, there will be 100 columns in the exported CSV!
+
+To import multiple-column List fields into a new form:
+
+#### 1. Find the CSV Header of the List field you want to import
+
+#### 2. Select "List" from the Field Type drop-down
+
+![](https://i.gravitykit.com/yj1gUX+)
+
+### 4. Configure the row and column information
+
+You'll see a configuration form that asks you to configure the Rows and Columns for the field,
+
+Each row represents a new horizontal item in the List field. Columns are each input in a list field. Here's a graphic that should clarify things. This is a list of children, with their Name, Age, and Gender as columns. There are three kids in the field, one per row:
+
+![](https://i.gravitykit.com/AcFYHy+)
+
+#### Configure the Rows
+
+When the "Children" list field above is exported, Gravity Forms will export a column per row, adding the row number to the export name ("Children 1", "Children 2", "Children 3", etc.).
+
+GravityImport will attempt to auto-select the columns in your CSV that is associated with the column you are configuring. Modify the rows if they are incorrect.
+
+In this example, that means each row is associated with a different child from the example above:
+
+![](https://i.gravitykit.com/pVUFzR+)
+
+### Name the columns
+
+You will need to provide the names of the columns; Gravity Forms does not export them. Using the same example, the column names for the List field would be "Name", "Age", and "Gender".
+
+![](https://i.gravitykit.com/1a9fFG+)
+
+### 4. Click Save
+
+You will now see that the columns you have defined are already set to import into the same List field. You can tell this because they have the word "Mapped" before the field name:
+
+![](https://i.gravitykit.com/NnKHUo+)
+
+---
+
+You can change the configuration of the list field by clicking on the gear icon next to the column.
+
+![](https://i.gravitykit.com/TOkltz+)

@@ -1,0 +1,75 @@
+---
+id: "5e7d315c04286364bc975893"
+number: "701"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.3"
+publicUrl: "https://docs.gravitykit.com/article/701-show-choices-that-exist"
+viewCount: "1346"
+lastPublishedAt: "2022-12-05T13:35:07Z"
+changeOrigin: "hsapp-js"
+name: "Only show choices in the Search Bar that exist in entries"
+slug: "701-show-choices-that-exist"
+status: "published"
+categories: 
+  - "566dff159033603f7da27def"
+  - "579aa76f903360293603a8e7"
+  - "579aa642c6979160ca148ba9"
+createdBy: "59634"
+createdAt: "2020-03-26T22:49:00Z"
+updatedBy: "543004"
+updatedAt: "2022-12-05T13:35:07Z"
+title: "Only show choices in the Search Bar that exist in entries"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5e7d315c04286364bc975893"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-12-05T13:35:07Z
+  author: "Casey Burridge"
+---
+
+# Only show choices in the Search Bar that exist in entries
+
+In the GravityView Search Bar widget, you may want to only display choices that exist in submitted entries (as opposed to showing all choices for each field).
+
+**Here's an example**: Let's say you have a "Country" field in your form with a Drop Down list of all 195 countries, but the number of unique countries selected in form entries is only 15. You may wish to only display those 15 countries as choices in the search widget, instead of all 195!
+
+⚠️ **It's important to understand the implications of enabling this option**. Pre-filtering choices will “show” what values have been selected for all submitted entries in a form, not just the filtered entries shown in a View. That means that even if you have filtered the entries in your View using advanced filters, the search fields will still show all the options.
+
+## GravityView 2.16 or above
+
+If you're running GravityView 2.16 or above, you can enable the "Pre-filter choices" option in the search settings. Start by clicking on the gear icon next to the Search Bar label to open the search settings.
+
+![The gear icon next to the Search Bar label; clicking this will open the search widget settings](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/638df16df10e521a19fdb86c/file-RtRfgMwxGm.png)
+
+Now scroll down and check the box that says "Only show choices that exist in form entries".
+
+![A checkbox allowing you to enable the 'pre-filter choices' option, ensuring that you only see options that match those selected in entries](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/638defdab516b82a04e934b8/file-YHO6zWZ2gH.png)
+
+## GravityView 2.16 or below (advanced)
+
+To limit searchable **drop-down fields** to only values that have been submitted, add this filter:
+
+```
+<pre class="prettyprint" lang="php">add_filter( 'gravityview/search/sieve_choices', '__return_true' );
+```
+
+If you want to limit this behavior to specific Views and specific form fields, modify this code:
+
+```
+<pre class="prettyprint">// Only show used choices in entries for View ID 4 and Field ID 6
+add_filter( 'gravityview/search/sieve_choices', function( $sieve, $filter, $context ) {
+   if ( 4 === $context->view->ID && 6 === (int) $filter['field'] ) {
+       return true;
+   }
+   return $sieve;
+}, 10, 3 );
+```
+
+
+:::info
+
+**Note**: This will match both the choice label and the choice value.
+
+:::
+
+ 

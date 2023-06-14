@@ -1,0 +1,59 @@
+---
+id: "57c07060903360342852e5d9"
+number: "375"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.9"
+publicUrl: "https://docs.gravitykit.com/article/375-removing-column-headings-from-the-bottom-of-the-tables"
+viewCount: "4532"
+lastPublishedAt: "2022-10-07T21:57:22Z"
+changeOrigin: "unknown"
+name: "Removing column headings from the bottom of the tables"
+slug: "375-removing-column-headings-from-the-bottom-of-the-tables"
+status: "published"
+categories: 
+  - "579aa76f903360293603a8e7"
+related: 
+  - "54ff77e7e4b034c37ea94d09"
+  - "54c67bb7e4b051242988550f"
+createdBy: "80506"
+createdAt: "2016-08-26T16:37:52Z"
+updatedBy: "80506"
+updatedAt: "2022-10-07T21:57:22Z"
+title: "Removing column headings from the bottom of the tables"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/57c07060903360342852e5d9"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-07T21:57:22Z
+  author: "Rafael Ehlers"
+---
+
+# Removing column headings from the bottom of the tables
+
+If you are using the Table or DataTables view type...
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/57c07105903360342852e5e3/file-BvqYeNTuuG.jpg)
+
+...you probably want to hide the column headings from the bottom of those tables:
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/57c0718b903360342852e5ea/file-3Lw2R5YiXE.jpg)
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/57c071d5903360342852e5ef/file-uBaYQLSkJV.jpg)
+
+Then, you just need to apply these CSS styles to your theme stylesheet ( [How to add custom CSS to your website](https://docs.gravitykit.com/article/246-adding-custom-css-to-your-website)):
+
+For Table views:
+
+```
+.gv-table-view tfoot{ display:none; }
+```
+
+For DataTables:
+
+```
+.gv-datatables tfoot{ display: none;}
+```
+
+And voilà:
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/57c072c5c6979156e4f1e19a/file-uV1lxHb9iA.jpg)

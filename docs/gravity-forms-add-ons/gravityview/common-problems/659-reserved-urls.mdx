@@ -1,0 +1,54 @@
+---
+id: "5de618682c7d3a7e9ae4a707"
+number: "659"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.2"
+publicUrl: "https://docs.gravitykit.com/article/659-reserved-urls"
+viewCount: "1000"
+lastPublishedAt: "2022-12-27T21:05:54Z"
+changeOrigin: "external"
+name: "Reserved URL Slugs"
+slug: "659-reserved-urls"
+status: "published"
+categories: 
+  - "579aab1cc6979160ca148bba"
+createdBy: "166583"
+createdAt: "2019-12-03T08:10:16Z"
+updatedBy: "59634"
+updatedAt: "2022-12-27T21:05:54Z"
+title: "Reserved URL Slugs"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5de618682c7d3a7e9ae4a707"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-12-27T21:05:54Z
+  author: "Zack Katz"
+---
+
+# Reserved URL Slugs
+
+## What to do if you see this warning:
+
+![In Edit Post, Document settings 'Permalink' section, showing the 'URL Slug'](https://i.gravitykit.com/7hiScu+) You should rename your page's URL Slug to avoid using reserved keywords as your URLs. (Learn what terms are reserved below!)
+
+How to update the URL Slug
+
+You can modify the URL Slug for a post or page in the editor by clicking the gear icon on the top of the screen. Click on Document, find the settings section labeled ‘Permalink’.
+
+For embedded Views to work properly, edit the slug to another term that is not reserved.
+
+### What are the reserved URL slugs?
+
+Some URL Slugs in WordPress and GravityView are reserved. Creating pages with reserved slugs will result in issues such as 404 error pages, and infinite redirects.
+
+GravityView shortcodes and oEmbeds will not function properly against these URLs by default:
+
+- example.com/**search**
+- example.com/**view**
+- example.com/**entry**
+
+If you're trying to embed Views and single entries one pages with these URLs, you will get a warning message as an administrator that says: " **GravityView will not work correctly on this page**".
+
+All other custom post type slugs are considered reserved and should not be used as page slugs. The warning will be thrown as well. If you are not sure which URL is triggering the warning you can find a verbose error log message by [activating debug logging](https://docs.gravitykit.com/article/213-gravityview-logging-tools) in GravityView.
+
+Reserved URLs can be added (or removed) via the `gravityview/rewrite/reserved_slugs` filter if required. This is only for advanced users.

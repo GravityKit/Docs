@@ -1,0 +1,83 @@
+---
+id: "5b453f6b2c7d3a099f2e66a0"
+number: "470"
+collectionId: "54d1a05ce4b086c0c0964ccd"
+popularity: "0.2"
+publicUrl: "https://docs.gravitykit.com/article/470-filtering-by-entry-approval-status"
+viewCount: "1561"
+lastPublishedAt: "2022-12-27T21:05:25Z"
+changeOrigin: "external"
+name: "Filtering by entry approval status"
+slug: "470-filtering-by-entry-approval-status"
+status: "published"
+categories: 
+  - "54d1a064e4b086c0c0964ccf"
+keywords: 
+  - "approval"
+  - "entry approval"
+  - "approved"
+  - "unapproved"
+  - "disapproved"
+  - "reject"
+createdBy: "59634"
+createdAt: "2018-07-10T23:21:15Z"
+updatedBy: "59634"
+updatedAt: "2022-12-27T21:05:25Z"
+title: "Filtering by entry approval status"
+hsEditUrl: "https://secure.helpscout.net/docs/54d1a05ce4b086c0c0964ccd/article/5b453f6b2c7d3a099f2e66a0"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-12-27T21:05:25Z
+  author: "Zack Katz"
+---
+
+# Filtering by entry approval status
+
+In Advanced Filter 1.3, we added the ability to filter by entry approval status.
+
+You can filter by the following entry statuses:
+
+- **Approved** - Entries that have been accepted
+- **Disapproved** - Entries that have been rejected
+- **Unapproved** - Entries that have not yet been reviewed
+
+### To filter by approval status:
+
+When editing a View, scroll down to the Settings Panel, and click the Filter &amp; Sort tab.
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/6042677024d2d21e45edd257/file-SGWDQbSFh5.png)
+
+Find the Advanced Filter setting row. You will see three dropdown fields.
+
+![Screenshot of the Advanced Filter section](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/6042682c8502d1120e90e270/file-XJWX2Ijki0.png)
+
+From the first dropdown field, select "Entry Approval Status", because you want to filter entries based on their approval status.
+
+From the second dropdown, you can choose "is" or "is not".
+
+From the third dropdown, you can choose between the approval statuses ("Approved", "Disapproved" and "Unapproved"). ![Select the approval status](https://i.gravitykit.com/8gODX4+)
+
+**When you have configured your filter, it should something like this:**
+
+![A filter to show entries by approval status in GravityView](https://i.gravitykit.com/82Itxe+)
+
+If you want, you can add multiple approval filters by clicking the plus symbol to the right of the filter.
+
+---
+
+### If you are filtering by "Unapproved", and the entries are not appearing
+
+Filtering by "Unapproved" may not work properly for entries created before installing GravityView 2.0.14.
+
+To update the approval status for the unapproved entries:
+
+- View the form's entries by clicking Forms in the sidebar
+- Click on the name of the form with the entries you wish to display
+- Click on the Entries link in the Gravity Forms toolbar
+- Click the GravityView astronaut head icon to sort by approval status (that icon is of our mascot, Floaty!)
+- Click the checkboxes of the unapproved entries (they will have a yellow circle next to them)
+- At the top of the table, there is a dropdown field labeled "Bulk Actions". Click that field and select "Reset Approval".
+- Click the Apply button
+
+This will enable the entries to be filtered by "Unapproved" status.

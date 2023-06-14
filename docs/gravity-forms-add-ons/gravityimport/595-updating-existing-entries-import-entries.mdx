@@ -1,0 +1,98 @@
+---
+id: "5d2633852c7d3a2ec4beb22b"
+number: "595"
+collectionId: "6076f9478996210f18bd33df"
+popularity: "0.1"
+publicUrl: "https://docs.gravitykit.com/article/595-updating-existing-entries-import-entries"
+viewCount: "858"
+lastPublishedAt: "2023-01-02T18:06:16Z"
+changeOrigin: "hsapp-js"
+name: "Updating existing entries with the GravityImport plugin"
+slug: "595-updating-existing-entries-import-entries"
+status: "published"
+categories: 
+  - "6155b0dee5648623c88e04fa"
+createdBy: "365564"
+createdAt: "2019-07-10T18:50:45Z"
+updatedBy: "59634"
+updatedAt: "2023-01-02T18:06:16Z"
+title: "Updating existing entries with the GravityImport plugin"
+hsEditUrl: "https://secure.helpscout.net/docs/6076f9478996210f18bd33df/article/5d2633852c7d3a2ec4beb22b"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2023-01-02T18:06:16Z
+  author: "Zack Katz"
+---
+
+# Updating existing entries with the GravityImport plugin
+
+In addition to creating new entries, the [GravityImport plugin](https://www.gravitykit.com/extensions/gravity-forms-entry-importer/) does allow you to update existing entries.
+
+
+:::caution
+
+**Beware**! When updating an entry, **the existing entry will be overwritten entirely**, not only the mapped fields.
+
+:::
+
+  If adding new entries and deleting old ones is not an option, please make sure you have a backup of your entries before proceeding. You can export your entries via Forms &gt; Import/Export &gt; Export Entries.
+
+Here's how you can update existing entries with the Import Entries plugin:
+
+### 1. Go to the Gravity Forms Import/Export page
+
+Click on Import Entries
+
+![Opening the Gravity Forms Import/Export page](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5db09b4304286364bc90cb60/file-cs8IjtHW7C.png)
+
+### 2. Upload the CSV file with your entries
+
+Your CSV file must contain an Entry ID column to update existing entries.
+
+![Uploading a csv file via drag and drop or by clicking in the upload area](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5db09bdf04286364bc90cb6d/file-6v8bhFStji.png)
+
+### 3. Choose a form
+
+![Choosing an existing form to use when updating existing entries](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5db09d3704286364bc90cb7e/file-TT0mWCiXq8.png)
+
+### 4. Click the Continue button
+
+Because your file will contain an Entry ID column, you'll get a warning that your entries will be overwritten. Click the blue Continue button to proceed.
+
+![The warning box indicating that the CSV file contains an Entry ID column](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5db09dd304286364bc90cb85/file-nPuA0wecBw.png)
+
+### 5. Map columns from your file to the appropriate Gravity Forms fields
+
+To update existing entries, your file must contain valid Entry IDs. **Please be aware that updating entries completely overwrites the existing entry.**
+
+![Mapping columns from a CSV file including Entry ID to a Gravity Forms fields](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5db09ef62c7d3a7e9ae2f06b/file-RkrtlzMuYj.png)
+
+Click the "Continue with Import" button to proceed.
+
+### 6. Configure the import settings
+
+Once you have mapped your fields, there are some basic options to configure. If you aren't sure what to do, you can hover over a question mark, and it will have additional information on what the setting does.
+
+![The Configure Import Options screen](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5db09fb404286364bc90cbac/file-8OTEnK6FkO.png)
+
+Click the "Continue with Import" button to proceed.
+
+### 8. Upon completion, the Import Results page will summarize the results
+
+Successful update:
+
+![Summary page following a successful import](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5db0a0b604286364bc90cbb7/file-UP4U5ticOs.png)
+
+Unsuccessful update:
+
+![A completed update run with 1 rejected entry](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5db0b4a92c7d3a7e9ae2f178/file-1jJR8xLPUo.png)
+
+If there were errors, you can click the "view log" link to see a list of entries that were not updated and the reason they were rejected. You can also download a file containing the rejected records, fix the errors, then try your update again.
+
+You'll see the following options as well:
+
+- The View Imported Records button will appear if some of your entries were updated successfully. It will not appear if no entries were processed successfully.
+- The Modify Import Configuration button will take you back to the Configure Import Options screen
+- The Change Field Mapping button will return you to the Field Mapping screen, where you can make changes to your mappings
+- The Start New Import will take you back to the Select Source screen

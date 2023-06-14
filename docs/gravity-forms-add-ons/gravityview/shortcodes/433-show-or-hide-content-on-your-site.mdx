@@ -1,0 +1,112 @@
+---
+id: "5a2ef2872c7d3a46d595eb9c"
+number: "433"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.8"
+publicUrl: "https://docs.gravitykit.com/article/433-show-or-hide-content-on-your-site"
+viewCount: "4088"
+lastPublishedAt: "2022-10-07T20:57:24Z"
+changeOrigin: "unknown"
+name: "Use [gvlogic]  to show (or hide) content anywhere on your site"
+slug: "433-show-or-hide-content-on-your-site"
+status: "published"
+categories: 
+  - "566dfe4fc6979143615564d9"
+  - "579aa642c6979160ca148ba9"
+keywords: 
+  - "shortcode"
+  - "merge tag"
+  - "logged-in"
+  - "logged-out"
+  - "administrator"
+  - "not logged in"
+  - "gvlogic"
+  - "gv_logic"
+related: 
+  - "59345c1a2c7d3a074e8b0bb4"
+  - "561f1ca2903360610fc6855d"
+  - "557f4d74e4b027e1978e7a43"
+  - "561f29bc903360610fc6860e"
+  - "54c67bbbe4b051242988551d"
+  - "552355bfe4b0221aadf2572b"
+createdBy: "59634"
+createdAt: "2017-12-11T21:03:03Z"
+updatedBy: "80506"
+updatedAt: "2022-10-07T20:57:24Z"
+title: "Use [gvlogic]  to show (or hide) content anywhere on your site"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5a2ef2872c7d3a46d595eb9c"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-07T20:57:24Z
+  author: "Rafael Ehlers"
+---
+
+# Use [gvlogic]  to show (or hide) content anywhere on your site
+
+## Use our shortcode to show and hide content on your site
+
+GravityView adds multiple shortcodes to WordPress ( [see the list of GravityView shortcodes here](https://docs.gravitykit.com/category/322-shortcodes)), and one allows you to show or hide content based on rules you define: the [\[gvlogic\] shortcode](https://docs.gravitykit.com/article/252-gvlogic-shortcode).
+
+*What's a shortcode? It's is a bit of text that you can add to your post or page that lets you perform complex functions without using code. A shortcode is a shortcut, and you can tell a shortcode because shortcodes are wrapped in square brackets, like this: `[example]`.*
+
+## The `[gvlogic]` shortcode works everywhere
+
+Some GravityView functionality only works inside a View, but the `[gvlogic]` shortcode works across your whole site: in posts, pages, Views, WordPress widgets…everywhere!
+
+When you use `[gvlogic]` somewhere that isn't a View, you will be comparing values that aren't based on Gravity Forms data, so **make sure to use Merge Tags that don't rely on form and field values**.
+
+### Use these Merge Tags with with `[gvlogic]` anywhere on your site
+
+No matter where you use `[gvlogic]`, you can use these Merge Tags to show or hide content:
+
+**GravityView Merge Tags**
+
+- [{current\_post} - Access details of the current post or page](https://docs.gravitykit.com/article/412-currentpost-merge-tag)
+- [{user} - Access details of the current user](https://docs.gravitykit.com/article/281-the-createdby-merge-tag)
+- [{get} - Access details of the URL query string](https://docs.gravitykit.com/article/314-the-get-merge-tag)
+
+**Gravity Forms Merge Tags**
+
+- `{admin_email}` The email of the site administrator
+- `{admin_url}` The URL of the dashboard for the site
+- `{logout_url}` The URL to log out of the site
+
+## Examples
+
+### Show a message to the logged-in user:
+
+If you want to show a message on a page to logged-in users, you can use the `[gvlogic]` shortcode, like this:
+
+```
+[gvlogic if="{user:ID}" isnot=""]
+ {user:display_name}, thanks for being logged in!
+[/gvlogic]
+```
+
+If the user's display name is "Ellen Ripley", when she is logged-in, she will see: "Ellen Ripley, thanks for being logged in!"
+
+### Show a form only to logged-out users, and a View to logged-in users
+
+If you want to gather data for visitors and allow logged-in users of your site to see that content, you can do that with the following code. It will display a Gravity Forms form to logged-out users and will display the submitted entries in a GravityView View to logged-in users:
+
+```
+[gvlogic if="{user:ID}" isnot=""]  Here are the form submissions:
+ [gravityview id="45"]
+[else]  
+ Please fill out this form!
+ [gravityforms id="123"]
+[/gvlogic]
+```
+
+### Show content only to visitors arriving from Google Adwords
+
+When a user visits your site from Google Adwords, they have `?gclid=xxxxxx` added to the URL. If you want to display content targeted only to them, you can:
+
+```
+[gvlogic if="{get:gclid}" isnot=""]
+Hi! We have a <em>special offer</em> for Google customers!
+[/gvlogic]
+```
+
+The possibilities are endless for how to conditionally show and hide content on your site using the `[gvlogic]` shortcode.

@@ -1,0 +1,64 @@
+---
+id: "5b468ecd0428630abc0bf955"
+number: "471"
+collectionId: "54d1a05ce4b086c0c0964ccd"
+popularity: "0.2"
+publicUrl: "https://docs.gravitykit.com/article/471-filtering-by-user-role"
+viewCount: "2121"
+lastPublishedAt: "2022-12-27T21:05:24Z"
+changeOrigin: "external"
+name: "Filtering by user role"
+slug: "471-filtering-by-user-role"
+status: "published"
+categories: 
+  - "54d1a064e4b086c0c0964ccf"
+keywords: 
+  - "user role"
+  - "roles"
+createdBy: "59634"
+createdAt: "2018-07-11T23:12:13Z"
+updatedBy: "59634"
+updatedAt: "2022-12-27T21:05:24Z"
+title: "Filtering by user role"
+hsEditUrl: "https://secure.helpscout.net/docs/54d1a05ce4b086c0c0964ccd/article/5b468ecd0428630abc0bf955"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-12-27T21:05:24Z
+  author: "Zack Katz"
+---
+
+# Filtering by user role
+
+
+
+### When editing a View, scroll to the Settings Panel and click the "Filter &amp; Sort" tab:
+
+![Screenshot of the Settings Panel highlighting the Filter & Sort tab](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/6042677024d2d21e45edd257/file-SGWDQbSFh5.png)
+
+### Click the "Add Condition" button
+
+![Add Condition button in Filter & Sort View Setting](https://i.gravitykit.com/r0GhL3+)
+
+### Then choose "Created By User Role" from the first dropdown
+
+![Select 'Created By User Role' from the form field dropdown](https://i.gravitykit.com/sCoHcv+)
+
+### Choose the role you wish to display entries from
+
+![A drop-down showing all the roles for the site (Administrator, Subscriber, etc)](https://i.gravitykit.com/39ZgNg+)
+
+### If you choose "Any Role of Current User", the currently logged-in user's roles will be used
+
+![Filter configured with 'Any Role of Current User' selected](https://i.gravitykit.com/WKqDIM+)
+
+All of the user's roles will be used to filter the entries: If a user is logged in and the user has the roles of "Subscriber" as well as "Customer", then the filter will show entries from users who are Subscribers OR Customers. If the current user is an Editor and an Administrator, then entries will be shown from all Editors and Administrators.
+
+### You can also use "is not"!
+
+You can exclude entries created by users with specific roles by selecting the "is not" comparison from the filter dropdown.
+
+To show all entries that were **not created** by site administrators, you could add this configuration: "Created By User Role" "is not" "Administrator", as shown below.
+
+![Filter configured to hide all entries created by administrators by setting the filter value to 'Created By User Role' 'is not' 'Administrator'](https://i.gravitykit.com/GKfRLx+)
+

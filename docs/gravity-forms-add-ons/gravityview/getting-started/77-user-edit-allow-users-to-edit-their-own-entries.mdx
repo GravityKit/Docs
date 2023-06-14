@@ -1,0 +1,136 @@
+---
+id: "54c67bbbe4b07997ea3f3f6b"
+number: "77"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "5"
+publicUrl: "https://docs.gravitykit.com/article/77-user-edit-allow-users-to-edit-their-own-entries"
+viewCount: "26239"
+lastPublishedAt: "2023-01-14T20:54:52Z"
+changeOrigin: "hsapp-js"
+name: "User Edit: Allowing Users to Edit Their Own Entries"
+slug: "77-user-edit-allow-users-to-edit-their-own-entries"
+status: "published"
+categories: 
+  - "579aa5d0903360293603a8e2"
+  - "5e1b6d5d04286364bc93c665"
+keywords: 
+  - "edit entry"
+  - "edit own entries"
+  - "user edit"
+  - "modify entry"
+related: 
+  - "554351cbe4b01a224b421c6b"
+  - "54c67bb9e4b0512429885513"
+  - "55b667b5e4b0e667e2a4452f"
+  - "54c67bcde4b051242988553d"
+createdBy: "59634"
+updatedBy: "59634"
+updatedAt: "2023-01-14T20:54:52Z"
+title: "User Edit: Allowing Users to Edit Their Own Entries"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/54c67bbbe4b07997ea3f3f6b"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2023-01-14T20:54:52Z
+  author: "Zack Katz"
+---
+
+# User Edit: Allowing Users to Edit Their Own Entries
+
+In GravityView, you can allow users to edit entries that they create. Follow the steps below to enable the Edit Entry feature for any given View.
+
+
+:::info
+
+**Note: Administrators can edit all entries** because they have the `gravityview_full_access` and `gravityview_edit_others_entries` capabilities. [Learn more about modifying user capabilities](https://docs.gravitykit.com/article/291-how-to-allow-a-user-to-edit-all-entries).
+
+:::
+
+ ###  Prefer to Watch the Video? 
+
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/Q_AqU9TVME4" title="YouTube video player" width="560"></iframe>
+
+## 1. Enable User Edit on Your View
+
+Edit your View in the WordPress dashboard and scroll down to where it says “Settings”. Next, click on “Edit Entry” in the left-hand menu and check the box that says “Allow User Edit”.
+
+![Screenshot of the Settings meta box inside the View editor](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/605519bc207e3b1188e1e2e6/file-7Iiz3nFwEe.png)
+
+If you want to re-approve entries after they have been edited, check the box that says "Unapprove Entries After Edit".
+
+![Screenshot of the Settings meta box inside the View editor](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/60551a573f70ab34d9ba12b5/file-p93mr8Rv6Y.png)
+
+If an administrator edits an entry, the approval status will not be reset.
+
+
+:::note
+
+For more guidance regarding entry approval, read [Approving or rejecting entries in GravityView](https://docs.gravitykit.com/article/88-approving-or-rejecting-entries-in-gravityview).
+
+:::
+
+ ## 2. Add a “Link to Edit Entry” Page
+
+Next, you need to add a link to the Edit Entry page, where users will be able to edit fields that you specify.
+
+To do this, click the *+ Add Field* button and select the “Link to Edit Entry” field. This inserts a link into your View that allows users to edit entries they created.
+
+Note: The edit entry link will only be visible to users who have permission to edit that entry. If a user did not create the entry, they will not be able to edit it. Likewise, logged-out users will not see the “Edit Entry” link.
+
+![Screenshot of the View editor showing the field picker](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/60551c583f70ab34d9ba12bc/file-qB0c2JVgyd.png)
+
+### Optional: Modify the Link Text
+
+By default, the Edit Entry link text says “Edit Entry”.
+
+If you want to change the Edit Entry link text, you can do this by clicking on the gear icon and entering your new link text into the box that says “Edit Link Text”.
+
+![Screenshot of the View editor showing the Edit Entry link](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/60551cc9c44f5d025f446124/file-g7X7xtqjiL.png)
+
+![The Edit Link text input box](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/605520ba207e3b1188e1e318/file-CTPbZtCNKV.png)
+
+## 3. Configure the Edit Entry Layout
+
+The final step is to configure the Edit Entry Layout. All fields added to the Edit Entry Layout will be editable.
+
+
+:::info
+
+**Note**: If the configuration is left blank, all fields will be editable.
+
+:::
+
+  First, click on the Edit Entry Layout tab.
+
+![The Edit Entry Layout tab in the GravityView editor](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/6074180c8996210f18bd2441/file-fh5kfpBNKg.png)
+
+Next, click the *+ Add fields* button to add fields to the configuration.
+
+![The Edit Entry layout in the GravityView editor](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/6074183b8af76a714bfd623f/file-RHOnjojaDv.png)
+
+For more information about configuring the Edit Entry Layout, read [Configuring the Edit Entry Screen](https://docs.gravitykit.com/article/67-configuring-the-edit-entry-screen).
+
+## 4. Save Your View
+
+Once you’ve enabled user edit on your View, added a link to the Edit Entry page, and configured the Edit Entry Layout, save your View by clicking “Publish”.
+
+![a button that says Update](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/605523eb207e3b1188e1e32d/file-fvVhQxvJh9.png)
+
+## Check Out Your View on the Front End
+
+Logged-in users will now see a link to edit entries that they created.
+
+![Screenshot of a View with links to edit the Entry](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/605521f7207e3b1188e1e325/file-cOeqIKLDmw.png)
+
+Logged-out users will not be able to see the Edit Entry link.
+
+![Screenshot of a View without links to edit the Entry](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/6055228a0ad05379b10ced21/file-sJKSXoGggm.png)
+
+
+:::info
+
+**Note:** Any user who can edit entries inside Gravity Forms will be able to edit entries. If you want to limit this capability, you can use the [Members plugin](https://wordpress.org/plugins/members/) to restrict the "gravityforms_edit_entries" capability.
+
+:::
+
+

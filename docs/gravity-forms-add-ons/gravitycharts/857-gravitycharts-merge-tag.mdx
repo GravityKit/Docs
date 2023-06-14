@@ -1,0 +1,65 @@
+---
+id: "62f664ed829a3853b6926306"
+number: "857"
+collectionId: "6076f9478996210f18bd33df"
+publicUrl: "https://docs.gravitykit.com/article/857-gravitycharts-merge-tag"
+viewCount: "118"
+lastPublishedAt: "2022-08-17T17:00:28Z"
+changeOrigin: "unknown"
+name: "The {gravitycharts} Merge Tag"
+slug: "857-gravitycharts-merge-tag"
+status: "published"
+categories: 
+  - "6261683a93a48c44483342eb"
+createdBy: "59634"
+createdAt: "2022-08-12T14:34:21Z"
+updatedBy: "59634"
+updatedAt: "2022-08-17T17:00:28Z"
+title: "The {gravitycharts} Merge Tag"
+hsEditUrl: "https://secure.helpscout.net/docs/6076f9478996210f18bd33df/article/62f664ed829a3853b6926306"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-08-17T17:00:28Z
+  author: "Zack Katz"
+---
+
+# The {gravitycharts} Merge Tag
+
+
+:::caution
+
+**This feature is currently in beta!** If you encounter any issues, please let our support know.
+
+:::
+
+
+
+GravityCharts has a [Gravity Forms Merge Tag](https://docs.gravityforms.com/category/user-guides/merge-tags-getting-started/), `{gravitycharts}` that will be replaced by a static image of a chart feed.
+
+The structure of the Merge Tag is:
+
+` {gravitycharts:[feed id]:[shortcode attributes]} `
+
+**Merge Tag Attributes:**
+
+- `[feed id]` is the ID of the chart feed.
+- `[shortcode attributes]` Optional. An ampersand-separated list of shortcode attributes that will override default values (see examples below).
+
+## Merge Tag examples
+
+### Display chart feed #123
+
+This Merge Tag will be replaced by an image of chart feed #123 using the default width of an image chart (500px) and the default height of an image chart (300px).
+
+`{gravitycharts:123}`
+
+### Setting chart width and height
+
+It is possible to override the width and height of the image chart because the [`[gravitycharts]` shortcode](https://docs.gravitykit.com/article/850-gravitycharts-shortcode) has `width` and `height` attributes. Using the attribute formatting supported by shortcodes in WordPress, you can override the defaults by passing `width=500&height=250` to the Merge Tag:
+
+` {gravitycharts:123:width=500&height=250} `
+
+This Merge Tag will now be replaced by an image 500px wide and 250px tall.
+
+Note that a colon is added between the chart feed ID and the shortcode attributes. This is required.

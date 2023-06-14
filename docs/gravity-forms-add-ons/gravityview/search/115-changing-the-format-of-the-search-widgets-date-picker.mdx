@@ -1,0 +1,68 @@
+---
+id: "54c67bcee4b07997ea3f3f94"
+number: "115"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.5"
+publicUrl: "https://docs.gravitykit.com/article/115-changing-the-format-of-the-search-widgets-date-picker"
+viewCount: "2719"
+lastPublishedAt: "2022-10-12T21:55:46Z"
+changeOrigin: "unknown"
+name: "Changing the format of the search widget's date picker"
+slug: "115-changing-the-format-of-the-search-widgets-date-picker"
+status: "published"
+categories: 
+  - "566dff159033603f7da27def"
+createdBy: "59634"
+updatedBy: "80506"
+updatedAt: "2022-10-12T21:55:46Z"
+title: "Changing the format of the search widget's date picker"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/54c67bcee4b07997ea3f3f94"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-12T21:55:46Z
+  author: "Rafael Ehlers"
+---
+
+# Changing the format of the search widget's date picker
+
+By default, GravityView formats dates in the US format of `mm/dd/yyyy`. If you would like to change that, you can.
+
+### Date format options are:
+
+- `dmy` - dd/mm/yyyy
+- `dmy_dash` - dd-mm-yyyy
+- `dmy_dot` - dd.mm.yyyy
+- `mdy` - mm/dd/yyyy *(default)*
+- `ymd_slash` - yyyy/mm/dd
+- `ymd_dash` - yyyy-mm-dd
+- `ymd_dot` - yyyy.mm.dd
+
+### To modify the format, install one of the plugins below:
+
+At the bottom of this article are plugins you can install that change the format for you.
+
+- Refer to the name of the plugin to see what date format will be applied
+- Download the plugin you want
+- Install and activate the plugin on your website
+- The date format will be modified
+
+- [Download `dmy` plugin](https://www.gravitykit.com/wp-content/uploads/2018/03/gravityview-search-widget-dmy.php_.zip)
+- [Download `dmy_dash` plugin](https://www.gravitykit.com/wp-content/uploads/2018/03/gravityview-search-widget-dmy-dash.php_.zip)
+- [Download `dmy_dot` plugin](https://www.gravitykit.com/wp-content/uploads/2018/03/gravityview-search-widget-dmy-dot.php_.zip)
+- [Download `mdy` plugin](https://www.gravitykit.com/wp-content/uploads/2018/03/gravityview-search-widget-mdy.php_.zip)
+- [Download `ymd_dash` plugin](https://www.gravitykit.com/wp-content/uploads/2018/03/gravityview-search-widget-ymd-dash.php_.zip)
+- [Download `ymd_dot` plugin](https://www.gravitykit.com/wp-content/uploads/2018/03/gravityview-search-widget-ymd-dot.php_.zip)
+- [Download `ymd_slash` plugin](https://www.gravitykit.com/wp-content/uploads/2018/03/gravityview-search-widget-ymd-slash.php_.zip)
+
+## For developers:
+
+To modify the format, use the `gravityview/widgets/search/datepicker/format` filter. This modifies the CSS class for the date picker input fields, which is used to determine the format for the date picker.
+
+```
+
+function modify_gravityview_search_datepicker_format( $format ) {
+   return 'mdy'; // <-- Change this to one of the date format options above
+}
+add_filter( 'gravityview/widgets/search/datepicker/format', 'modify_gravityview_search_datepicker_format'  );
+```

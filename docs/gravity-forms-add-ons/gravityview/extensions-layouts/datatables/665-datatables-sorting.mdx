@@ -1,0 +1,39 @@
+---
+id: "5dfd2a0204286364bc931ec9"
+number: "665"
+collectionId: "54d1a05ce4b086c0c0964ccd"
+publicUrl: "https://docs.gravitykit.com/article/665-datatables-sorting"
+viewCount: "346"
+lastPublishedAt: "2022-10-13T23:17:58Z"
+changeOrigin: "unknown"
+name: "My DataTables View is not sorting properly"
+slug: "665-datatables-sorting"
+status: "published"
+categories: 
+  - "54d1a06ee4b086c0c0964cd1"
+createdBy: "365564"
+createdAt: "2019-12-20T20:07:30Z"
+updatedBy: "80506"
+updatedAt: "2022-10-13T23:17:58Z"
+title: "My DataTables View is not sorting properly"
+hsEditUrl: "https://secure.helpscout.net/docs/54d1a05ce4b086c0c0964ccd/article/5dfd2a0204286364bc931ec9"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-13T23:17:58Z
+  author: "Rafael Ehlers"
+---
+
+# My DataTables View is not sorting properly
+
+When creating or editing a View with [the DataTables Extension](https://www.gravitykit.com/extensions/datatables/), you can specify a field to sort by and a sort direction like so:
+
+![Setting the field and direction to use for sorting a DataTables View](https://d33v4339jhl8k0.cloudfront.net/docs/assets/54c58489e4b051242988532c/images/580e1ca7c697915f88a3741e/file-9V5tb3GIvO.jpg)
+
+Due to the way the DataTables Extension stores information using the browser, the View may retain a sort setting.
+
+**To clear sorting, add `?cache` to the end of the View URL.** For example, `https://example.com/view/datatables-sort/` becomes `https://example.com/view/datatables-sort/?cache` — this will force the browser to reload the View without sorting.
+
+You can also permanently fix this by adding the following code to your theme's functions.php file:
+
+<script src="https://gist.github.com/rafaehlers/0b99373ad70037027668e0020d6e18bf.js" type="text/javascript"></script> If you're not sure how to add code samples to your website, please see the following article: [Where to put code samples](https://docs.gravitykit.com/article/210-where-to-put-code-samples)

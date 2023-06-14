@@ -1,0 +1,55 @@
+---
+id: "54ee1afee4b086c0c0969843"
+number: "231"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.1"
+publicUrl: "https://docs.gravitykit.com/article/231-how-to-disable-the-sorting-control-on-one-table-column"
+viewCount: "768"
+lastPublishedAt: "2022-10-07T22:07:45Z"
+changeOrigin: "unknown"
+name: "How to disable the sorting control on one table column?"
+slug: "231-how-to-disable-the-sorting-control-on-one-table-column"
+status: "published"
+categories: 
+  - "579aa76f903360293603a8e7"
+related: 
+  - "54ee1246e4b034c37ea91c11"
+createdBy: "59635"
+createdAt: "2015-02-25T18:57:02Z"
+updatedBy: "80506"
+updatedAt: "2022-10-07T22:07:45Z"
+title: "How to disable the sorting control on one table column?"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/54ee1afee4b086c0c0969843"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-07T22:07:45Z
+  author: "Rafael Ehlers"
+---
+
+# How to disable the sorting control on one table column?
+
+
+:::info
+
+This feature is available since GravityView version 1.7+
+
+:::
+
+
+
+The table column sorting feature is the possibility to order the view entries by clicking on the column header sorting arrows. Learn [how to enable this feature](https://docs.gravitykit.com/article/230-enabling-the-table-column-sorting-feature) in your View.![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/54ee1c85e4b034c37ea91c86/file-m1tZjn120P.png)
+
+To disable the up/down arrows on one specific column of your table (which corresponds to a form field), you'll need to add the following line into your theme's functions.php file ([how to](https://docs.gravitykit.com/article/210-where-to-put-code-samples)):
+
+```
+// Disable column sorting for form ID# 4 and field ID# 37
+add_filter( 'gravityview/sortable/formfield_4_37', '__return_false' );
+```
+
+or, if you don't want to specify the form id:
+
+```
+// Disable column sorting for field ID# 37 (any form)
+add_filter( 'gravityview/sortable/field_37', '__return_false' );
+```

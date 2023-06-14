@@ -1,0 +1,49 @@
+---
+id: "595d40b40428637ff8d4523d"
+number: "418"
+collectionId: "6076f9478996210f18bd33df"
+popularity: "0.2"
+publicUrl: "https://docs.gravitykit.com/article/418-inline-edit-enable-editing"
+viewCount: "1626"
+lastPublishedAt: "2022-10-18T23:36:04Z"
+changeOrigin: "unknown"
+name: "GravityEdit: Turn on editing by default (without clicking the Toggle Inline Edit button)"
+slug: "418-inline-edit-enable-editing"
+status: "published"
+categories: 
+  - "6155b0960754e74465f1541d"
+keywords: 
+  - "toggle inline edit"
+  - "toggle button"
+  - "toggle"
+  - "click to edit"
+  - "clickable"
+  - "make clickable"
+createdBy: "59634"
+createdAt: "2017-07-05T19:40:36Z"
+updatedBy: "80506"
+updatedAt: "2022-10-18T23:36:04Z"
+title: "GravityEdit: Turn on editing by default (without clicking the Toggle Inline Edit button)"
+hsEditUrl: "https://secure.helpscout.net/docs/6076f9478996210f18bd33df/article/595d40b40428637ff8d4523d"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-18T23:36:04Z
+  author: "Rafael Ehlers"
+---
+
+# GravityEdit: Turn on editing by default (without clicking the Toggle Inline Edit button)
+
+You may want to make it so that users don't need to click the "Toggle Inline Edit" button when visiting a View. Instead, when visiting a View, you want the user to be able to start editing right away.
+
+Why would you want to do this? One of our customers is the developer for a website used by many other users, and he didn't think the website users would know that they needed to click the "Toggle Inline Edit" button. He just wanted everything to be editable for them right away. They didn't want to receive questions like "Why can't we click to edit the fields?".
+
+If you want Inline Edit enabled—without having to click the "Toggle Inline Edit" button—add this code to your website.
+
+<script src="https://gist.github.com/zackkatz/dfc8da743dec4e32ea819f7b07efda89.js" type="text/javascript"></script> Not sure how to add this code? [Here's how to add the code](https://docs.gravitykit.com/article/210-where-to-put-code-samples).
+
+A few notes:
+
+- This still requires users have permission to edit an entry
+- If the user clicks the "Toggle Inline Edit" button, their preference will be saved (disabled/enabled). This code just sets the default editing value to enabled.
+- The code does not provide cookie usage notice for users in the European Union—you will need to provide that separately if your site serves EU users.

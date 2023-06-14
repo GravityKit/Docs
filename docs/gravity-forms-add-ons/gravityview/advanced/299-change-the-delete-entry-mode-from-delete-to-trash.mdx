@@ -1,0 +1,78 @@
+---
+id: "55e240a0c69791085647d68d"
+number: "299"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.2"
+publicUrl: "https://docs.gravitykit.com/article/299-change-the-delete-entry-mode-from-delete-to-trash"
+viewCount: "960"
+lastPublishedAt: "2022-11-01T22:12:14Z"
+changeOrigin: "unknown"
+name: "Change the Delete Entry mode from \"Delete\" to \"Trash\""
+slug: "299-change-the-delete-entry-mode-from-delete-to-trash"
+status: "published"
+categories: 
+  - "579aa642c6979160ca148ba9"
+keywords: 
+  - "delete"
+  - "trash"
+  - "delete entry"
+  - "move to trash"
+  - "permanently"
+related: 
+  - "54c67bb9e4b0512429885512"
+  - "558c76c0e4b01a224b42ec16"
+createdBy: "59634"
+updatedBy: "80506"
+updatedAt: "2022-11-01T22:12:14Z"
+title: "Change the Delete Entry mode from \"Delete\" to \"Trash\""
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/55e240a0c69791085647d68d"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-11-01T22:12:14Z
+  author: "Rafael Ehlers"
+---
+
+# Change the Delete Entry mode from "Delete" to "Trash"
+
+The entry is permanently deleted when deleting it in GravityView ( [see more here](https://docs.gravitykit.com/article/66-configuring-delete-entry)). If you want to have the entry moved to the **trash** instead, please use the code snippet below:
+
+```
+add_filter( 'gravityview/delete-entry/mode', 'gk_delete_entry_mode_return_trash' );
+
+function gk_delete_entry_mode_return_trash() {
+	return 'trash';
+}
+```
+
+### How to only target a specific View
+
+If you wish to apply this setting to a specific View only instead of changing the mode for all Views, then use the code below by making sure to replace "123" with the ID of your View:
+
+```
+add_filter( 'gravityview/delete-entry/mode', 'gk_delete_entry_mode_return_trash' );
+
+function gk_delete_entry_mode_return_trash() {
+	$view = gravityview()->request->is_view();
+	if ( $view ) {
+		$view_id = $view->settings->get( 'id' ); 
+		if( $view_id == 123 ){ //Change 123 to your View ID
+			return 'trash';
+		}
+	}
+	return 'delete';
+}
+```
+
+### How this code works
+
+The plugin uses the `gravityview/delete-entry/mode` filter to return a value of `trash` instead of the default, `delete`.
+
+
+:::info
+
+See how to add this code snippet to your website: [Where to put code samples](https://docs.gravitykit.com/article/210-where-to-put-code-samples).
+
+:::
+
+ 

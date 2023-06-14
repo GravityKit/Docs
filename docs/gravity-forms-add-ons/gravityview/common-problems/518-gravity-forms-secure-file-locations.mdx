@@ -1,0 +1,61 @@
+---
+id: "5bdb5a5c04286356f0a557b9"
+number: "518"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.2"
+publicUrl: "https://docs.gravitykit.com/article/518-gravity-forms-secure-file-locations"
+viewCount: "940"
+lastPublishedAt: "2023-01-18T02:08:41Z"
+changeOrigin: "hsapp-js"
+name: "Problems loading images: Gravity Forms Secure File Download Location"
+slug: "518-gravity-forms-secure-file-locations"
+status: "published"
+categories: 
+  - "579aab1cc6979160ca148bba"
+keywords: 
+  - "lightbox"
+  - "thickbox"
+related: 
+  - "55684b20e4b027e1978e3891"
+  - "54ffd868e4b034c37ea94e3c"
+createdBy: "59634"
+createdAt: "2018-11-01T19:56:12Z"
+updatedBy: "80506"
+updatedAt: "2023-01-18T02:08:41Z"
+title: "Problems loading images: Gravity Forms Secure File Download Location"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5bdb5a5c04286356f0a557b9"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2023-01-18T02:08:41Z
+  author: "Rafael Ehlers"
+---
+
+# Problems loading images: Gravity Forms Secure File Download Location
+
+Version 2.1.1 of Gravity Forms added security improvements that affect how GravityView loads images on a View.
+
+GravityView supports [Gravity Forms' secure download locations](https://docs.gravityforms.com/gform_secure_file_download_location/), which hide where a file has been uploaded. This is good for security, but it can affect the View loading speed if your View contains multiple images.
+
+Note how the secure link doesn't show the name of the file, but the insecure link does:
+
+- **Secure:** https://www.example.com/index.php?gf-download=2018%2F11%2F864260e1-b0af-4f61-b798-b6ff0b1d49931.jpg&amp;form-id=1&amp;field-id=4&amp;hash=409bda81bdd179545da1512e9e06ab1753104582a52bedeeaac04f8366e2c264
+- **Insecure:** https://www.example.com/wp-content/uploads/gravity\_forms/864260e1-b0af-4f61-b798-b6ff0b1d49931/2018/11/**name-of-your-file.jpg**
+
+### How to disable the secure paths
+
+Adding the code below will direct GravityView to use the insecure path to the image when displaying it.
+
+```
+
+add_filter( 'gform_secure_file_download_location', '__return_false' );
+```
+
+
+:::info
+
+[How to add this code snippet to your website](https://docs.gravitykit.com/article/210-where-to-put-code-samples).
+
+:::
+
+ 

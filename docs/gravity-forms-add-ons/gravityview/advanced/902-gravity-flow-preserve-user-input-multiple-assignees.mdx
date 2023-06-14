@@ -1,0 +1,45 @@
+---
+id: "63b6b41f649bd03a4c359a1d"
+number: "902"
+collectionId: "566dfabbc6979143615564bf"
+publicUrl: "https://docs.gravitykit.com/article/902-gravity-flow-preserve-user-input-multiple-assignees"
+viewCount: "18"
+lastPublishedAt: "2023-01-05T11:44:21Z"
+changeOrigin: "hsapp-js"
+name: "Preserve the \"sub-step\" status in Gravity Flow when one or more assignees are changed in GravityView"
+slug: "902-gravity-flow-preserve-user-input-multiple-assignees"
+status: "published"
+categories: 
+  - "579aa642c6979160ca148ba9"
+createdBy: "543004"
+createdAt: "2023-01-05T11:27:27Z"
+updatedBy: "543004"
+updatedAt: "2023-01-05T11:44:21Z"
+title: "Preserve the \"sub-step\" status in Gravity Flow when one or more assignees are changed in GravityView"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/63b6b41f649bd03a4c359a1d"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2023-01-05T11:44:21Z
+  author: "Casey Burridge"
+---
+
+# Preserve the "sub-step" status in Gravity Flow when one or more assignees are changed in GravityView
+
+When using GravityView with Gravity Flow, you may encounter a situation where you edit an assignee field on an entry with GravityView which does not reflect in the Gravity Flow workflow "User Input" step.
+
+The snippet below (kindly provided by Rob Davis) extends Gravity Flow user input steps so that when there is more than one assignee, the "sub-step" status may be preserved when one or more assignees are changed in GravityView.
+
+Here's an example of the issue in question:
+
+1. A user (such as a manager) assigns three site users (such as reviewers) to evaluate an entry in a Gravity Flow user input step.
+
+2. Two of the assigned users complete the task quickly, but the third is slow or does not respond in a timely manner.
+
+3. The manager no longer has the entry in their inbox since they assigned it to the three reviewers in the user input step. Fortunately, with this snippet, they may edit the entry in GravityView, change the third assignee to someone else, and update the entry.
+
+4. Without the snippet, the assignee would change in the Gravity Forms entry, but it would not affect the Gravity Flow workflow. The manager or a site admin would need to restart the step, and even after doing so, the fact that the first two reviewers already completed their portion of the user input step would not be preserved. Their status would go from complete back to pending, and they would need to resubmit their user input even if no changes were needed.
+
+**With the below snippet, editing and updating the entry in GravityView preserves the completed status of the first two reviewers, and refreshes the entry to recognize the new assignee!**
+
+<script src="https://gist.github.com/zackkatz/387513c4805a8a7891dad7ffde24b0c9.js" type="text/javascript"></script>

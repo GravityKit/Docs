@@ -1,0 +1,73 @@
+---
+id: "5bef4e012c7d3a31944e1123"
+number: "522"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.2"
+publicUrl: "https://docs.gravitykit.com/article/522-preventing-views-and-entries-from-being-by-the-google-crawler-bot"
+viewCount: "916"
+lastPublishedAt: "2022-10-07T20:14:09Z"
+changeOrigin: "unknown"
+name: "Preventing Views and Entries from being crawled by the Google Crawler/Bot"
+slug: "522-preventing-views-and-entries-from-being-by-the-google-crawler-bot"
+status: "published"
+categories: 
+  - "566dff159033603f7da27def"
+  - "579aa642c6979160ca148ba9"
+keywords: 
+  - "google"
+  - "seo"
+  - "crawler"
+  - "bot"
+  - "index"
+  - "indexing"
+  - "custom post type"
+  - "yoast"
+createdBy: "80506"
+createdAt: "2018-11-16T23:08:49Z"
+updatedBy: "80506"
+updatedAt: "2022-10-07T20:14:09Z"
+title: "Preventing Views and Entries from being crawled by the Google Crawler/Bot"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5bef4e012c7d3a31944e1123"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-07T20:14:09Z
+  author: "Rafael Ehlers"
+---
+
+# Preventing Views and Entries from being crawled by the Google Crawler/Bot
+
+Sometimes your Views might contain sensitive data; therefore, you might want to prevent them from being indexed by Google and other search engines. To achieve that, you'll need to create a file on your WordPress root directory called [Robots.txt](http://www.robotstxt.org/).
+
+Then, write the following instructions inside this text file:
+
+```
+User-agent: *
+Disallow: /view/*/entry/*
+Disallow: /*/entry/*
+```
+
+### Removing access to the View custom post type
+
+Views are registered on WordPress as [Custom Post Types](https://developer.wordpress.org/plugins/post-types/registering-custom-post-types/), and they are accessible via the `/view/` slug on the URL. It's possible to completely remove access to this custom post type by using the filter below:
+
+```
+add_filter( 'gravityview_direct_access', '__return_false' );
+```
+
+When using this filter, only Views embedded using the \[gravityview\] shortcode will show up/work.
+
+
+:::info
+
+Related: [Where to put code samples](https://docs.gravitykit.com/article/210-where-to-put-code-samples)
+
+:::
+
+ ###  Removing the View Custom Post Type from Yoast SEO
+
+SEO plugins such as Yoast will automatically add all Custom Post Types (such as GravityView Views) to your website sitemap that is accessed by Google &amp; other search engines. There's a way to exclude them from the sitemap explicitly.   
+  
+In Yoast, for instance, this can be done by accessing the "SEO &gt; Search Appearance" menu and then the Content Types tab:
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5e8e4a4504286364bc980f9c/file-fcoZkF18bK.png)

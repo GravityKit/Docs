@@ -1,0 +1,52 @@
+---
+id: "5c10484004286304a71d43db"
+number: "527"
+collectionId: "54d1a05ce4b086c0c0964ccd"
+popularity: "0.2"
+publicUrl: "https://docs.gravitykit.com/article/527-multiple-forms-strict-match"
+viewCount: "1635"
+lastPublishedAt: "2022-12-27T21:04:23Z"
+changeOrigin: "external"
+name: "Multiple Forms: How the \"Strict Entry Match\" setting works"
+slug: "527-multiple-forms-strict-match"
+status: "published"
+categories: 
+  - "5c00781104286304a71cd192"
+createdBy: "59634"
+createdAt: "2018-12-11T23:29:04Z"
+updatedBy: "59634"
+updatedAt: "2022-12-27T21:04:23Z"
+title: "Multiple Forms: How the \"Strict Entry Match\" setting works"
+hsEditUrl: "https://secure.helpscout.net/docs/54d1a05ce4b086c0c0964ccd/article/5c10484004286304a71d43db"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-12-27T21:04:23Z
+  author: "Zack Katz"
+---
+
+# Multiple Forms: How the "Strict Entry Match" setting works
+
+The Multiple Forms plugin allows you to display entry values from multiple forms in a single View.
+
+The plugin adds a setting called "Strict Entry Match" to the View Settings box. It looks like this:
+
+![The "Strict Entry Match" setting in the View Settings metabox in GravityView's Edit View screen](https://i.gravitykit.com/bFOK3L+)
+
+By default, all entries in the parent form connected to a View will be shown. If the connected forms do not have any values, they will be displayed as blank:
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5f20b53404286306f80788d8/file-0GrpAJNqAC.png)
+
+But by enabling the Strict Entry Match setting, only the rows that contain results for both forms will be shown:
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5f20b5722c7d3a10cbab7602/file-AnkfstEbEb.png)
+
+##  Here's an example showing three connected forms.
+
+By default, all entries in the main form (Form A) are shown regardless of whether those records have a match in the connected form.
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5f20b5e62c7d3a10cbab7607/file-ndYe5C1Q3Q.png)
+
+When we enable "Strict Entry Match" for this hypothetical View, the only row displayed will be row four, because the entry in Form A also has matching entries in all of the connected forms.
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5f20b6312c7d3a10cbab7609/file-1WjEkYJh1v.png)

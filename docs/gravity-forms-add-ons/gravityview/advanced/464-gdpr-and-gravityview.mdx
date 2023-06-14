@@ -1,0 +1,123 @@
+---
+id: "5b059f4d0428635ba8b2a5ff"
+number: "464"
+collectionId: "566dfabbc6979143615564bf"
+publicUrl: "https://docs.gravitykit.com/article/464-gdpr-and-gravityview"
+viewCount: "258"
+lastPublishedAt: "2022-12-28T22:31:35Z"
+changeOrigin: "hsapp-js"
+name: "GDPR and GravityView"
+slug: "464-gdpr-and-gravityview"
+status: "published"
+categories: 
+  - "579aa642c6979160ca148ba9"
+keywords: 
+  - "gdpr"
+createdBy: "268528"
+createdAt: "2018-05-23T17:05:17Z"
+updatedBy: "59634"
+updatedAt: "2022-12-28T22:31:35Z"
+title: "GDPR and GravityView"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5b059f4d0428635ba8b2a5ff"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-12-28T22:31:35Z
+  author: "Zack Katz"
+---
+
+# GDPR and GravityView
+
+***Note:** This post does not constitute legal advice.*
+
+### What is the GDPR?
+
+The General Data Protection Regulation (GDPR) is a European Union regulation designed to protect private Personally Identifiable Information (PII) for all European Union citizens. In short, it is designed to protect users from unauthorized data collection from their websites. To do this, the GDPR requires that users give explicit consent to collect their data.
+
+The GDPR affects all companies that have users from the European Union, not only companies based in the E.U. If you have an online business or website, you will be affected by GDPR. Companies must be compliant by May 25, 2018.
+
+[You can read more about the specifics of the GDPR on the official website.](https://www.eugdpr.org)
+
+### What is Personally Identifiable Information (PII)?
+
+Personally Identifiable Information is any information that can be used to identify a specific individual. This includes (but is not limited to):
+
+- Name
+- Address
+- ID Numbers
+- Web data such as 
+   - Location
+   - IP Address
+   - Cookie data
+   - RFID data
+- Biometric data
+- Racial, ethnic, or other demographic information
+- Political views and opinions
+- Sexual orientation and gender identity
+
+### Gravity Forms and Personally Identifiable Information
+
+Any Gravity Forms field can potentially be used to gather the information listed above. Some information that can be considered sensitive and personally-identifiable (i.e. can tie the entry to a specific person) is gathered implicitly:
+
+A person's IP address:
+
+```
+
+gf_entry.ip
+```
+
+The type of browser being used:
+
+```
+
+gf_entry.user_agent
+```
+
+If making a purchase with the form, this is the payment ID connected to the payment processor:
+
+```
+
+gf_entry.transaction_id
+```
+
+The WordPress User ID of the person:
+
+```
+
+gf_entry.created_by
+```
+
+**As such, if you are using Gravity Forms, you should be sure to make your website compliant!**
+
+### GDPR and WordPress
+
+The WordPress community has built several tools that help WordPress users get GDPR-compliant:
+
+- As of the 4.9.6 release, all WordPress versions include several privacy tools, including a Privacy Policy page-creator, options for deleting and exporting data, and more. [Read the full post here.](https://wordpress.org/news/2018/05/wordpress-4-9-6-privacy-and-maintenance-release/)
+- [This guide on WordPress.org](https://developer.wordpress.org/plugins/privacy/) is for developers writing plugins that handle personal data.
+- These three plugins help make your website GDPR-compliant. Note that they don't guarantee 100% compliance - you'll need a lawyer for that! 
+   - [WP GDPR Compliance Plugin](https://www.wpgdprc.com)
+   - [](https://www.wpgdprc.com)[Codelight GDPR Framework](https://codelight.eu/wordpress-gdpr-framework/). Currently doesn't support Gravity Forms, but they have plans to add it soon.
+   - [This add-on](https://data443.com/gdpr-framework-wordpress-plugin/) will make your Gravity Forms GDPR-compliant. Unfortunately, it's not free.
+
+### How to Be GDPR Compliant with Gravity Forms
+
+[First, give this guide on the Gravity Forms site a read.](https://docs.gravityforms.com/wordpress-gravity-forms-and-gdpr-compliance) In short, Gravity Forms recommends adding a required checkbox to any forms that must be GDPR-compliant. This checkbox should make it clear that the user's data is being collected.
+
+> The easiest way to comply would be to add a required checkbox to any forms that need to be compliant. Adding a simple checkbox field that states something along the lines of “I consent to my submitted data being collected and stored” will usually do the trick.
+
+> Be sure to make it a required field, and the first part is done. This way, you’ll know that every submission is compliant because without providing consent, the submission would not complete.
+
+As noted in the article, it's very important to make this checkbox a required field. **If your field is not required, any submitted entries that have not consented to data collection can be considered violations of GDPR.**
+
+### User Data Requests and GravityView
+
+Another part of GDPR compliance requires that users can request and receive all of their personal information.
+
+While the regulation merely requires that businesses provide the data "within a month", we recommend simply setting up a View in GravityView that allows logged-in users to view, edit and delete the data themselves.
+
+To do this, you'll want to limit search results to only show entries submitted by the currently logged-in user. [Read this Knowledge Base article for instructions on setting this up.](https://docs.gravitykit.com/article/203-how-to-show-only-results-submitted-by-the-current-user)
+
+### Other Questions?
+
+*If your usage of user data is unique or doesn't fall under the cases mentioned above, we recommend contacting a lawyer directly.*

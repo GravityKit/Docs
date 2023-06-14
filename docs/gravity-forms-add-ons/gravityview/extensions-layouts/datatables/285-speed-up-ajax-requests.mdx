@@ -1,0 +1,94 @@
+---
+id: "5589a5d0e4b027e1978ea41f"
+number: "285"
+hasDraft: "1"
+collectionId: "54d1a05ce4b086c0c0964ccd"
+popularity: "0.5"
+publicUrl: "https://docs.gravitykit.com/article/285-speed-up-ajax-requests"
+viewCount: "4959"
+lastPublishedAt: "2018-09-03T18:01:04Z"
+changeOrigin: "unknown"
+name: "Speed up AJAX Requests (Advanced)"
+slug: "285-speed-up-ajax-requests"
+status: "notpublished"
+categories: 
+  - "54d1a06ee4b086c0c0964cd1"
+keywords: 
+  - "AJAX"
+  - "speed"
+  - "slow"
+createdBy: "59634"
+createdAt: "2015-06-23T18:30:40Z"
+updatedBy: "59634"
+updatedAt: "2018-09-03T18:01:04Z"
+title: "Speed up AJAX Requests (Advanced)"
+hsEditUrl: "https://secure.helpscout.net/docs/54d1a05ce4b086c0c0964ccd/article/5589a5d0e4b027e1978ea41f"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2018-09-03T18:01:04Z
+  author: "Zack Katz"
+---
+
+# Speed up AJAX Requests (Advanced)
+
+### Sometimes getting content for DataTables can be too slow.
+
+The DataTables Extension implements WordPress best practices by sending all data requests through the `admin-ajax.php` endpoint. Getting the data this way means that WordPress needs to load all of the WordPress plugins and files before processing the request and returning the value. This can slow up DataTables response times.
+
+To improve the extension speed, we've added the ability to "bootstrap" WordPress and load only the files that are needed to run Gravity Forms, GravityView, GravityView DataTables Extension, and other GravityView Extensions. **This improves request times by over half a second**.
+
+### So here's a shortcut, to be used carefully
+
+
+:::caution
+
+The requests will still be validated, and although we are not aware of any security risks, there may be security implications. **Use at your own risk, and not for sensitive data.**
+
+:::
+
+  If you want to enable Direct AJAX, add the code below [to your functions.php file](http://docs.gravityview.co/article/210-where-do-i-add-the-code-samples):
+
+<script src="https://gist.github.com/zackkatz/d37568866b4c0d01a830.js" type="text/javascript"></script> Note: **Actions and filters that modify field output will not be triggered** when using Direct AJAX.
+
+---
+
+### How it works
+
+By enabling Direct AJAX, the DataTables script will load the following files:
+
+```
+
+wp-load.php
+wp-includes/locale.php
+wp-includes/class-wp-walker.php
+wp-includes/plugin.php
+wp-includes/load.php
+wp-includes/l10n.php
+wp-includes/general-template.php
+wp-includes/link-template.php
+wp-includes/formatting.php
+wp-includes/kses.php
+wp-includes/pluggable.php
+wp-includes/capabilities.php
+wp-includes/user.php
+wp-includes/meta.php
+wp-includes/session.php
+wp-includes/shortcodes.php
+wp-includes/theme.php
+wp-includes/template.php
+wp-includes/widgets.php
+wp-includes/rewrite.php
+wp-includes/query.php
+```
+
+These files are the bare minimum needed to run Gravity Forms and GravityView. Once those files have been loaded, the DataTables Extension then looks for Gravity Forms, GravityView, and other GravityView Extensions in the plugins folder (defined by `WP_PLUGIN_DIR`) and attempts to load them by calling their loading functions.
+
+
+:::caution
+
+The requests will still be validated by nonce, and although we are not aware of any security risks, there may be security implications. **Use at your own risk, and not for sensitive data.**
+
+:::
+
+ 

@@ -1,0 +1,86 @@
+---
+id: "55b667b5e4b0e667e2a4452f"
+number: "291"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.9"
+publicUrl: "https://docs.gravitykit.com/article/291-how-to-allow-a-user-to-edit-all-entries"
+viewCount: "4587"
+lastPublishedAt: "2023-02-16T17:28:59Z"
+changeOrigin: "hsapp-js"
+name: "Creating an Entry Moderator role"
+slug: "291-how-to-allow-a-user-to-edit-all-entries"
+status: "published"
+categories: 
+  - "579aa9b2903360293603a8f0"
+  - "5e1b6d5d04286364bc93c665"
+keywords: 
+  - "edit entry"
+  - "permissions"
+  - "capability"
+related: 
+  - "554351cbe4b01a224b421c6b"
+  - "54c67bb9e4b0512429885513"
+  - "54c67bbbe4b07997ea3f3f6b"
+createdBy: "59634"
+createdAt: "2015-07-27T17:17:41Z"
+updatedBy: "59634"
+updatedAt: "2023-02-16T17:28:59Z"
+title: "Creating an Entry Moderator role"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/55b667b5e4b0e667e2a4452f"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2023-02-16T17:28:59Z
+  author: "Zack Katz"
+---
+
+# Creating an Entry Moderator role
+
+
+
+### 1) Install and Activate the [Members plugin](https://wordpress.org/plugins/members/)
+
+![Screenshot of the Installed Plugins page](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/637fbece23a10d7e43619e87/file-iSSqUOJxGz.png)
+
+### 2) Click on "Roles" page under the Members menu
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/637fbf278ae44905ae2cc901/file-9keuiSjZUR.png)
+
+### 3) Click the "Add New" button next to Roles
+
+###  ![Screenshot of the Members page](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/637fbfa65af7a97b505052ca/file-BaznY8cnut.png)4) Give the new Role a name
+
+![Screenshot of the new role creation page](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/637fc0838ae44905ae2cc902/file-oNtXbwbuQG.png)Ensure that the most basic capability necessary to all roles, the read capability, is checked. 
+
+In this example, we've named the role "Entry Moderator".
+
+### 5) Add the necessary Gravity Forms capabilities
+
+![Screenshot of the required Gravity Forms capabilities](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/637fc0dd23a10d7e43619e8a/file-lARbP69BSe.png)
+
+There are a *lot* of capabilities to choose from. At the very least, you're going to want to allow the user to have the `gravityforms_view_entries`, `gravityforms_edit_entries`. If you want them also to be able to delete entries, you'll want to enable `gravityforms_delete_entries` as well.  
+  
+**Note:** If you want this role also to be able to manage [Entry Approvals](https://docs.gravitykit.com/article/88-approving-or-rejecting-entries-in-gravityview), please enable the `gravityview_moderate_entries` capability as well.
+
+### 6) Add the role by clicking "Add Role"
+
+![Screenshot of the add role button](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/637fc13223a10d7e43619e8b/file-iaPpfFZ90d.png)
+
+Now you've got the Role set up; we need to assign the new role to an existing user.
+
+### 7) Go to the Users menu and click All Users
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/637fc183eb3e4a7280a2bb1b/file-6mxSGJBAcM.png)
+
+### 8) Click the user you want to add the moderation role
+
+![Screenshot of the user actions in the All Users page](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/637fc27c8ae44905ae2cc903/file-8BPI0jZIrL.png)
+
+### 9) Under "Roles", check the newly-created "Entry Moderator" role
+
+![Screenshot of the roles section under user profile](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/637fc1f85af7a97b505052cb/file-lobCiZoKl6.png)Make sure to hit the "Update User" button to save the user settings.
+
+### And that's it!
+
+Now the user will be able to view, edit, and (if you enabled it), delete any entry.
+

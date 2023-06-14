@@ -1,0 +1,70 @@
+---
+id: "6037dba50a2dae5b58fb3793"
+number: "752"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.1"
+publicUrl: "https://docs.gravitykit.com/article/752-how-to-conditionally-display-an-image-or-a-placeholder"
+viewCount: "656"
+lastPublishedAt: "2022-10-12T22:18:40Z"
+changeOrigin: "unknown"
+name: "How to conditionally display an image or a placeholder"
+slug: "752-how-to-conditionally-display-an-image-or-a-placeholder"
+status: "published"
+categories: 
+  - "566dfe4fc6979143615564d9"
+createdBy: "80506"
+createdAt: "2021-02-25T17:17:25Z"
+updatedBy: "80506"
+updatedAt: "2022-10-12T22:18:40Z"
+title: "How to conditionally display an image or a placeholder"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/6037dba50a2dae5b58fb3793"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-12T22:18:40Z
+  author: "Rafael Ehlers"
+---
+
+# How to conditionally display an image or a placeholder
+
+If you wish to display an image only if specific criteria match another field's value or even display a placeholder image in case the original image is not present, you can do that with either the \[gvlogic\] shortcode or with the Field Conditional Logic functionality from the [Advanced Filter extension](https://www.gravitykit.com/extensions/advanced-filter/).
+
+## Using the \[gvlogic\] shortcode
+
+In this View, the cat named "Charlie" doesn't have a photo:
+
+![Screenshot of a View showing 4 entries, 3 of them have photos of cats except one](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/6037ead08502d1120e90b469/file-vf4oa8zEra.png)So, we will be replacing the Cat Photo field, which is a File Upload field, with a [Custom Content field](https://docs.gravitykit.com/article/111-using-the-custom-content-field) to write our \[gvlogic\] shortcode inside:
+
+![Screenshot of the Custom Content field with the gvlogic shortcode inside](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/6037f0f08502d1120e90b4a9/file-3jv4JnG3cx.png)This is the \[gvlogic\] code we used on the image above:
+
+```
+[gvlogic if="{Cat Photo:2}"]
+<img src="{Cat Photo:2:esc_html}">
+[else]
+<img src="https://path.to.placeholder.image/no-cat.jpg">
+[/gvlogic]
+```
+
+
+:::caution
+
+When outputting a field value inside an HTML tag, always use the Modifier [:esc\_html](https://docs.gravitykit.com/article/350-merge-tag-modifiers) to prevent it from breaking your website's HTML.
+
+:::
+
+  And here's our View now with a placeholder image for an empty File Upload field:
+
+![Screenshot of the View showing 4 entries, 3 of them have photos of cats, one of them has a placeholder image](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/6037ee33661b720174a70f58/file-mouFWwp6bL.png)
+
+## Using Field Conditional Logic
+
+
+:::caution
+
+To use this feature, you must have installed the Advanced Filter plugin available only to the GravityView + Extensions Bundle or All Access licenses.
+
+:::
+
+  This functionality is more straightforward than using the \[gvlogic\] shortcode because it doesn't require any custom code; it's as simple as specifying the conditions for the Cat Photo field in the View editor:
+
+![Screenshot of the field settings modal highlighting the field conditional logic section](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/6037ef50661b720174a70f68/file-E6zOMiGK6R.png)

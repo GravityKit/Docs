@@ -1,0 +1,101 @@
+---
+id: "54c67bc2e4b0512429885527"
+number: "86"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "1"
+publicUrl: "https://docs.gravitykit.com/article/86-restrict-view-content-to-members"
+viewCount: "5178"
+lastPublishedAt: "2023-01-02T20:06:55Z"
+changeOrigin: "hsapp-js"
+name: "Restricting View Content to be Members-Only"
+slug: "86-restrict-view-content-to-members"
+status: "published"
+categories: 
+  - "566dfec2c6979143615564e3"
+createdBy: "59634"
+updatedBy: "59634"
+updatedAt: "2023-01-02T20:06:55Z"
+title: "Restricting View Content to be Members-Only"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/54c67bc2e4b0512429885527"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2023-01-02T20:06:55Z
+  author: "Zack Katz"
+---
+
+# Restricting View Content to be Members-Only
+
+
+:::info
+
+For a full video course on using the Redirection plugin to protect Views in GravityView, check out our [free course](https://gravity.guide/course/protect-a-view-by-login-status-or-user-role/) on Gravity Guide.
+
+:::
+
+
+
+Restricting your Views can be helpful if you run a membership site and want to restrict content to registered users. There are several ways to protect your Views by login status or user role.
+
+## 1. By Using a Membership Plugin
+
+The WordPress [Members plugin](https://wordpress.org/plugins/members/) by MemberPress allows you to restrict access to content on your website. It’s effective, powerful, and, best of all, free.
+
+To get started, log in to your WordPress site, hover over *Plugins* in the left-hand menu and click on *Add New*. Next, search for “Members - Membership &amp; User Role” and install the plugin.
+
+![the Members plugin showing 674 reviews and 200000 active installations](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/60d1b8fe61c60c534bd68289/file-qq3vWxaAgx.png)
+
+Wrap the `[gravityview]` embed shortcode in the `[members]` shortcode to restrict access to logged-in users.
+
+```html
+
+[members_logged_in]
+	[gravityview id='47']
+[/members_logged_in]
+```
+
+You can also restrict your view based on user role:
+
+```html
+
+[members_access role="subscriber"] 
+	[gravityview id='47'] 
+[/members_access]
+```
+
+## 2. By Password-Protecting Your Page
+
+WordPress allows you to password-protect pages, posts, and Views.
+
+To password-protect your View (or a page where your View is embedded), click on the *Edit* link next to *Visibility*. Next, check “Password protected” and enter your chosen password.
+
+![The WordPress publish metabox with 'password protected' checked](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/60d1baa59e87cb3d01245f04/file-jI4vzONzTj.png)
+
+You can also restrict access to your View by making it “Private”. If you select this option, only Administrators and Editors can see your View and its content.
+
+##  3. By Hiding Certain Fields in Your View
+
+GravityView allows you to [restrict access to certain fields](https://docs.gravitykit.com/article/753-field-conditional-logic) based on login status or user role. This is a great option if you want some information in your View to be public and other information to be private.
+
+To do this, edit your View and click the gear icon next to the field you want to restrict. This will bring up the *Field Settings* window. Under *Visibility*, check the box that says “Make visible only to logged-in users?”.
+
+![The GravityView Field Settings box showing the 'make visible only to logged-in users checkbox](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/60d1bc0a9e87cb3d01245f0c/file-tWOxqjH3sw.png)
+
+To restrict visibility to specific user roles, select a role from the dropdown menu below. The different options are:
+
+- Any Logged-In User
+- Author or Higher
+- Can View gravity Forms Entries
+- Editor or higher
+- Can Edit Gravity Forms Entries
+- Administrator
+
+If you want to modify the visible roles, [you can follow these instructions](https://docs.gravitykit.com/article/96-modifying-capabilities-shown-in-the-field-only-visible-to-dropdown).
+
+## 4. By Redirecting Logged-Out Users
+
+Using the [Redirection plugin](https://wordpress.org/plugins/redirection/), you can redirect users based on login status or user role.
+
+After activating the plugin, create a new redirect rule for your View page. Next, click on the gear icon to bring up additional options. Here you can configure redirects based on login status or user role.
+
+![the Redirection settings with an arrow pointing to a dropdown that says 'URL and login status'](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/60d1bed361c60c534bd682b0/file-QV1zIRWM8p.png)

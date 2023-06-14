@@ -1,0 +1,51 @@
+---
+id: "5d27fcb02c7d3a2ec4bec746"
+number: "597"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.2"
+publicUrl: "https://docs.gravitykit.com/article/597-the-sequence-merge-tag"
+viewCount: "974"
+lastPublishedAt: "2019-07-16T19:54:53Z"
+changeOrigin: "unknown"
+name: "The {sequence} Merge Tag"
+slug: "597-the-sequence-merge-tag"
+status: "published"
+categories: 
+  - "566dfe9bc6979143615564df"
+createdBy: "59634"
+createdAt: "2019-07-12T03:21:20Z"
+updatedBy: "59634"
+updatedAt: "2019-07-16T19:54:53Z"
+title: "The {sequence} Merge Tag"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5d27fcb02c7d3a2ec4bec746"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2019-07-16T19:54:53Z
+  author: "Zack Katz"
+---
+
+# The {sequence} Merge Tag
+
+<iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="315" src="https://www.youtube-nocookie.com/embed/uqWCtSsmHIQ" width="560"></iframe>
+
+The `{sequence}` Merge Tag displays the same value as a Sequence Number Field, but the Merge Tag can be used inside fields in a View. `{sequence}` can be used inside a Custom Content field, as well as inside field labels and Custom CSS Class field settings.
+
+### Reverse the sequence order
+
+If you want to display the order of entries from high to low, you can "count down" using the `reverse` modifier.
+
+- `{sequence reverse}` Output numbers in descending order. If used, numbers will count down from high to low.
+
+### Change the starting or ending number
+
+You may want to start the sequence from a number that isn't 1 (or if you're using the reverse modifier, you may want to *end* at a number that isn't 1). To do that, set the `start` modifier.
+
+- `{sequence start=[number]}` Set the first number in the sequence, or if also using reverse, set the last number of the sequence
+
+###  Example Merge Tag usage:
+
+- `{sequence}` will output "1" for the first entry, and "10" for the tenth
+- `{sequence start=11}` will output "11" for the first entry, and "21" for the tenth
+- `{sequence reverse}` will output "10" for the first entry, and "1" for the tenth, if there are 10 total entries in the View.
+- `{sequence reverse,start=10}` will output "20" for the first entry, and "10" for the tenth, if there are 10 total entries in the View.

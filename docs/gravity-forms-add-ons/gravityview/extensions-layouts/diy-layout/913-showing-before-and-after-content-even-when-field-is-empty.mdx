@@ -1,0 +1,46 @@
+---
+id: "63f3d26afe98c84503a27d97"
+number: "913"
+collectionId: "54d1a05ce4b086c0c0964ccd"
+publicUrl: "https://docs.gravitykit.com/article/913-showing-before-and-after-content-even-when-field-is-empty"
+viewCount: "2"
+lastPublishedAt: "2023-02-20T20:08:56Z"
+changeOrigin: "hsapp-js"
+name: "Showing Before and After Content even when field is empty"
+slug: "913-showing-before-and-after-content-even-when-field-is-empty"
+status: "published"
+categories: 
+  - "5a555f842c7d3a1943680073"
+createdBy: "80506"
+createdAt: "2023-02-20T20:04:58Z"
+updatedBy: "80506"
+updatedAt: "2023-02-20T20:08:56Z"
+title: "Showing Before and After Content even when field is empty"
+hsEditUrl: "https://secure.helpscout.net/docs/54d1a05ce4b086c0c0964ccd/article/63f3d26afe98c84503a27d97"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2023-02-20T20:08:56Z
+  author: "Rafael Ehlers"
+---
+
+# Showing Before and After Content even when field is empty
+
+If the value of a field is empty, the Before Content and After Content sections won't show up:
+
+![Screenshot of the field settings modal ](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/63f3d2dde22c9e067d476728/file-i3gncll5FX.png)
+
+If you still need the contents of these two sections to appear regardless of the field's value, then you'll need to use this code snippet below:
+
+```
+add_filter('gravityview-diy/field-value/show-settings-content-if-empty', '__return_true');
+```
+
+
+:::info
+
+[How to add this code snippet to your website](https://docs.gravitykit.com/article/210-where-to-put-code-samples).
+
+:::
+
+ 

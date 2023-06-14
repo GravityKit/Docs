@@ -1,0 +1,77 @@
+---
+id: "604156f8b3ebfb109b588b15"
+number: "757"
+collectionId: "6076f9478996210f18bd33df"
+popularity: "0.1"
+publicUrl: "https://docs.gravitykit.com/article/757-pricing-fields-calculation"
+viewCount: "512"
+lastPublishedAt: "2022-12-27T20:43:17Z"
+changeOrigin: "external"
+name: "Pricing fields calculation"
+slug: "757-pricing-fields-calculation"
+status: "published"
+categories: 
+  - "6155b0bf2b380503dfdf63f0"
+createdBy: "80506"
+createdAt: "2021-03-04T21:54:00Z"
+updatedBy: "59634"
+updatedAt: "2022-12-27T20:43:17Z"
+title: "Pricing fields calculation"
+hsEditUrl: "https://secure.helpscout.net/docs/6076f9478996210f18bd33df/article/604156f8b3ebfb109b588b15"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-12-27T20:43:17Z
+  author: "Zack Katz"
+---
+
+# Pricing fields calculation
+
+
+:::info
+
+This functionality requires the GravityMath plugin version 2.0 to be installed and activated on your website.
+
+:::
+
+
+
+If your form has Pricing fields, it's now possible to perform calculations with them on your View.
+
+![Screenshot of the form editor showing the Pricing fields accordion highlighted](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/60415779b3ebfb109b588b1a/file-DfElCs8rlw.png)
+
+In our sample form, we've added 3 Product fields set up as "User Defined Price" in order to collect pricing information:
+
+![Screenshot of a form showing 3 product fields added to it](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/604158a724d2d21e45edcc72/file-LytLXdf6eT.png)
+
+In our View, besides two normal fields from the form (Year and Month) and the three pricing fields (Product Sales, Labor Sales, and Costs of Goods Sold), we'll be adding two additional Custom Content fields in order to calculate some totals using the [\[gravitymath\] shortcode](https://docs.gravitykit.com/article/295-math-shortcode):
+
+![Screenshot of the View editor showing all form fields added to the View plus two additional custom content fields](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/604159bd0a2dae5b58fb6116/file-aEdDQAyvw1.png)
+
+Here's the shortcode formula for the Net Sales column:
+
+![Screenshot of a custom content field with a [gv_math] shortcode inside](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/60415aba24d2d21e45edcc81/file-4pciAE6JRe.png)
+
+And here's the shortcode formula for the Gross Income column:
+
+![Screenshot of a custom content field with a [gv_math] shortcode inside](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/60415aff8502d1120e90dd06/file-xmll5oZTBv.png)
+
+Here's our View so far:
+
+![Screenshot of our sample View](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/60415b5624d2d21e45edcc85/file-TStjdRA8jB.png)
+
+Now, we'll be using the new ["Table Footer Calculation"](https://docs.gravitykit.com/article/750-how-to-add-field-calculations-to-the-table-footer) functionality from the Math extension to get totals for each column in our View:
+
+![Screenshot of the field settings modal with the table footer calculations section highlighted in red](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/60415c5cb3ebfb109b588b40/file-HbrGcFjEdC.png)We apply the same logic for all three Product fields in our View and voilá:
+
+![Screenshot of the View showing column totals](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/60415c32661b720174a7389e/file-fBLI8xF3vO.png)
+
+We can also add these footer calculations to Custom Content fields (Net Sales and Gross Income columns), we just need to specify "Custom" for the type of calculation and write the \[gravitymath\] shortcode formula we want:
+
+![Screenshot of the table calculation footer section inside the field settings modal](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/60415cf18502d1120e90dd10/file-jjjmJ4WhJc.png)
+
+And here's our final View:
+
+![Screenshot of the View with highlighted areas in red and green colors](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/60415d3d8502d1120e90dd13/file-gm5YtogEBa.png)
+
+Areas highlighted in Green were achieved using [Table Footer Calculations](https://docs.gravitykit.com/article/750-how-to-add-field-calculations-to-the-table-footer), and areas highlighted in Red were achieved with the [\[gravitymath\] shortcode](https://docs.gravitykit.com/article/295-math-shortcode).

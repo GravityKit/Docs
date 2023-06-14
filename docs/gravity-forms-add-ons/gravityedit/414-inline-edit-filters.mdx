@@ -1,0 +1,210 @@
+---
+id: "594449692c7d3a0747cdfa3e"
+number: "414"
+collectionId: "6076f9478996210f18bd33df"
+popularity: "0.4"
+publicUrl: "https://docs.gravitykit.com/article/414-inline-edit-filters"
+viewCount: "2758"
+lastPublishedAt: "2023-01-02T19:14:07Z"
+changeOrigin: "hsapp-js"
+name: "GravityEdit Filters"
+slug: "414-inline-edit-filters"
+status: "published"
+categories: 
+  - "6155b0960754e74465f1541d"
+keywords: 
+  - "filters"
+  - "hooks"
+  - "actions"
+  - "add_filter"
+  - "add_action"
+  - "do_action"
+createdBy: "59634"
+createdAt: "2017-06-16T21:11:05Z"
+updatedBy: "59634"
+updatedAt: "2023-01-02T19:14:07Z"
+title: "GravityEdit Filters"
+hsEditUrl: "https://secure.helpscout.net/docs/6076f9478996210f18bd33df/article/594449692c7d3a0747cdfa3e"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2023-01-02T19:14:07Z
+  author: "Zack Katz"
+---
+
+# GravityEdit Filters
+
+These are a list of all the filters in the GravityEdit plugin.
+
+---
+
+#### `gravityview-inline-edit/wrapper-attributes`
+
+Modify the attributes being added to an inline editable wrapper HTML tag.
+
+**Parameters:**
+
+- `$wrapper_attributes` *array* The attributes of the container `<div>` or `<span>`
+- `$field_input_type` *string* The field input type
+- `$field_id` *int* The field ID
+- `$entry` *array* The entry
+- `$form` *array* The current Form
+- `$gf_field` *GF*Field\_ Gravity Forms field object.
+
+#### `gravityview-inline-edit/inline-edit-caps`
+
+Capabilities required for an user to edit an entry. Passed to `GFCommon::current_user_can_any()`
+
+- `$caps` *array* Array of user capabilities needed to allow inline editing of entries. Default: `gravityforms_edit_entries`
+
+#### `gravityview-inline-edit/user-can-edit-entry`
+
+Modify whether the current user can edit an entry. Default: Whether current user has the `gravityforms_edit_entries` capability. when editing in GravityView, also checks against `gravityview_edit_form_entries` and `gravityview_edit_entry` filters.
+
+**Parameters:**
+
+- `$can_edit_entry` *bool* True: User can edit the entry at $entry\_id; False; they just can't
+- `$entry_id` *int* Entry ID to check
+- `$form_id` *int* Form connected to $entry\_id
+
+#### `gravityview-inline-edit/entry-updated`
+
+Filter the response that will be passed to `wp_send_json()` after editing the entry.
+
+This runs after the entry has been updated by `GFAPI::update_entry( $entry )`.
+
+if you want to trigger any of the following hooks, this is the place to do it:
+
+- `gform_entry_pre_update`
+- `gform_form_pre_update_entry`
+- `gform_form_pre_update_entry_$form_id`
+- `gform_post_update_entry`
+- `gform_post_update_entry_$form_id`
+
+None of those hooks will run during Inline Edit because they have been explicitly removed by the plugin to prevent <del>bazillions</del> a lot of notifications.
+
+**Parameters:**
+
+- `$update_result` *bool|WP*Error\_ True: the entry has been updated by Gravity Forms or WP\_Error if there was a problem. This is the response from `GFAPI::update_entry( $entry )`
+- `$entry` *array* The Entry Object that's been updated
+- `$form_id` *int* The Form ID
+- `$gf_field` *GF\_Field* The field that's been updated
+- `$original_entry` *array* The original entry, before being updated (Since Version 1.1)
+
+Also called is the filter `gravityview-inline-edit/entry-updated/{$type}`, where `$type` is the `GravityView_Inline_Edit_Field->inline_edit_type` string
+
+```php
+
+add_filter( 'gravityview-inline-edit/entry-updated', 'gravityedit_custom_code', 10, 5 );
+function gravityedit_custom_code( $update_result, $entry = array(), $form_id = 0, $gf_field = null, $original_entry = array() ) { 
+	
+	if ( 124 !== (int) $form_id ) { // replace 124 with your form ID to only run this function on a specific form
+		return $update_result;
+	}
+
+	// YOUR CODE HERE
+	
+	return $update_result;
+}
+```
+
+#### `gravityview-inline-edit/supported-fields`
+
+Modify the fields that are supported by GravityView Inline Edit.
+
+- `$supported_fields` *array* The supported fields array
+
+#### `gravityview-inline-edit/ignored-fields`
+
+Modify the fields that are not modified at all by GravityView Inline Edit. Default: `[ "notes", "entry_approval" ]`
+
+- `$ignored_fields` *array* The ignored fields array
+
+## Modifying Edit Functionality &amp; Style
+
+#### `gravityview-inline-edit/edit-mode`
+
+Modify the inline edit mode. Default: "popup"
+
+**Parameters:**
+
+- `$edit_mode` *string* Editing mode. Options: "popup" or "inline"
+
+#### `gravityview-inline-edit/edit-style`
+
+Modify the inline edit style. Default: "bootstrap3-editable"
+
+**Parameters:**
+
+- `$edit_mode` *string* Editing style. Options: "jquery-editable", "jqueryui-editable" or "bootstrap3-editable"
+
+#### `gravityview-inline-edit/jquery-ui-theme`
+
+Modify the jQuery UI theme to use (if jQuery UI editor style is active). See [ThemeRoller](http://jqueryui.com/themeroller/#themeGallery) for examples. Default: "base"
+
+Options: 'base', 'black-tie', 'blitzer', 'cupertino', 'dark-hive', 'dot-luv', 'eggplant', 'excite-bike', 'flick', 'hot-sneaks', 'humanity', 'le-frog', 'mint-choc', 'overcast', 'pepper-grinder', 'redmond', 'smoothness', 'south-street', 'start', 'sunny', 'swanky-purse', 'trontastic', 'ui-darkness', 'ui-lightness', 'vader'
+
+#### `gravityview-inline-edit/poshytip-theme`
+
+Modify the Poshy Tip theme to use for the tooltips (if the jQuery editor style is active). See [Poshy Tip](http://vadikom.com/demos/poshytip/) for examples. Default: "yellowsimple"
+
+Options: 'darkgray', 'green', 'skyblue', 'twitter', 'violet', 'yellow', 'yellowsimple'
+
+#### `gravityview-inline-edit/js-settings`
+
+Modify the settings passed to the x-editable script. Overrides the `gravityview-inline-edit/edit-mode` and `gravityview-inline-edit/edit-style` filters.
+
+[See a code example](https://gist.github.com/zackkatz/4690be6bf8f42e82f4d71f86cd8f8f56).
+
+**Parameters:**
+
+- `$js_settings` *array*
+   - `mode` *string* Editing mode. Options: "popup" or "inline" \[Default: "popup"\]
+   - `buttons`*string* HTML of the Update/Cancel buttons
+   - `container`*string* \[Default: "body"\]
+   - `showbuttons`*string|bool* \[Default: "bottom"\] Where to show buttons. Form without buttons is auto-submitted. Options are "top", "bottom", "left", "right", or false.
+   - `onblur`*string* \[Default: "cancel"\] Action when user clicks outside the inline edit form container. Options are "cancel", "submit", "ignore". Setting ignore allows to have several containers open.
+   - `showinputs`*bool|string* jQuery selectors for which inputs to show without clicking. If `true`, shows all inputs. NOTE: `onblur` must be set to "ignore". [Read more](https://docs.gravitykit.com/article/418-inline-edit-enable-editing)
+
+## Modifying Text &amp; Labels
+
+#### `gravityview-inline-edit/toggle-labels`
+
+Modify the text displayed on inline edit buttons
+
+**Parameters:**
+
+- `$labels` *array* The default labels (using `toggle`, `disabled`, `enabled` keys). Default: 
+   - `toggle` =&gt; Toggle Inline Edit
+   - `disabled` =&gt; Enable Inline Edit
+   - `enabled` =&gt; Disable Inline Edit
+
+```php
+
+add_filter( 'gravityview-inline-edit/toggle-labels', function ( $labels ) {
+
+	$labels = array(
+	'toggle'   => __( 'Toggle IE', 'gravityview-inline-edit' ),
+	'disabled' => __( 'Enable IE', 'gravityview-inline-edit' ),
+	'enabled'  => __( 'Disable IE', 'gravityview-inline-edit' ),
+	);
+	return $labels;
+
+} );
+```
+
+#### `gravityview-inline-edit/form-buttons`
+
+Modify the text and CSS classes used on GravityEdit buttons
+
+**Parameters:**
+
+- `$buttons` *array* The default button configuration. Default: 
+   - `ok` =&gt; array 
+       - `text` =&gt; Update
+       - `class` =&gt; `is_admin()` ? `button button-primary button-large alignleft` : *(empty string)*
+   - `cancel`
+       - `text` =&gt; Cancel
+       - `class` =&gt; `is_admin()` ? `button button-secondary alignright` : *(empty string)*
+
+If you have any questions, please contact GravityKit support.

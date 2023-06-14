@@ -1,0 +1,63 @@
+---
+id: "61ba0b55f6f9273f6aaa3948"
+number: "816"
+collectionId: "566dfabbc6979143615564bf"
+publicUrl: "https://docs.gravitykit.com/article/816-renamed-filters-methods-in-2-14"
+viewCount: "225"
+lastPublishedAt: "2023-02-21T17:42:58Z"
+changeOrigin: "hsapp-js"
+name: "Renamed Filters & Methods in 2.14"
+slug: "816-renamed-filters-methods-in-2-14"
+status: "published"
+categories: 
+  - "579aa642c6979160ca148ba9"
+createdBy: "59634"
+createdAt: "2021-12-15T15:35:49Z"
+updatedBy: "59634"
+updatedAt: "2023-02-21T17:42:58Z"
+title: "Renamed Filters & Methods in 2.14"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/61ba0b55f6f9273f6aaa3948"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2023-02-21T17:42:58Z
+  author: "Zack Katz"
+---
+
+# Renamed Filters & Methods in 2.14
+
+In GravityView 2.14, we renamed all instances of `blacklist` to `blocklist` and `whitelist` to `allowlist`. All methods and filters have been deprecated using `apply_filters_deprecated()` and `_deprecated_function()`.
+
+
+:::caution
+
+**We may remove these deprecated filters and functions after one year. Please update your code!**
+
+:::
+
+ ## Changed method names:
+
+| **Old Method Name** | **New Method Name** |
+|---|---|
+| `GravityView_Cache::blacklist_add()` | `GravityView_Cache::blocklist_add()` |
+| `GravityView_Cache::blacklist_remove()` | `GravityView_Cache::blocklist_remove()` |
+| `GravityView_Cache::in_blacklist()` | `GravityView_Cache::in_blocklist()` |
+| `GravityView_Admin_Views::default_field_blocklist()` | `GravityView_Admin_Views::default_field_blacklist()` |
+| `GravityView_Edit_Entry::get_field_blacklist()` | `GravityView_Edit_Entry::get_field_blocklist()` |
+| `GravityView_Edit_Entry::modify_field_blacklist()` | `GravityView_Edit_Entry::modify_field_blacklist()` |
+| `GravityView_Field_Calculation::blacklist_field_types()` | `GravityView_Field_Calculation::blocklist_field_types()` |
+| `GravityView_Field_Product::edit_entry_field_blacklist()` | `GravityView_Field_Product::edit_entry_field_blocklist()` |
+| `GravityView_Field_Total::add_to_blacklist()` | `GravityView_Field_Product::add_to_blocklist()` |
+| `GravityView_Plugin_Hooks_Gravity_Forms_Coupon::edit_entry_field_blacklist()` | `GravityView_Plugin_Hooks_Gravity_Forms_Coupon::edit_entry_field_blocklist()` |
+| `GravityView_Admin_Views::default_field_blacklist()` | `GravityView_Admin_Views::default_field_blocklist()` |
+
+## Changed filter names:
+
+| **Old Filter Name** | **New Filter Name** |
+|---|---|
+| `gravityview_blacklist_field_types` | `gravityview_blocklist_field_types` |
+| `gravityview/sortable/field_blacklist` | `gravityview/sortable/field_blocklist` |
+| `gravityview/widget/hide_until_searched/whitelist` | `gravityview/widget/hide_until_searched/allowlist` |
+| `gravityview/search/searchable_fields/whitelist` | `gravityview/search/searchable_fields/allowlist` |
+| `gravityview/search/operator_whitelist` | `gravityview/search/operator_allowlist` |
+

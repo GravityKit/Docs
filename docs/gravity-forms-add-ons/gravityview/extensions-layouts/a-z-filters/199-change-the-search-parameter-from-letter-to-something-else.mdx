@@ -1,0 +1,50 @@
+---
+id: "54d1a11ce4b086c0c0964cdd"
+number: "199"
+collectionId: "54d1a05ce4b086c0c0964ccd"
+popularity: "0.1"
+publicUrl: "https://docs.gravitykit.com/article/199-change-the-search-parameter-from-letter-to-something-else"
+viewCount: "923"
+lastPublishedAt: "2022-10-13T23:08:59Z"
+changeOrigin: "unknown"
+name: "Change the search parameter from \"letter\" to something else"
+slug: "199-change-the-search-parameter-from-letter-to-something-else"
+status: "published"
+categories: 
+  - "54d1a074e4b086c0c0964cd5"
+createdBy: "59634"
+createdAt: "2015-02-04T04:33:32Z"
+updatedBy: "80506"
+updatedAt: "2022-10-13T23:08:59Z"
+title: "Change the search parameter from \"letter\" to something else"
+hsEditUrl: "https://secure.helpscout.net/docs/54d1a05ce4b086c0c0964ccd/article/54d1a11ce4b086c0c0964cdd"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-13T23:08:59Z
+  author: "Rafael Ehlers"
+---
+
+# Change the search parameter from "letter" to something else
+
+By default, the A-Z Entry Filter Extension uses the `letter` parameter to filter entries. For example, if you have a View at `yoursite.com/view/example/` and you wanted to filter by entries that start with <q>a</q>, you would go to `/view/example/?letter=a`
+
+### How to modify the URL parameter used
+
+The Extension has a `gravityview_az_filter_parameter` filter that allows you to change the parameter.
+
+Instead of `letter`, you could use `starts_with` as the parameter, and the link would be `/view/example/?starts_with=a` instead of `/view/example/?letter=a`
+
+Here's a sample code that would do that:
+
+```
+add_filter( 'gravityview_az_filter_parameter', 'gravityview_az_filter_parameter_starts_with' );
+/**
+* Change the A-Z Entry Filter parameter from `letter` to `starts_with`
+* @param  string $parameter Existing parameter
+* @return string            Modified parameter
+*/
+function gravityview_az_filter_parameter_starts_with( $parameter ) {
+   return 'starts_with';
+}
+```

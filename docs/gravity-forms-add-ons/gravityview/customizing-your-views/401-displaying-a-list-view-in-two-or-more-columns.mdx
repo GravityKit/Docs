@@ -1,0 +1,91 @@
+---
+id: "586e7a6990336009736c2c11"
+number: "401"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.7"
+publicUrl: "https://docs.gravitykit.com/article/401-displaying-a-list-view-in-two-or-more-columns"
+viewCount: "3848"
+lastPublishedAt: "2022-10-07T21:59:36Z"
+changeOrigin: "unknown"
+name: "Displaying a List View in a grid (two or more columns)"
+slug: "401-displaying-a-list-view-in-two-or-more-columns"
+status: "published"
+categories: 
+  - "579aa76f903360293603a8e7"
+keywords: 
+  - "float"
+  - "block"
+  - "list view"
+  - "listing view"
+  - "horizontal"
+related: 
+  - "54c67bb7e4b051242988550f"
+  - "54ff77e7e4b034c37ea94d09"
+  - "555673bae4b01a224b424927"
+createdBy: "80506"
+createdAt: "2017-01-05T16:55:05Z"
+updatedBy: "80506"
+updatedAt: "2022-10-07T21:59:36Z"
+title: "Displaying a List View in a grid (two or more columns)"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/586e7a6990336009736c2c11"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-07T21:59:36Z
+  author: "Rafael Ehlers"
+---
+
+# Displaying a List View in a grid (two or more columns)
+
+The GravityView List View Type allows you to display entries one after the other in a directory-style layout (in a single column). However, sometimes, you may wish to display entries in a grid-style layout using multiple columns. In this article, we'll show you how to create a View with multiple columns using the List layout.
+
+### Prefer to Watch the Video?
+
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/HRRQBGizqII" title="YouTube video player" width="560"></iframe>
+
+Here's what the list layout looks like with a single column:
+
+![The GravityView List layout displaying entries in a single column](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/633eb13662a58869ee5ef260/file-AvR3xio9xX.jpg)
+
+By adding some simple CSS styles, we can create a multi-column layout, like this:
+
+![The GravityView List layout displaying entries in a grid with multiple columns](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/633eb14c9f7c1931ee00710f/file-Qg2anESdk6.jpg)
+
+It's simple to achieve this look because each listing is contained inside a DIV tag which uses the class `.gv-list-view`.
+
+By adding some additional styles to that class and the View container, we can change the layout from single-column to multi-column.
+
+```
+.gv-list-multiple-container.gv-container {
+   display:flex;
+   flex-wrap: wrap;
+}
+
+.gv-list-multiple-container.gv-container .gv-list-view {
+   margin-right: 10px;
+   width: 250px;
+}
+```
+
+The above CSS code will affect every List View on your site. To limit the changes to a specific View, replace `{viewID}` in the CSS below with the ID of the View you wish to modify:
+
+```
+.gv-list-multiple-container.gv-container-{viewID} {
+   display:flex;
+   flex-wrap: wrap;
+}
+
+.gv-list-multiple-container.gv-container-{viewID} .gv-list-view {
+   margin-right: 10px;
+   width: 250px;
+}
+```
+
+
+:::caution
+
+**Note**: To find the View ID, edit the View. Find the Embed Shortcode in the Publish box. The number displayed in the shortcode is the ID of the View.
+
+:::
+
+  To center the entries horizontally, add `justify-content: center` after `display: flex`. If you're unsure how to add custom CSS styles to your website, read: [How to add custom CSS to your website](https://docs.gravitykit.com/article/246-adding-custom-css-to-your-website).

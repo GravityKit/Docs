@@ -1,0 +1,88 @@
+---
+id: "54c67bb6e4b051242988550d"
+number: "60"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.3"
+publicUrl: "https://docs.gravitykit.com/article/60-post-image-meta-information-title-caption-and-description-for-the-post-image-field"
+viewCount: "1544"
+lastPublishedAt: "2018-03-30T14:01:12Z"
+changeOrigin: "unknown"
+name: "Post Image Meta information: Title, Caption and Description for the Post Image field"
+slug: "60-post-image-meta-information-title-caption-and-description-for-the-post-image-field"
+status: "published"
+categories: 
+  - "579aa7fdc6979160ca148bb0"
+createdBy: "59634"
+createdAt: "2015-01-26T17:39:02Z"
+updatedBy: "59634"
+updatedAt: "2019-12-20T18:03:43Z"
+title: "Post Image Meta information: Title, Caption and Description for the Post Image field"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/54c67bb6e4b051242988550d"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2019-12-20T18:03:43Z
+  author: "Zack Katz"
+---
+
+# Post Image Meta information: Title, Caption and Description for the Post Image field
+
+**This article applies to GravityView 1.1.7 and newer.**
+
+Gravity Forms allows you to define Image Meta for Post Image fields. They enable users to enter additional information about the uploaded image. The metadata fields are:
+
+- Title
+- Caption
+- Description
+
+GravityView has a filter named `gravityview_post_image_meta` that allows you to modify how the Image Meta is displayed.
+
+### CSS Structure
+
+If Gravity Forms <q>Output HTML5</q> setting is enabled, the Post Image will be wrapped in a `<figure>` tag with the <q>Caption</q> Image Meta being wrapped in a `<figcaption>` tag. Otherwise, both will be wrapped in a `<div>` tag.
+
+Here's the structure of how the field is output:
+
+- `.gv-image` - Container for all field output 
+   - `.gv-image-caption`, `.gv-image-description`, or `.gv-image-title` - Container for the meta being displayed 
+       - `.gv-image-label` - Container for the label
+       - `.gv-image-value` - Container for the value
+
+## Modifying the Image Meta output
+
+The `gravityview_post_image_meta` filter passes an array with `title`, `caption`, and `description` keys. Each has an associative array with he following values:
+
+- `label` =&gt; The value of the label (example: <q>Title:</q>)
+- `value` =&gt; The value of the current image meta (title, caption, description)
+- `tag_label` =&gt; The tag used to wrap the label, without brackets (default: `div`)
+- `tag_value` =&gt; The tag used to wrap the value, without brackets (default: `div`)
+
+#### Hide all image meta fields
+
+If you don't want to display any image meta, you can use the following code:
+
+```
+add_filter('gravityview_post_image_meta', '__return_empty_array' );
+```
+
+#### Hide specific Image Meta
+
+To hide the caption, you can use the code below:
+
+```
+add_filter('gravityview_post_image_meta', 'remove_caption_from_gravityview_post_image_meta' );
+function remove_caption_from_gravityview_post_image_meta( $image_meta ) {
+   unset( $image_meta['caption'] );
+   return $image_meta;
+}
+```
+
+#### Hide the labels
+
+GravityView also has a `gravityview_post_image_meta_show_labels` filter, which allows you to hide all the labels for the Post Image Meta.
+
+If you want to display the value without the labels, use the code below:
+
+```
+add_filter('gravityview_post_image_meta_show_labels', '__return_false');
+```

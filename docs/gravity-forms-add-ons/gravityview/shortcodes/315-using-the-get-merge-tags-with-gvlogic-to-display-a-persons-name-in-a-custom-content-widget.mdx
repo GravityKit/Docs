@@ -1,0 +1,94 @@
+---
+id: "561f29bc903360610fc6860e"
+number: "315"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.7"
+publicUrl: "https://docs.gravitykit.com/article/315-using-the-get-merge-tags-with-gvlogic-to-display-a-persons-name-in-a-custom-content-widget"
+viewCount: "3762"
+lastPublishedAt: "2022-12-27T20:44:33Z"
+changeOrigin: "external"
+name: "Using the {get} Merge Tags with [gvlogic] to display a person's name in a Custom Content widget"
+slug: "315-using-the-get-merge-tags-with-gvlogic-to-display-a-persons-name-in-a-custom-content-widget"
+status: "published"
+categories: 
+  - "566dfe9bc6979143615564df"
+  - "566dfe4fc6979143615564d9"
+keywords: 
+  - "gvlogic"
+  - "conditional logic"
+  - "logic"
+  - "merge tags"
+  - "get"
+  - "get merge tag"
+  - "gv_logic"
+related: 
+  - "561f1ca2903360610fc6855d"
+createdBy: "59634"
+updatedBy: "59634"
+updatedAt: "2022-12-27T20:44:33Z"
+title: "Using the {get} Merge Tags with [gvlogic] to display a person's name in a Custom Content widget"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/561f29bc903360610fc6860e"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-12-27T20:44:33Z
+  author: "Zack Katz"
+---
+
+# Using the {get} Merge Tags with [gvlogic] to display a person's name in a Custom Content widget
+
+
+
+### Add a Custom Content widget
+
+In the Widget area, click "+ Add Widget"
+
+![The Add Widget button](https://www.gravitykit.com/wp-content/uploads/2018/01/add-a-custom-content-widget.png?1444882828)
+
+Then click the Custom Content widget.
+
+![The Custom Content widget in the widget list](https://www.gravitykit.com/wp-content/uploads/2018/01/c40eca28-2fa6-4b67-b4bc-fe9dcf10bed6.png?1444882830)
+
+and click the gear icon to configure the Widget settings.
+
+![The gear icon next to the Custom Content widget label](https://www.gravitykit.com/wp-content/uploads/2018/01/2caa9f89-d780-41ad-a476-42ec2e4b5ded.png?1444882830)
+
+### Add the following content to the widget:
+
+```
+[gvlogic if="{get:first-name}" isnot=""]
+ <h3>Hi, {get:first-name}! Welcome to my View!</h3>
+[else]
+ <h3>Welcome to my View!</h3>
+[/gvlogic]<br>
+				
+```
+
+**What will this do?**
+
+If a person's first name is passed in the URL using `?first-name`, it will show the person's name in the heading. If `?first-name` is not set or is empty, it will show a different heading.
+
+![the [gvlogic] shortcode inside the Custom Content text editor](https://www.gravitykit.com/wp-content/uploads/2018/01/add-the-following-content-to-the-widget-.png?1444882831)
+
+### Update the View
+
+Then visit the new View on your site.
+
+![The Update button in the View editor](https://www.gravitykit.com/wp-content/uploads/2018/01/update-the-view.png?1444882832)
+
+### What is visible when there is nothing passed in the URL
+
+The `[else]` value is used when the `{get}` value isn't matched.
+
+![The browser address bar](https://www.gravitykit.com/wp-content/uploads/2018/01/what-is-visible-when-there-is-nothing-passed-in-the-url.png?1444882833)
+
+### When URL parameters are passed
+
+?first-name=Floaty content the URL triggers the `{get:first-name}` Merge Tag.
+
+Let's look at the `[gvlogic]` shortcode we added to the Custom Content widget. It says if `{get:first-name}` is not empty, show the following HTML content: `<h3>Hi, {get:first-name}! Welcome to my View!</h3>`.
+
+The `{get:first-name}` content is then replaced with the value passed in the URL: Floaty!
+
+![Hi Floaty, welcome to my View](https://www.gravitykit.com/wp-content/uploads/2018/01/when-url-parameters-are-passed.png?1444882834)
+

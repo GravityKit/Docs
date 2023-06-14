@@ -1,0 +1,39 @@
+---
+id: "619cff8f9ccf62287e5f9286"
+number: "811"
+collectionId: "6076f9478996210f18bd33df"
+publicUrl: "https://docs.gravitykit.com/article/811-gravityactions-show-hidden-inputs"
+viewCount: "138"
+lastPublishedAt: "2022-12-27T20:43:21Z"
+changeOrigin: "external"
+name: "GravityActions: How to show hidden inputs"
+slug: "811-gravityactions-show-hidden-inputs"
+status: "published"
+categories: 
+  - "61562ae60754e74465f15774"
+createdBy: "59634"
+createdAt: "2021-11-23T14:49:51Z"
+updatedBy: "59634"
+updatedAt: "2022-12-27T20:43:21Z"
+title: "GravityActions: How to show hidden inputs"
+hsEditUrl: "https://secure.helpscout.net/docs/6076f9478996210f18bd33df/article/619cff8f9ccf62287e5f9286"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-12-27T20:43:21Z
+  author: "Zack Katz"
+---
+
+# GravityActions: How to show hidden inputs
+
+In GravityActions, hidden inputs in the Gravity Forms form are not displayed by default.
+
+For example, if you have an Address field and you have the Country input hidden, the Country input will not be shown in GravityActions:
+
+![Inputs hidden in Gravity Forms](https://www.gravitykit.com/wp-content/uploads/2021/11/Screenshot-on-2021-11-23-at-09-51-16.png)
+
+If you would like to show all inputs, regardless of whether they are shown in the Gravity Forms form, add this code to your site (not sure how? [Follow these steps.](https://docs.gravitykit.com/article/210-where-to-put-code-samples)):
+
+```php
+add_filter( 'gk/gravityactions/hide_hidden_inputs', '__return_false' );
+```

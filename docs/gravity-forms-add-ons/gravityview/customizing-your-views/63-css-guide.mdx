@@ -1,0 +1,193 @@
+---
+id: "54c67bb7e4b051242988550f"
+number: "63"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "2.7"
+publicUrl: "https://docs.gravitykit.com/article/63-css-guide"
+viewCount: "14241"
+lastPublishedAt: "2022-10-07T21:50:56Z"
+changeOrigin: "unknown"
+name: "CSS Guide"
+slug: "63-css-guide"
+status: "published"
+categories: 
+  - "579aa76f903360293603a8e7"
+keywords: 
+  - "CSS"
+  - "HTML"
+  - "classes"
+  - "ids"
+  - "layout"
+  - "custom css"
+related: 
+  - "54ff77e7e4b034c37ea94d09"
+  - "632bb2b9894a5358bdd78909"
+createdBy: "59634"
+updatedBy: "80506"
+updatedAt: "2022-10-07T21:50:56Z"
+title: "CSS Guide"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/54c67bb7e4b051242988550f"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-07T21:50:56Z
+  author: "Rafael Ehlers"
+---
+
+# CSS Guide
+
+Here’s a summary of the CSS classes/IDs used in GravityView.
+
+- Layouts 
+   - [Table](#table-layout)
+   - [List](#list-layout)
+   - [DataTables](#datatables-layout)
+- [Edit Entry](#edit-entry)
+- [Search Bar Widget](#search-bar)
+- [Other Styles](#other-styles)
+- [The `gv_class()` Function](#gv-class)
+- [Grid System](#grid-system)
+
+## Container
+
+List and Table Views are wrapped in a container `<div>`. This container can be modified by [using the gravityview/view/wrapper\_container filter](https://docs.gravitykit.com/article/867-all-about-the-view-container).
+
+The ID of the container has a counter reflecting the number of times the View is displayed on a page. The counter starts at 1. This is the structure of the container ID:
+
+`div#gv-view-{View ID}-{incremental counter}`
+
+The first time View #245 is displayed on a page; it will be wrapped in a container of `<div id="gv-view-245-1">`
+
+## Table Layout [](#)
+
+The `td` and `th` tags have CSS classes calculated per-field using the [`gv_class()`](#gv-class) function.
+
+### Table - Multiple Entries
+
+- `div.gv-table-container .gv-table-multiple-container`
+   - `table.gv-table-view`
+
+### Table - Single
+
+- `div.gv-table-view .gv-table-container .gv-table-single-container`
+   - `table.gv-table-view-content`
+
+## List Layout [](#)
+
+### List - Multiple
+
+- `div.gv-list-container .gv-list-multiple-container` - Wrapper for all entries 
+   - `div.gv-list-view #gv_list_{entry ID or slug}` - Wrapper for each entry.  
+        *You can modify the class name using the `gravityview_entry_class` filter*
+   - `.gv-list-view-title` - “Title” zone wrapper 
+       - `h3` - First item in “Title” zone
+       - `div` - Subsequent items in “Title” zone
+   - `.gv-list-view-subtitle` - “Subtitle” zone 
+       - `h4.gv_class()` - Each item in “Subtitle” zone (see [`gv_class()`](#gv-class))
+   - `.gv-list-view-content`
+       - `.gv-list-view-content-image` - “Image” zone
+       - `.gv-list-view-content-description` - “Description” zone
+   - `.gv-list-view-footer .gv-grid` - Footer wrapper 
+       - `.gv-grid-col-1-2 .gv-left` - “Left Footer” zone
+       - `.gv-grid-col-1-2 .gv-right` - “Right Footer” zone
+
+### List - Single
+
+- `div.gv-list-container .gv-list-single-container` - Wrapper for the content 
+   - `div.gv-list-view #gv_list_{entry ID or slug}` - Wrapper for the entry
+   - `.gv-list-view-title` - “Title” zone wrapper 
+       - `h3` - First item in “Title” zone
+   - `div` - Subsequent items in “Title” zone 
+       - `.gv-list-view-subtitle` - “Subtitle” zone
+       - `h4.gv_class()` - Each item in “Subtitle” zone (see [`gv_class()`](#gv-class))
+   - `.gv-list-view-content`
+       - `gv-list-view-content-image` - “Image” zone
+       - `gv-list-view-content-description` - “Description” zone
+   - `.gv-list-view-footer .gv-grid` - Footer wrapper 
+       - `.gv-grid-col-1-2 .gv-left` - “Left Footer” zone
+       - `.gv-grid-col-1-2 .gv-right` - “Right Footer” zone
+
+### List - No Results
+
+- `div.gv-list-view .gv-no-results`
+   - `div.gv-list-view-title`
+
+## DataTables Layout [](#)
+
+- `div.gv-datatables-container .gv-container #gv-datatables-{View ID}`
+   - `table.gv-datatables .display .dataTable`  
+        *Note:* Both `.display` and `.dataTable` are classes for [styling DataTables](http://datatables.net/examples/styling/display.html). They can be filtered using the `gravityview_datatables_table_class` filter.
+
+### DataTables - Multiple Entries
+
+### Single - DataTables
+
+**The same structure as “Table - Multiple Entries”**
+
+## Edit Entry [](#)
+
+Since Version 1.9, GravityView’s Edit Entry also supports [Gravity Forms CSS Ready Classes](https://www.gravityhelp.com/css-ready-classes-for-gravity-forms/) that allow for quick styling of fields and inputs. GravityView will use the CSS classes defined in the Gravity Forms form in Edit Entry mode.
+
+- `div.gv-edit-entry-wrapper`
+   - `h2.gv-edit-entry-title`
+   - `form` Contains the edit form 
+       - `#publishing-action` - All the Edit Entry buttons are contained inside. We added some common theme CSS classes to the buttons to enforce consistent button styling. 
+           - Update Button: `btn btn-lg button button-large gform_button button-primary gv-button-update`
+           - Cancel Button: `btn btn-sm button button-small gv-button-cancel`
+           - Delete Button: `btn btn-sm button button-small alignright pull-right btn-danger gv-button-delete`
+
+## Search Bar Widget <a id="search-bar"></a>
+
+These classes are used in the GravityView “Search Bar” widget layout.
+
+- `.gv-widget-search`  
+    `.gv-search-horizontal` (Horizontal layout only)  
+    `.gv-search-vertical` (Vertical layout only) 
+   - `.gv-search-box` - **Default search input container** Input Type: Text, Select, Select (multiple values) 
+       - `label`
+           - `p`
+               - `select` Input Type: Select
+               - `select[multiple]` Input Type: Select (multiple values)
+               - `input[type=text]` Input Type: Text
+       - `label.gv-check-radio` - Input Type: Checkbox or Radio
+       - `p.gv-search-box-links` - Input Type: Links
+   - **Date fields:**`.gv-search-box gv-search-date`
+       - `input.gv-datepicker` Date “To” and “From” inputs
+   - `.gv-search-box .gv-search-box-submit` - Contains the Search and Clear buttons 
+       - `a.button gv-search-clear` - Clear/Reset button
+       - `input.button gv-search-button` - Search button
+
+## Other Styles [](#)
+
+### Back Link
+
+- `p.gv-back-link` - Container for the backlink anchor 
+   - `a#gravityview_back_link` - The backlink displayed on single-entry pages
+
+---
+
+## The `gv_class()` Function [](#)
+
+The `gv_class()` function generates classes for the View output. The class format is: `.gv-field-{form_id}-{field_id}`.
+
+For complex fields, such as address fields, the format will be `.gv-field-{form_id}-{field_id}.{input_id}`. See “gv\_class() supports Merge Tags” below for additional information.
+
+### `gv_class()` supports Merge Tags
+
+`gv_class()` supports Merge Tags and it will convert entry values to CSS classes using WordPress’ [`sanitize_html_class()`](http://codex.wordpress.org/Function_Reference/sanitize_html_class) function.
+
+For example, a Merge Tag `{Job Title:4}` could be replaced with “Labor Relations Specialist”, in which case, it would be formatted as `LaborRelationsSpecialist` in the HTML output.
+
+---
+
+## Grid System 
+
+GravityView uses the following CSS to as grid classes. You can add these classes to your fields using [Custom CSS Classes](https://docs.gravitykit.com/article/272-adding-custom-css-classes-to-fields-or-widgets).
+
+- `.gv-grid-col-1-1` - 100% width
+- `.gv-grid-col-1-3` - 33.33% width
+- `.gv-grid-col-2-3` - 66.66% width
+- `.gv-grid-col-1-2` - 50% width
+- `.gv-grid-col-1-4` - 25% width
+- `.gv-grid-col-1-6` - 16.66% width
+- `.gv-grid-col-1-8` - 12.5% width

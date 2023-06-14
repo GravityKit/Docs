@@ -1,0 +1,56 @@
+---
+id: "63a3baf343c91b4bf271b315"
+number: "900"
+collectionId: "6076f9478996210f18bd33df"
+publicUrl: "https://docs.gravitykit.com/article/900-nested-calculations"
+viewCount: "95"
+lastPublishedAt: "2023-02-23T21:52:50Z"
+changeOrigin: "hsapp-js"
+name: "Nested calculations in GravityMath"
+slug: "900-nested-calculations"
+status: "published"
+categories: 
+  - "6155b0bf2b380503dfdf63f0"
+createdBy: "59634"
+createdAt: "2022-12-22T02:03:31Z"
+updatedBy: "59634"
+updatedAt: "2023-02-23T21:52:50Z"
+title: "Nested calculations in GravityMath"
+hsEditUrl: "https://secure.helpscout.net/docs/6076f9478996210f18bd33df/article/63a3baf343c91b4bf271b315"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2023-02-23T21:52:50Z
+  author: "Zack Katz"
+---
+
+# Nested calculations in GravityMath
+
+GravityMath allows you to perform advanced calculation on your Gravity Forms data using the [\[gravitymath\] shortcode](https://docs.gravitykit.com/article/295-math-shortcode).
+
+For example, this shortcode adds two values together and divides them by 365:
+
+```
+[gravitymath scope="form" id="52"] ( {Number:1} + {Number:3} ) / 365 [/gravitymath]
+```
+
+## Creating complex calculations by nesting multiple shortcodes
+
+With GravityMath 2.2, you can nest multiple `[gravitymath]` shortcodes. In other words, you can add a `[gravitymath]` shortcode inside another `[gravitymath]` shortcode! This allows you to use data from multiple forms in one calculation.
+
+**Here's an example**: we're using two different forms to calculate the amount due from a client for support questions (billed at $100/question) and VIP support requests (billed at $200/request) respectively. The below calculation adds these values together.
+
+```
+Total due from client: $[gravitymath] 
+ [gravitymath2 scope="form" id="12"] {Support Questions:2:count} * 100 [/gravitymath2] + [gravitymath2 scope="form" id="4"] {VIP Support Requests:4} * 200 [/gravitymath2]
+[/gravitymath]
+```
+
+
+:::danger
+
+⚠️ You cannot use the same shortcode inside itself: the closing tag ( `[/gravitymath]`) will stop the shortcode from processing! Use `[gravitymath2]`, `[gravitymath3]` instead.
+
+:::
+
+ 

@@ -1,0 +1,100 @@
+---
+id: "5bd7f2d404286356f0a53565"
+number: "502"
+collectionId: "6076f9478996210f18bd33df"
+popularity: "0.2"
+publicUrl: "https://docs.gravitykit.com/article/502-inline-edit-gravity-forms-actions-on-update"
+viewCount: "1648"
+lastPublishedAt: "2022-10-27T22:12:05Z"
+changeOrigin: "unknown"
+name: "GravityEdit: How to trigger Gravity Forms actions when updating a field value"
+slug: "502-inline-edit-gravity-forms-actions-on-update"
+status: "published"
+categories: 
+  - "6155b0960754e74465f1541d"
+related: 
+  - "62b4b5d1c393f271f28b4378"
+  - "635b005a73d6a22819f071d0"
+createdBy: "59634"
+createdAt: "2018-10-30T05:57:40Z"
+updatedBy: "80506"
+updatedAt: "2022-10-27T22:12:05Z"
+title: "GravityEdit: How to trigger Gravity Forms actions when updating a field value"
+hsEditUrl: "https://secure.helpscout.net/docs/6076f9478996210f18bd33df/article/5bd7f2d404286356f0a53565"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-27T22:12:05Z
+  author: "Rafael Ehlers"
+---
+
+# GravityEdit: How to trigger Gravity Forms actions when updating a field value
+
+
+:::info
+
+The information below does not apply to form notifications. To send a form notification, please read: [How to trigger form notifications when editing with GravityEdit](https://docs.gravitykit.com/article/848-how-to-trigger-form-notifications-when-editing-with-gravityedit).
+
+:::
+
+
+
+On the GravityEdit plugin, when you update a field value, it doesn't trigger the standard Gravity Forms "Entry Updated" action. That's because when you're updating 10 fields for 10 entries, that could lead to 100 emails!
+
+But sometimes you want to turn on Gravity Forms actions. To do that, GravityEdit has a filter: `gravityview-inline-edit/remove-gf-update-hooks`, the default is `true`.
+
+### To trigger Gravity Forms actions when updating fields, add this code:
+
+```
+add_filter( 'gravityview-inline-edit/remove-gf-update-hooks', '__return_false' );
+```
+
+[Adding the code snippet above](https://docs.gravitykit.com/article/210-where-to-put-code-samples) will once again trigger the following hooks:
+
+- `gform_entry_pre_update`
+- `gform_form_pre_update_entry`
+- `gform_form_pre_update_entry_{$form_id}`
+- `gform_post_update_entry`
+- `gform_post_update_entry_{$form_id}`
+
+
+:::caution
+
+#### Before you use this code:
+
+- If you are not sure how to add custom code to your theme, please [take a look at this article](https://docs.gravitykit.com/article/210-where-to-put-code-samples).
+- The code samples below target specific forms by their ID. In those examples, it's the ID 100. Please change that to the specific form ID connected to your View.
+
+:::
+
+ ## When using the [MailChimp Add-On](https://www.gravityforms.com/add-ons/mailchimp/)
+
+```php
+add_filter( 'gravityview-inline-edit/entry-updated', 'gravityview_inline_edit_trigger_update_actions', 10, 5 );
+
+function gravityview_inline_edit_trigger_update_actions( $update_result, $entry = array(), $form_id = 0, $gf_field = null, $original_entry = array() ) { 
+	
+       if ( 100 !== (int) $form_id ) { // replace 100 with your form ID
+		return $update_result;
+	}
+	
+	$form = GFAPI::get_form( $form_id );
+	
+	if ( function_exists( 'gf_mailchimp' ) ) {
+		add_filter( 'gform_is_feed_asynchronous', '__return_false', 1294873 );
+		gf_mailchimp()->maybe_process_feed( $entry, $form );
+		remove_filter( 'gform_is_feed_asynchronous', '__return_false', 1294873 );
+	}		
+		
+   return $update_result;
+}
+```
+
+
+:::info
+
+Priority is set to something unlikely to be used by other codes (1294873). Feel free to use a different priority.
+
+:::
+
+ 

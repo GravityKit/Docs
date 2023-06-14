@@ -1,0 +1,87 @@
+---
+id: "5af0e0292c7d3a3f981f55e5"
+number: "463"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.7"
+publicUrl: "https://docs.gravitykit.com/article/463-gventry-shortcode"
+viewCount: "3533"
+lastPublishedAt: "2022-12-28T22:27:19Z"
+changeOrigin: "hsapp-js"
+name: "Using the [gventry] Shortcode"
+slug: "463-gventry-shortcode"
+status: "published"
+categories: 
+  - "566dfe4fc6979143615564d9"
+createdBy: "59634"
+createdAt: "2018-05-07T23:24:25Z"
+updatedBy: "59634"
+updatedAt: "2022-12-28T22:27:19Z"
+title: "Using the [gventry] Shortcode"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5af0e0292c7d3a3f981f55e5"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-12-28T22:27:19Z
+  author: "Zack Katz"
+---
+
+# Using the [gventry] Shortcode
+
+The `[gventry]` shortcode allows you to embed a GravityView Entry in a post, page, or in another View's Custom Content field.
+
+###  [](#usage)Usage
+
+This is a WordPress shortcode. It can be used in post content by adding `[gventry]` (+ parameters) and in PHP code by calling [`do_shortcode`](https://developer.wordpress.org/reference/functions/do_shortcode/). The parameters:
+
+| parameter | values | description |
+|---|---|---|
+| `entry_id` required | $id, "last", "first" | A numeric ID or slug referencing the entry. Or the last, first entry from the View. The View's sorting and filtering settings will be applied to the entries. Required. |
+| `view_id` | $id | The numeric View ID the entry should be displayed from. Required. |
+| `edit` | 1 | This will output the Edit Entry form directly into the Page or Post. You can read more [about this functionality here](https://docs.gravitykit.com/article/845-embedding-the-edit-entry-form-into-a-page-or-post). |
+
+##  [](#examples)Examples
+
+Show the most recent entry from View ID #4 (which is sorted to show the most recent entry first):
+
+```
+
+[gventry entry_id="first" view_id="4"]
+```
+
+##  [](#security)Security
+
+The standard security rules to outputting fields apply. In short, an entry will not be shown if the current user cannot see the entry in the context of the View. Unapproved entries? A no-show to non-admins. In Trash? Nope. If the View is password protected, a draft, or private? No way!
+
+##  [](#advanced-usage-filters)Advanced Usage: Filters
+
+The `[gventry]` shortcode calls upon several filters that allow developers to modify the output as needed.
+
+### [](#gravityviewshortcodesgventryoutput)gravityview/shortcodes/gventry/output
+
+Filter the final output value of the Entry about to be rendered. Useful to override empty entries; for example, for non-logged-in users, this can be used to output the registration link instead of a blank profile link.
+
+```php
+
+add_filter( 'gravityview/shortcodes/gventry/output', function( $output, $view, $entry, $atts ) {
+   if ( $view && $view->ID === MY_SECRET_VIEW ) {
+       if ( ! is_user_logged_in() ) {
+           return "<a href="#">Login</a>";
+       }
+   }
+   return $output;
+}, 10, 4 );
+```
+
+###  [](#gravityviewshortcodesgventryatts)gravityview/shortcodes/gventry/atts
+
+Filter the initial shortcode attributes. Helpful to tack on defaults or dynamically change IDs, etc.
+
+```php
+
+add_filter( 'gravityview/shortcodes/gventry/atts', function( $atts ) {
+   if ( $atts['view_id'] == MY_SECRET_VIEW && $user = wp_get_current_user() ) {
+       $atts['id'] = $user->secret_entry_id;
+   }
+   return $atts;
+} );
+```

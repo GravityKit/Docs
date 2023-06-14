@@ -1,0 +1,58 @@
+---
+id: "5e54b69a04286364bc95cbd8"
+number: "680"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.1"
+publicUrl: "https://docs.gravitykit.com/article/680-the-gventrylink-merge-tag"
+viewCount: "430"
+lastPublishedAt: "2022-10-12T21:39:13Z"
+changeOrigin: "unknown"
+name: "The {gv_entry_link} Merge Tag"
+slug: "680-the-gventrylink-merge-tag"
+status: "published"
+categories: 
+  - "566dfe9bc6979143615564df"
+related: 
+  - "558c76c0e4b01a224b42ec16"
+createdBy: "59634"
+createdAt: "2020-02-25T05:54:34Z"
+updatedBy: "80506"
+updatedAt: "2022-10-12T21:39:13Z"
+title: "The {gv_entry_link} Merge Tag"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5e54b69a04286364bc95cbd8"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-12T21:39:13Z
+  author: "Rafael Ehlers"
+---
+
+# The {gv_entry_link} Merge Tag
+
+
+:::danger
+
+This Merge Tag doesn't work inside form notifications.
+
+:::
+
+
+
+The {gv\_entry\_link} Merge Tag is very similar to the [\[gv\_entry\_link\] shortcode](https://docs.gravitykit.com/article/287-gv-entry-link), but it has limited options and it only returns a URL: `{gv_entry_link:[post id]:[action]}`
+
+For example: `{gv_entry_link:123:edit}` Links to Edit Entry page for the current entry. `123` refers to either the View ID or the ID of the page where the View is embedded.
+
+- `[post id]` is the View ID—or the post or page where the View is embedded. If this Merge Tag is used in a View, the default value will be automatically calculated.
+- `[action]` the action to be performed. View Details (`view`), Edit Entry (`edit`), or Delete Entry (`delete`). Default: `view`.
+
+### Usage inside a Custom Content field
+
+This Merge Tag should always be used inside the Entries Fields section of a View to get the context of the entry.
+
+![Screenshot of the View editor](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/606fa05bf8c0ef2d98df09d1/file-P1bi442706.png)
+
+![Screenshot of the Custom Content field showing the use of the gv_entry_link Merge Tag](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/606f9fa68996210f18bd192e/file-SkqaHS3ZQH.png)
+
+This will generate a link to the Single Entry page of that entry:
+
+![Screenshot of a View showing the Custom Content field containing a link](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/606f9ffa8af76a714bfd572a/file-78K82ZetUB.png)

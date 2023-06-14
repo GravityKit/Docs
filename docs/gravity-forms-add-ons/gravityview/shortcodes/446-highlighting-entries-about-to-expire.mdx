@@ -1,0 +1,112 @@
+---
+id: "5a96f9552c7d3a754951338e"
+number: "446"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.2"
+publicUrl: "https://docs.gravitykit.com/article/446-highlighting-entries-about-to-expire"
+viewCount: "924"
+lastPublishedAt: "2022-10-12T22:15:09Z"
+changeOrigin: "unknown"
+name: "Highlighting entries about to expire"
+slug: "446-highlighting-entries-about-to-expire"
+status: "published"
+categories: 
+  - "566dfe4fc6979143615564d9"
+related: 
+  - "632cb4b4c5dd38351401acd1"
+createdBy: "80506"
+createdAt: "2018-02-28T18:47:49Z"
+updatedBy: "80506"
+updatedAt: "2022-10-12T22:15:09Z"
+title: "Highlighting entries about to expire"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5a96f9552c7d3a754951338e"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-12T22:15:09Z
+  author: "Rafael Ehlers"
+---
+
+# Highlighting entries about to expire
+
+Occasionally, you want to add a visual indicator to your View results to bring attention to an entry where the action is needed or its expiration time is due soon.
+
+Here's how to achieve that using the [\[gvlogic\] shortcode](https://docs.gravitykit.com/article/252-gvlogic-shortcode#date-context-examples) and a [Custom Content field](https://docs.gravitykit.com/article/111-using-the-custom-content-field).
+
+In this tutorial, we will use a very simple form containing just two fields: a Task Description field which is a Single Line Text, and a Task Due Date which is a Date type field.
+
+This is what our initial View looks like:
+
+![Screenshot showing the To Do View](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/6332204fe42649264a92d0fd/file-glaYutz7Mw.png)
+
+Let's add a Custom Content field to our View and write three `[gvlogic]` shortcode statements inside:
+
+![Screenshot showing the Custom Content field with the gvlogic statements inside](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/63322326c5dd38351401bbc3/file-2hjVpwTIH6.png)
+
+Here's the code:
+
+```
+[gvlogic if="{Task Due Date:3:mdy}" less_than="{date_mdy}"]
+   <span class="gk-task gk-task-expired">Expired</span>
+[/gvlogic]
+
+[gvlogic if="{Task Due Date:3:mdy}" is="{date_mdy}"]
+   <span class="gk-task gk-task-expiring-soon">Expiring Soon</span>
+[/gvlogic]
+
+[gvlogic if="{Task Due Date:3:mdy}" greater_than="{date_mdy}"]
+   <span class="gk-task gk-task-on-time">On Time</span>
+[/gvlogic]
+```
+
+Notice that we added one logic for each of three possible task statuses: Expired, Expiring Soon, and On Time.
+
+The date field Merge Tag `{Task Due Date:3}` is using the `:mdy` modifier to modify this date to the `MM/DD/YYYY` format so it can properly compare against the `{date_mdy}` Merge Tag, which pulls the current date (today).
+
+We also used some CSS classes to style each status according to their urgency:
+
+```
+.gk-task{
+	color: white;
+	padding: 5px 15px;
+}
+
+.gk-task-expired{
+	background-color: red;
+}
+
+.gk-task-expiring-soon{
+	background-color: yellow;
+	color: black;
+}
+
+.gk-task-on-time{
+	background-color: green;
+}
+```
+
+Here's our View:
+
+![Screenshot of the View with the new Status column](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/633224d2e42649264a92d117/file-6fK6SxdzBG.png)
+
+Amazing, right?!
+
+We can also enhance our View by showing [Dashicons](https://developer.wordpress.org/resource/dashicons/#businessman) instead of texts for each status. We just need to replace the CSS classes used and remove the texts:
+
+```
+[gvlogic if="{Task Due Date:3:mdy}" less_than="{date_mdy}"]
+   <span class="dashicons dashicons-no"></span>
+[/gvlogic]
+
+[gvlogic if="{Task Due Date:3:mdy}" is="{date_mdy}"]
+   <span class="dashicons dashicons-flag"></span>
+[/gvlogic]
+
+[gvlogic if="{Task Due Date:3:mdy}" greater_than="{date_mdy}"]
+   <span class="dashicons dashicons-yes"></span>
+[/gvlogic]
+```
+
+And here's the resulting View:
+
+![Screenshot showing the View now with Dashicons on the Status column](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/63322708c5dd38351401bbdb/file-fifN0WW06S.png)

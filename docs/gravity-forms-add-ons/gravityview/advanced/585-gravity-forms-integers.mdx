@@ -1,0 +1,42 @@
+---
+id: "5d0bc0a72c7d3a6b51c6ad7f"
+number: "585"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.6"
+publicUrl: "https://docs.gravitykit.com/article/585-gravity-forms-integers"
+viewCount: "3182"
+lastPublishedAt: "2022-10-12T21:16:09Z"
+changeOrigin: "unknown"
+name: "How to require whole numbers in Gravity Forms' Number field"
+slug: "585-gravity-forms-integers"
+status: "published"
+categories: 
+  - "579aa748903360293603a8e5"
+  - "579aa642c6979160ca148ba9"
+createdBy: "59634"
+createdAt: "2019-06-20T17:21:43Z"
+updatedBy: "80506"
+updatedAt: "2022-10-12T21:16:09Z"
+title: "How to require whole numbers in Gravity Forms' Number field"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5d0bc0a72c7d3a6b51c6ad7f"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-12T21:16:09Z
+  author: "Rafael Ehlers"
+---
+
+# How to require whole numbers in Gravity Forms' Number field
+
+The Number Field in Gravity Forms allows users to enter decimals. If you want to force the number to be an integer (whole numbers, including negative numbers), you can add this code below.
+
+This code will work with Gravity Forms' Range Min and Max settings; if you want only to allow year values, you can set the Min to `1900`, for example. For age values, you could set the Min to `0` and the max to `130`.
+
+
+:::caution
+
+Note: For this code to work, ensure the Output HTML5 setting is enabled in [Gravity Forms Settings](https://docs.gravityforms.com/settings-page/#general-settings).
+
+:::
+
+ <script src="https://gist.github.com/zackkatz/80f0327f17ecce8691cafbd61b1978de.js" type="text/javascript"></script> If you want this to modify only one form or only a single field for a form, modify the filter's name as described in the [Usage section of the Gravity Forms docs site](https://docs.gravityforms.com/gform_field_content/#usage).

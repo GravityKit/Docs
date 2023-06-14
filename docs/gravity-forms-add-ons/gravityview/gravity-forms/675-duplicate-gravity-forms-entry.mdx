@@ -1,0 +1,55 @@
+---
+id: "5e44413f04286364bc953dec"
+number: "675"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.2"
+publicUrl: "https://docs.gravitykit.com/article/675-duplicate-gravity-forms-entry"
+viewCount: "1094"
+lastPublishedAt: "2022-12-27T21:05:53Z"
+changeOrigin: "external"
+name: "Duplicating a Gravity Forms entry from the backend of your site"
+slug: "675-duplicate-gravity-forms-entry"
+status: "published"
+categories: 
+  - "579aa748903360293603a8e5"
+  - "579aa5d0903360293603a8e2"
+createdBy: "59634"
+createdAt: "2020-02-12T18:17:35Z"
+updatedBy: "59634"
+updatedAt: "2022-12-27T21:05:53Z"
+title: "Duplicating a Gravity Forms entry from the backend of your site"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5e44413f04286364bc953dec"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-12-27T21:05:53Z
+  author: "Zack Katz"
+---
+
+# Duplicating a Gravity Forms entry from the backend of your site
+
+
+:::info
+
+Note: This functionality requires GravityView 2.6.
+
+:::
+
+
+
+With GravityView installed and activated, go to your Gravity Forms Entries screen.
+
+Hover over or navigate to the entry you wish to duplicate. Links will appear. Click the Duplicate link.
+
+![Screenshot of the Entry row, with the action links appearing below. The Duplicate link is circled in green.](https://i.gravitykit.com/M8npLT+)
+
+### Note: The entry is not *exactly* the same
+
+The entry field data will be the same, but the entry "meta data" will differ. When you click Duplicate, a new entry will be created with the **same submitted form data** as the original entry, but some details will change:
+
+- `date_created` The date\_created will be set to the time the entry was duplicated
+- `is_starred` Whether the entry is starred or not will be reset
+- `is_read` The duplicated entry will be marked as unread, regardless of the original entry read status
+- `source_url` will be updated to the current Gravity Forms entries screen URL
+- `ip` The IP address of the current user (disabled if the form does not allow collecting IP Addresses)
+- `user_agent` will be based on the current user

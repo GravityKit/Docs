@@ -1,0 +1,170 @@
+---
+id: "561d6e199033601bfce47c01"
+number: "311"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "1.1"
+publicUrl: "https://docs.gravitykit.com/article/311-gravityview-capabilities"
+viewCount: "5698"
+lastPublishedAt: "2023-02-14T22:38:33Z"
+changeOrigin: "hsapp-js"
+name: "GravityView Capabilities"
+slug: "311-gravityview-capabilities"
+status: "published"
+categories: 
+  - "579aa9b2903360293603a8f0"
+keywords: 
+  - "permissions"
+  - "custom caps"
+  - "capability"
+  - "capabilities"
+createdBy: "59634"
+updatedBy: "80506"
+updatedAt: "2023-02-14T22:38:33Z"
+title: "GravityView Capabilities"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/561d6e199033601bfce47c01"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2023-02-14T22:38:33Z
+  author: "Rafael Ehlers"
+---
+
+# GravityView Capabilities
+
+Related articles:
+
+- [Creating a View Editor role](https://docs.gravitykit.com/article/598-non-administrator-edit-view)
+- [Creating an Entry Moderator role](https://docs.gravitykit.com/article/291-how-to-allow-a-user-to-edit-all-entries)
+- [Filtering entries by WordPress User Roles](https://docs.gravitykit.com/article/447-filtering-entries-by-wordpress-user-roles)
+- [Why can't I edit my View?](https://docs.gravitykit.com/article/599-why-cant-i-edit-my-view)
+
+
+:::danger
+
+⚠️New custom user roles **DO NOT** require GravityView or Gravity Forms capabilities. Users in these roles who can submit entries are, by default, allowed to edit their entries in GravityView. **No capabilities are required.**
+
+:::
+
+ ## GravityView Capabilities
+
+**Version 1.15 and higher**
+
+GravityView allows you to control user capabilities. We recommend controlling access modify access using the [Members](https://wordpress.org/plugins/members) plugin.
+
+### Full Access
+
+- `gravityview_full_access` - Controls whether the user has access to *all GravityView capabilities*. Enabling this capability is the same as allowing all of the others.
+
+### Settings
+
+- `gravityview_view_settings` - Controls whether plugin settings can be viewed.
+- `gravityview_edit_settings` - Controls whether plugin settings can be modified.
+- `gravityview_uninstall` - Controls whether GravityView content can be deleted when the plugin is deleted.
+- `gravityview_getting_started` - Controls whether the user can read the GravityView Getting Started page.
+
+### Entry Capabilities
+
+- `gravityview_moderate_entries` - Controls whether entries can be approved or rejected. If disabled, hides the Approval column in the Entries screen and the "Approve" and "Disapprove" Bulk Edit actions. Required to moderate entries from the front end.
+- `gravityview_edit_others_entries` - Controls whether the user can edit others' entries in the GravityView Edit Entry screen.
+- `gravityview_delete_others_entries` - Controls whether the user can delete others' entries in the GravityView Edit Entry screen.
+- `gravityview_edit_entries` - Controls whether the user can use the "Change Entry Creator" functionality or see Edit Entry in the Admin Toolbar. **Not Yet Implemented:** Control whether the user can edit entries.
+
+#### Entry Notes Capabilities
+
+**Added in GravityView 1.17**
+
+- `gravityview_add_entry_notes` - Controls whether entry notes can be added from the front end.
+- `gravityview_view_entry_notes` - Controls whether entry notes can be viewed from the front end.
+- `gravityview_delete_entry_notes` - Controls whether entry notes can be deleted from the front end.
+- `gravityview_email_entry_notes` - Controls whether the user can also send an email (to an email address connected to an entry) while adding a note.
+
+### View Capabilities
+
+- `edit_gravityviews` - Controls whether Views can be edited. If disabled, the "Views" menu item is not visible.
+- `edit_others_gravityviews` - Controls whether Views owned by other users can be edited.
+- `publish_gravityviews` - Controls whether Views can be published.
+- `read_private_gravityviews` - Controls whether private Views can be read.
+- `delete_gravityviews` - Controls whether Views of this post type can be deleted.
+- `delete_private_gravityviews` - Controls whether private Views can be deleted.
+- `delete_published_gravityviews` - Controls whether published Views can be deleted.
+- `delete_others_gravityviews` - Controls whether Views owned by other users can be, can be deleted.
+- `edit_private_gravityviews` - Controls whether private Views can be edited.
+- `edit_published_gravityviews` - Controls whether published Views can be edited.
+- `copy_gravityviews` - Controls whether "Clone View" or "New Draft" capabilities are visible.
+
+### Support Capabilities
+
+- `gravityview_contact_support` - Controls whether the user can contact GravityKit's support via the Support Port
+- `gravityview_support_port` - Controls whether the GravityView Support Port is visible.
+
+### Per-View Capabilities
+
+These capabilities are based on permissions for a specific View. To modify access from the Dashboard, you can use a plugin like [Members](https://wordpress.org/plugins/members). [Here's a code example](https://gist.github.com/zackkatz/cba3b1a83f192a7a6609) for modifying editing capabilities by View ID.
+
+- `edit_gravityview` - Controls whether a specific View can be edited.
+- `read_gravityview` - Controls whether a specific View can be read.
+- `delete_gravityview`- Controls whether a specific View can be deleted.
+
+## Roles
+
+When GravityView is activated, the following capabilities are automatically added to each role:
+
+### Administrator
+
+Summary: Full access to settings, ability to contact support, and everything else
+
+- `gravityview_full_access`
+- `gravityview_view_settings`
+- `gravityview_edit_settings`
+- `gravityview_uninstall`
+- `gravityview_contact_support`
+- … as well as the capabilities below
+
+### Editor
+
+Summary: Edit, publish, and delete everyone's stuff
+
+- `edit_others_gravityviews`
+- `read_private_gravityviews`
+- `delete_private_gravityviews`
+- `delete_others_gravityviews`
+- `edit_private_gravityviews`
+- `publish_gravityviews`
+- `delete_published_gravityviews`
+- `edit_published_gravityviews`
+- `gravityview_edit_others_entries`
+- `gravityview_moderate_entries`
+- `gravityview_delete_others_entries`
+- `gravityview_add_entry_notes`
+- `gravityview_view_entry_notes`
+- `gravityview_delete_entry_notes`
+- `gravityview_email_entry_notes`
+- … as well as the capabilities below
+
+### Author
+
+Summary: Edit, publish and delete your own stuff
+
+- `gravityview_edit_entries`
+- `gravityview_edit_entry`
+- `gravityview_edit_form_entries`
+- `gravityview_delete_entries`
+- `gravityview_delete_entry`
+- … as well as the capabilities below
+
+### Contributor
+
+Summary: Edit and delete drafts but not publish
+
+- `edit_gravityviews`
+- `delete_gravityviews`
+- `gravityview_support_port`
+- … as well as the capabilities below
+
+### Subscriber
+
+Summary: Read-only
+
+- `gravityview_view_entries`
+- `gravityview_view_others_entries`
+- `read` - If your Views are not showing up for a Subscriber, make sure you have this generic WordPress capability enabled

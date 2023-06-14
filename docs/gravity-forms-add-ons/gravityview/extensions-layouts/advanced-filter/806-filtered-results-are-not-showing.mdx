@@ -1,0 +1,54 @@
+---
+id: "61704f43efc78d0553e51a38"
+number: "806"
+collectionId: "54d1a05ce4b086c0c0964ccd"
+publicUrl: "https://docs.gravitykit.com/article/806-filtered-results-are-not-showing"
+viewCount: "190"
+lastPublishedAt: "2022-10-13T22:49:46Z"
+changeOrigin: "unknown"
+name: "Filtered results are not showing"
+slug: "806-filtered-results-are-not-showing"
+status: "published"
+categories: 
+  - "54d1a064e4b086c0c0964ccf"
+keywords: 
+  - "multiple filters"
+  - "empty results"
+  - "results not showing"
+  - "conditions not working"
+createdBy: "336675"
+createdAt: "2021-10-20T17:17:55Z"
+updatedBy: "80506"
+updatedAt: "2022-10-13T22:49:46Z"
+title: "Filtered results are not showing"
+hsEditUrl: "https://secure.helpscout.net/docs/54d1a05ce4b086c0c0964ccd/article/61704f43efc78d0553e51a38"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-13T22:49:46Z
+  author: "Rafael Ehlers"
+---
+
+# Filtered results are not showing
+
+
+:::info
+
+💡 New on Gravity Guide: an Advanced Filter extension course with step-by-step instructions and videos. [Check it out ➡](https://gravity.guide/course/using-gravityview-advanced-filter-to-easily-display-subsets-of-your-view/)
+
+:::
+
+
+
+If your View that uses [Advanced Filter](https://www.gravitykit.com/extensions/advanced-filter/) is not returning any results, it could be due to several reasons:
+
+1. **Incorrect filter conditions.**
+Make sure that you properly specify filter values and group them using the appropriate `AND`/`OR` operators.
+
+3. **A failed database query.**
+When you have multiple filter conditions and many entries, the database may reject the query if the number of potential records being examined exceeds the value configured in database settings. One of these settings is `max_join_size` that prevents long queries from being run in order to preserve server resources. The best way to determine if the issue is due to a database query is to install the [Query Monitor](https://en-ca.wordpress.org/plugins/query-monitor/) plugin and review its output on the View page. You will see all queries made when loading the page, along with any errors reported by the database.
+
+5. **Interference by other plugins.**
+Advanced Filter hooks to Gravity Forms’ [GF\_Query](https://github.com/wp-premium/gravityforms/blob/a9c8f2de051e016e096069210ecd5fb8f5a19801/includes/query/class-gf-query.php#L34) class by adding additional `join` clauses. When other plugins also modify the database query performed by `GF_Query`, that may lead to unexpected results. Again, you can use the [Query Monitor](https://en-ca.wordpress.org/plugins/query-monitor/) plugin to review the query performed to confirm the presence of extra clauses (e.g., ` WHERE foo = "bar"`) that should not be there. To find the culprit, you can use the elimination method by disabling one plugin at a time and refreshing the page, then contacting the culprit plugin's author to inquire about a potential solution.
+
+Once you have established that none of these three reasons apply to you, please [contact our support](https://www.gravitykit.com/support/) for further troubleshooting.

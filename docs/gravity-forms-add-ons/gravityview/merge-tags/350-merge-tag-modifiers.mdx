@@ -1,0 +1,222 @@
+---
+id: "5735f3e8c69791069900c3ef"
+number: "350"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.9"
+publicUrl: "https://docs.gravitykit.com/article/350-merge-tag-modifiers"
+viewCount: "4757"
+lastPublishedAt: "2022-11-23T22:26:05Z"
+changeOrigin: "unknown"
+name: "Merge Tag modifiers"
+slug: "350-merge-tag-modifiers"
+status: "published"
+categories: 
+  - "566dfe9bc6979143615564df"
+keywords: 
+  - "merge tags"
+  - "merge tag"
+  - "modifier"
+  - "wpautop"
+  - "limit words"
+  - "shorten"
+  - "character limit"
+  - "max characters"
+  - "max number of words"
+  - "esc_html"
+  - "sanitize"
+  - "sanitize_css_class"
+  - "safe html"
+related: 
+  - "54c67bbbe4b051242988551d"
+createdBy: "59634"
+createdAt: "2016-05-13T15:34:00Z"
+updatedBy: "80506"
+updatedAt: "2022-11-23T22:26:05Z"
+title: "Merge Tag modifiers"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5735f3e8c69791069900c3ef"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-11-23T22:26:05Z
+  author: "Rafael Ehlers"
+---
+
+# Merge Tag modifiers
+
+GravityView heavily uses [Gravity Forms Merge Tags](https://docs.gravityforms.com/category/user-guides/merge-tags-getting-started/); they're very powerful.
+
+To enhance Merge Tags, GravityView adds additional "modifiers" that allow you to format Merge Tags differently.
+
+### GravityView Modifiers:
+
+- `:wpautop` - Runs wpautop() on the output
+- `:maxwords:{number}` - Limit output to `{number}` of words
+- `:timestamp` - Convert Date field to a [timestamp](https://en.wikipedia.org/wiki/Unix_time)
+
+### Modifiers added in GravityView 2.0:
+
+- `:esc_html` - Make field output safe to use in HTML attributes; runs `esc_html()` on the output
+- `:sanitize_html_class` - Runs `sanitize_html_class()` on the output
+- `:sanitize_title` - Runs `sanitize_title()` on the output
+
+Note: These modifiers will not be processed on `{all_fields}` Merge Tags.
+
+---
+
+### Usage: `:esc_html` modifier
+
+The `esc_html` modifier runs the output of the field through [the `esc_html()` function in WordPress](https://developer.wordpress.org/reference/functions/esc_html/).
+
+Before, you weren't able to use Merge Tags when generating HTML. This modifier makes field output safe for HTML, and allows you to use Merge Tags inside HTML attributes safely.
+
+`{Business Name:2}` is `The "World&#39;s Best" Astronaut Ice Cream`
+
+**Before:**
+
+Without the Merge Tag modifier, you would use this code:
+
+`<a href="{Website:3}" title="Go to the {Business Name:2} website">{Business Name:2}</a>`
+
+And the output would be broken HTML:
+
+`<a href="{Website:3}" title="Go to the The "World&#39;s Best" Astronaut Ice Cream website">The "World&#39;s Best" Astronaut Ice Cream</a>`
+
+Notice the extra double quotes inside the HTML tag? That is broken HTML.
+
+**After:**
+
+Let's update the example to use the `:esc_html` modifier:
+
+`<a href="{Website:3}" title="Go to the {Business Name:2:esc_html} website">{Business Name:2:esc_html}</a>`
+
+The output is now valid HTML, with the quotes converted to HTML entities:
+
+`<a href="{Website:3}" title="Go to the The "World&#039;s Best" Astronaut Ice Cream website">The "World&#039;s Best" Astronaut Ice Cream</a>`
+
+---
+
+### Usage: `:sanitize_html_class` modifier
+
+This modifier is perfect for making sure the field values are valid CSS class names. Use it inside your HTML, like so:
+
+`<div class="{Category:5:sanitize_html_class}">[...]`
+
+The `sanitize_html_class` modifier runs the field output through the `gravityview_sanitize_html_class()` function, which is very similar to the `sanitize_html_class()` WordPress function, except the WordPress function, does not allow spaces (multiple CSS classes), and GravityView does.
+
+**Before:**
+
+- Merge Tag: `{Your Profession:5}`
+- Value: `Scientist, Astronaut!`
+
+**After:**
+
+- Merge Tag: `{Your Profession:5:sanitize_html_class}`
+- Value: `Scientist Astronaut`
+
+---
+
+### Usage: `:sanitize_title` modifier
+
+The `sanitize_title` modifier runs the field output through the `santitize_title()` WordPress function.
+
+This is convenient for adding standardized attributes to HTML tags.
+
+**Before:**
+
+- Merge Tag: `{Your Profession:5}`
+- Value: `Scientist, Astronaut!`
+
+**After:**
+
+- Merge Tag: `{Your Profession:5:sanitize_title}`
+- Value: `scientist-astronaut`
+
+### Usage: `:wpautop` modifier
+
+The `wpautop` modifier changes double line breaks in the text into HTML paragraphs (`<p>...</p>`) and single line-breaks are converted to HTML `<br />`. Line breaks within the script and style sections are not affected.
+
+This modifier will run the [wpautop()](https://codex.wordpress.org/Function_Reference/wpautop) function on the Merge Tag's content. [Learn more on WordPress.org](https://codex.wordpress.org/Function_Reference/wpautop).
+
+**Before:**
+
+- Merge Tag: `{Cosmonaut:4}`
+- Output: `The Earth was small and light blue.`
+
+**After:**
+
+- Merge Tag: `{Cosmonaut:4:wpautop}`
+- Output: `<p>The Earth was small and light blue.</p>`
+
+---
+
+### Usage: `:maxwords:{number}` modifier
+
+Limits the length of displayed field content to `{number}` words.
+
+When the content length exceeds the number of words, "…" will be appended to the text. Example: "The text is too long" becomes "The text…".
+
+*How to display the first 10 words of a testimonial.*
+
+We have a form named "Testimonial", where we gather customer feedback. It has a textarea field called "Quote", and it has the field ID of "12".
+
+To display the content in GravityView, we normally us the `{Quote:12}` Merge Tag. The full quote is too long, though:
+
+> I really enjoyed the service that I received. Thank you for all your help! In the future, I will have no reservations about referring people to your business. Thanks again! *That quote has 30 words.* We only want to show the first 10 words so the content fits nicely in our heading. We can use the `maxwords` modifier to limit the number of words.
+
+We can add the `maxwords` "modifier" to the end of the Merge Tag, along with the max number of words we want: `:maxwords:10`. The final Merge Tag looks like `{Quote:12:maxwords:10}`.
+
+Here's the output from the `{Quote:12:maxwords:10}` Merge Tag:
+
+> I really enjoyed the service that I received. Thank you…
+
+#### Notes:
+
+- Commas, periods, etc, connected to the final word of the value will be preserved. 
+   - If you set `maxwords:3` on this value: `Example with comma, to be trimmed`, the output would be `Example with comma,&hellip;`
+- *HTML tags are preserved* Whitespace between tags will make an HTML tag be considered a separate word: 
+   - `<p> <strong>Example</strong></p>` Will be considered two words because there is a space between `<p>` and `<strong>`.
+   - `<p><strong>Example</strong></p>` Will be considered one word.
+- *HTML entities are allowed* If they are separated by word breaks, they will be counted as words: 
+   - `Foo & Bar` will be considered three words because `&` is separate
+   - `Foo& Bar` will be considered two words because `&` is connected to `Foo`
+- When the text is truncated, "…" is appended to the output, using HTML entity `&hellip;`
+
+---
+
+### Usage: `:timestamp` modifier
+
+The `timestamp` modifier converts valid dates into a timestamp (the number of seconds since the Unix Epoch, January 1 1970 00:00:00 GMT). This is helpful for use in combination with the `[gvlogic]` shortcode.
+
+This modifier will run the [strtotime()](http://php.net/manual/en/function.strtotime.php) function on the Merge Tag's content. If not a valid format, the value will be returned as `-1`.
+
+**Before:**
+
+- Merge Tag: `{Date:3}`
+- Output: `07/07/2003`
+
+**After:**
+
+- Merge Tag: `{Date:3:timestamp}`
+- Output: `1057547880`
+
+It will work with any format for the Date field ( `mm/dd/yyyy`, `yyyy-dd-mm`, and everything in between):
+
+**Before:**
+
+- Merge Tag: `{Text Field With Parseable Date:6}`
+- Output: `July 14, 2015, 11:49 GMT`
+
+**After:**
+
+- Merge Tag: `{Text Field With Parseable Date:6:timestamp}`
+- Output: `1436874540`
+
+#### Notes:
+
+- The `timestamp` modifier is designed to work with Date fields, but it will work for any field, as long as the value is formatted in a way that is parsed by PHP's [strtotime()](http://php.net/manual/en/function.strtotime.php) function.
+
+### Using multiple modifiers at a time
+
+You can combine multiple modifiers by separating them with commas. **Be sure to use GravityView's modifiers first, then Gravity Forms'.**
+
+For example, if you want to use `wpautop` but you also want to URL-encode the output, you would write it like this: `{Field:1:wpautop,urlencode}`

@@ -1,0 +1,51 @@
+---
+id: "61b90633e5e5185a647d4af4"
+number: "815"
+collectionId: "566dfabbc6979143615564bf"
+publicUrl: "https://docs.gravitykit.com/article/815-how-to-prevent-an-approved-entry-from-being-edited"
+viewCount: "166"
+lastPublishedAt: "2022-10-07T22:30:34Z"
+changeOrigin: "unknown"
+name: "How to prevent an approved entry from being edited"
+slug: "815-how-to-prevent-an-approved-entry-from-being-edited"
+status: "published"
+categories: 
+  - "566dfe4fc6979143615564d9"
+  - "582140d9c697914aa8381617"
+  - "5e1b6d5d04286364bc93c665"
+related: 
+  - "558c76c0e4b01a224b42ec16"
+  - "552355bfe4b0221aadf2572b"
+  - "582248c5c697916f5d04da6d"
+createdBy: "80506"
+createdAt: "2021-12-14T21:01:39Z"
+updatedBy: "80506"
+updatedAt: "2022-10-07T22:30:34Z"
+title: "How to prevent an approved entry from being edited"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/61b90633e5e5185a647d4af4"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-07T22:30:34Z
+  author: "Rafael Ehlers"
+---
+
+# How to prevent an approved entry from being edited
+
+Sometimes we want to prevent an entry from being modified by the user when another person already approves it. That's easily achievable by using a combination of the `[gvlogic]` shortcode, the `{approval_status}` Merge Tag, and the `[gv_entry_link]` shortcode.
+
+Here's how to hide the link to the Edit Entry page using a Custom Content field:
+
+![Screenshot of a Custom Content field with code inside](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/61b9074251b4c537989a025c/file-uflPiW4DKh.png)
+
+Here's the code we used:
+
+```
+[gvlogic if="{approval_status}" isnot="approved"]
+	[gv_entry_link action="edit"]
+[/gvlogic]
+```
+
+Now in our View, we'll only see the Edit Entry link for entries that haven't been approved yet:
+
+![Screenshot of a View listing entries](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/61b907dce5e5185a647d4b00/file-93N4Z1WbH8.png)

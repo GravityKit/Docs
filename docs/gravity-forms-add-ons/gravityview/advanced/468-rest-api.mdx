@@ -1,0 +1,104 @@
+---
+id: "5b3186482c7d3a0fa9a36fd6"
+number: "468"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.9"
+publicUrl: "https://docs.gravitykit.com/article/468-rest-api"
+viewCount: "4623"
+lastPublishedAt: "2022-10-07T20:11:56Z"
+changeOrigin: "unknown"
+name: "REST API Endpoints"
+slug: "468-rest-api"
+status: "published"
+categories: 
+  - "579aa642c6979160ca148ba9"
+keywords: 
+  - "rest api"
+  - "api"
+  - "json"
+  - "export"
+createdBy: "59634"
+createdAt: "2018-06-26T00:18:16Z"
+updatedBy: "80506"
+updatedAt: "2022-10-07T20:11:56Z"
+title: "REST API Endpoints"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5b3186482c7d3a0fa9a36fd6"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-07T20:11:56Z
+  author: "Rafael Ehlers"
+---
+
+# REST API Endpoints
+
+GravityView 2.0 features a new simple but powerful REST API that allows read-only access to Views and Entries.
+
+There are four endpoints in the `/wp-json/gravityview/v1/` namespace:
+
+## /views
+
+Returns a list of all the views available to the current user along with the needed fields to render their layouts and some additional information. Form/View administrators can access the connected form, View settings, etc.
+
+| URL Parameter | What it does | Default Value |
+|---|---|---|
+| `page` | Set the current page number | `1` |
+| `limit` | Set the number of results returned per page. Set to `0` for all Views. | `10` |
+
+## /views/$id
+
+Same as `/views` but for one specific View.
+
+## /views/$id/entries.json or (.html, .csv, or .tsv)
+
+Returns all the entries under the select View. Available in `.json`, `.html` , `.csv`, and `.tsv` format (template used will be the current View template, but can be overridden as needed under a REST context). Only directory-mode entry fields will be included. Extra fields can be added via the `gravityview/rest/entry/fields` filter.
+
+The structure returned is quite simple - a key-value object with ID -&gt; value.
+
+| URL Parameter | What it does | Default Value |
+|---|---|---|
+| `page` | Set the current page number | `1` |
+| `limit` | Set the number of results returned per page. Set to `0` for all entries. | `10` |
+| `post_id` | Set the "parent" Post or Page ID for the View, as if the View were embedded. | `NULL` |
+
+## /views/$id/entries/$id.json (or .html)
+
+The same as `entries.json`, but only single-mode entry fields will be included. The same filter `gravityview/rest/entry/fields` can be used to alter this behavior.
+
+`.html` format instead of `.json` will return HTML code instead. Useful for lazy-loading pagination, etc.
+
+| URL Parameter | What it does | Default Value |
+|---|---|---|
+| `post_id` | Set the "parent" Post or Page ID for the View, as if the View were embedded. | `NULL` |
+
+---
+
+## Authentication
+
+For Views based on a user's login status ( [filter entries created by logged in user](https://github.com/gravityview/GravityView/issues/1122) , for example) WordPress REST API authentication is required, specifically the `X-WP-Nonce` header, in which all requests are considered unauthenticated. For more information, check out the official REST API documentation [here](https://developer.wordpress.org/rest-api/using-the-rest-api/authentication/).
+
+Here's an example:
+
+<script src="https://gist.github.com/zackkatz/1761bdaa4b36928c0e034e666f5c65de.js" type="text/javascript"></script>
+
+## ---
+
+## Examples from our demo site
+
+A list of Views of a site:
+
+- [https://site.try.gravitykit.com/wp-json/gravityview/v1/views/](https://site.try.gravitykit.com/wp-json/gravityview/v1/views/)
+
+Here are some View endpoints:
+
+- [https://site.try.gravitykit.com/wp-json/gravityview/v1/views/148/](https://site.try.gravitykit.com/wp-json/gravityview/v1/views/148/)
+- [https://site.try.gravitykit.com/wp-json/gravityview/v1/views/148/entries.json](https://site.try.gravitykit.com/wp-json/gravityview/v1/views/148/entries.json)
+- [https://site.try.gravitykit.com/wp-json/gravityview/v1/views/148/entries.html](https://site.try.gravitykit.com/wp-json/gravityview/v1/views/148/entries.html)
+- [https://site.try.gravitykit.com/wp-json/gravityview/v1/views/148/entries.csv](https://site.try.gravitykit.com/wp-json/gravityview/v1/views/148/entries.csv)
+- [https://site.try.gravitykit.com/wp-json/gravityview/v1/views/148/entries.tsv](https://site.try.gravitykit.com/wp-json/gravityview/v1/views/148/entries.tsv)
+
+And Single Entry endpoints:
+
+- [https://site.try.gravitykit.com/wp-json/gravityview/v1/views/148/entries/11199.json](https://site.try.gravitykit.com/wp-json/gravityview/v1/views/148/entries/11199.json)[  
+    ](https://site.try.gravitykit.com/wp-json/gravityview/v1/views/148/entries/11199.json)
+- [https://site.try.gravitykit.com/wp-json/gravityview/v1/views/148/entries/11199.html](https://site.try.gravitykit.com/wp-json/gravityview/v1/views/148/entries/11199.html)

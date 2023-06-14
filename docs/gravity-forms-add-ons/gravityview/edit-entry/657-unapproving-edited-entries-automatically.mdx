@@ -1,0 +1,48 @@
+---
+id: "5ddd81d504286364bc923957"
+number: "657"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.2"
+publicUrl: "https://docs.gravitykit.com/article/657-unapproving-edited-entries-automatically"
+viewCount: "796"
+lastPublishedAt: "2022-10-07T22:28:25Z"
+changeOrigin: "unknown"
+name: "Unapproving entries automatically after they're edited"
+slug: "657-unapproving-edited-entries-automatically"
+status: "published"
+categories: 
+  - "582140d9c697914aa8381617"
+  - "5e1b6d5d04286364bc93c665"
+createdBy: "365564"
+createdAt: "2019-11-26T19:49:41Z"
+updatedBy: "80506"
+updatedAt: "2022-10-07T22:28:25Z"
+title: "Unapproving entries automatically after they're edited"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5ddd81d504286364bc923957"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-07T22:28:25Z
+  author: "Rafael Ehlers"
+---
+
+# Unapproving entries automatically after they're edited
+
+When allowing logged-in users to edit entries they created by checking the "Allow User Edit" box in View Settings, you also have the option to automatically unapprove entries after they've been edited:
+
+![Screenshot of the View Settings panel showing the option to Unapprove Entries After Edit](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/60eefa6a766e8844fc3465f6/file-VOohM4uMYM.png)
+
+By default, only edits made by non-administrators will reset the approval status to "Unapproved."
+
+If you would prefer to have the status reset to "Unapproved" when any user or administrator edits an entry, you can do that by adding the following code to your theme's functions.php file:
+
+<script src="https://gist.github.com/zackkatz/7550f1fe1459c118bb8705a6fed1656f.js" type="text/javascript"></script> If you're not sure where to put code sample, please see the following article: [Where to put code samples](https://docs.gravitykit.com/article/210-where-to-put-code-samples)
+
+### Advanced information about the Unapprove Entries After Edit functionality:
+
+GravityView's auto-unapprove feature is only called if all of these conditions are met:
+
+1. The user is editing from the frontend (specifically via the gravityview/edit\_entry/after\_update action)
+2. With the "Unapprove Entries After Edit " feature enabled for the View
+3. The user is not an administrator (they do not have `gravityview_moderate_entries` capability)
+4. The `gravityview/approve_entries/autounapprove/status` filter is not set anywhere to `false`

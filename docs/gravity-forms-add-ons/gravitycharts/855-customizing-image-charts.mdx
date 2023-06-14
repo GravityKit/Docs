@@ -1,0 +1,185 @@
+---
+id: "62f416196d67192dc61b9bb9"
+number: "855"
+collectionId: "6076f9478996210f18bd33df"
+publicUrl: "https://docs.gravitykit.com/article/855-customizing-image-charts"
+viewCount: "101"
+lastPublishedAt: "2022-10-18T23:29:16Z"
+changeOrigin: "unknown"
+name: "Modifying image charts in GravityCharts"
+slug: "855-customizing-image-charts"
+status: "published"
+categories: 
+  - "6261683a93a48c44483342eb"
+createdBy: "59634"
+createdAt: "2022-08-10T20:33:29Z"
+updatedBy: "80506"
+updatedAt: "2022-10-18T23:29:16Z"
+title: "Modifying image charts in GravityCharts"
+hsEditUrl: "https://secure.helpscout.net/docs/6076f9478996210f18bd33df/article/62f416196d67192dc61b9bb9"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-18T23:29:16Z
+  author: "Rafael Ehlers"
+---
+
+# Modifying image charts in GravityCharts
+
+
+:::caution
+
+**This feature is currently in beta!** If you encounter any issues, please let our support know.
+
+:::
+
+
+
+Image charts are generated using the [QuickChart API](https://quickchart.io/documentation/). QuickChart is powerful and allows you to customize the look and feel of the chart. QuickChart generates images from chart configuration settings, which are stored in a format called [JSON](https://en.wikipedia.org/wiki/JSON).
+
+When converting a chart to an image, there may be differences that require tweaking to match the look of the charts exactly. You can modify the chart output by using the `gk/gravitycharts/image-charts/quickchart/instance` action.
+
+##  [](#actions)Actions 
+
+###  [](#gkgravitychartsimage-chartsquickchartinstance)`gk/gravitycharts/image-charts/quickchart/instance`
+
+Override QuickChart API settings for the chart.
+
+| Parameter | Type | Description |
+|---|---|---|
+| `$chart` | object | The [QuickChart instance](https://quickchart.io/documentation/api/instance/) to modify. |
+| `config` | object | The configuration to apply to the instance. |
+| `$atts` | array | The shortcode attributes (see the [`[gravitycharts]` Shortcode](https://docs.gravitykit.com/article/850-gravitycharts-shortcode) doc for a list of attributes). |
+
+##  [](#example-code)Example code 
+
+
+:::info
+
+Note: This code is PHP. If you're not sure what that is or how to use this filter, we recommend reaching out to [a Codeable.io expert](https://www.gravitykit.com/codeable) who can help with making these changes.
+
+:::
+
+  Please [refer to the QuickChart docs](https://quickchart.io/documentation/) to see what features are available.
+
+###  [](#set-chart-background-color)Set chart background color 
+
+```php
+/**
+* Override QuickChart API settings for the chart.
+* @see https://github.com/typpo/quickchart-php for documentation
+* @param GravityKit\GravityCharts\QuickChart $chart
+* @param array $atts
+*/
+add_action( 'gk/gravitycharts/image-charts/quickchart/instance', function ( $chart, $atts ) {
+
+   // Only modify chart #17. Remove this condition to modify all charts.
+   if( 17 !== (int) $atts['id'] ) {
+       return;
+   }
+
+   // Set background color to yellow
+   $chart->setBackgroundColor( 'rgb(255,255,120)' );
+   
+}, 10, 2 );
+```
+
+###  [](#change-the-chart-title-and-font)Change the chart title and font
+
+```php
+/**
+* Change the chart title to "My Chart" and override font settings.
+*
+* @see https://github.com/typpo/quickchart-php for documentation
+*
+* @param \GravityKit\GravityCharts\QuickChart $chart
+* @param array $atts
+*/
+add_action( 'gk/gravitycharts/image-charts/quickchart/instance', function ( $chart, $atts ) {
+
+   // Only modify chart #17. Remove this condition to modify all charts.
+   if( 17 !== (int) $atts['id'] ) {
+       return;
+   }
+
+	$config = $chart->getConfig();
+
+	$config['options']['plugins']['title'] = [
+		'display' => 1,
+		'text' => 'My Chart', // Change the text
+		'color' => 'teal', // Color
+		'font' => [
+			'family' => 'Noto Sans Mono', // Font family. All Noto fonts are valid. {@see https://fonts.google.com/noto/fonts}
+			'size' => 32, // Font size in pixels
+			'weight' => 700, // Font weight
+		],
+	];
+
+	$chart->setConfig( $config );
+
+}, 10, 2 );
+```
+
+###  [](#use-the-quickchart-service-instead-of-gravitykits-chart-service)Add a QuickChart API key for improved speed and customer service
+
+QuickChart offers [a Professional plan](https://quickchart.io/pricing/) at $40/mo. Professional plans have no rate limiting, faster chart generation, and access to additional features. If you sign up, you will get an API key. Here's how to add the API key to GravityCharts image charts:
+
+```php
+/**
+* Override QuickChart API settings for the chart.
+* @see https://github.com/typpo/quickchart-php for documentation
+* @param GravityKit\GravityCharts\QuickChart $chart
+* @param array $atts
+*/
+add_action( 'gk/gravitycharts/image-charts/quickchart/instance', function ( $chart, $atts ) {    
+   $chart->setApiKey( 'REPLACE_THIS_WITH_YOUR_API_KEY' );
+}, 10, 2 );
+```
+
+###  [](#use-the-quickchart-service-instead-of-gravitykits-chart-service)Use a self-hosted QuickChart installation instead of the default chart service 
+
+If you want to [run your own instance of QuickChart](https://github.com/typpo/quickchart#docker), you can. It will require updating the host setting. Here's how to do that:
+
+```php
+/**
+* Override QuickChart API settings for the chart.
+* @see https://github.com/typpo/quickchart-php for documentation
+* @param GravityKit\GravityCharts\QuickChart $chart
+* @param array $atts
+*/
+add_action( 'gk/gravitycharts/image-charts/quickchart/instance', function ( $chart, $atts ) {
+
+   // Use QuickCharts.io.
+   $chart->setHost( 'quickcharts.io' );
+   
+   // If you have one, enter your API key.
+   $chart->setApiKey( 'YOUR_API_KEY' );
+}, 10, 2 );
+```
+
+###  [](#print-debug-output-about-the-chart-data-being-used)Print debug output about the chart data being used 
+
+If you want to figure out what data is being shown in an image chart, here's some example code:
+
+```php
+/**
+* Print debugging information about each chart.
+*/
+add_action( 'gk/gravitycharts/image-charts/quickchart/instance', function ( $chart, $atts ) {
+
+   // Only show debugging to admins
+   if ( ! current_user_can( 'manage_options' ) ) {
+       return;
+   }
+
+   echo '<h3>Chart Data</h3>';
+   echo '';
+   print_r( $chart->getConfig() );
+   echo '';
+   
+   echo '<h3>Chart Block/Shortcode Attributes</h3>';
+   echo '';
+   print_r( $atts );
+   echo '';
+}, 20, 3 );
+```

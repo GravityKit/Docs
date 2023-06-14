@@ -1,0 +1,47 @@
+---
+id: "5ddc33d72c7d3a7e9ae465b0"
+number: "655"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.1"
+publicUrl: "https://docs.gravitykit.com/article/655-how-to-get-the-id-of-the-entry-on-edit-entry-page"
+viewCount: "743"
+lastPublishedAt: "2022-10-07T21:02:00Z"
+changeOrigin: "unknown"
+name: "How to get the ID of the entry on Edit Entry page?"
+slug: "655-how-to-get-the-id-of-the-entry-on-edit-entry-page"
+status: "published"
+categories: 
+  - "579aa642c6979160ca148ba9"
+  - "5e1b6d5d04286364bc93c665"
+createdBy: "59634"
+createdAt: "2019-11-25T20:04:39Z"
+updatedBy: "80506"
+updatedAt: "2022-10-07T21:02:00Z"
+title: "How to get the ID of the entry on Edit Entry page?"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5ddc33d72c7d3a7e9ae465b0"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-07T21:02:00Z
+  author: "Rafael Ehlers"
+---
+
+# How to get the ID of the entry on Edit Entry page?
+
+Use the following function to get the currently-edited entry: `gravityview()->request->is_edit_entry()`.
+
+It will return false if not on the Edit Entry screen, or it will return a `\GV\Entry` object. Once you have the `\GV\Entry` object, you can use `$entry->ID` to get the entry ID.
+
+### Here's a sample code:
+
+```php
+// Inside a hook during or after `init`
+
+$entry = gravityview()->request->is_edit_entry()
+
+if( $entry ) {
+ $entry_id = $entry->ID;
+}
+```
+
+[See the method in-context.](https://github.com/gravityview/GravityView/blob/master/future/includes/class-gv-request.php#L160-L185)

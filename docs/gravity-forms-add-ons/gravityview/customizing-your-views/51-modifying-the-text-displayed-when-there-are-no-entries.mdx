@@ -1,0 +1,62 @@
+---
+id: "54c67bb4e4b07997ea3f3f54"
+number: "51"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.4"
+publicUrl: "https://docs.gravitykit.com/article/51-modifying-the-text-displayed-when-there-are-no-entries"
+viewCount: "2132"
+lastPublishedAt: "2020-11-11T22:59:15Z"
+changeOrigin: "unknown"
+name: "Modifying the text displayed when there are no entries"
+slug: "51-modifying-the-text-displayed-when-there-are-no-entries"
+status: "published"
+categories: 
+  - "579aa76f903360293603a8e7"
+createdBy: "59634"
+createdAt: "2015-01-26T17:39:00Z"
+updatedBy: "80506"
+updatedAt: "2020-11-11T22:59:15Z"
+title: "Modifying the text displayed when there are no entries"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/54c67bb4e4b07997ea3f3f54"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2020-11-11T22:59:15Z
+  author: "Rafael Ehlers"
+---
+
+# Modifying the text displayed when there are no entries
+
+## GravityView Defaults
+
+By default, GravityView shows two values, depending on the situation.
+
+If the View is displaying a search result, the default text is:
+
+> This search returned no results.
+
+Otherwise, if no search has been performed, the default text is:
+
+> No entries match your request.
+
+## Change the text
+
+To modify this, GravityView provides the `gravityview/template/text/no_entries` filter.
+
+### The `gravityview/template/text/no_entries` filter
+
+Modify the text displayed when there are no entries.
+
+Has two arguments:
+
+- *string* **$output** - The existing "No Entries" text
+- *boolean* **$is\_search** - Is the current page a search result, or just a multiple entries screen?
+- *\\GV\\Template\_Context* **$context** - Information about the current View being rendered
+
+#### To modify the text, add this sample code ([also available here](https://gist.github.com/zackkatz/edbd4713afa49e550a9b))
+
+<script src="https://gist.github.com/zackkatz/edbd4713afa49e550a9b.js" type="text/javascript"></script>
+
+## Targetting a specific View ID
+
+<script src="https://gist.github.com/rafaehlers/08e9ac364ecb0a31591300263414e76f.js" type="text/javascript"></script>

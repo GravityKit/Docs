@@ -1,0 +1,83 @@
+---
+id: "5d7aa7c92c7d3a7e9ae11953"
+number: "626"
+collectionId: "54d1a05ce4b086c0c0964ccd"
+popularity: "4.1"
+publicUrl: "https://docs.gravitykit.com/article/626-google-maps-error-referernotallowedmaperror"
+viewCount: "39022"
+lastPublishedAt: "2022-10-13T23:33:30Z"
+changeOrigin: "unknown"
+name: "Google Maps Javascript API Error \"RefererNotAllowedMapError\""
+slug: "626-google-maps-error-referernotallowedmaperror"
+status: "published"
+categories: 
+  - "55b67132e4b0e667e2a44567"
+createdBy: "365564"
+createdAt: "2019-09-12T20:17:13Z"
+updatedBy: "80506"
+updatedAt: "2022-10-13T23:33:30Z"
+title: "Google Maps Javascript API Error \"RefererNotAllowedMapError\""
+hsEditUrl: "https://secure.helpscout.net/docs/54d1a05ce4b086c0c0964ccd/article/5d7aa7c92c7d3a7e9ae11953"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-13T23:33:30Z
+  author: "Rafael Ehlers"
+---
+
+# Google Maps Javascript API Error "RefererNotAllowedMapError"
+
+
+:::info
+
+
+### Show form entries on a Google Map in WordPress with [GravityView Maps!](https://www.gravitykit.com/extensions/maps/)
+
+This article is about GravityView, the best way to display entries on a map in WordPress. It geocodes and displays [Gravity Forms](https://www.gravitykit.com/gravityforms) form submissions on a map.
+
+:::
+
+
+
+[![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5d7aa87404286364bc8f0feb/file-3AFmwwYaKJ.png)](https://www.gravitykit.com/extensions/maps/)
+
+If your map is not displaying and your browser console shows the  **"Google Maps JavaScript API error: RefererNotAllowedMapError"** it means the URL loading the Maps JavaScript API is not on the list of allowed referrers. Please check the referrer settings of your API key in the [Google Cloud Platform Console](https://cloud.google.com/console/google/maps-apis/overview).
+
+## 1. Remove restrictions on the API key to debug
+
+Removing any restrictions can help identify whether they're causing unexpected issues.
+
+1. Go to the [Credentials page of your Google Cloud Platform Console](https://console.cloud.google.com/google/maps-apis/credentials).
+2. If you see a Maps API key under the "API Keys" header, click on the name of it to edit:  
+    ![API Keys table, with arrow pointing the a row with a 'My Maps API Key' link](https://i.gravitykit.com/CWE7u4+)
+3. Remove restrictions: 
+   1. For "Application restrictions", set to "None"![Application restrictions set to None in the Google Cloud Platform Console](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5d7aaaba04286364bc8f100d/file-C1HCm8Ae1b.png)
+   2. Under "API restrictions", set to "Don't restrict key"![API restrictions set to Don't restrict key in the Google Cloud Platform Console](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5d7aaa532c7d3a7e9ae11983/file-wUvDFKj6uK.png)
+   3. Click Save  ![](https://i.gravitykit.com/Ah7IAp+)
+
+**Please note, It can take up to 5 minutes for your new settings to take effect**, so you might have to wait a few minutes before refreshing the View and seeing the map.
+
+## 2. Wait five minutes! 
+
+## 3. If it works, great! You have identified that the referrer is the issue.
+
+You won't want to leave the "API restrictions" and "Application restrictions" settings there; this will mean that others will be able to use your Maps API key anywhere, potentially costing you money.
+
+### So we now restore an "Application restriction" setting. 
+
+1. Set "Application restriction" to "HTTP referrers"
+2. Click "ADD AN ITEM"  ![](https://i.gravitykit.com/wwgvmr+)
+3. Set "Referrer" to **\*.yoursite.com/\*** — make sure to replace "yoursite.com" with your domain (without www.!). This will allow the API to run on all the variations of your website (www.example.com, example.com, subdomain.example.com).
+4. If you have another site you want the maps to work on, click on "ADD AN ITEM" again to add another site.
+5. Save the settings again
+6. Wait five minutes
+7. If your site still doesn't work, try using the "IP addresses" restriction and entering the IP address of your server. Then (yep) wait another five minutes :-)
+
+### If everything still works on your site, set "API restrictions"
+
+1. Under "API restrictions", select "Restrict key"
+2. Check the "Geocoding API" and "Maps Javascript API" checkboxes (see image below)  ![](https://i.gravitykit.com/EWqx0d+)
+3. Save the settings
+4. Wait another five minutes!
+
+These settings should continue to work—if they don't, check all the boxes in the list, save, and wait five minutes. If it works again, then deselect one checkbox at a time and see which one makes things not work!

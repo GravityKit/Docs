@@ -1,0 +1,77 @@
+---
+id: "628d106cb2de5178f8886a00"
+number: "844"
+collectionId: "6076f9478996210f18bd33df"
+publicUrl: "https://docs.gravitykit.com/article/844-adding-a-new-color-palette"
+viewCount: "66"
+lastPublishedAt: "2023-01-15T00:17:10Z"
+changeOrigin: "hsapp-js"
+name: "Adding a New Color Palette"
+slug: "844-adding-a-new-color-palette"
+status: "published"
+categories: 
+  - "6261683a93a48c44483342eb"
+createdBy: "80506"
+createdAt: "2022-05-24T17:05:48Z"
+updatedBy: "59634"
+updatedAt: "2023-01-15T00:17:10Z"
+title: "Adding a New Color Palette"
+hsEditUrl: "https://secure.helpscout.net/docs/6076f9478996210f18bd33df/article/628d106cb2de5178f8886a00"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2023-01-15T00:17:10Z
+  author: "Zack Katz"
+---
+
+# Adding a New Color Palette
+
+GravityCharts already comes with 26 color palettes available for you to choose from:
+
+![Screenshot showing existing color palettes](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/628d135b8c9b58508348c9e8/file-e8WzntCpfP.png)
+
+...however, if none of these existing palettes work with the design of your website you can add a new custom one with some custom coding:
+
+```php
+
+add_filter( 'gk/gravitycharts/color-palettes', function ( $palettes ) {
+   $palettes['custom_palette'] = [
+       'label'           => 'Custom Palette',
+       'borderColor'     => [
+           'blue',
+           'yellow',
+           'aqua',
+	    'red', 
+	    'orange',
+	    'green',
+           'black'
+       ],
+       'backgroundColor' => [
+           'blue',
+           'yellow',
+           'aqua',
+	    'red', 
+	    'orange',
+	    'green',
+           'black'
+       ]
+   ];
+
+   return $palettes;
+} );
+```
+
+The code above adds one new color palette with seven choices (one for each choice of your form field). You can add more colors or remove some if necessary.
+
+Here's what our new color palette looks like on the Chart configuration feed:
+
+![Screenshot of the new color palette inside the Chart configuration feed](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/628d12fd8bf21a2e2b6d7112/file-a0U32JPyU7.png)
+
+
+:::info
+
+Learn here how to add this code snippet to your website: [Where to put code samples](https://docs.gravitykit.com/article/210-where-to-put-code-samples)
+
+:::
+
+ 

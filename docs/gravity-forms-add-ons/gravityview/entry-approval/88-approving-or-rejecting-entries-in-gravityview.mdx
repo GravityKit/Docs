@@ -1,0 +1,61 @@
+---
+id: "54c67bc3e4b07997ea3f3f78"
+number: "88"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "1.6"
+publicUrl: "https://docs.gravitykit.com/article/88-approving-or-rejecting-entries-in-gravityview"
+viewCount: "8450"
+lastPublishedAt: "2023-02-08T15:12:43Z"
+changeOrigin: "hsapp-js"
+name: "Approving or rejecting entries in GravityView"
+slug: "88-approving-or-rejecting-entries-in-gravityview"
+status: "published"
+categories: 
+  - "582140d9c697914aa8381617"
+related: 
+  - "5bad1a33042863158cc6d396"
+  - "5825007cc697916f5d04ebd4"
+createdBy: "59634"
+updatedBy: "80506"
+updatedAt: "2023-02-08T15:12:43Z"
+title: "Approving or rejecting entries in GravityView"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/54c67bc3e4b07997ea3f3f78"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2023-02-08T15:12:43Z
+  author: "Rafael Ehlers"
+---
+
+# Approving or rejecting entries in GravityView
+
+## How do I approve or reject entries?
+
+You can moderate whether entries are approved or disapproved in **three** ways:
+
+1. By using the Entries page of Gravity Forms on your Dashboard: [Moderate entries from the Gravity Forms entries screen](https://docs.gravitykit.com/article/490-entry-approval-gravity-forms)
+2. From the front end of your site in a View: [Moderate entries from the front-end of your site](https://docs.gravitykit.com/article/390-entry-approval)
+3. Or via form notifications: [Moderate entries from directly from an email notification](https://docs.gravitykit.com/article/904-entry-moderation-merge-tags)
+
+There's also a **fourth** option, which consists of adding a special GravityView field to your form to manually control when the form submission (entry) is approved or not.
+
+This can be achieved by adding one of these two special fields to your form:
+
+- **Approve/Reject** - an Administrative field by default. Aimed at Administrators to approve an entry using the Entries screen of Gravity Forms. When this field is present on the form, entries are automatically submitted as "Disapproved". To approve them, an administrator must edit that entry and check this field.
+- **User Opt-In** - gives the approval control to the user submitting the form. Perfect for getting user consent before displaying the entry to the public. If the user checks the field, the entry will be "Approved" by default. If the user doesn't check that field, the entry is "Disapproved" by default.
+
+## How to add these special fields to your form:
+
+- Edit the form (Form Editor screen) connected to your View;
+- Look for the GravityView field panel on your form editor:
+![Screenshot of GravityView special Fields on the Form Editor page](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/61784c012b380503dfdfe548/file-w3WfftjAMB.png)- Drag (or just click) one of these two fields (<q>Approve/Reject</q> field or the <q>User Opt-In</q> field) to your form;
+
+- Save the form.
+
+## How to show only approved entries in a View
+
+In the View Editor page of your View, find the <q>View Settings</q> box and check the checkbox named "Show only approved entries":
+
+![Screenshot of the View Settings panel with the Show only approved entries option checked](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/61784c6c0332cb5b9e9b7b3c/file-9jZZmMeEOb.png)
+
+Now, only approved entries are going to show up on your View!

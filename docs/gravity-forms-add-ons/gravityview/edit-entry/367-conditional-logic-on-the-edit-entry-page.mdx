@@ -1,0 +1,84 @@
+---
+id: "579ac36bc6979160ca148be0"
+number: "367"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.6"
+publicUrl: "https://docs.gravitykit.com/article/367-conditional-logic-on-the-edit-entry-page"
+viewCount: "3150"
+lastPublishedAt: "2023-01-06T05:33:08Z"
+changeOrigin: "hsapp-js"
+name: "Conditional Logic on the Edit Entry page"
+slug: "367-conditional-logic-on-the-edit-entry-page"
+status: "published"
+categories: 
+  - "5e1b6d5d04286364bc93c665"
+keywords: 
+  - "conditional logic"
+  - "conditional rules"
+  - "edit entry"
+related: 
+  - "54c67bb9e4b0512429885513"
+  - "5612b1cec69791523683fb29"
+createdBy: "80506"
+createdAt: "2016-07-29T02:46:03Z"
+updatedBy: "80506"
+updatedAt: "2023-01-06T05:33:08Z"
+title: "Conditional Logic on the Edit Entry page"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/579ac36bc6979160ca148be0"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2023-01-06T05:33:08Z
+  author: "Rafael Ehlers"
+---
+
+# Conditional Logic on the Edit Entry page
+
+
+:::caution
+
+[Please read this other article](https://docs.gravitykit.com/article/309-the-update-button-isnt-showing-in-edit-entry) if the "Update" button is not showing up.
+
+:::
+
+
+
+## Are some of your fields not showing up on the Edit Entry screen?
+
+That's because whether the field is shown or hidden might be controlled by a [Conditional Logic](http://www.gravityforms.com/features/conditional-logic/) rule applied to fields on your form.
+
+### An example of how Conditional Logic can hide fields:
+
+In the image below, the field "Add your first choice" will only show up if the option "First Choice" is selected on the field "Choose an option below":
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/579ac53fc6979160ca148be2/file-2gSiZJ3iCl.jpg)
+
+In the Edit View GravityView page, we will add just the field "Add your second choice" to the Edit Entry screen...
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/579ac79b903360293603a925/file-WPVkxPMMkj.jpg)
+
+...and then we will edit an entry which has the "First Choice" option selected:
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/579ac74a903360293603a924/file-Av9ts9xPha.jpg)
+
+This is what happens:
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/579ac7d9c6979160ca148be9/file-9GYRr3iXsx.jpg)
+
+### The fix for the problem of the hidden field:
+
+To make the field appear, we'll remove all fields from the Edit Entry screen...
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/579ac81ec6979160ca148bed/file-K5nxM5DzEB.jpg)
+
+...and now the fields appear correctly when we try to edit that same entry:
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/579ac87ec6979160ca148bf3/file-4ZzFRbJVJv.jpg)
+
+The user now has the choice to select a different option on the field "Choose an option below" and then update this entry with another value:
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/579ac8ca903360293603a92a/file-DiWQB3qvWh.jpg)
+
+### Don't want to display all your fields?
+
+If you need to show only specific fields on the Edit Entry screen, then make sure the fields they depend on are added to this screen as well.

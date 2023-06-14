@@ -1,0 +1,48 @@
+---
+id: "5c91928c2c7d3a15446115f5"
+number: "563"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.2"
+publicUrl: "https://docs.gravitykit.com/article/563-is-it-also-possible-to-display-a-multi-page-form-in-edit-mode"
+viewCount: "1068"
+lastPublishedAt: "2022-10-07T19:58:38Z"
+changeOrigin: "unknown"
+name: "Is it possible to display a multi-page form in Edit Entry mode?"
+slug: "563-is-it-also-possible-to-display-a-multi-page-form-in-edit-mode"
+status: "published"
+categories: 
+  - "5c79bfda04286350d0888d07"
+  - "5e1b6d5d04286364bc93c665"
+createdBy: "80506"
+createdAt: "2019-03-20T01:08:28Z"
+updatedBy: "80506"
+updatedAt: "2022-10-07T19:58:38Z"
+title: "Is it possible to display a multi-page form in Edit Entry mode?"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5c91928c2c7d3a15446115f5"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-07T19:58:38Z
+  author: "Rafael Ehlers"
+---
+
+# Is it possible to display a multi-page form in Edit Entry mode?
+
+
+:::caution
+
+This functionality is currently in testing and may have bugs. If you encounter any issues while running this code, please let us know!
+
+:::
+
+
+
+By default, Edit Entry doesn't support multi-page forms; we are currently developing support for this functionality.
+
+If you would like to enable support, add the following code to your site ( [here's how to add the code](https://docs.gravitykit.com/article/210-where-to-put-code-samples)):
+
+```php
+add_filter( 'gravityview/features/paged-edit', '__return_true' );
+```
+
+When enabled, there are some [differences in behavior that you should be aware of](https://docs.gravitykit.com/article/819-edit-entry-multi-page-forms).

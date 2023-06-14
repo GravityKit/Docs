@@ -1,0 +1,43 @@
+---
+id: "63d3090394c9984f6d315364"
+number: "907"
+collectionId: "6076f9478996210f18bd33df"
+publicUrl: "https://docs.gravitykit.com/article/907-trigger-manual-export"
+viewCount: "44"
+lastPublishedAt: "2023-01-31T09:43:56Z"
+changeOrigin: "hsapp-js"
+name: "How to manually trigger a GravityExport Save Feed"
+slug: "907-trigger-manual-export"
+status: "published"
+categories: 
+  - "6155b0850754e74465f1541b"
+createdBy: "80506"
+createdAt: "2023-01-26T23:13:07Z"
+updatedBy: "543004"
+updatedAt: "2023-01-31T09:43:56Z"
+title: "How to manually trigger a GravityExport Save Feed"
+hsEditUrl: "https://secure.helpscout.net/docs/6076f9478996210f18bd33df/article/63d3090394c9984f6d315364"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2023-01-31T09:43:56Z
+  author: "Casey Burridge"
+---
+
+# How to manually trigger a GravityExport Save Feed
+
+You can manually trigger a GravityExport Save feed by calling a public URL. If you want to trigger the feed to run on a schedule, you can do so using a cron job (more on this below).
+
+When creating a new "GravityExport Save" feed, select the "Manual trigger" option under "Export trigger". After saving the feed, a public trigger URL will be generated. Click on the button to copy this URL to your clipboard.
+
+![The public trigger URL in the GravityExport Save feed settings](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/63d8dfea26cb8547dcb0e085/file-Qbagmw3dp1.png)
+
+## Scheduling exports
+
+If you want to schedule exports to run at certain times, you'll need to call the generated public trigger URL using a cron service. This will ensure that your Save feed is executed at defined time intervals.
+
+If your website receives a decent amount of traffic, we recommend using the free [WP Crontrol plugin](https://wordpress.org/plugins/wp-crontrol/). This allows you to manage cron schedules through your WordPress website. However, it's important to note that running cron through WordPress [is not always reliable](https://github.com/johnbillion/wp-crontrol/wiki/Cron-events-that-have-missed-their-schedule).
+
+Alternatively, you'll need to use a separate cron service. If your hosting provider does not support this, check out [this list of free and paid cron services](https://www.cronjobservices.com/).
+
+For more information about cron jobs, [see this comprehensive tutorial for beginners](https://www.hostinger.com/tutorials/cron-job).

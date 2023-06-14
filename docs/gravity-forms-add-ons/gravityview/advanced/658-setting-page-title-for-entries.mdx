@@ -1,0 +1,69 @@
+---
+id: "5dde1efe2c7d3a7e9ae47807"
+number: "658"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.1"
+publicUrl: "https://docs.gravitykit.com/article/658-setting-page-title-for-entries"
+viewCount: "490"
+lastPublishedAt: "2022-10-07T21:00:39Z"
+changeOrigin: "unknown"
+name: "Setting page title for Entries"
+slug: "658-setting-page-title-for-entries"
+status: "published"
+categories: 
+  - "579aa642c6979160ca148ba9"
+createdBy: "166583"
+createdAt: "2019-11-27T07:00:14Z"
+updatedBy: "80506"
+updatedAt: "2022-10-07T21:00:39Z"
+title: "Setting page title for Entries"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5dde1efe2c7d3a7e9ae47807"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-07T21:00:39Z
+  author: "Rafael Ehlers"
+---
+
+# Setting page title for Entries
+
+It is possible to set individual titles for the Single Entry page in a View by using the [pre\_get\_document\_title](https://developer.wordpress.org/reference/hooks/pre_get_document_title/) WordPress filter.
+
+
+:::caution
+
+The code example below should be placed on your theme's `functions.php` file.
+
+:::
+
+  Here's the most basic example, where the page title is set to the value of Field ID 1 for the View with ID 8:
+
+```
+add_filter( 'pre_get_document_title', 'gv_seo_title', 999, 1 );
+
+function gv_seo_title( $title ) {
+	
+	if ( ! function_exists( 'gravityview' ) ) {
+		return $title; // Return original title
+	}
+
+	if ( ! $entry = gravityview()->request->is_entry() ) {
+		return $title; // Return original title
+	}
+
+	if ( ! $view = gravityview()->request->is_view() ) {
+		return $title; // Return original title
+	}
+
+	if ( $view->ID != 8 ) { // Specify the View ID here
+		return $title; // Return original title
+	}
+
+	$title = rgar($entry, '1'); // We pull the title from the Field ID 1
+
+	return $title; 
+}
+	
+```
+
+For entries that are embedded with the [\[gventry\] shortcode](https://docs.gravitykit.com/article/463-gventry-shortcode) the page title can be set on the host page as needed.

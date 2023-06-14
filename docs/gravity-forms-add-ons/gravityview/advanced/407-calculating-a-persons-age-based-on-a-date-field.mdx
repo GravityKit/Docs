@@ -1,0 +1,72 @@
+---
+id: "58b44d782c7d3a576d35886a"
+number: "407"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.7"
+publicUrl: "https://docs.gravitykit.com/article/407-calculating-a-persons-age-based-on-a-date-field"
+viewCount: "3485"
+lastPublishedAt: "2022-10-07T21:03:10Z"
+changeOrigin: "unknown"
+name: "Calculating a person's age based on a date field"
+slug: "407-calculating-a-persons-age-based-on-a-date-field"
+status: "published"
+categories: 
+  - "579aa642c6979160ca148ba9"
+keywords: 
+  - "age"
+  - "calculate"
+  - "birth"
+  - "birthdate"
+  - "person"
+  - "shortcode"
+related: 
+  - "54d3a075e4b086c0c09652f4"
+createdBy: "80506"
+createdAt: "2017-02-27T16:02:00Z"
+updatedBy: "80506"
+updatedAt: "2022-10-07T21:03:10Z"
+title: "Calculating a person's age based on a date field"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/58b44d782c7d3a576d35886a"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-07T21:03:10Z
+  author: "Rafael Ehlers"
+---
+
+# Calculating a person's age based on a date field
+
+Ever wanted to calculate someone else's age based on a date field? That's possible using the `[gv_age]` shortcode.
+
+### Shortcode Parameters
+
+The `[gv_age]` shortcode requires two parameters to calculate age.
+
+- `entry_id` - The ID of the entry for the age calculation. Can use the `{entry_id}` Merge Tag or a numeric entry ID.
+- `field_id` - The ID of the date field where date of birth is stored.
+
+###  Example
+
+This shortcode will calculate the ages for all entries. Date of birth is stored in a date field with an ID of 44:
+
+```
+[gv_age entry_id="{entry_id}" field_id="44" /]
+```
+
+Adding the `[gv_age]` shortcode to a [Custom Content](https://docs.gravitykit.com/article/111-using-the-custom-content-field) field:
+
+![Entering the [gv_age] shortcode into the Options screen of a Custom Content field](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5e18d1d32c7d3a7e9ae60d36/file-gt20qq6h13.png)
+
+The output:
+
+![The Multiple Entries View after adding the [gv_age] shortcode to a Custom Content field](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5e18d30304286364bc93be5e/file-MD53y0xbsw.png)
+
+Now that we have the age displayed, we can enter a label for the Custom Content field:
+
+![Adding a label to a Custom Content field containing the [gv_age} shortcode](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5e18dc0e04286364bc93bede/file-aEMxIj5a5q.png)And voilá:
+
+![The Multiple Entries View displaying a custom label for the [gv_age] Custom Content field](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5e18dc8504286364bc93bee8/file-j11M62eYrr.png)
+
+You'll need this code to enable the `[gv_age]` shortcode:
+
+<script src="https://gist.github.com/zackkatz/b99a61b3830c42b9504a72c6c62e829e.js" type="text/javascript"></script> Related: [Where do I add the code samples you share?](https://docs.gravitykit.com/article/210-where-to-put-code-samples)

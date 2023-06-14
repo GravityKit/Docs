@@ -1,0 +1,53 @@
+---
+id: "56e07c0f9033601b7c7dd58b"
+number: "339"
+collectionId: "54d1a05ce4b086c0c0964ccd"
+popularity: "0.1"
+publicUrl: "https://docs.gravitykit.com/article/339-how-can-i-make-the-marker-link-to-open-in-a-new-tab"
+viewCount: "1009"
+lastPublishedAt: "2022-10-13T23:25:13Z"
+changeOrigin: "unknown"
+name: "How can I make the marker link to open in a new tab?"
+slug: "339-how-can-i-make-the-marker-link-to-open-in-a-new-tab"
+status: "published"
+categories: 
+  - "55b67132e4b0e667e2a44567"
+createdBy: "59635"
+createdAt: "2016-03-09T19:39:59Z"
+updatedBy: "80506"
+updatedAt: "2022-10-13T23:25:13Z"
+title: "How can I make the marker link to open in a new tab?"
+hsEditUrl: "https://secure.helpscout.net/docs/54d1a05ce4b086c0c0964ccd/article/56e07c0f9033601b7c7dd58b"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-13T23:25:13Z
+  author: "Rafael Ehlers"
+---
+
+# How can I make the marker link to open in a new tab?
+
+*Since version 1.3.2*
+
+By default, the map markers' links in the multiple entries view open in the same tab (links to the single entry view). It is possible to change the default behavior using the hook `gravityview/maps/render/options` as follows:
+
+```php
+/**
+* Tweak the map marker link target to open in a new tab (default _top)
+*/ 
+function my_gv_marker_link_target( $options ) {
+	// possible values: _blank, _parent, _self, _top (default)
+	$options['marker_link_target'] = '_blank';
+	return $options;
+}
+add_filter( 'gravityview/maps/render/options', 'my_gv_marker_link_target', 10, 1 );
+```
+
+The map option key marker\_link\_target specifies the target attribute for the marker link.
+
+The following values are supported:
+
+- \_blank - URL is loaded into a new window.
+- \_parent - URL is loaded into the parent frame
+- \_self - URL replaces the current page
+- \_top - URL replaces any framesets that may be loaded (This is the default)

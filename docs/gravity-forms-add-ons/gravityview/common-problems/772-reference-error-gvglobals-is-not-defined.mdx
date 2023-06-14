@@ -1,0 +1,43 @@
+---
+id: "61004824b55c2b04bf6d8898"
+number: "772"
+collectionId: "566dfabbc6979143615564bf"
+publicUrl: "https://docs.gravitykit.com/article/772-reference-error-gvglobals-is-not-defined"
+viewCount: "89"
+lastPublishedAt: "2021-07-28T14:42:08Z"
+changeOrigin: "unknown"
+name: "ReferenceError: gvGlobals is not defined"
+slug: "772-reference-error-gvglobals-is-not-defined"
+status: "published"
+categories: 
+  - "579aab1cc6979160ca148bba"
+createdBy: "80506"
+createdAt: "2021-07-27T17:53:40Z"
+updatedBy: "59634"
+updatedAt: "2021-07-28T14:42:08Z"
+title: "ReferenceError: gvGlobals is not defined"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/61004824b55c2b04bf6d8898"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2021-07-28T14:42:08Z
+  author: "Zack Katz"
+---
+
+# ReferenceError: gvGlobals is not defined
+
+If for some reason you're experiencing this Javascript error message on your Browser's console, that probably means your theme is not calling the `wp_footer()` function on its footer.php file.
+
+If that's the case, then you'll need to edit that file using the theme editor inside your WordPress website and add that function:
+
+![Screenshot of the theme editor in WordPress](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/61004b58b55c2b04bf6d88a3/file-2LbU9pDzaQ.png)
+
+If your theme already has the call to the wp\_footer() function and you are still seeing that error message on the Browser console, then you must add this line of code before it:
+
+`do_action('wp_print_footer_scripts');`
+
+That will force your theme to properly print the Javascript code needed for GravityView to work properly.
+
+Here's what it'll look like:
+
+![Screenshot of the WordPress theme editor](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/61004c01b37d837a3d0ddea3/file-xyLYFMdig8.png)

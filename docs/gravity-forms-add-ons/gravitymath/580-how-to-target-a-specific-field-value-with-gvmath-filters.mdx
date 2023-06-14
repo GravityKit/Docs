@@ -1,0 +1,103 @@
+---
+id: "5cef1cfd0428637b2ee7d36c"
+number: "580"
+collectionId: "6076f9478996210f18bd33df"
+popularity: "0.2"
+publicUrl: "https://docs.gravitykit.com/article/580-how-to-target-a-specific-field-value-with-gvmath-filters"
+viewCount: "1498"
+lastPublishedAt: "2023-02-06T21:35:17Z"
+changeOrigin: "hsapp-js"
+name: "How to target a specific field value with [gravitymath] filters"
+slug: "580-how-to-target-a-specific-field-value-with-gvmath-filters"
+status: "published"
+categories: 
+  - "6155b0bf2b380503dfdf63f0"
+createdBy: "80506"
+createdAt: "2019-05-29T23:59:57Z"
+updatedBy: "80506"
+updatedAt: "2023-02-06T21:35:17Z"
+title: "How to target a specific field value with [gravitymath] filters"
+hsEditUrl: "https://secure.helpscout.net/docs/6076f9478996210f18bd33df/article/5cef1cfd0428637b2ee7d36c"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2023-02-06T21:35:17Z
+  author: "Rafael Ehlers"
+---
+
+# How to target a specific field value with [gravitymath] filters
+
+
+:::danger
+
+The "filter" parameter only works with `scope="view"` or `scope="form"`. More about that here: [The \[gravitymath\] Shortcode](https://docs.gravitykit.com/article/295-math-shortcode).
+
+:::
+
+
+
+Assuming you have a form like this one:
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5cef1e192c7d3a1cb9b6f73e/file-5uPpTBdiub.png)
+
+...and a View like this one:
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5cef1e420428637b2ee7d375/file-DSQ3TePMYq.png)
+
+Now, you want to calculate the sum between Number 1 and Number 2, only for the entries where the value of the Calculate field is "Yes". That's now possible with the "filter" parameter of the \[gravitymath\] shortcode.
+
+Here's our shortcode:
+
+```
+Total: [gravitymath scope="view" id="8" filter="filter_1=Yes&op_1=is"]{Number 1:2}+{Number 2:3}[/gravitymath]
+```
+
+...and here's the output in the View:
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5cef1ee70428637b2ee7d379/file-OmCmE1PWb3.png)
+
+### Usage
+
+The following attributes for the "filter" parameter are supported:
+
+filter\_N - the filter, where N is the ID of the field or meta key  
+`op_N` - the operation for a corresponding `filter_N`, default: `is`, other operators are `isnot`, `contains`, `notcontains`, `lt` (less than), and `gt` (greather than).  
+`limit` - the number of entries to calculate. Leave it blank to use all entries from the chosen "scope" parameter.
+
+In the example below, we are filtering the field Calculate (ID = 1) for the "Yes" value.
+
+```
+[gravitymath scope="view" id="206" filter="filter_1=Yes&op_1=is"]...[/gravitymath]
+```
+
+If we wanted to filter by two fields instead, for example, Calculate =Yes and Number 2 = 6, then we'll do it like this:
+
+```
+[gravitymath scope="view" id="206" filter="filter_1=Yes&op_1=is&filter_3=Yes&op_3=is"]...[/gravitymath]
+```
+
+Pay attention to the fact that filter\_1 and op\_1 correspond to the first field Calculate (ID = 1), and filter\_3 and op\_3 correspond to the field Number 2 (where ID = 3).
+
+### Use values on the filter parameter, not labels
+
+If you are filtering a choice-based field, like a dropdown, that uses values instead of only labels, then the filter will look for the value and not the label:
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/63bf4a01e8beff1be5c66e33/file-643yznNs4l.png)
+
+Example:
+
+```
+[gravitymath ... filter="filter_1=first_choice"]...[/gravitymath]
+```
+
+### When filtering product field choices, use the "contains" operator
+
+Product field choices are stored in the database as `value|price`; therefore, when trying to filter for specific choices, use `contains` as the filter operator.
+
+```
+[gravitymath scope="view" id="206" filter="filter_1=Cheese&op_1=contains"]...[/gravitymath]
+```
+
+![Screenshot of the product choices in the form editor](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/63e170fdd2459a27d10c8c86/file-AA18Esx4KW.png)How the choice is stored in the database:
+
+![Screenshot of the entry meta table on the database](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/63e171e4f19b3c454741d544/file-ggTUXmmUF8.png)

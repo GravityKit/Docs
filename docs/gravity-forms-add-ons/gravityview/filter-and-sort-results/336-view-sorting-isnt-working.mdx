@@ -1,0 +1,69 @@
+---
+id: "56a91244c697914361562f75"
+number: "336"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.3"
+publicUrl: "https://docs.gravitykit.com/article/336-view-sorting-isnt-working"
+viewCount: "1754"
+lastPublishedAt: "2022-12-27T21:04:41Z"
+changeOrigin: "external"
+name: "View sorting isn't working"
+slug: "336-view-sorting-isnt-working"
+status: "published"
+categories: 
+  - "566dfec2c6979143615564e3"
+createdBy: "59635"
+updatedBy: "59634"
+updatedAt: "2022-12-27T21:04:41Z"
+title: "View sorting isn't working"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/56a91244c697914361562f75"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-12-27T21:04:41Z
+  author: "Zack Katz"
+---
+
+# View sorting isn't working
+
+On some sites, sorting does not work when paging through entries. If this is happening on your View, **first check if the entries sort correctly on the Gravity Forms entries screen**:
+
+### 1. Check sorting in Gravity Forms:
+
+GravityView relies on Gravity Forms to fetch and sort the entries displayed on the front end of your website, so if the data GravityView gets isn't sorted properly, neither will GravityView's data.
+
+How to confirm whether Gravity Forms entries are sorting properly:
+
+1. Login to your WordPress Dashboard
+2. Go to the Forms &gt; Entries page
+3. Select the form you're using for your View, on the top right dropdown selector (Step 1 of the image)
+4. Click on the column name to sort the entries by that field (Step 2 of the image)
+5. Check other pages to see if the entries are sorted correctly (Step 3 of the image)
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/56a91b95c697914361562fcb/file-YLMv7f1VCM.png)
+
+If entries are not sorted correctly on the Gravity Forms entries screen, please open a support ticket with [Gravity Forms](https://www.gravityforms.com/help/).
+
+### 2. Check that the value exists for the field
+
+If you're sorting a dropdown, multi-select, radio, checkbox (or other non-text input fields) and options are appearing out of order above other results, the entries that are incorrectly sorted may have a value for that field that no longer exists in the form. Here's an example:
+
+1. A form is created with a Fruit Dropdown field, which has three options: "Apple" "Orange" and "Banana"
+2. An entry is created with "Orange" selected
+3. The "Orange" option is removed; the Fruit field now has only "Apple" and "Banana"
+4. The entry with "Orange" selected will now appear at the top of the sorted results, because the value no longer exists.
+
+If this happens, you will need to either:
+
+1. Restore the option in the form (add "Orange" back as an option), then edit and re-save entries with "Orange" values, or
+2. Update all entries that have values that no longer exist (change "Orange" to "Apple" or "Banana")
+
+### 3. Check the type of field
+
+If you are trying to sort a name field by first and last name, and it's just not working, make sure that the names are stored in a Gravity Forms "Name" field. If names are stored in a "Single Line Text" field, they won't sort properly.
+
+![Don't use Single Line Text fields for names. Screenshot of that happening, with an arrow pointing out the wrong field type, with text saying "won't sort nicely".](https://i.gravitykit.com/93uA7t+)
+
+### 4. After that, get in touch!
+
+If the entries are sorted properly is all fine on the Gravity Forms entries screen, but the entries are not correctly sorted on the website's front-end view; let[ us know](https://www.gravitykit.com/support/). Please provide a login with Administrator privileges when opening a ticket.

@@ -1,0 +1,64 @@
+---
+id: "6038271324d2d21e45eda58f"
+number: "756"
+collectionId: "6076f9478996210f18bd33df"
+popularity: "0.1"
+publicUrl: "https://docs.gravitykit.com/article/756-gravity-forms-duration-calculations"
+viewCount: "806"
+lastPublishedAt: "2023-02-23T21:51:03Z"
+changeOrigin: "hsapp-js"
+name: "How to perform Gravity Forms time calculations in GravityView"
+slug: "756-gravity-forms-duration-calculations"
+status: "published"
+categories: 
+  - "6155b0bf2b380503dfdf63f0"
+createdBy: "59634"
+createdAt: "2021-02-25T22:39:15Z"
+updatedBy: "59634"
+updatedAt: "2023-02-23T21:51:03Z"
+title: "How to perform Gravity Forms time calculations in GravityView"
+hsEditUrl: "https://secure.helpscout.net/docs/6076f9478996210f18bd33df/article/6038271324d2d21e45eda58f"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2023-02-23T21:51:03Z
+  author: "Zack Katz"
+---
+
+# How to perform Gravity Forms time calculations in GravityView
+
+<section><iframe allowfullscreen="" frameborder="0" mozallowfullscreen="" src="https://www.loom.com/embed/7854b40e3351444e9bfc0059abad3b3a" webkitallowfullscreen=""></iframe>
+
+</section>
+
+## Video Transcript:
+
+We're going to be adding a duration field to Gravity Forms and then calculating averages and fastest and slowest times using GravityView and [GravityMath](https://www.gravitykit.com/extensions/math/) plugin to get started, I'm going to add a single line, text, field, click to expand it, check the input mask button.
+
+And this is key for the [GravityMath plugin](https://www.gravitykit.com/extensions/math/): selecting the mask type to be either minutes or hours duration.
+
+I'm going to select minutes for this example. I'm going to name the field duration. I'm going to save the form and then display the form entries.
+
+I'm going to create a View based on this, and I'll call it "Duration Times". I'm feeling creative today, apparently! Now, in order to display the field, I'm going to add it to the View and I'm going to select the field options and going to check the add field calculations to the table footer setting.
+
+This is added by GravityMath. So when I check that, you'll see, that I have the option to format the results in the way that I want.
+
+And I'm going to leave this default value for now and we'll come back here. I'm going to publish the View and now all we need is some entries.
+
+I'm going to click, to preview the form, and let's add a few entries, in 10 minutes. Let's add 15 minutes.
+
+Let's add how about 30 seconds? So 10 minutes, 15 minutes, 30 seconds. And let's do 15 minutes and 30 seconds.
+
+All right. Let's take a look again at the View. Okay. I'm going to uncheck approved entries only, so I don't need to improve the entries and let's take a look at the website.
+
+Let's see what it looks like. So you can see the duration times here that we just entered. And the total of those times is here.
+
+As we expected. Now, I'm going to change the field settings to not show the total, but let's instead show the average speed.
+
+And instead of just showing the value, let's also say, let's set a label that's different than what the default is, which is just the value.
+
+Let's set a label that says "Average speed: {result}". And instead of showing the numbers in English, let's show them as values, just pure numbers.
+
+Let's see how that goes. I'm going to save the View, go back over, refresh the screen, and we can see "Average speed:".
+
+That's the label that we set up? 10 minutes and 15 seconds.

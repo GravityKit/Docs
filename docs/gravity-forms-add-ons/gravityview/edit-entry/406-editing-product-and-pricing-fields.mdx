@@ -1,0 +1,90 @@
+---
+id: "58af7cf4dd8c8e56bfa7f8da"
+number: "406"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.5"
+publicUrl: "https://docs.gravitykit.com/article/406-editing-product-and-pricing-fields"
+viewCount: "2444"
+lastPublishedAt: "2022-10-07T21:02:21Z"
+changeOrigin: "unknown"
+name: "Editing Product and Pricing Fields in Edit Entry"
+slug: "406-editing-product-and-pricing-fields"
+status: "published"
+categories: 
+  - "579aa642c6979160ca148ba9"
+  - "5e1b6d5d04286364bc93c665"
+keywords: 
+  - "Edit Entry"
+  - "Product"
+  - "Pricing"
+  - "Quantity"
+  - "Shipping"
+  - "Calculation"
+  - "Price"
+  - "Total"
+  - "Options"
+  - "Option"
+related: 
+  - "579ac36bc6979160ca148be0"
+  - "554351cbe4b01a224b421c6b"
+  - "54c67bb9e4b0512429885513"
+  - "54ff3a76e4b086c0c096c6e9"
+createdBy: "59634"
+createdAt: "2017-02-24T00:23:16Z"
+updatedBy: "80506"
+updatedAt: "2022-10-07T21:02:21Z"
+title: "Editing Product and Pricing Fields in Edit Entry"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/58af7cf4dd8c8e56bfa7f8da"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-07T21:02:21Z
+  author: "Rafael Ehlers"
+---
+
+# Editing Product and Pricing Fields in Edit Entry
+
+GravityView supports editing Product fields **in GravityView's Edit Entry page**.
+
+This includes the following field types:
+
+- Shipping
+- Quantity
+- Options
+- Product
+- Shipping
+- Calculation
+- Price
+- Total \*\*
+
+<sup>\*\*</sup> Total fields can only be displayed when all form fields are shown in the Edit Entry configuration.
+
+### If a payment has been made with real money, the fields won't be editable by default.
+
+**If the entry has transaction data, then the fields will not be editable** by default.
+
+If your form is connected to PayPal (or another payment gateway), when you edit the entry, **it will not update the payment record** in PayPal. So GravityView disables editing product fields by default for entries that have payments associated with them.
+
+If you are fully aware of this and you still want to enable editing the Product and Pricing fields inside GravityView's Edit Entry page, here's a code you can add to your website **(be advised that this code won't allow product fields to be editable inside Gravity Forms Entries page, that will only work for GravityView's Edit Entry page)**:
+
+```php
+/** Force showing product fields in the Edit Entry editor. */
+add_filter( 'gravityview/edit_entry/hide-product-fields', '__return_false' );
+	
+```
+
+Not sure where to add the code? [See this doc](https://docs.gravitykit.com/article/210-where-to-put-code-samples).
+
+---
+
+### Coupon fields are handled separately
+
+If you are using the Coupon Addon, you will need to override the display of the field separately. You can override the coupon field using the `gravityview/edit_entry/hide-coupon-fields` filter like so:
+
+```php
+/** Force showing product fields in the Edit Entry editor. */
+add_filter( 'gravityview/edit_entry/hide-coupon-fields', '__return_false' );
+	
+```
+
+Not sure where to add the code? [See this doc](https://docs.gravitykit.com/article/210-where-to-put-code-samples).

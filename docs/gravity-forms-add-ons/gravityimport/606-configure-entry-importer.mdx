@@ -1,0 +1,61 @@
+---
+id: "5d36928304286347867548e0"
+number: "606"
+collectionId: "6076f9478996210f18bd33df"
+publicUrl: "https://docs.gravitykit.com/article/606-configure-entry-importer"
+viewCount: "366"
+lastPublishedAt: "2022-12-27T21:04:14Z"
+changeOrigin: "external"
+name: "Configure screen in Entry Importer"
+slug: "606-configure-entry-importer"
+status: "published"
+categories: 
+  - "6155b0dee5648623c88e04fa"
+createdBy: "59634"
+createdAt: "2019-07-23T04:52:19Z"
+updatedBy: "59634"
+updatedAt: "2022-12-27T21:04:14Z"
+title: "Configure screen in Entry Importer"
+hsEditUrl: "https://secure.helpscout.net/docs/6076f9478996210f18bd33df/article/5d36928304286347867548e0"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-12-27T21:04:14Z
+  author: "Zack Katz"
+---
+
+# Configure screen in Entry Importer
+
+###  Continue Processing If Errors Occur
+
+With this setting enabled, if the importer encounters a problem with the CSV, it will not stop the import immediately. It will continue processing all the rows of your CSV file, and then provide a report of the encountered errors.
+
+Examples of errors include trying to import a value into an existing form drop-down that does not exist or Entry Notes that are not appropriately formatted for import.
+
+For more details about this setting, [check out this article](https://docs.gravitykit.com/article/610-import-step-continue-processing-if-error-occurs).
+
+### Ignore Required Fields
+
+This setting is only visible if you are importing into a form that contains required fields. This setting will allow you to bypass the required fields for your import data. You can import rows from your CSV that do not contain the required fields.
+
+### Process Feeds
+
+If your form has feeds configured, this setting allows you to trigger the feed for each imported entry. Each entry will be sent to the checked feeds.
+
+If your feeds are configured with conditions, those conditions will be respected when processing each entry.
+
+!["Process Feeds" setting on the Configure screen is checked. There are two feed providers shown, with multiple checkboxes that allow the user to select which feed to process when importing entries.](https://i.gravitykit.com/3PoA97+)
+
+###  Conditional Import
+
+If enabled, CSV rows will only be imported if the logic you define here matches. Rows that do not match will be skipped during import.
+
+You can add multiple filters using the + symbol at the right of each value and remove a filter by clicking the - symbol.
+
+![Screenshot showing the Conditional Import setting in the Configure screen of Entry Importer. Showing two filters: Import the row if all of the following match: Book Title contains "Wuthering" and "Number of Pages" greater than "100".](https://i.gravitykit.com/RAzfgr+)
+
+### Email Notifications
+
+When importing thousands of entries, you may not want your Gravity Forms Form Notifications to be sent for each row of your CSV!
+
+But if you do want the active notifications sent (as configured on the [Gravity Forms Notifications screen](https://docs.gravityforms.com/configuring-notifications-in-gravity-forms/)), enable this setting.

@@ -1,0 +1,58 @@
+---
+id: "5612c0f8c69791523683fb63"
+number: "310"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.2"
+publicUrl: "https://docs.gravitykit.com/article/310-sort-doesnt-work-when-using-gravity-forms-encryption-plugins"
+viewCount: "1188"
+lastPublishedAt: "2022-10-12T21:15:20Z"
+changeOrigin: "unknown"
+name: "Sort doesn't work when using Gravity Forms encryption plugins"
+slug: "310-sort-doesnt-work-when-using-gravity-forms-encryption-plugins"
+status: "published"
+categories: 
+  - "566dfec2c6979143615564e3"
+  - "579aa748903360293603a8e5"
+keywords: 
+  - "Gravitate Encryption"
+  - "encryption"
+  - "encrypted"
+  - "sorting"
+createdBy: "59634"
+updatedBy: "80506"
+updatedAt: "2022-10-12T21:15:20Z"
+title: "Sort doesn't work when using Gravity Forms encryption plugins"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5612c0f8c69791523683fb63"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-12T21:15:20Z
+  author: "Rafael Ehlers"
+---
+
+# Sort doesn't work when using Gravity Forms encryption plugins
+
+
+:::caution
+
+GravityView cannot sort results when using plugins that encrypt Gravity Forms data. **This is a known issue and is not going to be fixed.**
+
+:::
+
+
+
+Gravity Forms has multiple encryption plugins, the most popular being [Gravity Forms Encrypted Fields](https://codecanyon.net/item/gravity-forms-encrypted-fields/18564931). GravityView isn't able to sort results when this plugin is activated.
+
+##  Why doesn't sorting work when using an encryption plugin?
+
+To understand why the sorting doesn't work, let's look at what Gravity Forms encryption plugins do. The plugins work by encrypting the data submitted by Gravity Forms before it gets stored in your database.
+
+**Before encryption**, values of form entries are stored in "plaintext" in your site's database, which means they're readable to the naked eye:
+
+![Entry values stored in the database, not encrypted. Example: Joan Smith](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5612c2aac69791523683fb70/file-uvWEv5lebd.png)
+
+**After encryption,** the entry values are scrambled using a secure algorithm to prevent being readable without a password, which is also encrypted.
+
+![Entry values stored in the database, after being encrypted. The value is scrambled text.](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5612c2b7c69791523683fb73/file-OvUHFotFVM.png)
+
+You can see that sorting alphabetically would be problematic based on the encrypted values! GravityView sorts using values fetched directly from the database, so sorting won't work when the values are encrypted.

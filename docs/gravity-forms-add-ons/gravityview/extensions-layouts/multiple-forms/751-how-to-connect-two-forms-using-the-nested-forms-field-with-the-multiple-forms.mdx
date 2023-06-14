@@ -1,0 +1,61 @@
+---
+id: "6036b95bb3ebfb109b585ceb"
+number: "751"
+collectionId: "54d1a05ce4b086c0c0964ccd"
+popularity: "0.3"
+publicUrl: "https://docs.gravitykit.com/article/751-how-to-connect-two-forms-using-the-nested-forms-field-with-the-multiple-forms"
+viewCount: "2413"
+lastPublishedAt: "2022-10-13T22:52:00Z"
+changeOrigin: "unknown"
+name: "How to connect two forms using the Nested Forms field with the Multiple Forms"
+slug: "751-how-to-connect-two-forms-using-the-nested-forms-field-with-the-multiple-forms"
+status: "published"
+categories: 
+  - "5c00781104286304a71cd192"
+keywords: 
+  - "nested forms"
+  - "gp nested forms"
+  - "gravity perks"
+  - "perks"
+  - "gravity wiz"
+  - "gravitywiz"
+createdBy: "80506"
+createdAt: "2021-02-24T20:38:51Z"
+updatedBy: "80506"
+updatedAt: "2022-10-13T22:52:00Z"
+title: "How to connect two forms using the Nested Forms field with the Multiple Forms"
+hsEditUrl: "https://secure.helpscout.net/docs/54d1a05ce4b086c0c0964ccd/article/6036b95bb3ebfb109b585ceb"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-13T22:52:00Z
+  author: "Rafael Ehlers"
+---
+
+# How to connect two forms using the Nested Forms field with the Multiple Forms
+
+If you have a form using the Nested Forms field ( [a Perk from GravityWiz](https://gravitywiz.com/documentation/gravity-forms-nested-forms/)) and want to create a View combining information from that form and a child form, that's possible with our Multiple Forms extension.
+
+As an example, here's our parent form:
+
+![Screenshot of Gravity Forms form editor with a Nested Forms field](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/6036ba7f0a2dae5b58fb3312/file-p8eftKFlZy.png)
+
+**Players** is a Nested Forms field that submits entries to the Nested Forms Child form:
+
+![Screenshot of Gravity Forms form named "Nested Forms Child". The form has a field titled "Players"](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/6036bb57661b720174a70a29/file-vpPEsE25MZ.png)Whenever the user submits the Nested Forms Parent, one entry is created in the parent form and multiple entries are created on the child form.
+
+![Screenshot of Gravity Forms Entries screen for the "Nested Forms Parent" form. The Entry ID column is circled.](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/6036bdfb661b720174a70a44/file-34exvEMqkC.png)
+
+The Parent Entry ID meta column is used to connect the child entries with the parent entry: ![Screenshot of Gravity Forms Entries screen for the "Nested Forms Child" form. The Parent Entry ID column is circled.](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/6036be1d661b720174a70a45/file-RV1M0vRkLR.png)
+
+These two entry meta fields (Entry ID from the parent form and Parent Entry ID from the child form) are the ones we are going to use to connect the forms with the Multiple Forms extension in a View:
+
+![Screenshot of GravityView "Data Source" box with the Nested Forms Parent form joined to Nested Forms Child form by the Entry ID equaling the Parent Entry ID](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/6036bea10a2dae5b58fb333b/file-UT9vJ7xuOB.png)
+
+Now, we can add fields from both forms in our View:
+
+![Screenshot of GravityView View Configuration with Team Name and Player Name fields added to the "Entries Fields" zone.](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/6036bece0a2dae5b58fb333d/file-Kx6M2Pmcdm.png)
+
+And this is the result:
+
+![Screenshot of a View on the front-end with Team Name and Player Name showing next to each other.](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/6036bf580a2dae5b58fb3343/file-60XDM2UtOw.png)

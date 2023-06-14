@@ -1,0 +1,82 @@
+---
+id: "572badf89033600a4c9f047f"
+number: "349"
+collectionId: "54d1a05ce4b086c0c0964ccd"
+popularity: "0.4"
+publicUrl: "https://docs.gravitykit.com/article/349-column-widths-responsive-tables"
+viewCount: "4160"
+lastPublishedAt: "2023-02-23T22:04:23Z"
+changeOrigin: "hsapp-js"
+name: "My column widths aren't being respected when using Responsive Tables"
+slug: "349-column-widths-responsive-tables"
+status: "published"
+categories: 
+  - "54d1a06ee4b086c0c0964cd1"
+keywords: 
+  - "column width"
+  - "columns"
+  - "responsive"
+  - "hidden"
+  - "collapsed"
+createdBy: "59634"
+createdAt: "2016-05-05T20:32:56Z"
+updatedBy: "59634"
+updatedAt: "2023-02-23T22:04:23Z"
+title: "My column widths aren't being respected when using Responsive Tables"
+hsEditUrl: "https://secure.helpscout.net/docs/54d1a05ce4b086c0c0964ccd/article/572badf89033600a4c9f047f"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2023-02-23T22:04:23Z
+  author: "Zack Katz"
+---
+
+# My column widths aren't being respected when using Responsive Tables
+
+If you have set column widths in a DataTables View and your columns are being hidden even though the column widths add up 100% or less, that's likely caused by the Responsive Tables feature.
+
+Responsive Tables add a `nowrap` class to the DataTables container so that the columns will be hidden based on the width of the content. Sometimes that can conflict with set column widths.
+
+### Good:
+
+```css
+
+.gv-container table.dataTable.nowrap th, 
+.gv-container table.dataTable.nowrap td { 
+   white-space: normal; 
+}
+```
+
+### Better:
+
+Ideally, you would only apply this to Views that don't look right instead of all Views. In the example below, note that we added the View ID to the CSS selector like this: `.gv-container-{View ID}`. In the example, the View ID is 1234:
+
+```css
+
+.gv-container-1234 table.dataTable.nowrap th, 
+.gv-container-1234 table.dataTable.nowrap td { 
+   white-space: normal; 
+}
+```
+
+**This way, the changes only affect View #1234**.
+
+---
+
+### How to remove the `nowrap` CSS class
+
+To remove the CSS class from being added at all, you can use the code below ( [see how](https://docs.gravitykit.com/article/210-where-to-put-code-samples)):
+
+```php
+
+add_filter( 'gravityview_datatables_table_class', 'gravityview_datatables_remove_nowrap', 20 );
+
+/**
+* Add the `responsive` class to the table to enable the functionality
+* @param string $classes Existing class attribute
+* @return  string CSS class with `nowrap` removed
+*/
+function gravityview_datatables_remove_nowrap( $css_class ) {
+   return str_replace(' nowrap', '', $css_class );
+}
+```

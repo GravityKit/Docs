@@ -1,0 +1,99 @@
+---
+id: "6079be814466ce6ddc5f575a"
+number: "767"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.1"
+publicUrl: "https://docs.gravitykit.com/article/767-styling-the-buttons-on-the-edit-entry-page"
+viewCount: "375"
+lastPublishedAt: "2022-10-07T22:13:56Z"
+changeOrigin: "unknown"
+name: "Styling the Buttons on the Edit Entry Page"
+slug: "767-styling-the-buttons-on-the-edit-entry-page"
+status: "published"
+categories: 
+  - "579aa76f903360293603a8e7"
+  - "5e1b6d5d04286364bc93c665"
+related: 
+  - "54ff77e7e4b034c37ea94d09"
+  - "60a4e03313fd125a39b450a7"
+createdBy: "543004"
+createdAt: "2021-04-16T16:42:41Z"
+updatedBy: "80506"
+updatedAt: "2022-10-07T22:13:56Z"
+title: "Styling the Buttons on the Edit Entry Page"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/6079be814466ce6ddc5f575a"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-07T22:13:56Z
+  author: "Rafael Ehlers"
+---
+
+# Styling the Buttons on the Edit Entry Page
+
+
+:::note
+
+Note: For an in-depth tutorial, including CSS examples, see our blog post [How to Style the Buttons on GravityView's Edit Entry Page](https://www.gravitykit.com/style-buttons-edit-entry/).
+
+:::
+
+
+
+The Edit Entry page contains three buttons - “Update”, “Cancel” and “Delete”. These buttons may inherit styles from your theme or display as plain HTML.
+
+Either way, you can override the default styling by targeting the button classes with your own custom CSS. If you don’t know how to add custom CSS to your website, read [Adding custom CSS to your website](https://docs.gravitykit.com/article/246-adding-custom-css-to-your-website).
+
+## Identifying the Button Classes
+
+The buttons on the Edit Entry page are contained within a ` <div>` tag with an ID of `#publishing-action`. The button classes themselves are as follows:
+
+- Update: `.gv-button-update`
+- Cancel: `.gv-button-cancel`
+- Delete: `.gv-button-delete`
+
+
+:::info
+
+**Note**: For information regarding HTML elements and CSS classes in GravityView, see our [CSS Guide](https://docs.gravitykit.com/article/63-css-guide).
+
+:::
+
+ ## Writing Custom CSS
+
+You can use the ID of the containing `<div>` and the button class to target a specific button with CSS. For example, this is how you would style the “Update” button.
+
+` #publishing-action .gv-button-update { // your CSS code here } `
+
+**Buttons without any styles applied (Divi theme):**
+
+![The GravityView Edit Entry page, with arrows pointing to the buttons with no styles](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/6079bef3f8c0ef2d98df33d4/file-tcN7DdOsOm.png)
+
+**Buttons after applying custom styles:**
+
+![The GravityView Edit Entry page with newly styled buttons](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/6079bf098996210f18bd425d/file-zqYv4KqLP6.png)
+
+You can add hover styles to your buttons by using the CSS `:hover` selector. This allows you to change the look of an element when the user mouses over it. Here’s how you would add hover styles to the “Cancel” button:
+
+` #publishing-action .gv-button-cancel:hover { background-color: #f3f3f3; } `
+
+## Targeting Specific Forms
+
+The above CSS examples will change the button styles for every View that you create. If you want to style the buttons differently for each View, you can do so by targeting the ID of the outer `<form>` element.
+
+![browser developer tools open highlighting the CSS ID of the HTML form element](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/6079c533e0324b5fdfd0bc14/file-P3wo6g7Aok.png)
+
+For example, if the form linked to your View has an ID of “3”, your CSS would look like this:
+
+` #gform_3 #publishing-action .gv-button-cancel { background-color: #fff; border: 1px solid #000; } `
+
+
+:::info
+
+**Note**: Targeting `#gform_[ID]` will change the button styles for each View linked to that form. In other words, if you have multiple Views linked to the same form, their button styles will look the same.
+
+:::
+
+ ###  Example Styles
+
+<script src="https://gist.github.com/crbdev/d388d2c2c02f70dc7976dc9fd0d31534.js" type="text/javascript"></script>

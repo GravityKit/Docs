@@ -1,0 +1,59 @@
+---
+id: "632b663fad8d9073058fc01c"
+number: "865"
+collectionId: "54d1a05ce4b086c0c0964ccd"
+publicUrl: "https://docs.gravitykit.com/article/865-changing-the-style-of-the-export-buttons-in-datatables"
+viewCount: "420"
+lastPublishedAt: "2022-10-13T23:20:09Z"
+changeOrigin: "unknown"
+name: "Changing the style of the export buttons in DataTables"
+slug: "865-changing-the-style-of-the-export-buttons-in-datatables"
+status: "published"
+categories: 
+  - "54d1a06ee4b086c0c0964cd1"
+createdBy: "80506"
+createdAt: "2022-09-21T19:30:07Z"
+updatedBy: "80506"
+updatedAt: "2022-10-13T23:20:09Z"
+title: "Changing the style of the export buttons in DataTables"
+hsEditUrl: "https://secure.helpscout.net/docs/54d1a05ce4b086c0c0964ccd/article/632b663fad8d9073058fc01c"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-13T23:20:09Z
+  author: "Rafael Ehlers"
+---
+
+# Changing the style of the export buttons in DataTables
+
+Sometimes you want to change the style of the [export buttons](https://docs.gravitykit.com/article/710-datatables-buttons) to match the style of your theme.
+
+While we don't provide CSS support, here are two classes that can quickly help you modify those styles:
+
+![Screenshot showing the export buttons in a DataTable layout](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/632b66fcad8d9073058fc028/file-gqvpYx63Vb.png)
+
+```
+button.dt-button, div.dt-button, a.dt-button, input.dt-button {
+   border-radius: 2px;
+   color: white;
+   background-color: blue;
+}
+
+button.dt-button:hover:not(.disabled), div.dt-button:hover:not(.disabled), a.dt-button:hover:not(.disabled), input.dt-button:hover:not(.disabled) {
+   border: 1px solid #666;
+   background-color: black;
+}
+```
+
+The first one is for the normal state of the buttons and the second one is for the hover state.
+
+![Screenshot showing modified styles of the export buttons in a DataTable layout](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/632b675ae5ea7f482dc3d9ce/file-TcQHBh13ta.png)
+
+
+:::info
+
+[How to add custom CSS to your website](https://docs.gravitykit.com/article/246-adding-custom-css-to-your-website)
+
+:::
+
+ 

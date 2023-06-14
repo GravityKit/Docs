@@ -1,0 +1,101 @@
+---
+id: "54dd9b87e4b034c37ea8f3dd"
+number: "224"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "1.5"
+publicUrl: "https://docs.gravitykit.com/article/224-how-to-embed-entries"
+viewCount: "7902"
+lastPublishedAt: "2023-01-02T17:39:40Z"
+changeOrigin: "hsapp-js"
+name: "Embedding Single Entries in a Post or Page"
+slug: "224-how-to-embed-entries"
+status: "published"
+categories: 
+  - "579aa5d0903360293603a8e2"
+related: 
+  - "54c5867fe4b0512429885344"
+  - "54c67bbae4b0512429885519"
+createdBy: "59634"
+createdAt: "2015-02-13T06:36:55Z"
+updatedBy: "59634"
+updatedAt: "2023-01-02T17:39:40Z"
+title: "Embedding Single Entries in a Post or Page"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/54dd9b87e4b034c37ea8f3dd"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2023-01-02T17:39:40Z
+  author: "Zack Katz"
+---
+
+# Embedding Single Entries in a Post or Page
+
+Sometimes you may find it useful to embed single entries into a post or page instead of an entire View.
+
+### Prefer to Watch the Video?
+
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/l8Kz1tFSYoI" title="YouTube video player" width="560"> </iframe>
+
+When single entries are embedded in a page or post, they will be displayed according to how you configured the [Single Entry Layout](https://docs.gravitykit.com/article/734-getting-started-adding-fields-to-the-multiple-entries-and-single-entry-pages).
+
+Please also note that:
+
+- Editing an embedded entry works as usual
+- Multiple entries can be embedded in the same post or page
+
+There are **three ways** to embed single entries into posts/pages:
+
+1. Using the \[gventry\] shortcode
+2. Copying and pasting the single entry URL
+3. Using the "Add Media" button
+
+We will run through each of these methods below.
+
+## 1. Using the \[gventry\] Shortcode
+
+The [\[gventry\] shortcode](https://docs.gravitykit.com/article/463-gventry-shortcode) allows you to embed a single entry in a page, post, or custom content field.
+
+The shortcode takes two parameters:
+
+- entry\_id (The ID of the entry you want to embed)
+- view\_id (The ID of the View that the entry is tied to)
+
+Here’s what a completed shortcode looks like:
+
+`[gventry entry_id="6" view_id="137"]`
+
+### Locating the Entry ID
+
+To get the ID for any given entry in Gravity Forms, log into your WordPress dashboard, hover over *Forms,* and click on *Forms*. Next, hover over your form and click on *Entries*. You should now see a list of all the entries for that form. Click on an entry. The entry ID will be displayed in a box on the right side of the page.
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/606ed17c8996210f18bd12e3/file-tt7e75EISe.png)Locating the View ID
+
+Hover over *Views* in your sidebar and click *All Views*. Select the View that contains the entry you want to embed. You can find the View ID inside the Embed Shortcode.
+
+##  ![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/606ed197e0324b5fdfd08c21/file-sLukDVVosD.png)2. Copying and Pasting the URL 
+
+First, open your View on the front end and click on an entry to bring up its single entry page. If your entries don’t link through to a single entry, read: [Linking to a Single Entry](https://docs.gravitykit.com/article/70-linking-to-a-single-entry).
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/606ed1b7f8c0ef2d98df0397/file-MKVUiOXXYt.png)Once the single entry page has finished loading, copy the URL.
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/606ed1df4466ce6ddc5f26f2/file-xJpNNQUztI.png)Next, create a new post or page where you want to embed the entry. To do this, click on *Posts (*or *pages)* and then *Add New*. Next, paste the URL you copied from the single entry page into the text editor.
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/606ed1fc8996210f18bd12e8/file-ZTy2rQjDUT.png)After pasting the URL, WordPress will display a placeholder showing where the entry will be embedded. If you’re using the [WordPress Classic Editor](https://wordpress.org/plugins/classic-editor/), this will look similar to the screenshot below.
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/606ed2134466ce6ddc5f26f3/file-JEPx8iAmWy.png)Once you’re happy, save your new post or page and click to view it on the front end.
+
+ **Note: The WordPress Block Editor will display a preview of the embed. The preview loads without styling, so it may look strange. But don’t worry; your entry will look normal on the front end.**
+
+## 3. Adding Media
+
+Instead of pasting the URL directly into your page editor, click the “Add Media” button and then click the link that says “Insert from URL”.
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/606ed2378af76a714bfd50e3/file-vQmoyleuOZ.png)
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/606ed268f8c0ef2d98df039a/file-7pHTrp3XUH.png)
+
+Paste the entry URL into the "Insert from URL" input field.
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/606ed24d4466ce6ddc5f26f4/file-yaWx3D1Ceh.png)
+
+Finally, click "Insert into Post".

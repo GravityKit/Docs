@@ -1,0 +1,92 @@
+---
+id: "5df60b1d04286364bc92deac"
+number: "664"
+hasDraft: "1"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.2"
+publicUrl: "https://docs.gravitykit.com/article/664-modifying-search-bar-inputs"
+viewCount: "1214"
+lastPublishedAt: "2019-12-15T15:05:38Z"
+changeOrigin: "unknown"
+name: "Modifying Search Bar Inputs"
+slug: "664-modifying-search-bar-inputs"
+status: "published"
+categories: 
+  - "566dff159033603f7da27def"
+  - "579aa76f903360293603a8e7"
+  - "579aa642c6979160ca148ba9"
+keywords: 
+  - "filters"
+  - "search"
+  - "input"
+createdBy: "166583"
+createdAt: "2019-12-15T10:29:49Z"
+updatedBy: "80506"
+updatedAt: "2022-10-12T21:58:10Z"
+title: "Modifying Search Bar Inputs"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5df60b1d04286364bc92deac"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-12T21:58:10Z
+  author: "Rafael Ehlers"
+---
+
+# Modifying Search Bar Inputs
+
+The Search Bar input fields can be customized using several filters that are available in GravityView.
+
+### Searchable Fields
+
+By default, all fields except File Upload, Post Image, Post ID and Section (Page) fields are searchable. This list is controlled by the `gravityview_blacklist_field_types` filter. Adding special/meta fields to the searchable fields can be done via the `gravityview/search/searchable_fields` filter. This is also the filter that allows developers to set a search input group type (see Input Types section below).
+
+An example where a special meta key needs to be output as search follows:
+
+```
+add_filter( 'gravityview/search/searchable_fields', function( $fields ) {
+   $fields['mymeta'] = array(
+       'text' => 'Entry Color',
+       'type' => 'color',
+   );
+   return $fields;
+} );
+```
+
+Not that the `type` will get mapped to specific HTML input types and templates in the Search Bar (see Input Templates section below). It can be one of the default input types (See Input Types section below) or a custom input type.
+
+### Input Types
+
+By default, every searchable field is output as a simple text input. There are several exceptions to this rule. Date field types are output as dates or date range inputs, a boolean type (true/false) is output as a checkbox, select and multiselect field types are output as radios, links, checkboxes or dropdowns. More may be added as GravityView is developed.
+
+There are 9 input types that are available by default. These are text, date, date range, select, multiselect, radio, checkbox, single checkbox, link. These all map to specific templates (see Input Templates section below). Adding a custom input type (for example a color picker, continuing the example above) involves several steps.
+
+First of all, by using the `gravityview/search/input_labels` filter the color picker input needs to be declared:
+
+```
+add_filter( 'gravityview/search/input_labels', function( $labels ) {
+   $labels['colorpicker'] = 'Color Picker';
+   return $labels;
+}
+```
+
+Next, the `gravityview/search/input_types` filter should be used to create a new map between a new searchable field type (or an existing one) and an input type declared in the previous field (or an existing one):
+
+```
+add_filter( 'gravityview/search/input_types', function( $types ) {
+   $types['date'][] = 'text_input';
+   $types['color'] = array( 'colorpicker', 'select', 'radio' );
+   return $types;
+} );
+```
+
+In the example above, date type fields allow text input search to be set, and the custom color fields are set to be either colorpickers, select or radio input types.
+
+It is important to note, however, that these input types do not directly map to a Gravity Forms field type. These map to a specific input template, which we will cover in the next section.
+
+### Input Templates
+
+Input templates are located in */wp-content/plugins/gravityview/includes/widgets/search-widget/templates/* these can be overridden by copying them over to your */wp-content/themes/theme/gravityview/* directory. If you've created your own input type (colorpicker from the above examples, for instance) you'll need to create a template for it. You can either register your own template path for it by using the `gravityview_template_paths` filter or place it into your */wp-content/themes/theme/gravityview/* directory.
+
+### Search Filters
+
+Your custom input field should have an HTML input with the name of "filter\_ID", where ID is the field ID you're needing to filter. Custom filter logic can be injected via `gravityview/view/query` as well.

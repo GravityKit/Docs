@@ -1,0 +1,78 @@
+---
+id: "54c67bbbe4b051242988551d"
+number: "76"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "2"
+publicUrl: "https://docs.gravitykit.com/article/76-merge-tags"
+viewCount: "10265"
+lastPublishedAt: "2022-10-12T21:44:36Z"
+changeOrigin: "unknown"
+name: "Merge Tags"
+slug: "76-merge-tags"
+status: "published"
+categories: 
+  - "566dfe9bc6979143615564df"
+keywords: 
+  - "merge tags"
+  - "merge"
+  - "tags"
+  - "custom content"
+  - "gvlogic"
+related: 
+  - "5685af24c69791436155add8"
+  - "561f1ca2903360610fc6855d"
+  - "552355bfe4b0221aadf2572b"
+createdBy: "59634"
+updatedBy: "80506"
+updatedAt: "2022-10-12T21:44:36Z"
+title: "Merge Tags"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/54c67bbbe4b051242988551d"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-12T21:44:36Z
+  author: "Rafael Ehlers"
+---
+
+# Merge Tags
+
+GravityView can use all [Merge Tags available in Gravity Forms](https://docs.gravityforms.com/category/user-guides/merge-tags-getting-started/), and also offers additional Merge Tags.
+
+### Merge Tags can be used in many ways:
+
+- Create unique content per entry with the [Custom Content field](https://docs.gravitykit.com/article/111-using-the-custom-content-field)
+- Modify field Settings (use [as the field label](https://docs.gravitykit.com/article/72-working-with-field-labels) or in [CSS classes](https://docs.gravitykit.com/article/272-adding-custom-css-classes-to-fields-or-widgets)).
+- Create [custom Single Entry page titles](https://docs.gravitykit.com/article/121-changing-the-single-entry-page-title)
+- Use Merge Tags [with the \[gvlogic\] shortcode](https://docs.gravitykit.com/article/252-gvlogic-shortcode) to compare entry values and show different content based on those values
+- Customize [Recent Entries Widget content](https://docs.gravitykit.com/article/223-the-recent-entries-widget)
+
+## Merge Tags added by GravityView
+
+GravityView adds these Merge Tags:
+
+- `{date_created}` The date an entry was created. [Read how to use it here](https://docs.gravitykit.com/article/331-date-created-merge-tag).
+- `{date_updated}` The date an entry was last updated. It supports the [same formatting options as {date\_created}](https://docs.gravitykit.com/article/331-date-created-merge-tag).
+- `{get}` Show data from the URL of a web page. [Learn more](https://docs.gravitykit.com/article/314-the-get-merge-tag).
+- `{created_by}` Display information about the user who created the entry. [Learn more](https://docs.gravitykit.com/article/281-the-createdby-merge-tag).
+- `{approval_status}` Display the approval status of an entry ("Approved", "Disapproved", or "Unapproved")
+- `{current_post}` Display information about the current Post, Page, View, or another post type. [Learn more](https://docs.gravitykit.com/article/412-currentpost-merge-tag).
+- `{sequence}` Display the Number Sequence value for the current entry. It will only work in field values. It will not work in View widgets or outside a View (such as Gravity Forms email notifications). [Learn more](https://docs.gravitykit.com/article/597-the-sequence-merge-tag).
+- `{gv_entry_link:[post id]:[action]}` Links to the current entry. For example: `{gv_entry_link:123:edit}` Links to Edit Entry for a single entry. `123` refers to either the View ID or the ID of the page where the View is embedded. 
+   - `[post id]` is the View ID—or the post or page where the View is embedded. If this Merge Tag is used in a View, the default value will be automatically calculated.
+   - `[action]` the action to be performed. View Details (`view`), Edit Entry (`edit`), or Delete Entry (`delete`). Default: `view`.
+- `{site_url}` Returns the current site URL. This can be helpful when migrating sites or deploying from staging.
+
+<a name="pricing-merge-tags"> </a>
+
+####  Pricing Merge Tags 
+
+These Merge Tags are only relevant when a payment has been processed.
+
+- `{payment_date}` The date the payment was received. Formatted using [the same modifiers](https://docs.gravitykit.com/article/331-date-created-merge-tag) as `{date_created}`
+- `{payment_status}` The current payment status of the entry (ie "Processing", "Failed", "Cancelled", "Approved", etc.)
+- `{payment_method}` displays Payment Method value
+- `{payment_amount}` displays the payment amount formatted as a currency. Use `{payment_amount:raw}` to display an unformatted number, useful in combination with [the \[gvlogic\] shortcode](https://docs.gravitykit.com/article/252-gvlogic-shortcode).
+- `{is_fulfilled}` Whether the order has been fulfilled. Displays "Not Fulfilled" or "Fulfilled"
+- `{transaction_type}` Indicates the transaction type of the entry/order. "Single Payment" or "Subscription"
+- `{transaction_id}` The ID of the transaction returned by the payment gateway
+- `{currency}` The currency with which the entry was submitted (ie "USD", "EUR")

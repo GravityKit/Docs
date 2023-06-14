@@ -1,0 +1,50 @@
+---
+id: "5a30607d04286346b0bc7397"
+number: "434"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.1"
+publicUrl: "https://docs.gravitykit.com/article/434-encrypt-emails-is-checked-but-emails-are-still-readable"
+viewCount: "271"
+lastPublishedAt: "2022-10-07T21:06:57Z"
+changeOrigin: "unknown"
+name: "\"Encrypt emails\" is checked, but emails are still readable"
+slug: "434-encrypt-emails-is-checked-but-emails-are-still-readable"
+status: "published"
+categories: 
+  - "579aa642c6979160ca148ba9"
+keywords: 
+  - "email"
+  - "encryption"
+  - "privacy"
+createdBy: "59634"
+createdAt: "2017-12-12T23:04:29Z"
+updatedBy: "80506"
+updatedAt: "2022-10-07T21:06:57Z"
+title: "\"Encrypt emails\" is checked, but emails are still readable"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5a30607d04286346b0bc7397"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-07T21:06:57Z
+  author: "Rafael Ehlers"
+---
+
+# "Encrypt emails" is checked, but emails are still readable
+
+###  GravityView encrypts emails to make them hard for spam bots to read, but they still look the same for users. 
+
+Behind the scenes, GravityView turns the email link into code that is hard for automated crawlers to read. This system works extremely well.
+
+When a human clicks the link, their browser will decrypt the encoded email address, and everything will work normally. Bots don't have that functionality.
+
+There's no good way to prevent humans from harvesting emails that are visible, so we don't prevent humans from copying and pasting email addresses.
+
+The good news? This system works well against bots and crawlers 🤖
+
+####  Because the encryption requires Javascript, if you disable Javascript, you'll see the field is not visible: 
+
+![Email hidden; Javascript is required.](http://share.gravityview.co/10FVIx/3OQ3r1CF+)
+
+####  The Javascript decrypts the email address, encrypted as expected in the HTML. 🔐 
+
+![Encrypted email address code. Looks very encrypted and secure!](http://share.gravityview.co/ZOJYTw/wu7bLXXe+)

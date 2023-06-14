@@ -1,0 +1,49 @@
+---
+id: "5b898d5b2c7d3a03f89e5893"
+number: "478"
+collectionId: "6076f9478996210f18bd33df"
+popularity: "0.1"
+publicUrl: "https://docs.gravitykit.com/article/478-entry-revision-merge-tags"
+viewCount: "872"
+lastPublishedAt: "2022-10-19T01:05:26Z"
+changeOrigin: "unknown"
+name: "GravityRevisions Merge Tags"
+slug: "478-entry-revision-merge-tags"
+status: "published"
+categories: 
+  - "6155b0abe5648623c88e04f9"
+createdBy: "59634"
+createdAt: "2018-08-31T18:47:55Z"
+updatedBy: "80506"
+updatedAt: "2022-10-19T01:05:26Z"
+title: "GravityRevisions Merge Tags"
+hsEditUrl: "https://secure.helpscout.net/docs/6076f9478996210f18bd33df/article/5b898d5b2c7d3a03f89e5893"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-19T01:05:26Z
+  author: "Rafael Ehlers"
+---
+
+# GravityRevisions Merge Tags
+
+GravityRevisions comes with Merge Tags you can use in Gravity Forms notifications:
+
+| Merge Tag | Description |
+|---|---|
+| `{entry_revision_all_fields}` | A pre-formatted table of all submitted values **of the most recent revision**. Looks exactly like the [Gravity Forms {all\_fields} Merge Tag](https://docs.gravityforms.com/fields-merge-tag/), and supports all the {all\_fields} Merge Tag modifiers. |
+| `{entry_revision_diff}` | A side-by-side comparison of the fields that have changed between the current entry and the **most recent entry revision**. |
+| `{entry_revision_list}` | A bulleted list of changes made to an entry over time.         Each change displays a thumbnail-sized image of the user who made the change, the date the change was made, and a link to restore the entry values from that change. |
+
+#### If no revision exists
+
+If there are no revisions for an entry, the above Merge Tags will output "This entry has no revisions."
+
+#### Embedded CSS
+
+When Merge Tags are included in email notifications, the styles that make the table look *super nice* are added to the output of the Merge Tag. To disable that, you can [add this code to your functions.php file](https://docs.gravitykit.com/article/210-where-to-put-code-samples):
+
+```css
+// Don't embed <style> tags in the Merge Tag output
+add_filter( 'gravityview/entry-revisions/embed-css', '__return_false' )
+```

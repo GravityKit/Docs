@@ -1,0 +1,71 @@
+---
+id: "57bdf6d3903360342852cfbf"
+number: "374"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.3"
+publicUrl: "https://docs.gravitykit.com/article/374-changing-the-edit-entry-page-title"
+viewCount: "1321"
+lastPublishedAt: "2022-10-06T20:43:33Z"
+changeOrigin: "unknown"
+name: "Changing the Edit Entry page title"
+slug: "374-changing-the-edit-entry-page-title"
+status: "published"
+categories: 
+  - "579aa76f903360293603a8e7"
+  - "5e1b6d5d04286364bc93c665"
+related: 
+  - "54d3a075e4b086c0c09652f4"
+createdBy: "80506"
+createdAt: "2016-08-24T19:34:43Z"
+updatedBy: "80506"
+updatedAt: "2022-10-06T20:43:33Z"
+title: "Changing the Edit Entry page title"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/57bdf6d3903360342852cfbf"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-06T20:43:33Z
+  author: "Rafael Ehlers"
+---
+
+# Changing the Edit Entry page title
+
+Let's say you are building a Members directory, and you want to change the title of the Edit Entry page from "Edit Entry" to "Edit Profile", here's how to do it:
+
+```php
+/**
+* Change the Edit Entry displayed title. In this example, change it to "Edit Profile"
+* 
+* @param string $previous_text The title before being modified
+*/
+
+add_filter( 'gravityview_edit_entry_title', 'gk_change_edit_entry_title', 10, 1);
+function gk_change_edit_entry_title( $previous_text = 'Edit Entry' ) {
+	return 'Edit Profile';
+}
+```
+
+Before:
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/57bdf742c6979156e4f1cb01/file-2B56KGKbNC.jpg)
+
+After:
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/57bdf750c6979156e4f1cb06/file-e4ald5Rnox.jpg)
+
+### Changing the title for multiple Views
+
+```
+add_filter( 'gravityview_edit_entry_title', 'gk_change_edit_entry_title', 10, 1);
+function gk_change_edit_entry_title( $previous_text = 'Edit Entry' ) {
+	$view_id = GravityView_View::getInstance()->getViewId();
+
+	if($view_id == 8){
+		$title = 'Edit Profile';	
+	}
+	if($view_id == 60){
+		$title = 'Edit Team';	
+	}
+	return $title;
+}
+```

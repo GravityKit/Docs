@@ -1,0 +1,134 @@
+---
+id: "561f1ca2903360610fc6855d"
+number: "314"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "1.1"
+publicUrl: "https://docs.gravitykit.com/article/314-the-get-merge-tag"
+viewCount: "5992"
+lastPublishedAt: "2022-09-29T04:46:18Z"
+changeOrigin: "unknown"
+name: "The {get} Merge Tag"
+slug: "314-the-get-merge-tag"
+status: "published"
+categories: 
+  - "566dfe9bc6979143615564df"
+keywords: 
+  - "merge tag"
+  - "merge tags"
+  - "{get} merge tag"
+  - "get"
+  - "URL parameter"
+  - "url variable"
+  - "pass data link"
+related: 
+  - "561f29bc903360610fc6860e"
+  - "557f4d74e4b027e1978e7a43"
+createdBy: "59634"
+updatedBy: "80506"
+updatedAt: "2022-09-29T04:46:18Z"
+title: "The {get} Merge Tag"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/561f1ca2903360610fc6855d"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-09-29T04:46:18Z
+  author: "Rafael Ehlers"
+---
+
+# The {get} Merge Tag
+
+The `{get}` Merge Tag allows you to capture or display information from a URL parameter.
+
+Example URL: `https://site.try.gravitykit.com/view/tasks/?first=name`
+
+![Screenshot of the Browser's address bar](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/6335229805ba014734a35b12/file-tzGqsc4knw.png)
+
+The `{get}` Merge Tag can be used inside Custom Content fields and wherever other Merge Tags are used in GravityView:
+
+![Screenshot of the Custom Content Settings](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/604aaa05c44f5d025f443455/file-4hsHgBrJHn.png)
+
+Including as a comparison value in Advanced Filters:
+
+![Screenshot of the Advanced Filter rules with the get Merge Tag being used as comparison](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/604aabc0c44f5d025f443458/file-zNlMZWS5sY.png)
+
+Basic use: `{get:url-parameter}`
+
+
+:::caution
+
+**[Read a tutorial on using the {get} Merge Tag](https://docs.gravitykit.com/article/315-using-the-get-merge-tags-with-gvlogic-to-display-a-persons-name-in-a-custom-content-widget)**
+
+:::
+
+  The `{get}` Merge Tag format is `{get:param}`, where `param` is the name of the URL parameter value you want to display. For this Merge Tag: `{get:first-name}`, the URL parameter is `first-name`.
+
+To display a person's first name in a Custom Content field using `{get:first-name}`, you could use the following URL:
+
+`example.com/view/my-view/?first-name=Floaty`
+
+For that URL, this sample content: `My name is {get:first-name}` the `{get:first-name}` Merge Tag is replaced with `Floaty`, resulting in the following text: "My name is Floaty".
+
+---
+
+## Using `{get}` with the `[gvlogic]` shortcode
+
+You can use the `{get}` Merge Tags to display content that is based on a value contained in an URL.
+
+```
+[gvlogic if="{get:aliens}" is="Definitely are green"]
+   This would match: http://www.example.com/?aliens=Definitely%20are%20green
+[else]
+   This would NOT match: http://www.example.com/?aliens=Come%20in%20all%20colors
+   This would NOT match: http://www.example.com/?aliens-do-not-exist
+[/gvlogic]
+```
+
+## How `{get}` displays values
+
+There are security issues displaying data passed via URL. Because of this, GravityView uses [the `esc_html()` function](http://codex.wordpress.org/esc_html) to make sure the information is safe to display.
+
+This prevents malicious code from being added to your website by hackers.
+
+- URL data: `?lets-get-dangerous=<script>alert("better watch out")</script>`
+- Merge Tag: `{get:lets-get-dangerous}`
+- Output: The output will *look* the same: `<script>alert("better watch out")</script>`, but the output HTML will be safely converted to using HTML entities to represent the data: `<script>alert("better watch out")</script>`. If you want to disable this sanitization,
+
+### [\#](#subkeys) Retrieving subkeys (the URL parameter is an array)
+
+If you need to retrieve a parameter that has subkeys, you must separate the keys using a forward-slash ("/").
+
+For instance, when using our [Search Bar Widget](https://docs.gravitykit.com/article/189-configuring-the-search-bar) to filter a Date field as a date range, the resulting URL is similar to this:
+
+example.com/view/my-view/?filter\_10\[start\]=10/15/2021&amp;filter\_10\[end\]=12/20/2022
+
+You'll notice the parameters are the same (filter\_10), but there are different subkeys ("start" and "end").
+
+These subkeys can be retrieved using a forward-slash separator:
+
+`{get:filter10/start}` returns "10/15/2021"  
+`{get:filter10/end}` returns "12/20/2022"
+
+### Displaying array data
+
+The `{get}` Merge Tag displays URL parameter arrays as a comma-separated value:
+
+- URL data: `?example[]=Example+One&example[]=Example+(with+comma)%2C+Two`
+- Merge Tag: `{get:example}`
+- Output: `Example One, Example (with comma), Two`
+
+If you want to modify the "glue" used to connect the array values, you can use the related filter below.
+
+## Available filters
+
+Developers can modify the output from the `{get}` Merge Tag.
+
+- `gravityview/merge_tags/get/glue/` Modify the glue used to convert an array of `{get}` values from an array to a string 
+   - `string` `$glue` String used to `implode()` $\_GET values Default: `,`
+   - `string` `$property` The current name of the $\_GET parameter being combined
+- `gravityview/merge_tags/get/esc_html/{url parameter name}` Disable `esc_html()` from running on `{get}` merge tag. By default, all values passed through URLs will be escaped for security reasons. If, for some reason, you want to pass HTML in the URL, for example, you will need to return false on this filter. It is strongly recommended that you do not disable this filter. 
+   - `boolean` `$esc_html` Whether to esc\_html() the value. Default: `true`
+- `gravityview/merge_tags/get/value/{url parameter name}` Modify the value of the `{get}` replacement before being used 
+   - `string` `$value` The value that will replace `{get}`
+   - `string` `$text` Text that contains `{get}` (before replacement)
+   - `array` `$form` A Gravity Forms form array
+   - `array` `$entry` Gravity Forms entry array

@@ -1,0 +1,70 @@
+---
+id: "6322153ac713d51da3ede7d5"
+number: "861"
+collectionId: "566dfabbc6979143615564bf"
+publicUrl: "https://docs.gravitykit.com/article/861-why-is-my-view-slow-to-load"
+viewCount: "86"
+lastPublishedAt: "2022-11-22T20:33:36Z"
+changeOrigin: "unknown"
+name: "Why is my View slow to load?"
+slug: "861-why-is-my-view-slow-to-load"
+status: "published"
+categories: 
+  - "579aab1cc6979160ca148bba"
+createdBy: "59634"
+createdAt: "2022-09-14T17:54:02Z"
+updatedBy: "80506"
+updatedAt: "2022-11-22T20:33:36Z"
+title: "Why is my View slow to load?"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/6322153ac713d51da3ede7d5"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-11-22T20:33:36Z
+  author: "Rafael Ehlers"
+---
+
+# Why is my View slow to load?
+
+We have found two leading causes that can impact View loading times on the front end:
+
+### Encryption Plugins
+
+Encryption plugins like [Gravity Forms Encrypted Fields](https://codecanyon.net/item/gravity-forms-encrypted-fields/18564931) or similar plugins can significantly impact View loading times.
+
+Encrypting and decrypting values are very slow tasks (on purpose!). This doesn't pair well with fast load times on the front end.
+
+### Gravity Forms Secure File Download Location
+
+Gravity Forms hides the true path (location) of uploaded files for security purposes. This makes sense; however, this is known to severely impact View loading times, especially if your View displays lots of images.
+
+The path for secure file locations contains the `?gf-download` parameter on the URL, like this:
+
+`	https://www.example.com/index.php?gf-download=2018%2F11%2F864260e1-b0af-4f61-b798-b6ff0b1d49931.jpg&form-id=1&field-id=4&hash=409bda81bdd179545da1512e9e06ab1753104582a52bedeeaac04f8366e2c264	`
+
+Insecure file locations, on the other hand, will load files directly from their path, like this:
+
+`	https://www.example.com/wp-content/uploads/gravity_forms/864260e1-b0af-4f61-b798-b6ff0b1d49931/2018/11/name-of-the-file.jpg	`
+
+...which will greatly improve image loading times.
+
+
+:::info
+
+Note how the secure link doesn't show the file's name, but the insecure link does.
+
+:::
+
+  Adding the code below will direct GravityView to use the insecure path to the image when displaying it.
+
+```
+add_filter( 'gform_secure_file_download_location', '__return_false' );
+```
+
+If you want to make the file URLs visible for only one form, you can use this code instead (replacing `FORM_ID` with the form ID.)
+
+```
+add_filter( 'gform_secure_file_download_location_FORM_ID', '__return_false' );
+```
+
+As with all our code samples, [here's how to add the code](https://docs.gravitykit.com/article/210-where-to-put-code-samples) to your site.

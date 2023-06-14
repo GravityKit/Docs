@@ -1,0 +1,277 @@
+---
+id: "61a407e564e42a671b63aff6"
+number: "812"
+collectionId: "6076f9478996210f18bd33df"
+popularity: "0.1"
+publicUrl: "https://docs.gravitykit.com/article/812-calendar-developer-hooks"
+viewCount: "585"
+lastPublishedAt: "2022-10-18T23:11:36Z"
+changeOrigin: "unknown"
+name: "Calendar: Developer Hooks"
+slug: "812-calendar-developer-hooks"
+status: "published"
+categories: 
+  - "6076f9544466ce6ddc5f484b"
+createdBy: "59634"
+createdAt: "2021-11-28T22:51:17Z"
+updatedBy: "80506"
+updatedAt: "2022-10-18T23:11:36Z"
+title: "Calendar: Developer Hooks"
+hsEditUrl: "https://secure.helpscout.net/docs/6076f9478996210f18bd33df/article/61a407e564e42a671b63aff6"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-18T23:11:36Z
+  author: "Rafael Ehlers"
+---
+
+# Calendar: Developer Hooks
+
+## <a id="Plugin_paths_2"></a>Plugin paths
+
+### <a id="gravityview_calendar_script_src_4"></a>`gravityview_calendar_script_src`
+
+Modify the FullCalendar core script used.
+
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| `$src` | `string` | `{URL of plugin directory}/lib/fullcalendar/main.js` | Unique identifier for support user. |
+
+### <a id="gravityviewcalendardefault_locale_12"></a>`gravityview/calendar/default_locale`
+
+Override default calendar locale (automatically set to `en` or WP language code)
+
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| `$default_fc_locale` | `string` | WordPress language code | FullCalendar locale |
+
+### <a id="gravityviewcalendarscriptsfullcalendarlocales_dir_url_20"></a>`gravityview/calendar/scripts/fullcalendar/locales_dir_url`
+
+Modify the URL to FullCalendar locales. This can be used to point to your own translations.
+
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| `$locales_url` | `string` | `{URL of plugin directory}/lib/fullcalendar/locales/` | URL to FullCalendar locales directory |
+
+## <a id="FullCalendar_overrides_28"></a>FullCalendar overrides
+
+### <a id="gravityviewcalendaroptions_30"></a>`gravityview/calendar/options`
+
+Modify all FullCalendar options in an array.
+
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| `$calendar_options` | `array` |  | Array of settings used when rendering FullCalendar |
+| `$form_id` | `int` | Current form ID | The ID of the form connected to the calendar |
+| `$feed_id` | `int` | Current feed ID | The ID of the calendar feed currently being shown |
+
+#### <a id="To_set_showNonCurrentDateshttpsfullcalendariodocsshowNonCurrentDates_to_false_41"></a>To set [`showNonCurrentDates`](https://fullcalendar.io/docs/showNonCurrentDates) to false
+
+Here’s an example of modifying the GravityCalendar output to disable [`showNonCurrentDates`](https://fullcalendar.io/docs/showNonCurrentDates), but only for Calendar feed #5:
+
+```php
+add_filter( 'gravityview/calendar/options', function ( $calendar_options, $form_id, $feed_id ) {
+   // Only modify the setting for Calendar #5
+   if( 5 !== $feed_id ) {
+       return $calendar_options;
+   }
+
+   $calendar_options['showNonCurrentDates'] = false;
+
+   return  $calendar_options;
+}, 10, 3 );
+```
+
+### <a id="gravityviewcalendarextra_options_58"></a>`gravityview/calendar/extra_options`
+
+Modify extra options used in the plugin’s UI that aren’t standard to FullCalendar.
+
+This is a way to pass additional data to the FullCalendar configuration object in a way that won’t affect initialization. For example, `navigateToEvents` is a custom calendar option and will throw an error if used to initialize a FullCalendar instance in the UI.
+
+This filter is internal, but you may want to use it for similar reasons.
+
+## <a id="Rendering__content_overrides_66"></a>Rendering &amp; content overrides
+
+### <a id="gravityviewcalendarsettingsentry_status_68"></a>`gravityview/calendar/settings/entry_status`
+
+Modify the status used to find matching entries. If set to `false`, no status will be defined, and all entries will be returned.
+
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| $status | `string`, `false` | `'active'` | Gravity Forms entry status. Options: `'active'`, `'spam'`, `'trash'`, or `false` |
+
+### <a id="gravityviewcalendarsettingssort_order_76"></a>`gravityview/calendar/settings/sort_order`
+
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| `$sort_order` | `array` | `[ 'key' => {start date}, 'direction' => 'ASC' ]` | Sort order with `key` and `direction` values. |
+| `$form_id` | `int` | Current form ID | ID of the current feed being processed |
+| `$field_map` | `array` | Current feed ID | [Gravity Forms field map](https://docs.gravityforms.com/field_map-field/) array of feed fields mapped to calendar settings (e.g., start\_time, end\_time) |
+
+```php
+/**
+* Overrides the sort order to be sorted by form field #3 when using Calendar #22
+*/
+add_filter( 'gravityview/calendar/settings/sort_order', function ( $sort_order, $feed_id, $field_map ) {
+
+   if( 22 !== $feed_id ) {
+       return  $sort_order;
+   }
+
+   return array(
+       'key' => 3,
+       'direction' => 'DESC',
+   );
+
+}, 10, 3 );
+```
+
+### <a id="gravityviewcalendareventssource_data_102"></a>`gravityview/calendar/events/source_data`
+
+Used to populate the form entries that are displayed in the calendar. You can override by filtering the entries using a priority greater than `10`.
+
+Note: `$from_date` and `$to_date` values are created with `strtotime()` from Start Date and End Date field values. They are false if there was an error parsing the value when creating the timestamp.
+
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| $entries | `array` | `[]` | Form entries with `title`, `start`, `end`, and `description` (optional) keys. |
+| `$feed_id` | `int` | `0` | ID of the current feed being processed |
+| `$from_date` | `int`, `false`, `null` | `null` | Start date timestamp used to filter events. |
+| `$to_date` | `int`, `false`, `null` | `null` | End date timestamp used to filter events. |
+
+#### <a id="Entries_are_expected_in_the_following_format_115"></a>Entries are expected in the following format:
+
+```php
+array(
+   array(
+       'title' => 'Event One',
+       'start' => '2022-04-12T10:30:00',
+       'end'   => '2022-04-12T12:30:00',
+       'description' => 'Optional description!',
+   ),
+   array(
+       'title' => 'Event Two',
+       'start' => '2022-05-13T10:30:00',
+       'end'   => '2012-05-13T12:30:00',
+       'description' => 'Description optional!'
+   ),
+   [...]
+)
+```
+
+The entries array is parsed by the `GV_Extension_Calendar_Feed::calendar_events()` method, which transforms the array into the expected calendar format.
+
+### <a id="gravityviewcalendareventsexclude_137"></a>`gravityview/calendar/events/exclude`
+
+Prevent entries from being displayed in the calendar by returning an array of IDs.
+
+Note: If an entry ID is included in this list, **it will still be shown if the event is on the “include” list** (see the `gravityview/calendar/events/include` filter).
+
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| $entry\_ids | `array` | `[]` or `int[]` | Array of entry IDs to be displayed based on feed settings. May be empty array. |
+| `$form` | `array` | Current form | [Gravity Forms form object](https://docs.gravityforms.com/form-object/) connected to the calendar feed |
+| `$feed` | `array` | Current feed | Calendar [Gravity Forms feed object](https://docs.gravityforms.com/feed-object/) |
+| `$field_map` | `array` | Current feed ID | [Gravity Forms field map](https://docs.gravityforms.com/field_map-field/) array of feed fields mapped to calendar settings (e.g., start\_time, end\_time) |
+| `$entries` | `array` | `[]` or `array[]` | Array of full entries from `$entry_ids`, instead of just the IDs. |
+
+### <a id="gravityviewcalendareventsinclude_152"></a>`gravityview/calendar/events/include`
+
+Show these events in the calendar.
+
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| `$entry_ids` | `array` | `[]` or `int[]` | Array of entry IDs to be displayed based on feed settings. May be empty array. |
+| `$form` | `array` | Current form | [Gravity Forms form object](https://docs.gravityforms.com/form-object/) connected to the calendar feed |
+| `$feed` | `array` | Current feed | Calendar [Gravity Forms feed object](https://docs.gravityforms.com/feed-object/) |
+| `$field_map` | `array` | Current feed ID | [Gravity Forms field map](https://docs.gravityforms.com/field_map-field/) array of feed fields mapped to calendar settings (e.g., start\_time, end\_time) |
+| `$entries` | `array` | `[]` or `array[]` | Array of full entries from `$entry_ids`, instead of just the IDs. |
+
+### <a id="gravityviewcalendareventsdo_shortcodes_165"></a>`gravityview/calendar/events/do_shortcodes`
+
+Modify whether to process shortcodes in the event title and event description.
+
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| `$do_shortcode` | `bool` | `true` | True: Process shortcodes in title and description. False: don’t! |
+| `$form` | `array` | Current form | [Gravity Forms form object](https://docs.gravityforms.com/form-object/) connected to the calendar feed |
+| `$feed` | `array` | Current feed | Calendar [Gravity Forms feed object](https://docs.gravityforms.com/feed-object/) |
+| `$field_map` | `array` | Current feed ID | [Gravity Forms field map](https://docs.gravityforms.com/field_map-field/) array of feed fields mapped to calendar settings (e.g., start\_time, end\_time) |
+
+### <a id="gravityviewcalendarshortcoderenderelement_attributes_177"></a>`gravityview/calendar/shortcode/render/element_attributes`
+
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| `$attributes` | `array` | See below | Array of HTML attributes to be applied to the calendar container |
+
+| Key | Type | Default | Description |
+|---|---|---|---|
+| `class` | `string` | `gv-fullcalendar` | CSS class for the container |
+| `data-feed_id` | `int` | `$feed_id` | The ID of the feed being rendered. |
+| `data-calendar_id` | `string` | `wp_generate_password()` | Simple hash to differentiate multiple calendars. |
+| `data-view_id` | `int` or `null` | $view\_id` | The ID of the current View, if embedded inside a GravityView View |
+
+---
+
+## <a id="Feed_setting_filters_192"></a>Feed setting filters
+
+### <a id="gravityviewcalendarsettingstotaleventlimit_194"></a>`gravityview/calendar/settings/total-event-limit`
+
+Modify the total number of events displayed on a calendar.
+
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| `$total_event_limit` | `int` | 1000 | Maximum total number of events to fetch |
+| `$feed_id` | `int` | Current feed ID | The ID of the calendar feed currently being shown |
+
+### <a id="gravityviewcalendarsettingsfieldsdate_203"></a>`gravityview/calendar/settings/fields/date`
+
+Override the field types shown in the feed configuration when selecting Start Date and End Date.
+
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| `$field_types` | `array` | `['date', 'date_created', 'date_updated']` | Default field types used for populating the Start Date or End Date settings. |
+
+#### <a id="Allow_for_text_fields_to_be_used_in_the_feed_configuration_211"></a>Allow for text fields to be used in the feed configuration
+
+If you allow entering dates into a text field—not recommended due to inconsistent formatting!—you may want to use the field as the “Start Date” or “End Date” values. The code below will allow that:
+
+```php
+/**
+* Add Text fields to the list of fields to display when selecting Start Date and End Date.
+*
+* @param array $field_types
+*
+* @return array Field types, with "text" added.
+*/
+add_filter( 'gravityview/calendar/settings/fields/date', function ( $field_types ) {
+
+   $field_types[] = 'text';
+
+   return $field_types;
+} );
+```
+
+### <a id="gravityviewcalendarsettingsfieldstime_231"></a>`gravityview/calendar/settings/fields/time`
+
+Override the field types shown in the feed configuration when selecting Start Time and End Time.
+
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| $field\_types | `array` | `['time', 'date_created_time', 'date_updated_time']` | Default field types used for populating the Start Time or End Time settings. |
+
+### <a id="gravityviewcalendarsettingsfieldslocation_239"></a>`gravityview/calendar/settings/fields/location`
+
+Override the field types shown in the feed configuration when selecting Event Location.
+
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| `$field_types` | `array` | `['address']` | Default field types used for populating the Event Location setting. |
+
+### <a id="gravityviewcalendarsettingsfieldsurl_247"></a>`gravityview/calendar/settings/fields/url`
+
+Override the field types shown in the feed configuration when selecting Event URL.
+
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| `$field_types` | `array` | `['url', 'website']` | Default field types used for populating the Event URL setting. |

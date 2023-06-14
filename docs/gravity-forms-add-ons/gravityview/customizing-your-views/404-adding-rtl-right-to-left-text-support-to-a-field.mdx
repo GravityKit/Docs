@@ -1,0 +1,74 @@
+---
+id: "58865409dd8c8e73b3e8eab5"
+number: "404"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.4"
+publicUrl: "https://docs.gravitykit.com/article/404-adding-rtl-right-to-left-text-support-to-a-field"
+viewCount: "1987"
+lastPublishedAt: "2022-10-07T22:01:46Z"
+changeOrigin: "unknown"
+name: "Adding RTL (right-to-left) text support to a field"
+slug: "404-adding-rtl-right-to-left-text-support-to-a-field"
+status: "published"
+categories: 
+  - "579aa76f903360293603a8e7"
+keywords: 
+  - "CSS"
+  - "RTL"
+  - "LTR"
+  - "translation"
+  - "translating"
+  - "i18n"
+  - "internationalization"
+  - "global"
+  - "languages"
+related: 
+  - "54ff77e7e4b034c37ea94d09"
+createdBy: "80506"
+createdAt: "2017-01-23T19:05:45Z"
+updatedBy: "80506"
+updatedAt: "2022-10-07T22:01:46Z"
+title: "Adding RTL (right-to-left) text support to a field"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/58865409dd8c8e73b3e8eab5"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-07T22:01:46Z
+  author: "Rafael Ehlers"
+---
+
+# Adding RTL (right-to-left) text support to a field
+
+GravityView is already <abbr title="Right to Left">RTL</abbr> ("Right to Left") compatible; however, you might want to add this particular support to a particular field, so here's how to proceed.
+
+Add the following <abbr title="Cascading Style Sheets">CSS</abbr> class to your theme:
+
+```
+.text-RTL,
+.text-RTL * {
+ direction: rtl!important;
+ text-align: right!important;
+}
+```
+
+Related: [How to add custom CSS to your website](https://docs.gravitykit.com/article/246-adding-custom-css-to-your-website)
+
+Then, add this new CSS class to your field option's screen:
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/588654ffdd8c8e73b3e8eabd/file-c3O1PTgwVa.jpg)
+
+That's it!
+
+##  How to add <abbr title="Left to Right">LTR</abbr> support to RTL website
+
+Follow the instructions below, but use the following code instead:
+
+```
+.text-LTR,
+.text-LTR * {
+ direction: ltr!important;
+ text-align: left!important;
+}
+```
+
+And use `text-LTR` as the "Custom CSS Class" field value.

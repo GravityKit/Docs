@@ -1,0 +1,71 @@
+---
+id: "601ab3552042ff6d1b2aa36e"
+number: "749"
+collectionId: "6076f9478996210f18bd33df"
+publicUrl: "https://docs.gravitykit.com/article/749-developer-hooks-for-math-by-gravityview"
+viewCount: "175"
+lastPublishedAt: "2022-12-14T21:30:22Z"
+changeOrigin: "hsapp-js"
+name: "Developer Hooks for GravityMath"
+slug: "749-developer-hooks-for-math-by-gravityview"
+status: "published"
+categories: 
+  - "6155b0bf2b380503dfdf63f0"
+createdBy: "59634"
+createdAt: "2021-02-03T14:29:41Z"
+updatedBy: "80506"
+updatedAt: "2022-12-14T21:30:22Z"
+title: "Developer Hooks for GravityMath"
+hsEditUrl: "https://secure.helpscout.net/docs/6076f9478996210f18bd33df/article/601ab3552042ff6d1b2aa36e"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-12-14T21:30:22Z
+  author: "Rafael Ehlers"
+---
+
+# Developer Hooks for GravityMath
+
+- `gravityview/math/table_footer_calculation/math_shortcode` Modify Math shortcode parameters before calculation
+- `gravityview/math/table_footer_calculation/calculation_result` Modify calculation result
+- `gravityview/math/table_footer_calculation/format_time_field_calculation_result` Format calculation result of a time field
+- `gravityview/math/entries/visible` Modify visible entries
+- `gravityview/math/aggregate_data/modify_field_value` Modify field value used for aggregate data calculation
+
+---
+
+### `gravityview/math/entries/visible` modifies visible entries used in the calculation 
+
+Since 2.0
+
+| `$entries` | *array\[\]* | Array of visible entries used to calculate the current result. |
+|---|---|---|
+| `$atts` | *array* | Shortcode parameters |
+
+---
+
+### `gravityview/math/aggregate_data/modify_field_value` modifies field values used for aggregate data calculation
+
+Since 2.0
+
+| `$value` | *string* | Array of visible entries used to calculate the current result. |
+|---|---|---|
+| `$transform_value` | *string* | The transformation operation name passed via shortcode |
+
+---
+
+### `gravityview/math/shortcode/output` modify the output of the shortcode
+
+Since 1.0
+
+| `$result` | *string* | Shortcode output. |
+|---|---|---|
+
+Here's an example to display `0` when the calculation result is empty for some reason:
+
+```
+
+add_filter('gravityview/math/shortcode/output', function( $result) {
+	return ($result === '') ? 0 : $result;
+});
+```

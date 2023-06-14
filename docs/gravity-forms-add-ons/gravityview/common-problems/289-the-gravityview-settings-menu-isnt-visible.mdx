@@ -1,0 +1,42 @@
+---
+id: "559666fde4b0f73dcad8393a"
+number: "289"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.1"
+publicUrl: "https://docs.gravitykit.com/article/289-the-gravityview-settings-menu-isnt-visible"
+viewCount: "528"
+lastPublishedAt: "2018-03-30T14:41:52Z"
+changeOrigin: "unknown"
+name: "The GravityView settings menu isn't visible"
+slug: "289-the-gravityview-settings-menu-isnt-visible"
+status: "published"
+categories: 
+  - "579aab1cc6979160ca148bba"
+createdBy: "59635"
+createdAt: "2015-07-03T10:42:05Z"
+updatedBy: "268528"
+updatedAt: "2018-03-30T14:41:52Z"
+title: "The GravityView settings menu isn't visible"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/559666fde4b0f73dcad8393a"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2018-03-30T14:41:52Z
+  author: "Zack Katz"
+---
+
+# The GravityView settings menu isn't visible
+
+Since version 1.7.4 GravityView settings is using the Gravity Forms add-on settings capability to enable the screen. Since then, only users with the WordPress capability *manage\_options* are able to access the GravityView settings screen.
+
+If you are not sure if you have the right capabilities on your users' role we suggest you install a plugin like [Members](https://wordpress.org/plugins/members/), check under Users &gt; Roles.
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5596726ee4b0f73dcad83988/file-496mAz68OG.png)
+
+**If you still don't see the Settings menu under Views, continue to read...**
+
+On some WordPress installations we found out there is also the need to have a Gravity Forms capability *gform\_full\_access* in order to be able to see the Settings menu.
+
+To add it to your users' role, go to Users &gt; Roles, edit your role, and at the bottom click on "Add New Capability":
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/55967439e4b0f73dcad8399d/file-EHOFDKSGJU.png)After adding the capability click on Update Role.

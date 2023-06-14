@@ -1,0 +1,61 @@
+---
+id: "5821412290336042578d3698"
+number: "388"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.3"
+publicUrl: "https://docs.gravitykit.com/article/388-modifying-the-css-of-front-end-approval"
+viewCount: "1793"
+lastPublishedAt: "2018-03-30T14:27:17Z"
+changeOrigin: "unknown"
+name: "Modifying the CSS of Front-end approval"
+slug: "388-modifying-the-css-of-front-end-approval"
+status: "published"
+categories: 
+  - "582140d9c697914aa8381617"
+createdBy: "59634"
+createdAt: "2016-11-08T03:06:10Z"
+updatedBy: "59634"
+updatedAt: "2019-07-08T07:16:42Z"
+title: "Modifying the CSS of Front-end approval"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5821412290336042578d3698"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2019-07-08T07:16:42Z
+  author: "Zack Katz"
+---
+
+# Modifying the CSS of Front-end approval
+
+*Front-end Approval requires GravityView Version 1.19 or newer*
+
+## Overriding the CSS
+
+If you want to use your own CSS file instead of the bundled file, there are two ways:
+
+1. Place a CSS file named `field-approval.css` in your theme's `/gravityview/css/` directory
+2. Use the `gravityview/field/approval/css_url` filter to modify the URL to the CSS file. If you return an empty string, it will disable loading the CSS file altogether.
+
+## About the CSS
+
+The entry approval buttons are created using the CSS ::before selector; [check out the source files](https://github.com/gravityview/GravityView/blob/master/templates/css/source/field-approval.scss) to get a better understanding of how they are created.
+
+Front-end entry approval buttons use [Dashicons icons](https://developer.wordpress.org/resource/dashicons/) for the symbols. All the entry approval toggle buttons have the `.gv-approval-toggle` CSS class. The three different approval states have the following CSS classes:
+
+- `.gv-approval-approved` - Approved; green checkbox `\f147`
+- `.gv-approval-disapproved` - Rejected; red x `\f158`
+- `.gv-approval-unapproved` - Not yet reviewed: yellow circle `\f159`
+
+### Example: Removing button borders and background
+
+If you want to give the buttons no border and a transparent background, use this code:
+
+```css
+.gv-approval-toggle::before {
+ border: none;	
+}
+
+.gv-approval-toggle:link::before, .gv-approval-toggle:visited::before {
+ background: transparent;
+}
+```

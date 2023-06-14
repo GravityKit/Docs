@@ -1,0 +1,46 @@
+---
+id: "5dca2ea22c7d3a7e9ae3d192"
+number: "652"
+hasDraft: "1"
+collectionId: "54d1a05ce4b086c0c0964ccd"
+popularity: "0.1"
+publicUrl: "https://docs.gravitykit.com/article/652-customize-excel-file-name"
+viewCount: "999"
+lastPublishedAt: "2022-10-24T15:30:47Z"
+changeOrigin: "unknown"
+name: "How to customize the Excel export file name"
+slug: "652-customize-excel-file-name"
+status: "published"
+categories: 
+  - "54d1a06ee4b086c0c0964cd1"
+createdBy: "365564"
+createdAt: "2019-11-12T04:01:38Z"
+updatedBy: "459439"
+updatedAt: "2022-10-24T15:46:28Z"
+title: "How to customize the Excel export file name"
+hsEditUrl: "https://secure.helpscout.net/docs/54d1a05ce4b086c0c0964ccd/article/5dca2ea22c7d3a7e9ae3d192"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-24T15:46:28Z
+  author: "Rafael Bennemann"
+---
+
+# How to customize the Excel export file name
+
+When exporting your DataTables View to an Excel file, the default file name combines the View name and your website name.
+
+Add your preferred file name on line 3 between the single quotes:
+
+```php
+
+add_filter( 'gravityview/datatables/button_excel','gravityview_excel_export_settings', 10 ,2 );
+
+function gravityview_excel_export_settings( $button_config = array(), $view_id ) {
+	$button_config['filename'] = 'YOUR-NEW-FILENAME-HERE';
+	$button_config['title'] = '';
+	return $button_config;
+}
+```
+
+If you're not sure where to add code samples, please see the following article: [Where to put code samples](https://docs.gravitykit.com/article/210-where-to-put-code-samples)

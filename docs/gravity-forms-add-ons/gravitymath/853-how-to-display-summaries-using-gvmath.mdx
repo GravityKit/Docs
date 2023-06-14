@@ -1,0 +1,90 @@
+---
+id: "62ea5b71a61fed04b3169957"
+number: "853"
+collectionId: "6076f9478996210f18bd33df"
+publicUrl: "https://docs.gravitykit.com/article/853-how-to-display-summaries-using-gvmath"
+viewCount: "209"
+lastPublishedAt: "2023-02-06T21:14:18Z"
+changeOrigin: "hsapp-js"
+name: "How to Display Summaries Using [gravitymath]"
+slug: "853-how-to-display-summaries-using-gvmath"
+status: "published"
+categories: 
+  - "6155b0bf2b380503dfdf63f0"
+createdBy: "543004"
+createdAt: "2022-08-03T11:26:41Z"
+updatedBy: "80506"
+updatedAt: "2023-02-06T21:14:18Z"
+title: "How to Display Summaries Using [gravitymath]"
+hsEditUrl: "https://secure.helpscout.net/docs/6076f9478996210f18bd33df/article/62ea5b71a61fed04b3169957"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2023-02-06T21:14:18Z
+  author: "Rafael Ehlers"
+---
+
+# How to Display Summaries Using [gravitymath]
+
+You may want to group Gravity Forms entries by a specific field value and then perform math operations on entries within those groups.
+
+**Here’s an example**: You have a donation form on your website allowing users to donate towards different causes (e.g., Science, Education, and Medical). Now you want to calculate the total amount donated towards each cause.
+
+This is possible using the `[gravitymath]` "filter" parameter.
+
+![A Gravity Forms form with fields for the name, donation amount and donation category](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/62ea5c340675b1205fb9296e/file-LwvgSsRd9U.png)
+
+##  Constructing the Shortcodes
+
+As you can see, our donation form allows users to enter a custom donation amount and then choose which cause they want their money to go towards (Science, Education or Medical).
+
+Instead of creating a View that displays each donation, we’re going to create a table that summarizes the total amount donated towards each cause.
+
+There’s no way to do this automatically in GravityView, so we’ll need to manually construct a `[gravitymath]` shortcode for each donation category using the `filter` parameter:
+
+**Science**: `[gravitymath scope="form" id="101" filter="filter_5=Science"] {Donation amount:1:sum} [/gravitymath]`
+
+**Education**: `[gravitymath scope="form" id="101" filter="filter_5=Education"] {Donation amount:1:sum} [/gravitymath]`
+
+**Medical**: `[gravitymath scope="form" id="101" filter="filter_5=Medical"] {Donation amount:1:sum} [/gravitymath]`
+
+We’re using `scope="form"` because we’re only working with entries submitted through our donation form (with ID “101”). Next, we’re filtering by the category using the `filter` parameter `filter="filter_5=Science"` (“5” is the ID of the field we want to filter by).
+
+Inside the shortcode, we place the merge tag for the field we want to sum. If we wanted to count the number of entries instead of summing them, we could do that using the `count` modifier.
+
+## Creating the Summary Table
+
+To display these calculations in a table, we’ll edit our page and add a new “Table” block.
+
+![The Table block in the WordPress page editor](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/62ea5c6a0675b1205fb9296f/file-XCBEdvsVs0.png)
+
+We’ll create a table with two columns and four rows. We’ll add the donation categories to the column on the left, and then we’ll paste our `[gravitymath]` shortcodes into the column on the right.
+
+![A table block in the wordpress editor with [gravitymath] shortcodes inside the cells](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/62ea5c7d26aa5532ebc0b9de/file-wdwsDI4FBz.png)
+
+Here’s what our summary table looks like on the front end:
+
+![A table on the front end with donation categories in onecolumn and the total amount donated in another column](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/62ea5c895e08866388c2ed9b/file-TF32b9vJmY.png)
+
+When you receive new donations, your table will update to reflect the new amounts.
+
+## Filtering by User
+
+You may want to group entries by the user who created them and then perform math calculations on those entries. That’s also possible using the `[gravitymath]` shortcode and the `filter` parameter. Here’s an example:
+
+`[gravitymath scope="form" id="101" filter="filter_created_by=1"] {Donation amount:1:sum} [/gravitymath]`
+
+In this case, the “1” is the user ID of a specific user on your website.
+
+
+:::info
+
+If you need help finding user IDs, read [this article](https://smartwp.com/wordpress-get-user-id/).
+
+:::
+
+ ## Adding Multiple Filtering Rules
+
+If you want to add multiple filtering rules, you can do so by separating them using “&amp;”. Here’s an example where we’re summing all the Science donations that were sent by a specific user:
+
+`[gravitymath scope="form" id="101" filter="filter_5=Science&filter_created_by=1"] {Donation amount:1:sum} [/gravitymath]`

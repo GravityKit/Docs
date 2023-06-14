@@ -1,0 +1,86 @@
+---
+id: "56e6f4f4c69791147146192c"
+number: "340"
+hasDraft: "1"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.8"
+publicUrl: "https://docs.gravitykit.com/article/340-gravityview-hooks"
+viewCount: "4048"
+lastPublishedAt: "2022-12-27T20:44:32Z"
+changeOrigin: "external"
+name: "WordPress hooks (actions and filters) available for GravityView"
+slug: "340-gravityview-hooks"
+status: "published"
+categories: 
+  - "579aa642c6979160ca148ba9"
+keywords: 
+  - "actions"
+  - "filters"
+  - "hooks"
+  - "api"
+  - "documentation"
+createdBy: "59634"
+createdAt: "2016-03-14T17:29:24Z"
+updatedBy: "59634"
+updatedAt: "2022-12-28T22:07:21Z"
+title: "WordPress hooks (actions and filters) available for GravityView"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/56e6f4f4c69791147146192c"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-12-28T22:07:21Z
+  author: "Zack Katz"
+---
+
+# WordPress hooks (actions and filters) available for GravityView
+
+GravityView has inline documentation for most of our hooks. You can find auto-generated documentation of them here:
+
+- [List of Actions](https://codex.gravityview.co/actions.html)
+- [List of Filters](https://codex.gravityview.co/filters.html)
+
+### About Hookr
+
+[](http://hookr.io/plugin/) [![Hookr logo](https://www.gravitykit.com/wp-content/uploads/2018/01/about-hookr.png?1457976519)](http://hookr.io/plugin/)> The Hookr plugin annotates the html output of your WordPress install with all executed actions/filters.
+
+Hookr is the best way to see what actions and filters are running on a page. Hookr can help familiarize you with GravityView's hooks.
+
+### Install and activate the Hookr plugin
+
+Go to [Hookr.io's "Plugin" page](https://hookr.io/plugin/) and download, then install the plugin.
+
+![](https://www.gravitykit.com/wp-content/uploads/2018/01/install-and-activate-the-hookr-plugin.png?1457976519)
+
+### Go to Tools &gt; Hookr to configure the plugin settings
+
+![](https://www.gravitykit.com/wp-content/uploads/2018/01/go-to-tools-gt-hookr-to-configure-the-plugin-settings.png?1457976520)
+
+### Exclude GravityView Logging Hooks
+
+Add the following to the "Ignore Hooks" settings box:
+
+```
+gravityview_log_*
+				
+```
+
+![](https://www.gravitykit.com/wp-content/uploads/2018/01/exclude-gravityview-logging-hooks.png?1457976521)
+
+### Visit a View
+
+Now that you have Hookr installed, go to a View on your site. You'll see a bunch of rendered tags, like this.
+
+![](https://www.gravitykit.com/wp-content/uploads/2018/01/visit-a-view.png?1457976522)
+
+### Click on one of them
+
+You will get a list of all hooks and filters that happen inside that hook.
+
+![](https://www.gravitykit.com/wp-content/uploads/2018/01/click-on-one-of-them.png?1457976522)
+
+### Click on one of the hooks listed.
+
+You will see where the hook was triggered in the code, as well as values passed to the hook, and the description of the hook in the code.
+
+![](https://www.gravitykit.com/wp-content/uploads/2018/01/click-on-one-of-the-hooks-listed.png?1457976523)
+

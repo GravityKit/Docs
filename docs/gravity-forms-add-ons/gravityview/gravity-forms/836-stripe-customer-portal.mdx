@@ -1,0 +1,75 @@
+---
+id: "62569e7492fc506189806ac0"
+number: "836"
+collectionId: "566dfabbc6979143615564bf"
+publicUrl: "https://docs.gravitykit.com/article/836-stripe-customer-portal"
+viewCount: "106"
+lastPublishedAt: "2022-10-12T21:18:31Z"
+changeOrigin: "unknown"
+name: "Adding a Link to the Stripe Customer Portal in GravityView"
+slug: "836-stripe-customer-portal"
+status: "published"
+categories: 
+  - "579aa748903360293603a8e5"
+createdBy: "543004"
+createdAt: "2022-04-13T09:57:08Z"
+updatedBy: "80506"
+updatedAt: "2022-10-12T21:18:31Z"
+title: "Adding a Link to the Stripe Customer Portal in GravityView"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/62569e7492fc506189806ac0"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-12T21:18:31Z
+  author: "Rafael Ehlers"
+---
+
+# Adding a Link to the Stripe Customer Portal in GravityView
+
+If you use the [Gravity Forms Stripe add-on](https://www.gravityforms.com/add-ons/stripe/) to take payments on your site, you can add a link to the Stripe Customer Portal inside your Views. Clicking on the link will allow users to view their billing history and manage their subscriptions.
+
+
+:::info
+
+If you’re new to the Gravity Forms Stripe Add-On, read this [helpful guide](https://www.gravityforms.com/blog/how-to-take-subscriptions-with-stripe/) to get set up.
+
+:::
+
+ ## Configure Your Stripe Customer Portal
+
+Start by logging in to your Stripe [account](https://dashboard.stripe.com/login) and configuring the Stripe Customer Portal. To do this, open the *Settings* page by clicking on the gear icon in the top right. Next, click on *Billing* under *Product settings.*
+
+![The Settings screen in Stripe](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/62569f525d0b9565e1733583/file-tynW9L3nr0.jpg)
+
+Now you can configure your customer portal by choosing which functions to provide your customers.
+
+![The Stripe Customer Portal options screen](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/62569f9b92fc506189806aca/file-tmfjY4TFOY.jpg)
+
+When you’re done, save your changes.
+
+## Add the Stripe Customer Portal Shortcode to Your View
+
+The next step is to add the Gravity Forms Stripe Customer Portal shortcode to your View layout. Start by clicking on the *Add Field* button and add a new Custom Content field to your View.
+
+![The GravityView Custom Content field](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/62569fdb35f8b26458264242/file-fBe2MoSX2K.jpg)Now paste the following shortcode inside the Custom Content text editor:
+
+```
+[gravityforms action="stripe_customer_portal_link"]
+```
+
+![The Stripe Customer Portal shortcode inside the Custom Content text editor](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/6256a0010ef8984e60e8623f/file-9MHFo9SuOO.jpg)
+
+When you're done, update your View!
+
+When customers click on the link, they can see their billing history and manage their subscriptions via the Stripe Customer Portal.
+
+![The Manage My Subscriptions link on the GravityView Single Entry Page](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/6256a01992fc506189806acc/file-idndCxwYNf.jpg)
+
+
+:::info
+
+For more information about the Gravity Forms Stripe Customer Portal shortcode, check out [this article](https://docs.gravityforms.com/stripe-customer-portal-shortcode-action/) on the Gravity Forms docs site.
+
+:::
+
+ 

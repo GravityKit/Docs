@@ -1,0 +1,42 @@
+---
+id: "60a947a913fd125a39b46671"
+number: "769"
+collectionId: "6076f9478996210f18bd33df"
+publicUrl: "https://docs.gravitykit.com/article/769-change-csv-delimiter"
+viewCount: "87"
+lastPublishedAt: "2022-10-19T00:58:22Z"
+changeOrigin: "unknown"
+name: "How to change the CSV delimiter"
+slug: "769-change-csv-delimiter"
+status: "published"
+categories: 
+  - "6155b0dee5648623c88e04fa"
+keywords: 
+  - "separator"
+  - "delimiter"
+createdBy: "336675"
+createdAt: "2021-05-22T18:04:25Z"
+updatedBy: "80506"
+updatedAt: "2022-10-19T00:58:22Z"
+title: "How to change the CSV delimiter"
+hsEditUrl: "https://secure.helpscout.net/docs/6076f9478996210f18bd33df/article/60a947a913fd125a39b46671"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-19T00:58:22Z
+  author: "Rafael Ehlers"
+---
+
+# How to change the CSV delimiter
+
+GravityImport will automatically try to detect the four commonly used delimiters: `\t` (tab), `|`, `;`, and `,` (serves as the default delimiter when none can be detected).   
+  
+You can also specify a custom delimiter (e.g., `@`) by using the `gravityview/import/config` filter:
+
+```php
+add_action( 'gravityview/import/config', 'change_gv_importer_delimiter' );
+
+function change_gv_importer_delimiter( $config ) {
+	$config->setDelimiter( '@' );
+}
+```

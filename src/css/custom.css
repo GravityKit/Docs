@@ -1,0 +1,174 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #2e5585;
+  --ifm-color-primary-dark: #294c78;
+  --ifm-color-primary-darker: #274871;
+  --ifm-color-primary-darkest: #203b5d;
+  --ifm-color-primary-light: #335d92;
+  --ifm-color-primary-lighter: #356299;
+  --ifm-color-primary-lightest: #3c6ead;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-color-primary: #25a0c2;
+  --ifm-color-primary-dark: #2190af;
+  --ifm-color-primary-darker: #1f88a5;
+  --ifm-color-primary-darkest: #1a7088;
+  --ifm-color-primary-light: #29b0d5;
+  --ifm-color-primary-lighter: #32b4d8;
+  --ifm-color-primary-lightest: #4fbfdd;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/** Fix docs formatting */
+h2 img {
+  float: right;
+}
+
+/** Make the docs first item in the sidebar look like a heading. */
+.plugin-docs nav li:first-child .menu__link:not( ul ul a ) {
+  font-size: 1.2em;
+  background: none;
+  font-weight: bold;
+}
+
+.dropdown__link {
+  font-size: 1.1rem;
+  margin: .5rem 0;
+  padding: .666rem .75rem .75rem 3rem;
+}
+
+.dropdown__link:before,
+.plugin-docs nav li:first-child .menu__link:not( ul ul a ):before {
+  content: '';
+  display: inline-block;
+  background-position: left center;
+  background-size: contain;
+  width: 2em;
+  height: 2em;
+  transition: all .1s;
+  margin-right: 12px;
+}
+
+.dropdown__link:before {
+  width: 2rem;
+  height: 2rem;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  left: 16px;
+}
+
+.dropdown__link[href*="gravityrevisions"]:before,
+.menu__link[href*="gravityrevisions"]:before {
+  background-image: url(https://gravitykit.com/wp-content/uploads/edd/2022/09/icon-GravityRevisions.png)
+}
+
+.dropdown__link[href*="gravityimport"]:before,
+.menu__link[href*="gravityimport"]:before {
+  background-image: url(https://gravitykit.com/wp-content/uploads/edd/2022/09/icon-GravityImport.png)
+}
+
+.dropdown__link[href*="gravitymath"]:before,
+.menu__list .menu__link[href*="gravitymath"]:before {
+  background-image: url(https://gravitykit.com/wp-content/uploads/edd/2022/09/icon-GravityMath.png)
+}
+
+.dropdown__link[href*="gravityexport"]:before,
+.menu__list .menu__link[href*="gravityexport"]:before {
+  background-image: url(https://gravitykit.com/wp-content/uploads/edd/2022/09/icon-GravityExport.png)
+}
+
+.dropdown__link[href*="gravitycharts"]:before,
+.menu__list .menu__link[href*="gravitycharts"]:before {
+  background-image: url(https://gravitykit.com/wp-content/uploads/edd/2022/09/icon-GravityCharts.png)
+}
+
+.dropdown__link[href*="gravityimport"]:before,
+.menu__list .menu__link[href*="gravityimport"]:before {
+    background-image: url(https://gravitykit.com/wp-content/uploads/edd/2022/09/icon-GravityImport.png);
+}
+
+.dropdown__link[href*="gravitycalendar"]:before,
+.menu__list .menu__link[href*="gravitycalendar"]:before {
+  background-image: url(https://gravitykit.com/wp-content/uploads/edd/2022/09/icon-GravityCalendar.png)
+}
+
+.dropdown__link[href*="gravityedit"]:before,
+.menu__list .menu__link[href*="gravityedit"]:before {
+  background-image: url(https://gravitykit.com/wp-content/uploads/edd/2022/09/icon-GravityEdit.png)
+}
+
+.dropdown__link[href$="/gravityview"]:before,
+.menu__list .menu__link[href$="/gravityview"]:before {
+  background-image: url(https://gravitykit.com/wp-content/uploads/edd/2022/09/icon-GravityView.png)
+}
+
+.dropdown__link[href*="gravityactions"]:before,
+.menu__list .menu__link[href*="gravityactions"]:before {
+  background-image:url(https://gravitykit.com/wp-content/uploads/edd/2022/09/icon-GravityActions.png)
+}
+
+/** GravityView layouts */
+
+.dropdown__link[href*="maps"]:before,
+.menu__list .menu__link[href*="maps"]:before {
+  background-image: url(https://gravitykit.com/wp-content/uploads/edd/2022/09/icon-maps-layout.png)
+}
+
+.dropdown__link[href*="diy"]:before,
+.menu__list .menu__link[href*="diy"]:before {
+  background-image: url(https://gravitykit.com/wp-content/uploads/edd/2022/09/icon-diy-layout.png)
+}
+
+.dropdown__link[href*="datatables"]:before,
+.menu__list .menu__link[href*="datatables"]:before {
+  background-image: url(https://gravitykit.com/wp-content/uploads/edd/2022/09/icon-datatables-layout.png)
+}
+
+
+/** GravityView extensions */
+
+.dropdown__link[href*="advanced-filter"]:before,
+.menu__list .menu__link[href*="advanced-filter"]:before {
+  background-image: url(https://gravitykit.com/wp-content/uploads/edd/2022/09/icon-featured-entries.png)
+}
+
+.dropdown__link[href*="ratings"]:before,
+.menu__list .menu__link[href*="ratings"]:before {
+  background-image: url(https://gravitykit.com/wp-content/uploads/edd/2022/09/icon-ratings-and-reviews.png)
+}
+
+.dropdown__link[href*="a-z-filters"]:before,
+.menu__list .menu__link[href*="a-z-filters"]:before{
+  background-image: url(https://gravitykit.com/wp-content/uploads/edd/2022/09/icon-az-filters.png)
+}
+
+.dropdown__link[href*="multiple-forms"]:before,
+.menu__list .menu__link[href*="multiple-forms"]:before{
+  background-image: url(https://gravitykit.com/wp-content/uploads/edd/2022/09/icon-multiple-forms.png)
+}
+
+.dropdown__link[href*="advanced-filter"]:before,
+.menu__list .menu__link[href*="advanced-filter"]:before {
+  background-image: url(https://gravitykit.com/wp-content/uploads/edd/2022/09/icon-advanced-filtering.png)
+}
+
+.dropdown__link[href*="social-sharing"]:before,
+.menu__list .menu__link[href*="social-sharing"]:before{
+  background-image: url(https://gravitykit.com/wp-content/uploads/edd/2022/09/icon-social-sharing.png)
+}
+
+.dropdown__link[href*="featured-entries"]:before,
+.menu__list .menu__link[href*="featured-entries"]:before{
+  background-image: url(https://gravitykit.com/wp-content/uploads/edd/2022/09/icon-featured-entries.png)
+}

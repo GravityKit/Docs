@@ -1,0 +1,78 @@
+---
+id: "62e7d14b8de2dc7da38ba259"
+number: "852"
+collectionId: "566dfabbc6979143615564bf"
+publicUrl: "https://docs.gravitykit.com/article/852-how-to-connect-gravityview-with-zapier-using-uncanny-automator"
+viewCount: "69"
+lastPublishedAt: "2022-10-07T22:15:10Z"
+changeOrigin: "unknown"
+name: "How to Connect GravityView With Zapier Using Uncanny Automator"
+slug: "852-how-to-connect-gravityview-with-zapier-using-uncanny-automator"
+status: "published"
+categories: 
+  - "579aa642c6979160ca148ba9"
+  - "579aa76f903360293603a8e7"
+createdBy: "543004"
+createdAt: "2022-08-01T13:12:43Z"
+updatedBy: "80506"
+updatedAt: "2022-10-07T22:15:10Z"
+title: "How to Connect GravityView With Zapier Using Uncanny Automator"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/62e7d14b8de2dc7da38ba259"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-07T22:15:10Z
+  author: "Rafael Ehlers"
+---
+
+# How to Connect GravityView With Zapier Using Uncanny Automator
+
+Zapier is a service that connects different applications and allows you to create automated workflows. In this article, we'll show you how to connect your GravityView app with Zapier using the Uncanny Automator plugin for WordPress.
+
+## 1. Install Uncanny Automator Pro
+
+The first thing you'll need to do is install [Uncanny Automator Pro](https://automatorplugin.com) (there is a free version of the plugin, but you'll need Pro for the GravityKit integration).
+
+Uncanny Automator is a WordPress plugin that makes it possible to configure automated workflows for dozens of popular plugins and apps. Without writing any code, you can create “recipes” that cause certain activities on your site to trigger other activities.
+
+## 2. Open Zapier and Create a New "Zap"
+
+Sign in to your Zapier account (or create a free one [here](https://zapier.com/sign-up)) and click "+ Create Zap" to create a new "Zap". Now you'll need to choose an app to act as the trigger. Select "Webhooks by Zapier".
+
+![Selecting the 'Webhooks by Zapier' app integration in Zapier](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/62e7d3605a63a6390d86049b/file-0ARoA1f607.png)Now you'll need to select an event to trigger the Zap. Select "Catch Hook".
+
+![Selecting the 'Catch Hook' event in Zapier](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/62e7d3a22a7fc8280afc6676/file-h6oh995bYo.png)Zapier will now generate a webhook URL. Copy this URL to your clipboard as you'll need it in the next step!
+
+## 3. Configure a New "Recipe" in Uncanny Automator 
+
+Start by hovering over *Automator* in your WordPress sidebar and click *Add new*. After giving your recipe a name, scroll down to *Trigger* and select GravityKit as your integration.
+
+![Selecting GravityKit as the integration and Trigger in Uncanny Automator](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/62e7d4b5a979fe27aeb4ab27/file-SbBhPfwyes.png)Now define your trigger (there are two options: “An entry for a specific form is approved” or “An entry for a specific form is rejected”).
+
+![Selecting a GravityKit trigger in Uncanny automator - either Entry Approved or Entry Rejected](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/62e7d4ceee1e310313f7c516/file-3WHuf2GbRL.png)
+
+Now that your trigger has been set up, you’ll need to specify an Action. This is the activity that happens when the trigger has been fired. In this case, your action is going to be sending data to Zapier.
+
+![Selecting the Zapier integration as the action in Uncanny Automator](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/62e7d628ee1e310313f7c51c/file-T7uGDAFgIk.png)
+
+After selecting Zapier as your integration, you’ll need to specify a webhook URL. This is the same URL you copied from Zapier in the previous step! Go ahead and paste it into the box.
+
+![The Zapier webhook URL](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/62e7d63e8de2dc7da38ba271/file-a7fPYq17PM.png)
+
+## 4. Test the Integration
+
+In the “Body” section of your webhook request, you can specify the data you want to send to Zapier using Key-Value pairs. You can use Gravity Forms field values to send user-submitted values from the entry.
+
+![The 'send test' button in uncanny automator](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/62e7d6a5ee1e310313f7c51f/file-MU2cSNoAG4.png)
+
+Now head back to your Zapier “Zap” and click Test trigger. If the integration is successful, Zapier will display a green check mark with a success message saying, “We found a request!”.
+
+![Zapier displaying a message saying We found a request](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/62e7d6c0a979fe27aeb4ab2d/file-Ux4x5TEtK6.png)
+
+If your integration works as expected, go ahead and put your recipe live.
+
+## 5. Add an Event in Zapier
+
+Head back to your “Zap” in Zapier and add an Event. This is the activity that will occur when Zapier receives your data. Zapier integrates with our 5,000 different apps, so there are thousands of choices for what should happen once your data has been received.
+
+![Selecting an app for the event in Zapier](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/62e7d73c5a63a6390d8604ac/file-AvaicrgjxD.png)That's it! Now go ahead and test the integration one more time to ensure everything is working as expected.

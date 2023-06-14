@@ -1,0 +1,39 @@
+---
+id: "5ff63c32bb5c6f7434e0e70a"
+number: "747"
+collectionId: "54d1a05ce4b086c0c0964ccd"
+publicUrl: "https://docs.gravitykit.com/article/747-display-the-view-title-dashboard-views"
+viewCount: "477"
+lastPublishedAt: "2021-03-05T17:31:29Z"
+changeOrigin: "unknown"
+name: "Display the View title (Dashboard Views)"
+slug: "747-display-the-view-title-dashboard-views"
+status: "notpublished"
+categories: 
+  - "5ff63cd3551e0c2853f39e78"
+createdBy: "59634"
+createdAt: "2021-01-06T22:39:46Z"
+updatedBy: "80506"
+updatedAt: "2021-03-05T17:31:29Z"
+title: "Display the View title (Dashboard Views)"
+hsEditUrl: "https://secure.helpscout.net/docs/54d1a05ce4b086c0c0964ccd/article/5ff63c32bb5c6f7434e0e70a"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2021-03-05T17:31:29Z
+  author: "Rafael Ehlers"
+---
+
+# Display the View title (Dashboard Views)
+
+When displaying a View in the dashboard, there is no View title displayed.
+
+To display a View title, use the following code snippet:
+
+```php
+add_action( 'gravityview/admin/before', function( $view ) {
+	echo '<h1>' . esc_html( get_the_title( $view->ID ) ) . '</h1>';
+} );
+```
+
+This will display the View title in a `H1` tag before any of the View is rendered.

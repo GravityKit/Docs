@@ -1,0 +1,55 @@
+---
+id: "56d383619033601bde8ba475"
+number: "337"
+collectionId: "566dfabbc6979143615564bf"
+publicUrl: "https://docs.gravitykit.com/article/337-warning-no-such-file-or-directory"
+viewCount: "222"
+lastPublishedAt: "2022-10-07T21:42:36Z"
+changeOrigin: "unknown"
+name: "During installation: \"Warning: No such file or directory\""
+slug: "337-warning-no-such-file-or-directory"
+status: "published"
+categories: 
+  - "579aab1cc6979160ca148bba"
+keywords: 
+  - "hosting"
+  - "installation"
+  - "error"
+  - "fatal error"
+  - "install"
+  - "Warning"
+  - "No such file or directory"
+  - "class-gravityview-compatibility.php"
+createdBy: "59634"
+updatedBy: "80506"
+updatedAt: "2022-10-07T21:42:36Z"
+title: "During installation: \"Warning: No such file or directory\""
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/56d383619033601bde8ba475"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-07T21:42:36Z
+  author: "Rafael Ehlers"
+---
+
+# During installation: "Warning: No such file or directory"
+
+Some hosts have aggressive anti-virus scanners, which block a file from being installed because it has code called "check\_wordpress" in it. What happens is that the file containing that text gets deleted as soon as it's uploaded, causing GravityView to error.
+
+The error looks like this:
+
+```
+Warning: require_once(/[...]/wp-content/plugins/gravityview/includes/class-gravityview-compatibility.php): failed to open stream: No such file or directory in /[...]/wp-content/plugins/gravityview/gravityview.php on line 71
+```
+
+### To fix the problem, contact your host
+
+Contact your web host and ask them to "Whitelist the /wp-content/plugins/gravityview/includes/class-gravityview-compatibility.php file". Once they do, this issue will be fixed.
+
+---
+
+####  Known hosts:
+
+These hosts are known to have issues with this error:
+
+- [PANTHUR hosting](https://www.panthur.com.au)

@@ -1,0 +1,99 @@
+---
+id: "54c67bb6e4b051242988550a"
+number: "58"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.9"
+publicUrl: "https://docs.gravitykit.com/article/58-about-gravityview-caching"
+viewCount: "4937"
+lastPublishedAt: "2022-12-28T10:59:21Z"
+changeOrigin: "hsapp-js"
+name: "About GravityView Caching"
+slug: "58-about-gravityview-caching"
+status: "published"
+categories: 
+  - "579aa642c6979160ca148ba9"
+createdBy: "59634"
+createdAt: "2015-01-26T17:39:02Z"
+updatedBy: "459439"
+updatedAt: "2022-12-28T10:59:21Z"
+title: "About GravityView Caching"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/54c67bb6e4b051242988550a"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-12-28T10:59:21Z
+  author: "Rafael Bennemann"
+---
+
+# About GravityView Caching
+
+
+:::info
+
+A quick way to clear a View's cache is by adding the ?cache parameter to the end of the URL where your View is located.   
+Example: https://example.com/view/directory/?cache
+
+:::
+
+
+
+**GravityView introduced caching in Version 1.3.**
+
+## What GravityView Caches
+
+Caching entry requests reduces the number of queries performed on a page load by hundreds and possibly thousands when dealing with large View. This makes GravityView faster.
+
+GravityView caches entry requests for Views to speed up the plugin. Requests are cached using a unique key generated on the specific request details, including the current page number, the number of results, and the sorting values.
+
+When data changes in a Gravity Forms form, all caches using that form data are cleared. This way, caches do not result in out-of-date data being displayed.
+
+Cached results are stored [using the Transients API](http://codex.wordpress.org/Transients_API).
+
+### DataTables Extension
+
+In addition to caching the entries query, GravityView caches the JSON responses used by the DataTables Extension. This allows the request to be processed faster, which is important for the responsiveness of the extension.
+
+## What happens when entries are added or changed
+
+When an entry is created or modified in Gravity Forms, the GravityView cache adds the entry's form to a list of forms that have been changed, the "cache blacklist".
+
+The cache blacklist is stored in WP Options table with the name of `gravityview_cache_blacklist`.
+
+When entries for a View are fetched, GravityView checks whether the View is connected to a form on the cache blacklist.
+
+If the requested form is on the blacklist, then:
+
+- The cached entries are cleared from all Views connected to the form
+- The form is removed from the blacklist
+- The cache returns false so that a new query will be used to fetch entries
+
+All these processes are logged for easy debugging using the [Debug Bar plugin](https://wordpress.org/plugins/debug-bar/).
+
+### Clearing expired caches
+
+Because GravityView stores caches in "transients", they are only cached for a set amount of time (default: 7 days).
+
+Each request is cached separately, including each page of each View. This can add up to many database entries, so twice a day, GravityView runs a script that deletes expired caches.
+
+## How to disable the cache
+
+If you are logged in, and you can edit posts, you can temporarily disable the cache by adding `?cache` or `?nocache`.
+
+ **You can disable the cache permanently by [downloading and installing this plugin](https://github.com/katzwebservices/gv-snippets/archive/addon/2863-disable-cache.zip).**
+
+You can also add the following code [to your functions.php file](https://docs.gravitykit.com/article/210-where-to-put-code-samples):
+
+```
+
+add_filter('gravityview_use_cache', '__return_false');
+```
+
+## GravityView Cache Filters
+
+You can use the following filters to modify the cache functionality:
+
+- `gravityview_use_cache` *(boolean)* Whether to use GravityView caching. Default: `true`. Second parameter: is the current `GravityView_Cache` object.
+- `gravityview_cache_time_{$filter_name}` *(int)* Number of seconds to cache requests. Default: `86400` (1 day in seconds). `$filter_name` is the parameter when setting the cache value. Filter names include: 
+   - `gravityview_cache_time_entries` - Entries fetched using `gravityview_get_entries()`
+   - `gravityview_cache_time_datatables_output` - DataTables JSON response
+- `gravityview_cleanup_transients` *(boolean)* Enable or disable GravityView automatic cleanups of expired caches. Default: `true`

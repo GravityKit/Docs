@@ -1,0 +1,48 @@
+---
+id: "62b4b5d1c393f271f28b4378"
+number: "848"
+collectionId: "6076f9478996210f18bd33df"
+publicUrl: "https://docs.gravitykit.com/article/848-how-to-trigger-form-notifications-when-editing-with-gravityedit"
+viewCount: "116"
+lastPublishedAt: "2023-02-23T21:56:08Z"
+changeOrigin: "hsapp-js"
+name: "How to trigger form notifications when editing with GravityEdit"
+slug: "848-how-to-trigger-form-notifications-when-editing-with-gravityedit"
+status: "published"
+categories: 
+  - "6155b0960754e74465f1541d"
+createdBy: "80506"
+createdAt: "2022-06-23T18:49:53Z"
+updatedBy: "59634"
+updatedAt: "2023-02-23T21:56:08Z"
+title: "How to trigger form notifications when editing with GravityEdit"
+hsEditUrl: "https://secure.helpscout.net/docs/6076f9478996210f18bd33df/article/62b4b5d1c393f271f28b4378"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2023-02-23T21:56:08Z
+  author: "Zack Katz"
+---
+
+# How to trigger form notifications when editing with GravityEdit
+
+By default, when updating fields with GravityEdit (formerly called Inline Edit) no form notifications are sent.
+
+If you wish to send a form notification after updating a field, then you must use the code snippet below:
+
+```php
+
+add_filter( 'gravityview-inline-edit/entry-updated', 'gravityedit_custom_trigger_notifications', 10, 5 );
+
+function gravityedit_custom_trigger_notifications( $update_result, $entry = array(), $form_id = 0, $gf_field = null, $original_entry = array() ) { 
+	$entry = GFAPI::get_entry( $entry['id'] );
+	$form = GFAPI::get_form( $form_id  );
+   GFCommon::send_form_submission_notifications( $form, $entry );
+}
+```
+
+This code will only trigger notifications of the event " **Form is submitted**":
+
+![Screenshot of the notification configuration screen on form settings](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/62b4b6abc74a080359c83524/file-4b5bxbI2vp.png)
+
+Related: [Where to put code samples](https://docs.gravitykit.com/article/210-where-to-put-code-samples)

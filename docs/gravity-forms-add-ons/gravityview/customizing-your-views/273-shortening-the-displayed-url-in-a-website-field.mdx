@@ -1,0 +1,84 @@
+---
+id: "555a21a6e4b01a224b424c01"
+number: "273"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "1.2"
+publicUrl: "https://docs.gravitykit.com/article/273-shortening-the-displayed-url-in-a-website-field"
+viewCount: "6495"
+lastPublishedAt: "2022-12-27T20:44:28Z"
+changeOrigin: "external"
+name: "Shortening the displayed URL in a Website field"
+slug: "273-shortening-the-displayed-url-in-a-website-field"
+status: "published"
+categories: 
+  - "579aa76f903360293603a8e7"
+related: 
+  - "555673bae4b01a224b424927"
+  - "54c67bc4e4b0512429885531"
+  - "54c67bbae4b0512429885518"
+createdBy: "59634"
+createdAt: "2015-05-18T17:30:14Z"
+updatedBy: "59634"
+updatedAt: "2022-12-27T20:44:28Z"
+title: "Shortening the displayed URL in a Website field"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/555a21a6e4b01a224b424c01"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-12-27T20:44:28Z
+  author: "Zack Katz"
+---
+
+# Shortening the displayed URL in a Website field
+
+
+
+### Click the Add Field button
+
+![](https://www.gravitykit.com/wp-content/uploads/2018/01/click-the-add-field-button.png?1431970109)
+
+### Select a Website field from the field picker
+
+If your form doesn't have a website field, this functionality will not be available.
+
+![](https://www.gravitykit.com/wp-content/uploads/2018/01/select-a-website-field-from-the-field-picker.png?1431970111)
+
+### Click the gear icon to configure the Field settings
+
+![](https://www.gravitykit.com/wp-content/uploads/2018/01/click-the-gear-icon-to-configure-the-field-settings.png?1431970112)
+
+### Check or uncheck the "Shorten Link Display" setting
+
+![](https://www.gravitykit.com/wp-content/uploads/2018/01/check-or-uncheck-the-shorten-link-display-setting.png?1431970113)
+
+**By default, links will be shortened by removing:**
+
+- `http://` and `https://` ( http://example.com =&gt; example.com )
+- `www.` subdomain, if exists ( www.example.com =&gt; example.com )
+- Subdomains, if exists ( demo.example.com =&gt; example.com )
+- URL paths ( http://example.com/sub/directory/page.html =&gt; example.com )
+- Query parameters ( http://example.com/?query=example =&gt; example.com )
+
+The link text will look shorter, but the link URL remains the same.
+
+### For developers: Hooks to modify the "Shorten Link Display" behavior
+
+If you would like to tweak how the Shorten Link Display functionality works, there are hooks for that!
+
+You can find the hooks inside the [`gravityview_format_link()`](https://github.com/katzwebservices/GravityView/blob/2e0823eb89af8c4bf8cd1061e79736eb3038985e/includes/class-api.php#L845-L943) function. You can also override the function by defining it in your theme's code&gt;functions.php file.
+
+The following hooks are available to modify functionality. All filters have a `true` default.
+
+- `http://` and `https://` (or any other scheme, like `ftp://`) ( http://example.com =&gt; example.com )  
+    Filter: `gravityview_anchor_text_striphttp`
+- `www.` subdomain, if exists ( www.example.com =&gt; example.com )  
+    Filter: `gravityview_anchor_text_stripwww`
+- Subdomains, if exists ( demo.example.com =&gt; example.com )  
+    Filter: `gravityview_anchor_text_nosubdomain`
+- URL paths ( http://example.com/sub/directory/page.html =&gt; example.com )  
+    Filter: `gravityview_anchor_text_rootonly`
+- Query parameters ( http://example.com/?query=example =&gt; example.com )  
+    Filter: `gravityview_anchor_text_noquerystring`
+
+**[See a code sample](https://gist.github.com/zackkatz/9c97c7fa87ff07ff52f0)** for disabling Shorten Link Display filters.
+

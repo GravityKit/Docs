@@ -1,0 +1,48 @@
+---
+id: "5b90109e2c7d3a03f89e7cba"
+number: "486"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.5"
+publicUrl: "https://docs.gravitykit.com/article/486-you-are-not-allowed-to-view-this-content"
+viewCount: "2445"
+lastPublishedAt: "2022-10-07T21:35:27Z"
+changeOrigin: "unknown"
+name: "Reasons for the \"You are not allowed to view this content.\" message"
+slug: "486-you-are-not-allowed-to-view-this-content"
+status: "published"
+categories: 
+  - "579aab1cc6979160ca148bba"
+createdBy: "59634"
+createdAt: "2018-09-05T17:21:34Z"
+updatedBy: "80506"
+updatedAt: "2022-10-07T21:35:27Z"
+title: "Reasons for the \"You are not allowed to view this content.\" message"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5b90109e2c7d3a03f89e7cba"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-07T21:35:27Z
+  author: "Rafael Ehlers"
+---
+
+# Reasons for the "You are not allowed to view this content." message
+
+GravityView has many levels of security in place to make sure that your content is visible only when you want it to be. If you see the notification "You are not allowed to view this content.", there are multiple reasons why this might happen.
+
+To determine why you cannot access a View or entry, [enable logging](https://docs.gravitykit.com/article/213-gravityview-logging-tools) and reload the page. You should see a line in the log with a message similar to "Entry ID #{entry\_id} is not active" because the content is not accessible.
+
+### Some possible reasons why the message is displayed:
+
+1. **Prevent Direct Access** setting is enabled for a View, and you're attempting to visit the View, not the post or a page where it is embedded. 
+   1. Does the URL have "/view/" in it? if so, this counts as "direct access", and is likely the issue. **To fix:**
+       1. Edit the View
+       2. Scroll down to View Settings
+       3. If checked, uncheck the setting "Prevent Direct Access", and save the View
+       4. If unchecked: have you modified the code using the `gravityview\_direct\_access` filter? If not, "Direct Access" is not the reason you see the error.
+2. The entry you are attempting to access has been **put in the "trash"** in the Gravity Forms
+3. **Custom entry URL slugs** are enabled, and the URL "slug" and entry details don't match
+4. The View is configured only to show approved entries, and the **current entry is not approved**
+5. The current **search parameters** (or Advanced Filters settings) prevent the entry from being displayed
+6. You are attempting to access the REST API, and **REST API is not enabled** (or is disabled specifically) for the View
+7. **The View is privately published**, and you don't have access to reading it
+8. If you are running **the Avada theme** and have the \[gravityview\] shortcode inside a "Code" field. Instead, place the shortcode in a Text field.

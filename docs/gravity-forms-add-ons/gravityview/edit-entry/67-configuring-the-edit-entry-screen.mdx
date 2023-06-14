@@ -1,0 +1,167 @@
+---
+id: "54c67bb9e4b0512429885513"
+number: "67"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "4.9"
+publicUrl: "https://docs.gravitykit.com/article/67-configuring-the-edit-entry-screen"
+viewCount: "25814"
+lastPublishedAt: "2023-01-14T20:53:55Z"
+changeOrigin: "hsapp-js"
+name: "Configuring the Edit Entry screen"
+slug: "67-configuring-the-edit-entry-screen"
+status: "published"
+categories: 
+  - "5e1b6d5d04286364bc93c665"
+  - "579aa5d0903360293603a8e2"
+related: 
+  - "54c67bb9e4b0512429885512"
+  - "54ff3a76e4b086c0c096c6e9"
+  - "5c91928c2c7d3a15446115f5"
+  - "5835ca67c6979106d3735ac8"
+  - "57bdf6d3903360342852cfbf"
+  - "579ac36bc6979160ca148be0"
+  - "589382b0dd8c8e73b3e94195"
+  - "58af7cf4dd8c8e56bfa7f8da"
+  - "5e4f37582c7d3a7e9ae815dd"
+  - "5e1b6c3704286364bc93c662"
+  - "54d53121e4b086c0c096592a"
+  - "55c6353ce4b01fdb81eb1ae4"
+  - "55b667b5e4b0e667e2a4452f"
+  - "54c67bbbe4b07997ea3f3f6b"
+createdBy: "59634"
+createdAt: "2015-01-26T17:39:05Z"
+updatedBy: "59634"
+updatedAt: "2023-01-14T20:53:55Z"
+title: "Configuring the Edit Entry screen"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/54c67bb9e4b0512429885513"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2023-01-14T20:53:55Z
+  author: "Zack Katz"
+---
+
+# Configuring the Edit Entry screen
+
+
+
+## Allowing Logged-In Users to Edit Their Own Entries
+
+To allow logged-in users to edit their created entries, edit your View and scroll down to the *Settings* meta box. Click on the *Edit Entry* tab on the left and check the box that says "Allow User Edit".
+
+If the box is not checked, only Administrators and users who have access to editing Gravity Forms entries in the WordPress Dashboard can see the Edit Entry links and edit the entry.
+
+
+:::note
+
+**Related**: [How does GravityView know who can edit the entry?](https://docs.gravitykit.com/article/700-how-does-gravityview-know-who-can-edit-the-entry)
+
+:::
+
+
+
+![Settings box in Edit View screen, with Allow User Edit circled.](https://i.gravitykit.com/s09rDJ+)
+
+## Configuring the Edit Entry Layout
+
+Follow the steps below to configure the Edit Entry screen and allow users to edit their entries on the front end.
+
+### 1. Go to All Views
+
+![](https://i.gravitykit.com/OFFnWU+)
+
+### 2. Click on the View you would like to Edit
+
+![](https://i.gravitykit.com/tdivjV+)
+
+### 3. If your View doesn't already have a “Link to Edit Entry” field, add one
+
+Before you can start configuring the Edit Entry screen, you need to add a link to the Edit Entry page inside of your View. You can add a link to the Edit Entry screen on the Multiple Entries page or the Single Entry page
+
+#### 3.1 To do this, click *Add Field* in the zone where you want the Edit Entry link to appear
+
+![](https://i.gravitykit.com/ljhrwt+)
+
+#### 3.2 Type to search for "Edit Entry" or scroll down to "Link to Edit Entry" and click on it
+
+![](https://i.gravitykit.com/mFknp5+)
+
+#### 3.3 You can configure link text and other settings by clicking on the gear icon
+
+![](https://i.gravitykit.com/JCu5uQ+)
+
+Okay, now that we've added a link to the Edit Entry Page, let's configure the Edit Entry layout.
+
+### 4. Click on the Edit Entry Layout tab
+
+**Note**: This step and the steps below only apply to GravityView 1.5 or higher.
+
+![Arrow pointing to the Edit Entry Layout tab](https://i.gravitykit.com/vfQRrn+)
+
+### You will see an empty configuration
+
+**When the Edit Entry Layout configuration is empty, all form fields will be displayed as editable**. If the Edit Entry tab is configured with fields, then GravityView will only show these fields on the Edit Entry page.
+
+
+:::caution
+
+**Important**! Some special rules apply to this section: [How does Edit Entry handle hidden fields and field visibility settings?](https://docs.gravitykit.com/article/678-edit-entry-hidden-fields-field-visibility), and [Conditional Logic on the Edit Entry page](https://docs.gravitykit.com/article/367-conditional-logic-on-the-edit-entry-page).
+
+:::
+
+
+
+![](https://i.gravitykit.com/A843Gg+)
+
+### 5. Click the "+ Add Field" button to add an editable field.
+
+![](https://i.gravitykit.com/kxsjHK+)
+
+### 6. Click on different fields to add them to the configuration
+
+![](https://i.gravitykit.com/G7JmlW+)
+
+#### In this example, we have added four fields
+
+![](https://i.gravitykit.com/eEYzdg+)
+
+#### You can drag and drop the fields in the order you desire
+
+![](https://i.gravitykit.com/Q2VWmd+)
+
+### 7. Limit field editing capabilities
+
+If you want to limit field editing capabilities for individual fields, click on the gear icon and choose an option from the "Make field editable to" dropdown.
+
+![](https://i.gravitykit.com/cV56cQ+)
+
+![](https://i.gravitykit.com/8zW78f+)
+
+For example, select Administrator to restrict editing to Administrators only.
+
+This is helpful if you have "Allow User Edit" enabled but you don't want to allow the editing of a field by the user who created the entry. In this example, Administrators will still be able to edit the field in the Edit Entry screen.
+
+### 8. Update the View
+
+That's it! Now that everything is configured update your View.
+
+![](https://i.gravitykit.com/ZlEEMK+)
+
+### Open your view on the front end to test the Edit Entry configuration
+
+Let's take a look at the Edit Entry functionality.
+
+![](https://i.gravitykit.com/9PaM1O+)
+
+### What administrators see
+
+All the fields are visible in this screenshot because we're logged in as administrators.
+
+![](https://i.gravitykit.com/r7Zkfg+)
+
+### What the Entry Creator sees
+
+The Entry Creator won't see any of the fields that are limited to Administrators only (Step 7). In this example, the Hotel Name is not visible.
+
+![](https://i.gravitykit.com/3SQugh+)
+

@@ -1,0 +1,57 @@
+---
+id: "5ecc03af042863474d1b52bf"
+number: "718"
+collectionId: "54d1a05ce4b086c0c0964ccd"
+popularity: "0.1"
+publicUrl: "https://docs.gravitykit.com/article/718-version-2-2"
+viewCount: "641"
+lastPublishedAt: "2022-12-27T21:05:28Z"
+changeOrigin: "external"
+name: "DIY Version 2.2 changes to HTML output"
+slug: "718-version-2-2"
+status: "published"
+categories: 
+  - "5a555f842c7d3a1943680073"
+createdBy: "59634"
+createdAt: "2020-05-25T17:43:11Z"
+updatedBy: "59634"
+updatedAt: "2022-12-27T21:05:28Z"
+title: "DIY Version 2.2 changes to HTML output"
+hsEditUrl: "https://secure.helpscout.net/docs/54d1a05ce4b086c0c0964ccd/article/5ecc03af042863474d1b52bf"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-12-27T21:05:28Z
+  author: "Zack Katz"
+---
+
+# DIY Version 2.2 changes to HTML output
+
+Before 2.2, the "Before Output" and "After Output" content would not be displayed consistently: the *Before Output* value would display inside the Container Tag, and the *After Output* would display outside the container tag.
+
+Version 2.2 fixes that discrepancy.
+
+![A screenshot of GravityView field settings where there are HR tags in Above Content and Below Content textareas, and the Container Tag is set to DIV.](https://i.gravitykit.com/dTabmx+)
+
+### Before 2.2:
+
+```html
+
+<div id="gv_diy_9209" class="gv-diy-view">
+   <div class="gv-field-1-1">
+   <hr>Dan Dan
+   
+    <hr>
+</div>
+```
+
+### After 2.2:
+
+```html
+
+<div id="gv_diy_9209" class="gv-diy-view">
+  <hr>
+      <div class="gv-field-1-1">Dan Dan
+   <hr>
+</div>
+```

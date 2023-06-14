@@ -1,0 +1,37 @@
+---
+id: "61bfdef1f6f9273f6aaa4b16"
+number: "818"
+collectionId: "566dfabbc6979143615564bf"
+publicUrl: "https://docs.gravitykit.com/article/818-search-bar-why-is-the-state-input-is-showing-as-a-text-field"
+viewCount: "83"
+lastPublishedAt: "2022-10-12T22:02:09Z"
+changeOrigin: "unknown"
+name: "Search Bar: Why is the state input is showing as a text field?"
+slug: "818-search-bar-why-is-the-state-input-is-showing-as-a-text-field"
+status: "published"
+categories: 
+  - "566dff159033603f7da27def"
+createdBy: "59634"
+createdAt: "2021-12-20T01:40:01Z"
+updatedBy: "80506"
+updatedAt: "2022-10-12T22:02:09Z"
+title: "Search Bar: Why is the state input is showing as a text field?"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/61bfdef1f6f9273f6aaa4b16"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-12T22:02:09Z
+  author: "Rafael Ehlers"
+---
+
+# Search Bar: Why is the state input is showing as a text field?
+
+[![Search Bar configuration for the State/Province field](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/61bfe21455ad1a761aa61a23/file-IXz7pVIngX.png)](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/61bfe21455ad1a761aa61a23/file-IXz7pVIngX.png)
+
+The Search Bar allows you to define what type of search fields are displayed per form input. If your Address Type is United States or Canadian (see the image below), your defined Search Bar setting will be used. There is an exception, however:
+
+**When an Address field in Gravity Forms has the "Address Type" setting of "International", GravityView will always display a text input on the front end to search the "State/Province" input.**
+
+To get around this, you may use the [Gravity Forms gform\_address\_types filter to add more country values](https://docs.gravityforms.com/gform_address_types/). This will allow the front-end search input type to be displayed correctly because Gravity Forms will provide a list of states to populate.
+
+[![The 'Address Type' setting in an Address field inside the Gravity Forms form editor](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/61bfe23967de684e3e4379b9/file-UQtjlMdGPK.png)](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/61bfe23967de684e3e4379b9/file-UQtjlMdGPK.png)

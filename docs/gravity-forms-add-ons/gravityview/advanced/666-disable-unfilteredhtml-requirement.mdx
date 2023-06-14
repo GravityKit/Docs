@@ -1,0 +1,38 @@
+---
+id: "5e179ef72c7d3a7e9ae601e8"
+number: "666"
+collectionId: "566dfabbc6979143615564bf"
+publicUrl: "https://docs.gravitykit.com/article/666-disable-unfilteredhtml-requirement"
+viewCount: "180"
+lastPublishedAt: "2022-10-07T20:14:41Z"
+changeOrigin: "unknown"
+name: "Disable the unfiltered_html capability requirement in GravityView"
+slug: "666-disable-unfilteredhtml-requirement"
+status: "published"
+categories: 
+  - "579aa642c6979160ca148ba9"
+related: 
+  - "5d2cc0eb042863478674e9e8"
+  - "5d2f2a4c2c7d3a2ec4befbfd"
+createdBy: "59634"
+createdAt: "2020-01-09T21:45:27Z"
+updatedBy: "80506"
+updatedAt: "2022-10-07T20:14:41Z"
+title: "Disable the unfiltered_html capability requirement in GravityView"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5e179ef72c7d3a7e9ae601e8"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-07T20:14:41Z
+  author: "Rafael Ehlers"
+---
+
+# Disable the unfiltered_html capability requirement in GravityView
+
+GravityView requires users to have the `unfiltered_html` and `gravityforms_create_form` capabilities in order to edit a View. The HTML capability is needed because GravityView allows users to add HTML that is output on the front of a site. That ability can be abused to embed malicious scripts on the site.
+
+If you want to disable this requirement, we recommend [modifying a role or cloning a role and adding that capability](https://docs.gravitykit.com/article/598-non-administrator-edit-view). You can do so by adding this code to your site ([not sure where to add the code?](https://docs.gravitykit.com/article/210-where-to-put-code-samples)):
+
+```php
+add_filter( 'gravityview/security/require_unfiltered_html', '__return_false' );
+```

@@ -1,0 +1,50 @@
+---
+id: "62c72eeed242501d78c623d9"
+number: "850"
+collectionId: "6076f9478996210f18bd33df"
+publicUrl: "https://docs.gravitykit.com/article/850-gravitycharts-shortcode"
+viewCount: "165"
+lastPublishedAt: "2022-08-15T23:34:02Z"
+changeOrigin: "unknown"
+name: "The [gravitycharts] Shortcode"
+slug: "850-gravitycharts-shortcode"
+status: "published"
+categories: 
+  - "6261683a93a48c44483342eb"
+keywords: 
+  - "shortcode"
+  - "embed"
+  - "charts"
+createdBy: "59634"
+createdAt: "2022-07-07T19:07:26Z"
+updatedBy: "80506"
+updatedAt: "2022-08-15T23:34:02Z"
+title: "The [gravitycharts] Shortcode"
+hsEditUrl: "https://secure.helpscout.net/docs/6076f9478996210f18bd33df/article/62c72eeed242501d78c623d9"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-08-15T23:34:02Z
+  author: "Rafael Ehlers"
+---
+
+# The [gravitycharts] Shortcode
+
+The `[gravitycharts]` shortcode enables embedding a GravityCharts chart into post or page content.
+
+The following parameters are available:
+
+| Name | Description | Required? |
+|---|---|---|
+| `id` | The ID of the chart feed to embed. | **Required** |
+| `height` | Define a maximum height (CSS `max-height` property) for the chart in pixels. | Optional |
+| `width` | Define a maximum width (CSS `max-width` property) for the chart in pixels. | Optional |
+| `embed_type` | To embed an [image of the chart](https://docs.gravitykit.com/article/854-image-charts), set it to "image". | Optional |
+
+### Example
+
+This shortcode would embed chart #5 and have a maximum width of 400px: `[gravitycharts id="5" width="400"]`.
+
+This shortcode would embed an **image** of chart #5 and have a width of 400px:
+
+`[gravitycharts id="5" width="400" embed_type="image"]`.

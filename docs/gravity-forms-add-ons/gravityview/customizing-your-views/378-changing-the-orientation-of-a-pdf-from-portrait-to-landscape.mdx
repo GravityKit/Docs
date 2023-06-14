@@ -1,0 +1,56 @@
+---
+id: "57d302809033602da7bdcb7f"
+number: "378"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.3"
+publicUrl: "https://docs.gravitykit.com/article/378-changing-the-orientation-of-a-pdf-from-portrait-to-landscape"
+viewCount: "1796"
+lastPublishedAt: "2022-10-07T22:03:38Z"
+changeOrigin: "unknown"
+name: "Changing the orientation of a PDF from portrait to landscape"
+slug: "378-changing-the-orientation-of-a-pdf-from-portrait-to-landscape"
+status: "published"
+categories: 
+  - "579aa76f903360293603a8e7"
+keywords: 
+  - "pdf"
+  - "orientation"
+  - "portrait"
+  - "landscape"
+  - "datatables"
+related: 
+  - "57a4c2fec69791078324225a"
+createdBy: "80506"
+createdAt: "2016-09-09T18:42:08Z"
+updatedBy: "80506"
+updatedAt: "2022-10-07T22:03:38Z"
+title: "Changing the orientation of a PDF from portrait to landscape"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/57d302809033602da7bdcb7f"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-07T22:03:38Z
+  author: "Rafael Ehlers"
+---
+
+# Changing the orientation of a PDF from portrait to landscape
+
+If you are using the DataTables View layout, you export your visible entries to a PDF, however, this PDF is formatted in portrait mode.
+
+If your View has lots of columns, this portrait mode can't quite accommodate all the information available, therefore we need to change its orientation to landscape.
+
+Here's how:
+
+```
+add_filter('gravityview/datatables/button_pdf','gravityview_landscape_pdf', 10 ,2);
+function gravityview_landscape_pdf( $button_config = array(), $view_id){
+	if( $view_id == 19 ) {
+		$button_config['orientation'] = 'landscape';	
+	}
+	return $button_config;
+}
+```
+
+Make sure to replace " **19**" to your specific View ID, this way, only that View will have the PDF in portrait mode.
+
+Learn where to add this code sample: [Where do I add the code samples you share?](https://docs.gravitykit.com/article/210-where-to-put-code-samples)

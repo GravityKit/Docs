@@ -1,0 +1,95 @@
+---
+id: "63f608a652af714471a162d5"
+number: "915"
+collectionId: "566dfabbc6979143615564bf"
+publicUrl: "https://docs.gravitykit.com/article/915-embedding-views-entries-and-fields-using-blocks"
+viewCount: "3"
+lastPublishedAt: "2023-02-22T20:21:21Z"
+changeOrigin: "hsapp-js"
+name: "Embedding Views, entries and fields using blocks"
+slug: "915-embedding-views-entries-and-fields-using-blocks"
+status: "published"
+categories: 
+  - "579aa5d0903360293603a8e2"
+related: 
+  - "5c070a572c7d3a31944eb9d6"
+createdBy: "543004"
+createdAt: "2023-02-22T12:20:54Z"
+updatedBy: "80506"
+updatedAt: "2023-02-22T20:21:21Z"
+title: "Embedding Views, entries and fields using blocks"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/63f608a652af714471a162d5"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2023-02-22T20:21:21Z
+  author: "Rafael Ehlers"
+---
+
+# Embedding Views, entries and fields using blocks
+
+
+:::caution
+
+Blocks were added in [GravityView 2.17](https://www.gravitykit.com/release-gravityview-2-1-7/) and will only work with WordPress 6.0 or later.
+
+:::
+
+
+
+GravityView integrates with the WordPress block editor ("Gutenberg"), allowing you to add Views, entries, fields, and more to your pages and posts using blocks.
+
+## Blocks added by GravityView
+
+After installing GravityView, you'll find **5 new blocks** available in the WordPress editor. Here's a brief overview of each one.![5 GravityView blocks available in the WordPress block editor](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/63f60642c490cd5d5b96a169/file-DbMrMbvuyS.png)
+
+1. **GravityView View**: Embed an existing View. Performs the same functionality as the `[gravityview]` shortcode.
+2. **GravityView Entry**: Display a specific entry from an existing View. Performs the same functionality as the `[gventry]` shortcode.
+3. **GravityView Entry Field**: Display a specific field value from an entry in a View. Performs the same functionality as the `[gvfield]` shortcode.
+4. **GravityView Entry Link**: Display a link to view, edit or delete a specific entry. Performs the same functionality as the `[gv_entry_link]` shortcode.
+5. **GravityView View Details**: Display information about a View, such as the number of entries, the page size, and
+
+## Embedding Views using a block
+
+To embed a View, select the "GravityView View" block. After adding it to your page, select the View you want to embed from the dropdown menu.
+
+![The GravityView 'View' block with a dropdown field to select the View you want to embed](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/63f60a290064af3c7159e137/file-7PRH8jMxVi.png)
+
+If you want to preview your View inside the editor, simply toggle the "Preview" option.
+
+![A preview of a View inside the WordPress editor](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/63f60cc6188a9d242a7d5bb0/file-78i7ZCeYGd.png)In the panel on the right, you'll find several options for customizing your embedded View. Under "Entries Settings" you can set a date range for entries; under "Extra Settings" you can adjust the sort field and sort direction, add a CSS class, change the Single Entry title text, and more. Anything that you can do using the [shortcode](https://docs.gravitykit.com/article/73-using-the-shortcode), you can do using the block as well!
+
+
+:::info
+
+**Note**: When previewed, Views styled using custom CSS or Views using Maps or DataTables, may not render exactly as they would on the front end.
+
+:::
+
+ ## Embedding entries using a block
+
+To embed a single entry, add the "GravityView Entry" block to your page. After that, select the View and the entry ID of the specific entry you want to embed. ![The GravityView Entry block](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/63f612e43c396c395ec0ed21/file-Qk7Blr1FX5.png)
+
+To find the entry ID, locate the entry in Gravity Forms and click "View". You'll see the entry ID on the right-hand side. You can also add the Entry ID as a field in GravityView.
+
+![The Entry ID for a specific entry in Gravity Forms](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/63f615f5c490cd5d5b96a183/file-LolNDV9XPW.png)
+
+## Embedding fields using a block
+
+To embed a single field using a block, add the "GravityView Field" block to your page and specify the View, entry ID and field ID.
+
+![Inputs for the View, Entry ID and Field ID for the GravityView Field block](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/63f618c0b7da6b15a7ea19cd/file-KGnIxkau2s.png)
+
+To find the ID for a field in Gravity Forms, open your form in the editor and click on the field to open the field settings. You'll see the field ID on the right-hand side.
+
+![The field ID for a field in Gravity Forms](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/63f619e0c490cd5d5b96a18a/file-erCoFeElJ1.png)
+
+## The "Preview As Shortcode" option for GravityView blocks
+
+For each GravityView block you configure, you have the option to preview it as a shortcode (you'll find this option under the "Advanced" tab in the block settings).
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/63f6245e0064af3c7159e15f/file-tU93q9f1up.png)
+
+When this option is enabled, the visual preview will be replaced by the equivalent shortcode (any custom options you've configured in the block will reflect in the shortcode). This gives you a handy way to troubleshoot any issues with the preview. You can also copy this shortcode and use it elsewhere on your site.
+
+![The GravityView block 'Preview As Shortcode' option](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/63f62606c490cd5d5b96a1a6/file-KOtTQwPAsF.png)

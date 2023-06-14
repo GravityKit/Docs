@@ -1,0 +1,107 @@
+---
+id: "6064c824d5e2bc1ca8d78684"
+number: "761"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.1"
+publicUrl: "https://docs.gravitykit.com/article/761-modify-fancybox-lightbox-settings"
+viewCount: "592"
+lastPublishedAt: "2021-03-31T19:15:58Z"
+changeOrigin: "unknown"
+name: "How to modify fancybox lightbox settings"
+slug: "761-modify-fancybox-lightbox-settings"
+status: "published"
+categories: 
+  - "579aa642c6979160ca148ba9"
+createdBy: "59634"
+createdAt: "2021-03-31T19:06:12Z"
+updatedBy: "59634"
+updatedAt: "2021-03-31T19:15:58Z"
+title: "How to modify fancybox lightbox settings"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/6064c824d5e2bc1ca8d78684"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2021-03-31T19:15:58Z
+  author: "Zack Katz"
+---
+
+# How to modify fancybox lightbox settings
+
+
+:::info
+
+GravityView added fancybox lightbox support in 2.10
+
+:::
+
+
+
+You can use the filter to override default GravityView fancybox settings. [See a list of all the options available for fancybox](http://fancyapps.com/fancybox/3/docs/#options). All the settings are possible to override using the `gravityview/lightbox/provider/fancybox/settings` filter.
+
+## `gravityview/lightbox/provider/fancybox/settings` filter examples
+
+### Disable the fancybox toolbar
+
+```php
+/**
+* Disables the fancybox toolbar
+* @see https://fancyapps.com/fancybox/3/docs/#options
+* @param array $settings Array of fancybox settings
+* @return array $settings
+*/
+add_filter( 'gravityview/lightbox/provider/fancybox/settings', function ( $settings ) {
+	$settings['toolbar'] = false;
+	return $settings;
+});
+```
+
+### Remove the thumbnails button from fancybox
+
+```php
+/**
+* Removes the Thumbnails button from fancybox
+* @see https://fancyapps.com/fancybox/3/docs/#options
+* @param array $settings Array of fancybox settings
+* @return array $settings
+*/
+add_filter( 'gravityview/lightbox/provider/fancybox/settings', function ( $settings ) {
+	$settings['buttons'] = array( 'close' );
+	return $settings;
+});
+```
+
+### Change the animation effect from "fade" to "zoom-in-out"
+
+```php
+/**
+* Changes animationEffect fancybox setting from "fade" default to "zoom-in-out"
+* @see https://fancyapps.com/fancybox/3/docs/#options
+* @param array $settings Array of fancybox settings
+* @return array $settings
+*/
+add_filter( 'gravityview/lightbox/provider/fancybox/settings', function ( $settings ) {
+	$settings['animationEffect'] = 'zoom-in-out';
+	return $settings;
+});
+```
+
+### Combine multiple changes at once.
+
+In the previous examples, only one change was being made at a time. You can modify many settings at once.
+
+```php
+/**
+* Modify multiple fancybox settings at once!
+* @see https://fancyapps.com/fancybox/3/docs/#options
+* @param array $settings Array of fancybox settings
+* @return array $settings
+*/
+add_filter( 'gravityview/lightbox/provider/fancybox/settings', function ( $settings ) {
+	
+	$settings['toolbar'] = false;
+	$settings['animationEffect'] = 'zoom-in-out';
+	$settings['buttons'] = array( 'close' );
+
+	return $settings;
+});
+```

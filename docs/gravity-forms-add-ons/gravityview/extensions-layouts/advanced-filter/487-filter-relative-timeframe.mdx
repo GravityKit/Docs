@@ -1,0 +1,87 @@
+---
+id: "5b9bf3022c7d3a03f89ec79d"
+number: "487"
+collectionId: "54d1a05ce4b086c0c0964ccd"
+popularity: "0.4"
+publicUrl: "https://docs.gravitykit.com/article/487-filter-relative-timeframe"
+viewCount: "3901"
+lastPublishedAt: "2022-10-13T22:44:01Z"
+changeOrigin: "unknown"
+name: "How to show only entries from the current day, week, month, or year"
+slug: "487-filter-relative-timeframe"
+status: "published"
+categories: 
+  - "54d1a064e4b086c0c0964ccf"
+createdBy: "59634"
+createdAt: "2018-09-14T17:42:26Z"
+updatedBy: "80506"
+updatedAt: "2022-10-13T22:44:01Z"
+title: "How to show only entries from the current day, week, month, or year"
+hsEditUrl: "https://secure.helpscout.net/docs/54d1a05ce4b086c0c0964ccd/article/5b9bf3022c7d3a03f89ec79d"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-13T22:44:01Z
+  author: "Rafael Ehlers"
+---
+
+# How to show only entries from the current day, week, month, or year
+
+
+:::info
+
+💡 New on Gravity Guide: an Advanced Filter extension course with step-by-step instructions and videos. [Check it out ➡](https://gravity.guide/course/using-gravityview-advanced-filter-to-easily-display-subsets-of-your-view/)
+
+:::
+
+
+
+The [Advanced Filtering](https://www.gravitykit.com/extensions/advanced-filter/) extension allows you to filter using date ranges. To modify your filters: edit your View, scroll to the Settings Panel and click on the Filter &amp; Sort tab.
+
+### Show only Gravity Forms entries submitted this month
+
+Thanks to the wonders of [PHP relative dates](http://php.net/manual/en/datetime.formats.relative.php), we can create filters that show entries only from this month like this:
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/609efb49bbbb0e786d30bbb6/file-IWCdr4q18a.png)  
+To show entries from the current month, we do a few mental gymnastics: instead of saying "show entries from this month," we tell Advanced Filtering to show entries that come *between* last month and next month. The filters shown are configured to show entries that are after ("is after") last month and before ("is before") next month.
+
+#### To show only entries submitted this week
+
+To show entries from last week, set Entry Date filters to:
+
+- "is after", value: "Sunday last week"
+- "is before", value: "monday next week"
+
+#### To show only entries submitted today
+
+To show entries from today, set Entry Date filters to:
+
+- "is after", value: "yesterday"
+- "is before", value: "tomorrow"
+
+#### Show only entries from last month
+
+To show entries from last month, you'll need two add an additional OR clause with the "is on" operator:
+
+- "is after", value: "first day of last month" OR "is on", value: "first day of last month".
+- AND
+- "is before", value: "last day of last month" OR "is on", value: "last day of last month".
+
+### ![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/609ef98939590458eb88b0a2/file-TXVZ6fy4CJ.png)
+
+#### This relative date technique will work for any Gravity Forms date field
+
+You can use this approach with any [Date field](https://docs.gravityforms.com/date/), allowing you to show the following:
+
+- **Deadlines** that are approaching
+- **Fulfillment dates** happening this week use (greater than "last Sunday" and less than "next Monday")
+- **Entries** created today (greater than "yesterday" and less than "tomorrow")
+
+
+:::info
+
+You can use this website to test your relative dates: [http://docs.wp-event-organiser.com/querying-events/relative-date-formats/](http://docs.wp-event-organiser.com/querying-events/relative-date-formats/)
+
+:::
+
+ 

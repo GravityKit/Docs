@@ -1,0 +1,73 @@
+---
+id: "6030519b8502d1120e909766"
+number: "750"
+collectionId: "6076f9478996210f18bd33df"
+popularity: "0.1"
+publicUrl: "https://docs.gravitykit.com/article/750-how-to-add-field-calculations-to-the-table-footer"
+viewCount: "974"
+lastPublishedAt: "2022-12-14T21:24:23Z"
+changeOrigin: "hsapp-js"
+name: "How to add field calculations to the table footer"
+slug: "750-how-to-add-field-calculations-to-the-table-footer"
+status: "published"
+categories: 
+  - "6155b0bf2b380503dfdf63f0"
+createdBy: "80506"
+createdAt: "2021-02-20T00:02:35Z"
+updatedBy: "80506"
+updatedAt: "2022-12-14T21:24:23Z"
+title: "How to add field calculations to the table footer"
+hsEditUrl: "https://secure.helpscout.net/docs/6076f9478996210f18bd33df/article/6030519b8502d1120e909766"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-12-14T21:24:23Z
+  author: "Rafael Ehlers"
+---
+
+# How to add field calculations to the table footer
+
+
+:::info
+
+This functionality requires the [GravityMath](https://www.gravitykit.com/extensions/math/) plugin version 2.0 to be installed and activated on your website.
+
+:::
+
+
+
+Introducing in version 2.0 of GravityMath, there's a new functionality that allows our users to easily perform calculations (Lowest, Highest, Average, Sum, and others) to an entire column of the View without having to write the `[gravitymath]` shortcode.
+
+We will be starting with a very basic form and View containing only two types of fields: a Single Line Text and a Number field.
+
+![A simple View with two columns, one is Name and the other is Age](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/603052f80a2dae5b58fb1bde/file-7rsOdCDGVH.png)
+
+Now, let's calculate the Lowest age in that View.
+
+1) On the View editor, click the cog icon to access the Age field modal screen:
+
+![Screenshot of the View editor showing the Entries Fields section with two fields added: Name and Age](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/603054270a2dae5b58fb1be4/file-ZsNEL3D2yo.png)
+
+2) Once the field configuration modal appears, click on the option "Add field calculations to the table footer?":
+
+![Screenshot of field modal configuration showing the new option "Add field calculations to the table footer?"](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/603054aeb3ebfb109b584510/file-0Z7euCIJuU.png)
+
+3) That checkbox, once clicked, shows three additional options:
+
+![Screenshot of the "Add field calculations..." setting in the field modal screen](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/6030556924d2d21e45ed8649/file-ShblnPaY3L.png)
+
+3.1) "Label" allows us to write a custom text to show up on the table footer. Let's try "The youngest age is:"
+
+![Screenshot of the "Add field calculations..." setting highlighting the Label input](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/603055f5b3ebfb109b584512/file-uZWPlo3QuC.png)3.2) "Calculation Source" defines where the data will come from.
+
+3.3) "Calculation Type" allows us to select which calculation we are going to perform with the values of that field (column).
+
+Here's the final output in our View:
+
+![Screenshot of the View with two columns Name and Age and showing an additional row for the Age column with the youngest age shown](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/60305674b3ebfb109b584514/file-VHPKoYOCVn.png)
+
+We can also perform other calculations, like a sum of all ages:
+
+![Screenshot of the "Add field calculations..." setting highlight the Calculation Type dropdown](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/603059f60a2dae5b58fb1beb/file-cogUxvPxro.png)
+
+![Screenshot of the View with two columns Name and Age and displaying a new row under the Age column with the sum of the total ages combined](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/60305922b3ebfb109b58451c/file-lqV4DXUBWa.png)

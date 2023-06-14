@@ -1,0 +1,79 @@
+---
+id: "582248c5c697916f5d04da6d"
+number: "389"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.3"
+publicUrl: "https://docs.gravitykit.com/article/389-approvalstatus-merge-tag"
+viewCount: "1706"
+lastPublishedAt: "2022-10-12T21:35:55Z"
+changeOrigin: "unknown"
+name: "The {approval_status} Merge Tag"
+slug: "389-approvalstatus-merge-tag"
+status: "published"
+categories: 
+  - "582140d9c697914aa8381617"
+  - "566dfe9bc6979143615564df"
+related: 
+  - "54c67bc3e4b07997ea3f3f78"
+createdBy: "59634"
+createdAt: "2016-11-08T21:51:01Z"
+updatedBy: "80506"
+updatedAt: "2022-10-12T21:35:55Z"
+title: "The {approval_status} Merge Tag"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/582248c5c697916f5d04da6d"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-12T21:35:55Z
+  author: "Rafael Ehlers"
+---
+
+# The {approval_status} Merge Tag
+
+In GravityView, entries have three approval options:
+
+1. "Approved": The entry has been approved
+2. "Disapproved": The entry has not been approved
+3. "Unapproved": The entry has not yet been reviewed
+
+You can display the status using the `{approval_status}` Merge Tag (added in GravityView 1.18). It will, by default, display the label of the approval status.
+
+
+:::note
+
+What does "disapproved" mean? It means the entry is rejected. The word "reject*"* sounds harsh, so we use "disapprove" instead. Words have meaning!
+
+:::
+
+ ##  Using the `{approval_status}` Merge Tag in a Custom Content field.
+
+###  Approved entry:
+
+`{approval_status:label}` outputs "Approved"  
+`{approval_status:value}` outputs "1"
+
+### Disapproved entry:
+
+`{approval_status:label}` outputs "Disapproved"  
+`{approval_status:value}` outputs "2"
+
+### Unapproved entry (not yet reviewed):
+
+`{approval_status:label}` outputs "Unapproved"  
+`{approval_status:value}` outputs "3"
+
+## Using the Merge Tag with the [`[gvlogic]`](/article/252-gvlogic-shortcode) shortcode
+
+If you would like to show content based on the approval status, you can.
+
+```html
+[gvlogic if="{approval_status:value}" is="1"] 
+This entry has been approved by the mission commander! 
+[/gvlogic]
+
+[gvlogic if="{approval_status:value}" is="3"] 
+This entry has not been moderated. Ping headquarters!
+[/gvlogic]
+```
+
+Note: The `{approval_status}` Merge Tag will not work in a Custom Content widget.

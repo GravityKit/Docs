@@ -1,0 +1,58 @@
+---
+id: "54c67bbbe4b0512429885520"
+number: "79"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "1"
+publicUrl: "https://docs.gravitykit.com/article/79-using-relative-start-dates-and-end-dates"
+viewCount: "5049"
+lastPublishedAt: "2022-12-27T21:05:38Z"
+changeOrigin: "external"
+name: "Using relative Start Dates and End Dates"
+slug: "79-using-relative-start-dates-and-end-dates"
+status: "published"
+categories: 
+  - "566dfec2c6979143615564e3"
+keywords: 
+  - "tomorrow"
+  - "yesterday"
+  - "relative dates"
+  - "last month"
+  - "last year"
+  - "past 12 months"
+createdBy: "59634"
+updatedBy: "59634"
+updatedAt: "2022-12-27T21:05:38Z"
+title: "Using relative Start Dates and End Dates"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/54c67bbbe4b0512429885520"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-12-27T21:05:38Z
+  author: "Zack Katz"
+---
+
+# Using relative Start Dates and End Dates
+
+The "Start Date" and "End Date" View settings filter entries based on the date the entries were created. The fields allow you to enter relative times. The values for relative times need to be compatible with the [strtotime() PHP function](http://www.php.net//manual/en/function.strtotime.php). Here's a list of the [Relative Formats](http://nl1.php.net/manual/en/datetime.formats.relative.php) supported.
+
+Here are some examples:
+
+- `now` - Return the current time
+- `today` - Return the current day
+- `+1 day` - one day from now
+- `-1 day` - one day ago
+- `-4 day` - four days ago
+- `-1 week` - one week ago
+- `-2 months` - two months ago
+
+This allows you to show entries that are within a certain window of time, relative to when the user visits the View!
+
+### Where to find the Start Date and End Date settings
+
+When editing a View, scroll down to find the Settings box. Click on the tab labeled "Filter &amp; Sort". There you will see two settings: "Filter by Start Date" and "Filter by End Date". Those settings allow you to use the relative dates as described in this article.
+
+![Screenshot of the Start Date and End Date settings](https://i.gravitykit.com/ZtfaV4+)
+
+### Filtering by date fields, rather than the date the entry was created
+
+If you want to filter entries based on the value of a Date field, check out [How to show only entries from the current day, week, month, or year](https://docs.gravitykit.com/article/487-filter-relative-timeframe).

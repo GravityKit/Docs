@@ -1,0 +1,56 @@
+---
+id: "5a261aa12c7d3a1a640c95b7"
+number: "431"
+collectionId: "6076f9478996210f18bd33df"
+popularity: "0.2"
+publicUrl: "https://docs.gravitykit.com/article/431-can-i-use-gvmath-with-gvlogic"
+viewCount: "1735"
+lastPublishedAt: "2022-12-14T18:25:13Z"
+changeOrigin: "hsapp-js"
+name: "Can I use [gravitymath] with [gvlogic]?"
+slug: "431-can-i-use-gvmath-with-gvlogic"
+status: "published"
+categories: 
+  - "6155b0bf2b380503dfdf63f0"
+createdBy: "59634"
+createdAt: "2017-12-05T04:03:45Z"
+updatedBy: "80506"
+updatedAt: "2022-12-14T18:25:13Z"
+title: "Can I use [gravitymath] with [gvlogic]?"
+hsEditUrl: "https://secure.helpscout.net/docs/6076f9478996210f18bd33df/article/5a261aa12c7d3a1a640c95b7"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-12-14T18:25:13Z
+  author: "Rafael Ehlers"
+---
+
+# Can I use [gravitymath] with [gvlogic]?
+
+The answer to the question "Can I use \[gravitymath\] with \[gvlogic\]?" is: it depends on what you mean.
+
+### If you want to place \[gravitymath\] shortcodes inside \[gvlogic\] shortcodes, you can.
+
+This code:
+
+```
+[gvlogic if="1" is="100"] <br>
+ One plus two equals: [gravitymath] 1 + 2 [/gravitymath] <br>
+[else]
+ One hundred and twenty times two equals: [gravitymath] 120 * 2 [/gravitymath] 
+[/gvlogic]
+```
+
+Will output as:
+
+> One plus two equals: 3
+
+### If you meant "Can I use \[gv\_math\] output as parameters for my \[gvlogic\] shortcode?", the answer is no.
+
+This won't work:
+
+```
+[gvlogic if="3" is="[gravitymath] 1 + 2 [/gravitymath]"] His logic is sound. [/gvlogic]
+```
+
+The reason is a recent change to WordPress itself. Because of a security issue, WordPress made a change so that you are not able to use another shortcode to call a shortcode. Because of this, the `[gvlogic]` shortcode no longer supports passing the output of the `[gravitymath]` shortcode inside it.

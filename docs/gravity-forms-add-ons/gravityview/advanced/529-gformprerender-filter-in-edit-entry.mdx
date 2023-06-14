@@ -1,0 +1,49 @@
+---
+id: "5c132e1a2c7d3a31944f1d5c"
+number: "529"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.2"
+publicUrl: "https://docs.gravitykit.com/article/529-gformprerender-filter-in-edit-entry"
+viewCount: "1216"
+lastPublishedAt: "2020-01-12T19:07:33Z"
+changeOrigin: "unknown"
+name: "How to use the gform_pre_render filter in Edit Entry"
+slug: "529-gformprerender-filter-in-edit-entry"
+status: "published"
+categories: 
+  - "579aa642c6979160ca148ba9"
+  - "5e1b6d5d04286364bc93c665"
+createdBy: "59634"
+createdAt: "2018-12-14T04:14:18Z"
+updatedBy: "59634"
+updatedAt: "2020-05-22T08:45:57Z"
+title: "How to use the gform_pre_render filter in Edit Entry"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5c132e1a2c7d3a31944f1d5c"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2020-05-22T08:45:57Z
+  author: "Zack Katz"
+---
+
+# How to use the gform_pre_render filter in Edit Entry
+
+You can modify how Gravity Forms fields are rendered in the Edit Entry form, just like you do in Gravity Forms.
+
+The important thing is to set the priority to a number higher than 5000.
+
+Instead of:
+
+```
+
+add_filter( 'gform_pre_render_12', 'my_custom_function_to_populate_fields' );
+```
+
+Use this instead:
+
+```
+
+add_filter( 'gform_pre_render_12', 'my_custom_function_to_populate_fields', 5001 );
+```
+
+That will do it!

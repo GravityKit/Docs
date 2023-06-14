@@ -1,0 +1,56 @@
+---
+id: "5b140f910428632c466a77ce"
+number: "466"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.7"
+publicUrl: "https://docs.gravitykit.com/article/466-save-and-continue-partial-entries"
+viewCount: "3888"
+lastPublishedAt: "2023-01-02T17:47:00Z"
+changeOrigin: "hsapp-js"
+name: "Displaying incomplete or partial entries"
+slug: "466-save-and-continue-partial-entries"
+status: "published"
+categories: 
+  - "579aa748903360293603a8e5"
+keywords: 
+  - "partial entries"
+  - "save and continue"
+  - "partial"
+  - "complete"
+  - "completed"
+  - "completion"
+related: 
+  - "5571da2fe4b027e1978e5813"
+  - "5c91926f2c7d3a15446115f2"
+createdBy: "59634"
+createdAt: "2018-06-03T15:56:01Z"
+updatedBy: "59634"
+updatedAt: "2023-01-02T17:47:00Z"
+title: "Displaying incomplete or partial entries"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5b140f910428632c466a77ce"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2023-01-02T17:47:00Z
+  author: "Zack Katz"
+---
+
+# Displaying incomplete or partial entries
+
+GravityView **does not** support displaying form submissions that have been saved using Gravity Forms' built-in "Save and Continue" functionality.
+
+GravityView ***does*** support displaying partial entries created using the [Gravity Forms Partial Entries Add-On](https://www.gravityforms.com/add-ons/partial-entries/). You can also filter by the completion status with our [Advanced Filtering](https://www.gravitykit.com/extensions/advanced-filter/) extension.
+
+### Why does GravityView support Partial Entries but not Save and Continue?
+
+The Partial Entries Add-On stores its data the same way as standard Gravity Forms entries, making the entries and the values available to GravityView.
+
+"Save and Continue" form values are stored differently by Gravity Forms (a different database table and structure), so we don't have access to them. The values are stored differently as well; even if we did add access to those "Save and Continue" submissions, they wouldn't be properly searchable.
+
+### How to display "incomplete" entries only
+
+You'll need to use the [Advanced Filter extension](https://www.gravitykit.com/extensions/advanced-filter/) for that. Then it's just a matter of going to the View Settings panel (inside the View editor page) and set that up:
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5b1eef510428632c466ac50c/file-eiQeYB71RX.png)
+
+With the filters, you can specify if the "Progress" - is - "Complete" or - is not - "Complete.

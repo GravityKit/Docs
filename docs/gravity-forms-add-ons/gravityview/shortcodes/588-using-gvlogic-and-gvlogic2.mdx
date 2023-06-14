@@ -1,0 +1,75 @@
+---
+id: "5d0cfbb404286305cb878aaa"
+number: "588"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.3"
+publicUrl: "https://docs.gravitykit.com/article/588-using-gvlogic-and-gvlogic2"
+viewCount: "1730"
+lastPublishedAt: "2022-10-12T22:14:45Z"
+changeOrigin: "unknown"
+name: "Using [gvlogic] and [gvlogic2] to create \"AND\" logic"
+slug: "588-using-gvlogic-and-gvlogic2"
+status: "published"
+categories: 
+  - "566dfe4fc6979143615564d9"
+keywords: 
+  - "gvlogic"
+  - "shortcode"
+  - "gv_logic"
+  - "logic"
+related: 
+  - "552355bfe4b0221aadf2572b"
+createdBy: "365564"
+createdAt: "2019-06-21T15:45:56Z"
+updatedBy: "80506"
+updatedAt: "2022-10-12T22:14:45Z"
+title: "Using [gvlogic] and [gvlogic2] to create \"AND\" logic"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5d0cfbb404286305cb878aaa"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-12T22:14:45Z
+  author: "Rafael Ehlers"
+---
+
+# Using [gvlogic] and [gvlogic2] to create "AND" logic
+
+
+:::info
+
+**There’s a better way:** GravityView has added the ability to use AND or OR logic inside `[gvlogic]` with no extra steps. Use `&&` for AND, use `||` for OR. [Read the \[gvlogic\] docs to learn how](https://docs.gravitykit.com/article/252-gvlogic-shortcode#and-or-examples).
+
+:::
+
+
+
+### Showing or Hiding Content Based on Two Conditions
+
+The `[gvlogic]` shortcode allows passing multiple conditions by using `&&` for AND, and using `||` for OR. [See how in the \[gvlogic\] docs](https://docs.gravitykit.com/article/252-gvlogic-shortcode#and-or-examples).
+
+Sometimes, though, you want to provide nested logic that goes further. You can do that by adding a second shortcode, `[gvlogic2]`, and nesting it within the `[gvlogic]` shortcode. Here's how:
+
+### Create Your Conditional Statement
+
+Now we can nest `[gvlogic2]` inside `[gvlogic]` to create an AND statement. The basic structure will look like this:
+
+```html
+[gvlogic...]
+[gvlogic2]...[/gvlogic2]
+[/gvlogic]
+```
+
+### Examples
+
+Here we use `[gvlogic]` and `[gvlogic2]`to display a message if both conditions are met:
+
+```html
+[gvlogic if="{Address (City):8.3}" is="Boston||Cambridge"]
+ Your city is either Boston OR Cambridge. You pahk your cah in Hahvad Yahd.
+ [gvlogic2 if="{Address (ZIP / Postal Code):8.5}" is="02108"]
+   More specifically, you live in the Beacon Hill neighborhood!
+ [/gvlogic2]
+[/gvlogic]
+```
+
+GravityView 2.5 added the `[gvlogic2]` into the plugin, without the need for extra code. If you're using an older version of the plugin, upgrade now!

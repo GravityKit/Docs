@@ -1,0 +1,89 @@
+---
+id: "59b6ce4a2c7d3a73488cc419"
+number: "429"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.3"
+publicUrl: "https://docs.gravitykit.com/article/429-display-issues-with-the-search-bar"
+viewCount: "1504"
+lastPublishedAt: "2022-10-12T21:57:13Z"
+changeOrigin: "unknown"
+name: "Display issues with the Search Bar"
+slug: "429-display-issues-with-the-search-bar"
+status: "published"
+categories: 
+  - "579aab1cc6979160ca148bba"
+  - "566dff159033603f7da27def"
+keywords: 
+  - "search"
+  - "search bar"
+  - "padding"
+  - "margin"
+  - "offset"
+  - "position"
+  - "display"
+  - "issues"
+related: 
+  - "54d3a075e4b086c0c09652f4"
+  - "54d11911e4b086c0c0964b1a"
+  - "54ff77e7e4b034c37ea94d09"
+  - "54d17005e4b086c0c0964c8a"
+createdBy: "80506"
+createdAt: "2017-09-11T17:56:26Z"
+updatedBy: "80506"
+updatedAt: "2022-10-12T21:57:13Z"
+title: "Display issues with the Search Bar"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/59b6ce4a2c7d3a73488cc419"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-12T21:57:13Z
+  author: "Rafael Ehlers"
+---
+
+# Display issues with the Search Bar
+
+If your Search Bar layout is set to horizontal and it is displaying vertically, your browser may not support the "flexbox" functionality.
+
+Please visit [What's My Browser](https://whatsmybrowser.org/) and see what browser you're using. If you're using one of the following browsers, the fix we have will work for you:
+
+### Want to support the following browsers?
+
+- Chrome 21–28
+- Safari 6.1–8
+- Safari &amp; Chrome for iOS 7.1–8.4
+- Opera 15–16
+
+You can add the following CSS code to your website ([here's how](https://docs.gravitykit.com/article/246-adding-custom-css-to-your-website)):
+
+```css
+.gv-widget-search {
+ display: -webkit-flex;
+ -webkit-flex-flow: row wrap;
+ -webkit-align-content: flex-start;
+ -webkit-align-items: flex-start;
+ -webkit-justify-content: space-between;
+ -webkit-flex: 1 0 auto;
+}
+```
+
+GravityView automatically supports browsers that makeup 99.7% of the global user base. The code above is for browsers older than that.
+
+## If you're having a different display issue
+
+If you are having display issues with your [Search Bar](https://docs.gravitykit.com/article/189-configuring-the-search-bar) like in the image below:
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/59b6cf26042863033a1cbefc/file-AyWRKcQ4GI.jpg)
+
+Then, that means your theme's stylesheet is not "playing well" with our new flex-box styled Search Bar (introduced in version 1.17 on June 14, 2016).
+
+Rest assured that can be easily fixed by using the previous styling of the Search Bar. You'll need to add the filter below to your theme:
+
+```
+add_filter('gravityview_use_legacy_search_style', '__return_true');
+```
+
+See where to add that code snippet above: [Where do I add the code samples you share?](https://docs.gravitykit.com/article/210-where-to-put-code-samples)
+
+After adding that code, your Search Bar should look like this:
+
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/59b6d08c2c7d3a73488cc425/file-sQkqVvbbgP.jpg)

@@ -1,0 +1,49 @@
+---
+id: "54c67bcee4b0512429885543"
+number: "116"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.5"
+publicUrl: "https://docs.gravitykit.com/article/116-date-created-field-is-inaccurate"
+viewCount: "2521"
+lastPublishedAt: "2022-10-07T21:25:04Z"
+changeOrigin: "unknown"
+name: "\"Date Created\" field is inaccurate"
+slug: "116-date-created-field-is-inaccurate"
+status: "published"
+categories: 
+  - "579aab1cc6979160ca148bba"
+createdBy: "59634"
+createdAt: "2015-01-26T17:39:26Z"
+updatedBy: "80506"
+updatedAt: "2022-10-07T21:25:04Z"
+title: "\"Date Created\" field is inaccurate"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/54c67bcee4b0512429885543"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2022-10-07T21:25:04Z
+  author: "Rafael Ehlers"
+---
+
+# "Date Created" field is inaccurate
+
+Gravity Forms stores entry creation dates in [Coordinated Universal Time (UTC)](http://en.wikipedia.org/wiki/Coordinated_Universal_Time) by default.
+
+GravityView displays the Date Created field using the blog’s local timezone for calculating the entry's creation date. If your blog's timezone hasn't been set, your blog will default to using UTC. [Read how to set your blog's timezone](http://en.support.wordpress.com/settings/general-settings/#timezone).
+
+If you prefer to display the UTC value instead of the timezone-adjusted value, use the `gravityview_date_created_adjust_timezone` filter like this:
+
+```php
+add_filter( 'gravityview_date_created_adjust_timezone', '__return_false' );
+```
+
+Not sure what to do with that code? [Here's how to add that code to your site](https://docs.gravitykit.com/article/210-where-to-put-code-samples).
+
+
+:::caution
+
+Related: [Importing dates in UTC timezone.](https://docs.gravitykit.com/article/736-importing-dates-in-utc-timezone)
+
+:::
+
+ 

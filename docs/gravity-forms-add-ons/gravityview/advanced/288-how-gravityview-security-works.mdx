@@ -1,0 +1,62 @@
+---
+id: "5590376ce4b027e1978eb8d0"
+number: "288"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "0.3"
+publicUrl: "https://docs.gravitykit.com/article/288-how-gravityview-security-works"
+viewCount: "1529"
+lastPublishedAt: "2023-01-02T18:56:36Z"
+changeOrigin: "hsapp-js"
+name: "How GravityView Security Works"
+slug: "288-how-gravityview-security-works"
+status: "published"
+categories: 
+  - "579aa642c6979160ca148ba9"
+keywords: 
+  - "security"
+createdBy: "59634"
+createdAt: "2015-06-28T18:05:32Z"
+updatedBy: "59634"
+updatedAt: "2023-01-02T18:56:36Z"
+title: "How GravityView Security Works"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5590376ce4b027e1978eb8d0"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2023-01-02T18:56:36Z
+  author: "Zack Katz"
+---
+
+# How GravityView Security Works
+
+
+:::danger
+
+As with any software, there may be security vulnerabilities. We do our best to secure the plugin and quickly patch any identified issues, but we provide no security guarantee or warranty. GravityView is licensed under a [GPL 2.0 or newer license](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html).
+
+:::
+
+
+
+We've had customers interested in learning more about GravityView security. We only recommend using GravityView to display sensitive data when using the Advanced Filter Extension to [limit visible entries to those by the current user only](https://docs.gravitykit.com/article/203-how-to-show-only-results-submitted-by-the-current-user).
+
+### How we make entries visible to only the current user
+
+To verify the current user can see the entry (using the Advanced Filter Extension):
+
+- We use WordPress `wp_get_current_user()` function to get the current user ID
+- Check the current user ID against the creator of the entry (stored in Gravity Forms under the `created_by` column)
+- Make sure that the search is performed is interpreted as an "ALL" search (instead of "ANY") so that `created_by={user id}` is required, not optional
+- A search is performed using Gravity Forms `GFAPI::get_entries()`
+- Then GravityView displays the data
+
+###  Editing an Entry 
+
+For editing the entry (in the core GravityView plugin), we then add an additional layer of security in the form of a nonce:
+
+- Generate a key using the entry ID being requested for edit, the View ID it's contained in (in case there are different permissions across different Views), and the Gravity Forms form ID
+- That key is used to generate a nonce using [`wp_nonce()`](https://codex.wordpress.org/WordPress_Nonces), which is unique for the currently logged-in user and expires within 24 hours from the generated time.
+- The nonce is sent as a request parameter (`?edit={example nonce}`) to the Entry URL
+- The nonce is validated in the Edit Entry screen before the form is displayed or an Edit Entry form submission is processed
+
+If you're interested in learning the exact parameters used to generate queries, you can install the [Debug Bar](https://wordpress.org/plugins/debug-bar/) plugin. Once installed, visit a View and click the "Debug" menu in the Admin Bar. You'll see a GravityView tab in the log menu. If you click that, you'll see the exact parameters for generating each request and render the View.

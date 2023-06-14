@@ -1,0 +1,124 @@
+---
+id: "54c67bb5e4b07997ea3f3f58"
+number: "57"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "1.4"
+publicUrl: "https://docs.gravitykit.com/article/57-customizing-urls"
+viewCount: "7214"
+lastPublishedAt: "2023-01-15T02:09:54Z"
+changeOrigin: "hsapp-js"
+name: "Customizing URLs"
+slug: "57-customizing-urls"
+status: "published"
+categories: 
+  - "579aa76f903360293603a8e7"
+  - "579aa642c6979160ca148ba9"
+createdBy: "59634"
+createdAt: "2015-01-26T17:39:01Z"
+updatedBy: "59634"
+updatedAt: "2023-01-15T02:09:54Z"
+title: "Customizing URLs"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/54c67bb5e4b07997ea3f3f58"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2023-01-15T02:09:54Z
+  author: "Zack Katz"
+---
+
+# Customizing URLs
+
+
+:::caution
+
+**This is advanced customization.** Only continue if you are a developer.
+
+:::
+
+
+
+By default, GravityView uses `example.com/view/entry/123/` the URL structure, where `123` is the ID of the entry.
+
+### The parts of the URL can be modified:
+
+- Change `/view/` by using the `gravityview_slug` filter
+- Change `/entry/` by using the `gravityview_directory_endpoint` filter
+- Change `/123/` by using the `gravityview_entry_slug` filter
+
+Let's say you're using GravityView to show healthcare providers serving your hospital. You will want to change `/view/entry/123/` to `/providers/ref/123/` to improve the URL structure of the site and help your site's SEO value.
+
+## Change the base slug for GravityView
+
+#### Change `/view/` to `/providers/`
+
+```php
+
+add_filter('gravityview_slug', 'change_the_gravityview_slug');    
+/**   
+* Change the /view/ URL piece to /providers/  
+* @param  string $slug Previous slug, default: "view"   
+* @return string           Change the new endpoint to "providers"   
+*/  
+function change_the_gravityview_slug( $slug ) {
+     return 'providers';  
+}
+```
+
+## Changing the entry endpoint
+
+#### Change `/entry/` to `/ref/`
+
+```php
+
+add_filter('gravityview_directory_endpoint', 'change_the_gravityview_directory_endpoint');    
+/**   
+* Change the /entry/ URL piece to /ref/  
+* @param  string $endpoint Previous endpoint, default: "entry"  
+* @return string           Change the new endpoint to "name"  
+*/  
+function change_the_gravityview_directory_endpoint( $endpoint ) {      
+   return 'ref';  
+}
+```
+
+### Some values cannot be used
+
+Certain values are reserved for WordPress. These values aren't allowed:   
+  
+error, `m`, `p`, `post_parent`, `subpost`, `subpost_id`, `attachment`, `attachment_id`, `name`, `static`, `pagename`, `page_id`, `second`, `minute`, `hour`, `day`, `monthnum`, `year`, `w`, `category_name`, `tag`, `cat`, `tag_id`, `author`, `author_name`, `feed`, `tb`, `paged`, `comments_popup`, `meta_key`, `meta_value`, `preview`, `s`, `sentence`, `fields`, `menu_order`
+
+Other values may also not work because of plugin conflicts. If you get errors, try using another value.
+
+### After making changes, if you get 404 errors
+
+After making changes to the URL structure, you will likely need to [save your Permalinks settings](http://codex.wordpress.org/Settings_Permalinks_Screen#Save_Changes) in the Dashboard, under Settings &gt; Permalinks. This should fix the 404 errors.
+
+## Advanced usage: Use entry values in the URL
+
+**Using entry values as the URL slugs is not supported by GravityView support**, but it is available for developers to take advantage of. If you have multiple Views that connect to different forms, it's easy to have conflicts between the field values. When using entry values, **you must always verify the form ID and/or the View ID when changing URLs based on entry values** to avoid collisions.
+
+### Changing URLs to use entry values while checking the form ID
+
+```php
+
+add_filter( 'gravityview_custom_entry_slug', '__return_true' );
+
+add_filter('gravityview_entry_slug', 'change_the_gravityview_entry_slug', 10, 3 );    
+
+/**   
+ * Change the /entry/123/ URL piece to /entry/{unique_entry_id}   
+ * @param  string $slug Previous endpoint, default: the entry ID   
+ * @return string           Change the new endpoint to the Company Name   
+ */  
+function change_the_gravityview_entry_slug( $slug, $id, $entry = array() ) {        
+
+	$form_id = 12;
+	$field_id = '29';
+	
+	if( ! empty( $entry[ $field_id ] ) && (int) $entry['form_id'] === $form_id ) {          
+		$slug = $entry[ $field_id ];      
+	}
+ 
+	return $slug;  
+}
+```
