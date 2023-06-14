@@ -9,7 +9,7 @@ const config = {
   title: 'GravityKit',
   tagline: 'Essential add-ons for Gravity Forms.',
   url: 'https://docs.gravitykit.com/',
-  baseUrl: '/',
+  baseUrl: '/Docs/',
   deploymentBranch: 'main',
   onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'warn',
