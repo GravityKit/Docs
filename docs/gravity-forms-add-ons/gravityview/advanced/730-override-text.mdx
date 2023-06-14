@@ -10,14 +10,14 @@ changeOrigin: "hsapp-js"
 name: "How to override any translation in GravityView"
 slug: "730-override-text"
 status: "published"
-categories: 
+categories:
   - "579aa642c6979160ca148ba9"
-keywords: 
+keywords:
   - "translation"
   - "modify text"
   - "change text"
   - "label"
-related: 
+related:
   - "54d3a075e4b086c0c09652f4"
 createdBy: "59634"
 createdAt: "2020-09-30T20:16:20Z"
@@ -25,8 +25,8 @@ updatedBy: "80506"
 updatedAt: "2022-12-15T22:14:44Z"
 title: "How to override any translation in GravityView"
 hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5f74e79446e0fb00179887e1"
-pagination_prev: 
-pagination_next: 
+pagination_prev:
+pagination_next:
 last_update:
   date: 2022-12-15T22:14:44Z
   author: "Rafael Ehlers"
@@ -38,7 +38,7 @@ We offer filters so that developers can customize much of what GravityView displ
 
 If you want to translate a string that isn't modifiable with a filter, you can override the text using WordPress's built-in translation engine.
 
-```
+```php
 
 /**
 * Modify text for GravityView
@@ -56,7 +56,7 @@ add_filter( 'gettext', function( $translation = '', $text = '', $domain = '' ) {
 			break;
 		// Text when a note is approved
 		case 'Approved the Entry for GravityView':
-			$translation = 'Entry approved!'; // UPDATE HERE 
+			$translation = 'Entry approved!'; // UPDATE HERE
 			break;
 	}
 
@@ -66,5 +66,6 @@ add_filter( 'gettext', function( $translation = '', $text = '', $domain = '' ) {
 
 ### Here's a video showing how to modify this snippet:
 
-<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="600" src="https://www.youtube.com/embed/k5DxUykbaoU" style="max-width:100%" title="YouTube video player" width="900"></iframe>
+import YouTube from 'react-youtube';
 
+<YouTube videoId="k5DxUykbaoU" />
