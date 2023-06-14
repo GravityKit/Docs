@@ -34,7 +34,6 @@ const config = {
         docs: {
           path: 'docs',
           routeBasePath: '/',
-          sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/GravityKit/Docs/tree/main/',
           exclude: ['internal/**', 'support-guide/**'],
         },
@@ -195,7 +194,7 @@ const config = {
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/gravityview/',
+                href: 'https://github.com/GravityKit/',
               },
             ],
           },
