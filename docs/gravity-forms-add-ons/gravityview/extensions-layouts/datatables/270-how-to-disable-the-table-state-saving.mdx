@@ -4,9 +4,9 @@ number: "270"
 collectionId: "54d1a05ce4b086c0c0964ccd"
 popularity: "0.1"
 publicUrl: "https://docs.gravitykit.com/article/270-how-to-disable-the-table-state-saving"
-viewCount: "967"
-lastPublishedAt: "2022-10-13T23:14:48Z"
-changeOrigin: "unknown"
+viewCount: "1017"
+lastPublishedAt: "2023-04-17T03:39:52Z"
+changeOrigin: "hsapp-js"
 name: "How to disable the table state saving?"
 slug: "270-how-to-disable-the-table-state-saving"
 status: "published"
@@ -15,13 +15,13 @@ categories:
 createdBy: "59635"
 createdAt: "2015-05-07T17:42:27Z"
 updatedBy: "80506"
-updatedAt: "2022-10-13T23:14:48Z"
+updatedAt: "2023-04-17T03:39:52Z"
 title: "How to disable the table state saving?"
 hsEditUrl: "https://secure.helpscout.net/docs/54d1a05ce4b086c0c0964ccd/article/554ba403e4b027e1978df25a"
 pagination_prev: 
 pagination_next: 
 last_update:
-  date: 2022-10-13T23:14:48Z
+  date: 2023-04-17T03:39:52Z
   author: "Rafael Ehlers"
 ---
 
@@ -29,6 +29,31 @@ last_update:
 
 By default, the [DataTables Extension](https://www.gravitykit.com/extensions/datatables/) stores information like pagination position, display length, filtering, sorting, etc., using the browser. This way, when the page is reloaded, you don't lose your place. DataTables calls this the "state" of the table.
 
-For some applications, you may want to ensure that the view state is not kept in the browser, so you'll need to disable [this setting](https://datatables.net/reference/option/stateSave) on your DataTables view. To accomplish that, add the following code [to your theme's functions.php file](https://docs.gravitykit.com/article/210-where-to-put-code-samples):
+For some applications, you may want to ensure that the view state is not kept in the browser, so you'll need to disable [this setting](https://datatables.net/reference/option/stateSave) on your DataTables view. To accomplish that, add the following code to your website:
 
-<script src="https://gist.github.com/luistinygod/2ff8e39090d4e5f44615.js" type="text/javascript"></script>
+```php
+
+/**
+* Disable the State Saving on your DataTables view
+* @link https://datatables.net/reference/option/stateSave
+*/
+add_filter( 'gravityview_datatables_js_options', 'my_gv_state_save', 20, 2 );
+
+/**
+* @param array $config Holds the DataTables table configuration 
+* @param string $view_id The current view id
+*/
+function my_gv_state_save( $config, $view_id ) {
+	$config['stateSave'] = false;
+	return $config;
+}
+```
+
+
+:::info
+
+Read here how to add these code samples to your website: [Where to put code samples.](https://docs.gravitykit.com/article/210-where-to-put-code-samples)
+
+:::
+
+ 

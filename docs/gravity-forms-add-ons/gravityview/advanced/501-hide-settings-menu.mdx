@@ -4,10 +4,10 @@ number: "501"
 collectionId: "566dfabbc6979143615564bf"
 popularity: "0.1"
 publicUrl: "https://docs.gravitykit.com/article/501-hide-settings-menu"
-viewCount: "453"
-lastPublishedAt: "2023-02-14T22:01:05Z"
+viewCount: "502"
+lastPublishedAt: "2023-05-02T18:53:44Z"
 changeOrigin: "hsapp-js"
-name: "(Outdated) How to hide GravityView Settings menu"
+name: "How to hide the GravityKit menu"
 slug: "501-hide-settings-menu"
 status: "published"
 categories: 
@@ -20,42 +20,35 @@ related:
 createdBy: "59634"
 createdAt: "2018-10-30T05:19:17Z"
 updatedBy: "80506"
-updatedAt: "2023-02-14T22:01:05Z"
-title: "(Outdated) How to hide GravityView Settings menu"
+updatedAt: "2023-05-02T18:53:44Z"
+title: "How to hide the GravityKit menu"
 hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5bd7e9d504286356f0a53536"
 pagination_prev: 
 pagination_next: 
 last_update:
-  date: 2023-02-14T22:01:05Z
+  date: 2023-05-02T18:53:44Z
   author: "Rafael Ehlers"
 ---
 
-# (Outdated) How to hide GravityView Settings menu
+# How to hide the GravityKit menu
 
+![Screenshot showing the GravityKit menu on the WordPress Dashboard](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/64515b9f40ac037159fb1e71/file-UMJOfAm3hF.png)
 
-:::danger
-
-⚠️This article doesn't apply to GravityView version 2.16 (or newer).
-
-:::
-
-
-
-If you are developing a site for a client, you may not want to show them the Settings page, which contains license key information, renewal dates, support email address settings, and more.
-
-### Recommended: remove the user permission
-
-The recommended way to disable access to settings is by removing the user's permission by modifying their user role. [Here's a doc showing how to do that with the Members plugin](https://docs.gravitykit.com/article/333-modifying-user-role-capabilities), but if you use another role manager plugin, it will also work. Remove the `gravityview_view_settings` capability from the user's role.
-
-### This also works: adding code
-
-If you want to disable the Settings menu for specific user IDs, take this code, update it to use the user IDs you want to limit access for, then [add this code to your functions.php:](https://docs.gravitykit.com/article/210-where-to-put-code-samples)
-
-<script src="https://gist.github.com/zackkatz/02ff3642e468072f36aa85becc4b8c29.js" type="text/javascript"></script> If you want to disable the Settings menu for everyone, you can [add this code to your functions.php](https://docs.gravitykit.com/article/210-where-to-put-code-samples):
+If, for some reason, you need to forcefully hide the GravityKit menu without having to mess with [capabilities](https://docs.gravitykit.com/article/311-gravityview-capabilities), then you can use the filter below:
 
 ```php
-
-add_filter( 'gravityview/show-settings-menu', '__return_false' );
+add_filter( 'gk/foundation/admin-menu/submenus', function () {
+	return [];
+}, 100 );
 ```
 
 That will hide the menu for everyone, **including yourself!**
+
+
+:::info
+
+Read here how to add these code samples to your website: [Where to put code samples.](https://docs.gravitykit.com/article/210-where-to-put-code-samples)
+
+:::
+
+ 

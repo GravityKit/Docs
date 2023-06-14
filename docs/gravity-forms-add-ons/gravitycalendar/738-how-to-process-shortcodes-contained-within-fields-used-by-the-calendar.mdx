@@ -3,9 +3,9 @@ id: "5fd3bcc423119734ee37eb8e"
 number: "738"
 collectionId: "6076f9478996210f18bd33df"
 publicUrl: "https://docs.gravitykit.com/article/738-how-to-process-shortcodes-contained-within-fields-used-by-the-calendar"
-viewCount: "354"
-lastPublishedAt: "2022-10-19T00:27:32Z"
-changeOrigin: "unknown"
+viewCount: "395"
+lastPublishedAt: "2023-04-17T03:41:38Z"
+changeOrigin: "hsapp-js"
 name: "How to process shortcodes contained within fields used by the Calendar"
 slug: "738-how-to-process-shortcodes-contained-within-fields-used-by-the-calendar"
 status: "published"
@@ -14,13 +14,13 @@ categories:
 createdBy: "80506"
 createdAt: "2020-12-11T18:39:00Z"
 updatedBy: "80506"
-updatedAt: "2022-10-19T00:27:32Z"
+updatedAt: "2023-04-17T03:41:38Z"
 title: "How to process shortcodes contained within fields used by the Calendar"
 hsEditUrl: "https://secure.helpscout.net/docs/6076f9478996210f18bd33df/article/5fd3bcc423119734ee37eb8e"
 pagination_prev: 
 pagination_next: 
 last_update:
-  date: 2022-10-19T00:27:32Z
+  date: 2023-04-17T03:41:38Z
   author: "Rafael Ehlers"
 ---
 
@@ -32,4 +32,33 @@ When setting up a GravityCalendar feed, you can specify a field to populate the 
 
 Sometimes, these fields contain shortcodes, like the [\[gv\_math\]](https://docs.gravitykit.com/article/295-math-shortcode) or the [\[gvlogic\]](https://docs.gravitykit.com/article/252-gvlogic-shortcode) shortcode. By using the code below, these shortcodes will be parsed and displayed correctly on your calendar:
 
-<script src="https://gist.github.com/zackkatz/0207c7ee495eb7150c56f53c73073edd.js" type="text/javascript"></script> Here are instructions on where to place that code: [Where to put code samples](https://docs.gravitykit.com/article/210-where-to-put-code-samples).
+```php
+
+add_filter( 'gravityview/calendar/events', 'gv_calendar_process_field_value_shortcode' );
+
+/**
+* Sometimes field values contain shortcodes you want to process. This does that.
+*
+* @param array $events Array of events to display on the calendar.
+*
+* @return array $events, but with `title` and `description` keys processed.
+*/
+function gv_calendar_process_field_value_shortcode( $events ) {
+
+	foreach ( $events as $key => $event ) {
+		$events[ $key ]['title']       = do_shortcode( GVCommon::decode_shortcodes( $event['title'] ) );
+		$events[ $key ]['description'] = do_shortcode( GVCommon::decode_shortcodes( $event['description'] ) );
+	}
+
+	return $events;
+}
+```
+
+
+:::info
+
+Read here how to add these code samples to your website: [Where to put code samples.](https://docs.gravitykit.com/article/210-where-to-put-code-samples)
+
+:::
+
+ 

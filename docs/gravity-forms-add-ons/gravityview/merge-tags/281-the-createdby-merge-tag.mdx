@@ -4,9 +4,9 @@ number: "281"
 collectionId: "566dfabbc6979143615564bf"
 popularity: "1.5"
 publicUrl: "https://docs.gravitykit.com/article/281-the-createdby-merge-tag"
-viewCount: "7973"
-lastPublishedAt: "2022-11-09T10:58:20Z"
-changeOrigin: "unknown"
+viewCount: "8225"
+lastPublishedAt: "2023-03-22T23:53:39Z"
+changeOrigin: "hsapp-js"
 name: "The {user} and {created_by} Merge Tag"
 slug: "281-the-createdby-merge-tag"
 status: "published"
@@ -20,45 +20,61 @@ keywords:
   - "user id"
   - "user email"
 createdBy: "59634"
-updatedBy: "543004"
-updatedAt: "2022-11-09T10:58:20Z"
+updatedBy: "80506"
+updatedAt: "2023-03-22T23:53:39Z"
 title: "The {user} and {created_by} Merge Tag"
 hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/557f4d74e4b027e1978e7a43"
 pagination_prev: 
 pagination_next: 
 last_update:
-  date: 2022-11-09T10:58:20Z
-  author: "Casey Burridge"
+  date: 2023-03-22T23:53:39Z
+  author: "Rafael Ehlers"
 ---
 
 # The {user} and {created_by} Merge Tag
 
-### About `{created_by}`
+The `{created_by}` Merge Tag allows you to display details of the entry creator. It supports all the functionality of the Gravity Forms and uses the same structure as the `{user}` Merge Tag [documented on the Gravity Forms website](https://docs.gravityforms.com/user-merge-tag/).
 
-The `{created_by}` Merge Tag allows you to display details of the entry creator. It supports all the functionality of the Gravity Forms and **uses the same structure** as the `{user}` Merge Tag [documented on the Gravity Forms website](https://docs.gravityforms.com/user-merge-tag/).
+### **Difference between `{user}` and `{created_by}`**
 
-### Difference between `{user}` and `{created_by}`
+The `{user}` merge tag displays information about the **currently logged-in user**.
 
-The `{user}` merge tag displays information about the currently logged-in user.
+The `{created_by}` displays information about the entry creator, if there is one\*.
 
-The `{created_by}` displays information about the entry creator, if there is one.
+\*The user must be logged in when submitting the entry ( [read more about that here](https://docs.gravitykit.com/article/717-understanding-how-an-entry-gets-associated-with-a-user)). If the user was not logged in when creating the entry, the `{created_by}` Merge Tag will be empty. You can wrap the `{created_by}` Merge Tag with a [\[gvlogic\] shortcode](https://docs.gravitykit.com/article/252-gvlogic-shortcode) to check for its existence.
 
 ---
 
-### Usage:
+### Usage
 
-**The user must be logged in when the entry is submitted.** If the user was not logged in when creating the entry, the `{created_by}` Merge Tag will be empty. You can wrap the `{created_by}` Merge Tag with a [\[gvlogic\] shortcode](https://docs.gravitykit.com/article/252-gvlogic-shortcode) to check for its existence.
 
-- `{created_by:ID}` - Displays the user ID of the entry creator
+:::info
+
+All the Merge Tag modifiers below also work with the {user} Merge Tag. Example: {user:user\_email}.
+
+:::
+
+ - `{created_by:ID}` - Displays the user ID of the entry creator
 - `{created_by:display_name}` - Displays the Display Name of the submitting user.
+- `{created_by:first_name}` or ` {created_by:last_name}` - The first and last name of the entry creator.
 - `{created_by:user_email}` - Displays the email of the submitting user.
 - `{created_by:user_login}` - Displays the user login of the submitting user. {user:user\_login}
-- `{created_by:[meta_key]}` - Displays the value of whatever user meta key is provided. Any user meta (including custom user meta) can be displayed with this merge tag. 
-   - The first and last name of the entry creator: `{created_by:first_name} {created_by:last_name}`
-   - The email of the current user: `Thanks for getting in touch, {user:display_name}! We will be in touch here: <a href="mailto:{created_by:user_email}">{user:user_email}</a>.`
+- `{created_by:[meta_key]}` - This merge tag can display any user meta (including custom user meta). Replace `[meta_key]` with the name of the user meta, example: `{created_by:company_name}`.
 
-### Example
+
+:::info
+
+Use this plugin to create and display custom user meta: [Extra User Details](https://wordpress.org/plugins/extra-user-details/).
+
+:::
+
+ ### Example
 
 You can add this code to a [Custom Content field](https://docs.gravitykit.com/article/111-using-the-custom-content-field) to link to the entry creator's User Profile page in the WordPress Dashboard:
 
-<script src="https://gist.github.com/zackkatz/4d211cecc54c8d2e0b84.js" type="text/javascript"></script>
+```
+
+[gvlogic if="{created_by}" isnot=""]
+      <a href="/wp-admin/user-edit.php?user_id={created_by:ID}">Link to Profile</a>
+[/gvlogic]
+```

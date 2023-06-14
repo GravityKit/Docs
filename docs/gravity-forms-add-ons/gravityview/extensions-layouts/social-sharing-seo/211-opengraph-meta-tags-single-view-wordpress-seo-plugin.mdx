@@ -4,7 +4,7 @@ number: "211"
 collectionId: "54d1a05ce4b086c0c0964ccd"
 popularity: "5"
 publicUrl: "https://docs.gravitykit.com/article/211-opengraph-meta-tags-single-view-wordpress-seo-plugin"
-viewCount: "47858"
+viewCount: "48783"
 lastPublishedAt: "2023-01-02T20:00:48Z"
 changeOrigin: "hsapp-js"
 name: "How to fix Open Graph meta tags for single entry pages when using the WordPress SEO plugin"
@@ -56,7 +56,7 @@ By default, WordPress SEO plugin will output the following on the `head` section
 <meta property="og:url" content="http://example.com/view/my-demo-issue-tracker/" />
 <meta property="og:site_name" content="Sandbox" />
 <!-- / Yoast WordPress SEO plugin. -->
-```
+```php
 
 ## Fix the canonical link
 
@@ -125,7 +125,7 @@ function my_gv_yoast_title_and_opengraph_title( $title ) {
        $entry[ $title_field ] : 
        $title;
 };
-```
+```php
 
 After applying this code, you should expect a different og:title meta: `<meta property="og:title" content="Sit amet turpis elementum ligula vehicula" />`
 
@@ -178,7 +178,7 @@ function my_gv_yoast_meta_and_opengraph_description( $desc ) {
 
 This code will affect the following lines:
 
-```
+```php
 
 <meta name="description" content="sit amet turpis elementum ligula vehicula consequat morbi a ipsum integer a nibh in quis justo maecenas"/>
 <meta property="og:description" content="sit amet turpis elementum ligula vehicula consequat morbi a ipsum integer a nibh in quis justo maecenas" />

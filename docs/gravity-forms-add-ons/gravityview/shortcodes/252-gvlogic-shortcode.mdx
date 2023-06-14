@@ -1,12 +1,13 @@
 ---
 id: "552355bfe4b0221aadf2572b"
 number: "252"
+hasDraft: "1"
 collectionId: "566dfabbc6979143615564bf"
 popularity: "3.9"
 publicUrl: "https://docs.gravitykit.com/article/252-gvlogic-shortcode"
-viewCount: "20219"
-lastPublishedAt: "2022-10-12T22:09:32Z"
-changeOrigin: "unknown"
+viewCount: "21030"
+lastPublishedAt: "2023-05-04T19:33:08Z"
+changeOrigin: "hsapp-js"
 name: "Using the [gvlogic] shortcode"
 slug: "252-gvlogic-shortcode"
 status: "published"
@@ -26,17 +27,26 @@ related:
   - "5a9d94e804286374f7089182"
 createdBy: "59634"
 updatedBy: "80506"
-updatedAt: "2022-10-12T22:09:32Z"
+updatedAt: "2023-05-04T19:33:23Z"
 title: "Using the [gvlogic] shortcode"
 hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/552355bfe4b0221aadf2572b"
 pagination_prev: 
 pagination_next: 
 last_update:
-  date: 2022-10-12T22:09:32Z
+  date: 2023-05-04T19:33:23Z
   author: "Rafael Ehlers"
 ---
 
 # Using the [gvlogic] shortcode
+
+
+:::info
+
+There's a much easier way to achieve the same results demonstrated on this page called " [Field Conditional Logic](https://docs.gravitykit.com/article/753-field-conditional-logic)".
+
+:::
+
+
 
 ### Dynamically show or hide content
 
@@ -47,6 +57,7 @@ If you only want to show content if the value matches a specific condition, you 
 If you are using GravityView for an [Issue Tracker](https://site.try.gravitykit.com/task-management/), you may want to display content to a user based on ticket status.
 
 ```html
+
 [gvlogic if="{Issue Status:13}" is="Closed"]
  You are viewing a closed ticket.
 
@@ -57,6 +68,7 @@ If you are using GravityView for an [Issue Tracker](https://site.try.gravitykit.
 You can also display alternate content if the value does not match:
 
 ```html
+
 [gvlogic if="{Issue Status:13}" is="Closed"]
  Your issue is closed.
 [else]
@@ -84,6 +96,7 @@ Valid values are:
 To display different content depending on whether a user is logged-in:
 
 ```html
+
 [gvlogic logged_in="true"]
    Hello, logged-in user!
 [else]
@@ -104,6 +117,7 @@ The `if` parameter accepts Gravity Forms Merge Tags, available in the Custom Con
 #### Parameter: `is`
 
 ```html
+
 [gvlogic if="{Date:3}" is="2019-01-14"]
  The date field value is January 14, 2019.
 [else]
@@ -116,6 +130,7 @@ The `if` parameter accepts Gravity Forms Merge Tags, available in the Custom Con
 When you want to compare multiple dates, you can do that with `greater_than` and `less_than`. Here's an example:
 
 ```html
+
 [gvlogic if="{Date:3}" greater_than="{Second Date:5}"]
  The first Date field is in the future, compared to the Second Date field.
 [else]
@@ -133,6 +148,7 @@ If you use multiple date formats, you may want to add `:mdy` [Date Field Merge T
   Here's how the previous example looks when forcing a common format:
 
 ```html
+
 [gvlogic if="{Date:3:mdy}" greater_than="{Second Date:5:mdy}"]
  The first Date field is in the future, compared to the Second Date field.
 [else]
@@ -158,6 +174,7 @@ Display content based on the current View mode ("context"), which corresponds to
 #### Parameter: `is`
 
 ```html
+
 [gvlogic if="context" is="multiple"]
  Click the name of the person you want to learn more about!
 [/gvlogic]
@@ -166,6 +183,7 @@ Display content based on the current View mode ("context"), which corresponds to
 #### Parameter: `is` (using the `else` parameter)
 
 ```html
+
 [gvlogic if="context" is="single" else="You are viewing multiple entries."]
  You are viewing a single entry.
 [/gvlogic]
@@ -174,6 +192,7 @@ Display content based on the current View mode ("context"), which corresponds to
 #### Parameter: `isnot`
 
 ```html
+
 [gvlogic if="context" isnot="singular"]
  You are viewing multiple entries.
 [else]
@@ -201,6 +220,7 @@ Sometimes you may want to compare a value against multiple other values, like if
 How can we accomplish that with `[gvlogic]`? By using the `||` characters to represent "OR":
 
 ```html
+
 [gvlogic if="{Email:16}" ends_with="@icloud.com||@me.com||@mac.com"]
  Your email address is from Apple.
 [else if="{Email:16}" ends_with="@gmail.com||@googlemail.com"]
@@ -215,6 +235,7 @@ How can we accomplish that with `[gvlogic]`? By using the `||` characters to rep
 You can also use Merge Tags in the comparison. This code will check whether Field #4 is greater than Field #5 **OR** Field #6:
 
 ```html
+
 [gvlogic if="{Number:4}" greater_than="{Another Number:5}||{Another Number:6}"]
    {Number:4} is bigger than Field #5 OR Field #6.
 [else]
@@ -243,6 +264,7 @@ When you want to test whether a value matches multiple statements at the same ti
 Pretend that you have a job application form and want to display different content depending on whether the applicant used certain words in their submission. You asked them to mention Google Docs, Photoshop, and Excel in the field labeled "Skills". If they didn’t, they didn't meet the application criteria.
 
 ```html
+
 [gvlogic if="{Skills:2}" contains="Google Docs&&Photoshop&&Excel"]
    ✅ The applicant correctly referenced the skills necessary in their writing sample.
 [else]

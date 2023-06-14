@@ -4,9 +4,9 @@ number: "244"
 collectionId: "566dfabbc6979143615564bf"
 popularity: "0.6"
 publicUrl: "https://docs.gravitykit.com/article/244-how-to-modify-the-settings-for-the-post-content-edit-field"
-viewCount: "3151"
-lastPublishedAt: "2022-10-07T22:21:45Z"
-changeOrigin: "unknown"
+viewCount: "3211"
+lastPublishedAt: "2023-03-21T02:02:13Z"
+changeOrigin: "hsapp-js"
 name: "How to modify the settings for the Post Content edit field"
 slug: "244-how-to-modify-the-settings-for-the-post-content-edit-field"
 status: "published"
@@ -25,13 +25,13 @@ keywords:
 createdBy: "59634"
 createdAt: "2015-03-10T17:34:58Z"
 updatedBy: "80506"
-updatedAt: "2022-10-07T22:21:45Z"
+updatedAt: "2023-03-21T02:02:13Z"
 title: "How to modify the settings for the Post Content edit field"
 hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/54ff2b42e4b034c37ea94a93"
 pagination_prev: 
 pagination_next: 
 last_update:
-  date: 2022-10-07T22:21:45Z
+  date: 2023-03-21T02:02:13Z
   author: "Rafael Ehlers"
 ---
 
@@ -47,10 +47,37 @@ If you want to modify the functionality of the editor, you can use the `gravityv
 
 By default, GravityView has the "Add Media" button disabled. To enable it, use the code below:
 
-<script src="https://gist.github.com/zackkatz/460cca23a1598789b1ef.js" type="text/javascript"></script>
+```php
+
+function modify_gv_wp_editor_settings_add_media( $settings ) {
+ $settings['media_buttons'] = true;
+ return $settings;
+}
+
+add_filter('gravityview/edit_entry/post_content/wp_editor_settings', 'modify_gv_wp_editor_settings_add_media');
+```
 
 ###  Disable the Rich Text Editor
 
 If you prefer only to allow editing the text content as HTML, you can also disable the output like so:
 
-<script src="https://gist.github.com/zackkatz/c124236a68b8ad620c00.js" type="text/javascript"></script> There are many settings that you can use to customize the output of the editor. **[See what settings are available](https://developer.wordpress.org/reference/classes/_wp_editors/parse_settings/)**
+```php
+
+function modify_gv_wp_editor_settings_disable_tinymce( $settings ) {
+ $settings['tinymce'] = false;
+ return $settings;
+}
+
+add_filter('gravityview/edit_entry/post_content/wp_editor_settings', 'modify_gv_wp_editor_settings_disable_tinymce');
+```
+
+There are many settings that you can use to customize the output of the editor. **[See what settings are available](https://developer.wordpress.org/reference/classes/_wp_editors/parse_settings/)**.
+
+
+:::info
+
+Read here how to add these code samples to your website: [Where to put code samples.](https://docs.gravitykit.com/article/210-where-to-put-code-samples)
+
+:::
+
+ 

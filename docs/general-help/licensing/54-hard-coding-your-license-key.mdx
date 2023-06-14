@@ -4,9 +4,9 @@ number: "54"
 collectionId: "5fe214556451e825e3b8d359"
 popularity: "2.5"
 publicUrl: "https://docs.gravitykit.com/article/54-hard-coding-your-license-key"
-viewCount: "1497"
-lastPublishedAt: "2022-10-24T18:57:00Z"
-changeOrigin: "unknown"
+viewCount: "1547"
+lastPublishedAt: "2023-03-02T23:07:36Z"
+changeOrigin: "hsapp-js"
 name: "Hard-coding your license key"
 slug: "54-hard-coding-your-license-key"
 status: "published"
@@ -14,15 +14,15 @@ categories:
   - "5fe214db6451e825e3b8d360"
 createdBy: "59634"
 createdAt: "2015-01-26T17:39:01Z"
-updatedBy: "80506"
-updatedAt: "2022-10-24T18:57:00Z"
+updatedBy: "336675"
+updatedAt: "2023-03-02T23:07:36Z"
 title: "Hard-coding your license key"
 hsEditUrl: "https://secure.helpscout.net/docs/5fe214556451e825e3b8d359/article/54c67bb5e4b0512429885505"
 pagination_prev: 
 pagination_next: 
 last_update:
-  date: 2022-10-24T18:57:00Z
-  author: "Rafael Ehlers"
+  date: 2023-03-02T23:07:36Z
+  author: "Vlad K."
 ---
 
 # Hard-coding your license key
@@ -32,13 +32,13 @@ If you want your GravityKit's license key to pre-populate when a new site is cre
 ### Add the following to your `wp-config.php` file:
 
 ```
-const GRAVITYKIT_LICENSES = 'YOUR_KEY_HERE';
+define( 'GRAVITYKIT_LICENSES', 'YOUR_KEY_HERE' );
 ```
 
 You can also specify more than one license this way:
 
 ```
-const GRAVITYKIT_LICENSES = ['FIRST_KEY','SECOND_KEY'];
+define( 'GRAVITYKIT_LICENSES', [ 'FIRST_KEY', 'SECOND_KEY' ] );
 ```
 
 
@@ -48,4 +48,4 @@ Need help with editing the wp-config.php file? [See this article for more inform
 
 :::
 
-  Since October 2022, we have updated all our add-ons with a [new license management system](https://docs.gravitykit.com/article/876-managing-your-licenses), so license keys are now stored encrypted in the database and are never exposed to the user on the dashboard. When using a constant, like in the examples above, those will be the only instance where license keys won't be encrypted.
+  Since October 2022, all of GravityKit's products have been updated to use a [new license management system](https://docs.gravitykit.com/article/876-managing-your-licenses). License keys are encrypted before being stored in the database and are never exposed to the user in WordPress's admin dashboard. While using a constant as described above will make your keys visible to those with access to `wp-config.php`, license keys will still be stored encrypted in the database and masked when displayed to users.

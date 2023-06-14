@@ -4,8 +4,8 @@ number: "57"
 collectionId: "566dfabbc6979143615564bf"
 popularity: "1.4"
 publicUrl: "https://docs.gravitykit.com/article/57-customizing-urls"
-viewCount: "7214"
-lastPublishedAt: "2023-01-15T02:09:54Z"
+viewCount: "7396"
+lastPublishedAt: "2023-04-13T01:30:40Z"
 changeOrigin: "hsapp-js"
 name: "Customizing URLs"
 slug: "57-customizing-urls"
@@ -15,15 +15,15 @@ categories:
   - "579aa642c6979160ca148ba9"
 createdBy: "59634"
 createdAt: "2015-01-26T17:39:01Z"
-updatedBy: "59634"
-updatedAt: "2023-01-15T02:09:54Z"
+updatedBy: "80506"
+updatedAt: "2023-04-13T01:30:40Z"
 title: "Customizing URLs"
 hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/54c67bb5e4b07997ea3f3f58"
 pagination_prev: 
 pagination_next: 
 last_update:
-  date: 2023-01-15T02:09:54Z
-  author: "Zack Katz"
+  date: 2023-04-13T01:30:40Z
+  author: "Rafael Ehlers"
 ---
 
 # Customizing URLs
@@ -52,7 +52,6 @@ Let's say you're using GravityView to show healthcare providers serving your hos
 #### Change `/view/` to `/providers/`
 
 ```php
-
 add_filter('gravityview_slug', 'change_the_gravityview_slug');    
 /**   
 * Change the /view/ URL piece to /providers/  
@@ -62,14 +61,13 @@ add_filter('gravityview_slug', 'change_the_gravityview_slug');
 function change_the_gravityview_slug( $slug ) {
      return 'providers';  
 }
-```
+```php
 
 ## Changing the entry endpoint
 
 #### Change `/entry/` to `/ref/`
 
 ```php
-
 add_filter('gravityview_directory_endpoint', 'change_the_gravityview_directory_endpoint');    
 /**   
 * Change the /entry/ URL piece to /ref/  
@@ -93,14 +91,22 @@ Other values may also not work because of plugin conflicts. If you get errors, t
 
 After making changes to the URL structure, you will likely need to [save your Permalinks settings](http://codex.wordpress.org/Settings_Permalinks_Screen#Save_Changes) in the Dashboard, under Settings &gt; Permalinks. This should fix the 404 errors.
 
+![Screenshot showing the Permalinks page of WordPress](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/64375880ad20e8714a50d610/file-Aht28ZhBua.png)
+
 ## Advanced usage: Use entry values in the URL
 
-**Using entry values as the URL slugs is not supported by GravityView support**, but it is available for developers to take advantage of. If you have multiple Views that connect to different forms, it's easy to have conflicts between the field values. When using entry values, **you must always verify the form ID and/or the View ID when changing URLs based on entry values** to avoid collisions.
 
-### Changing URLs to use entry values while checking the form ID
+:::danger
 
-```php
+Warning: The use of entry values as URL slugs is **not supported** by GravityKit support but is available for developers to take advantage of.
 
+:::
+
+  If you have multiple Views that connect to different forms, it's easy to have conflicts between the field values. When using entry values, **you must always verify the form ID and/or the View ID** when changing URLs based on entry values to avoid collisions.
+
+Changing URLs to use entry values while checking the form ID:
+
+```PHP
 add_filter( 'gravityview_custom_entry_slug', '__return_true' );
 
 add_filter('gravityview_entry_slug', 'change_the_gravityview_entry_slug', 10, 3 );    
@@ -108,12 +114,12 @@ add_filter('gravityview_entry_slug', 'change_the_gravityview_entry_slug', 10, 3 
 /**   
  * Change the /entry/123/ URL piece to /entry/{unique_entry_id}   
  * @param  string $slug Previous endpoint, default: the entry ID   
- * @return string           Change the new endpoint to the Company Name   
+ * @return string Change the new endpoint to the field value
  */  
 function change_the_gravityview_entry_slug( $slug, $id, $entry = array() ) {        
 
-	$form_id = 12;
-	$field_id = '29';
+	$form_id = 12; // Add the ID of the form your View is connected to 
+	$field_id = '29'; // Add the ID of the field you are going to use as the entry slug
 	
 	if( ! empty( $entry[ $field_id ] ) && (int) $entry['form_id'] === $form_id ) {          
 		$slug = $entry[ $field_id ];      
@@ -122,3 +128,12 @@ function change_the_gravityview_entry_slug( $slug, $id, $entry = array() ) {
 	return $slug;  
 }
 ```
+
+
+:::info
+
+Read here how to add these code samples to your website: [Where to put code samples.](https://docs.gravitykit.com/article/210-where-to-put-code-samples)
+
+:::
+
+ 

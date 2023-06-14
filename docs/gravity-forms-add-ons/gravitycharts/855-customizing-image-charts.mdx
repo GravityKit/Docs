@@ -3,7 +3,7 @@ id: "62f416196d67192dc61b9bb9"
 number: "855"
 collectionId: "6076f9478996210f18bd33df"
 publicUrl: "https://docs.gravitykit.com/article/855-customizing-image-charts"
-viewCount: "101"
+viewCount: "136"
 lastPublishedAt: "2022-10-18T23:29:16Z"
 changeOrigin: "unknown"
 name: "Modifying image charts in GravityCharts"
@@ -82,7 +82,7 @@ add_action( 'gk/gravitycharts/image-charts/quickchart/instance', function ( $cha
    $chart->setBackgroundColor( 'rgb(255,255,120)' );
    
 }, 10, 2 );
-```
+```php
 
 ###  [](#change-the-chart-title-and-font)Change the chart title and font
 
@@ -134,7 +134,7 @@ QuickChart offers [a Professional plan](https://quickchart.io/pricing/) at $40/m
 add_action( 'gk/gravitycharts/image-charts/quickchart/instance', function ( $chart, $atts ) {    
    $chart->setApiKey( 'REPLACE_THIS_WITH_YOUR_API_KEY' );
 }, 10, 2 );
-```
+```php
 
 ###  [](#use-the-quickchart-service-instead-of-gravitykits-chart-service)Use a self-hosted QuickChart installation instead of the default chart service 
 

@@ -4,9 +4,9 @@ number: "89"
 collectionId: "566dfabbc6979143615564bf"
 popularity: "1.7"
 publicUrl: "https://docs.gravitykit.com/article/89-why-are-my-entries-not-visible"
-viewCount: "8748"
-lastPublishedAt: "2022-10-07T21:24:40Z"
-changeOrigin: "unknown"
+viewCount: "8929"
+lastPublishedAt: "2023-03-23T22:40:09Z"
+changeOrigin: "hsapp-js"
 name: "My Entries Are Not Showing Up"
 slug: "89-why-are-my-entries-not-visible"
 status: "published"
@@ -15,19 +15,31 @@ categories:
 createdBy: "59634"
 createdAt: "2015-01-26T17:39:15Z"
 updatedBy: "80506"
-updatedAt: "2022-10-07T21:24:40Z"
+updatedAt: "2023-03-23T22:40:09Z"
 title: "My Entries Are Not Showing Up"
 hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/54c67bc3e4b051242988552a"
 pagination_prev: 
 pagination_next: 
 last_update:
-  date: 2022-10-07T21:24:40Z
+  date: 2023-03-23T22:40:09Z
   author: "Rafael Ehlers"
 ---
 
 # My Entries Are Not Showing Up
 
 
+
+### 4. Field Conditional Logic is being used on all fields
+
+[Field Conditional Logic](https://docs.gravitykit.com/article/753-field-conditional-logic), a feature introduced in version 2.1 of the [Advanced Filter extension](https://www.gravitykit.com/extensions/advanced-filter/), doesn't hide empty fields from showing up on your View; it just outputs a different value or leaves the value empty.
+
+If your View is showing empty rows like this:
+
+![A View showing empty rows](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/641cd36ac50436764befded0/file-iLo6NfO9aj.png)
+
+It means you are probably using the same Field Conditional logic on all fields (columns) added to your View.
+
+Please consider using Advanced Filters to hide these empty entries instead.
 
 ###  How To Check Whether Your Form Has Any Entries 
 

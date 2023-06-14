@@ -4,29 +4,29 @@ number: "300"
 collectionId: "54d1a05ce4b086c0c0964ccd"
 popularity: "0.3"
 publicUrl: "https://docs.gravitykit.com/article/300-how-can-i-use-the-latitude-and-longitude-form-fields-to-position-map-markers"
-viewCount: "2740"
-lastPublishedAt: "2022-12-27T21:04:22Z"
-changeOrigin: "external"
+viewCount: "2890"
+lastPublishedAt: "2023-03-21T02:05:54Z"
+changeOrigin: "hsapp-js"
 name: "Maps: How can I use the latitude and longitude form fields to position the map markers?"
 slug: "300-how-can-i-use-the-latitude-and-longitude-form-fields-to-position-map-markers"
 status: "published"
 categories: 
   - "55b67132e4b0e667e2a44567"
 createdBy: "59635"
-updatedBy: "59634"
-updatedAt: "2022-12-27T21:04:22Z"
+updatedBy: "80506"
+updatedAt: "2023-03-21T02:05:54Z"
 title: "Maps: How can I use the latitude and longitude form fields to position the map markers?"
 hsEditUrl: "https://secure.helpscout.net/docs/54d1a05ce4b086c0c0964ccd/article/55e6d8aac69791287495fee7"
 pagination_prev: 
 pagination_next: 
 last_update:
-  date: 2022-12-27T21:04:22Z
-  author: "Zack Katz"
+  date: 2023-03-21T02:05:54Z
+  author: "Rafael Ehlers"
 ---
 
 # Maps: How can I use the latitude and longitude form fields to position the map markers?
 
-The Maps Premium View (or the Map widget and the Entry Map field) requires to setup an address form field as the source to geocode the map markers. That Address field is by default a standard Gravity Forms address field type. You may use [a different field type as the address source](https://docs.gravitykit.com/article/292-how-can-i-pull-the-address-from-a-field-type-that-is-not-address).
+The Maps Premium View (or the Map widget and the Entry Map field) requires to setup an address form field as the source to geocode the map markers. That Address field is, by default a standard Gravity Forms address field type. You may use [a different field type as the address source](https://docs.gravitykit.com/article/292-how-can-i-pull-the-address-from-a-field-type-that-is-not-address).
 
 If you have the position coordinates (latitude and longitude) stored as form fields, you may also use them instead of the Address to position the markers over the map.
 
@@ -44,10 +44,97 @@ Then when the map is rendered, the coordinates will be pulled from the Longitude
 
 In the form shown above in this article, the form ID is "46", the Latitude field ID is "6" and the Longitude field ID is "7", so we would use the following code:
 
-<script src="https://gist.github.com/zackkatz/98e64c074b707eee30394e8c49528a12.js" type="text/javascript"></script>
+```php
+
+/**
+* Use the coordinates (Latitude and Longitude) instead of the address to position the markers on the maps
+* 
+* @see https://docs.gravitykit.com/article/300-how-can-i-use-the-latitude-and-longitude-form-fields-to-position-map-markers
+*
+* @param array $fields_array Gravity Forms fields IDs containing the latitude and longitude
+* @param GravityView_View $gravityview_view Current View object
+*
+* @return array Array with field IDs of latitude and longitude fields (Example: [ 5, 6 ] ). Empty array if not the form we want to override.
+*/
+
+function example_gv_maps_lat_long_fields( $fields_array = array(), $gravityview_view = null ) {
+
+	$form = $gravityview_view->getForm();
+
+	// Only use these fields to provide the coordinates for Form ID #46
+	if ( 46 !== (int) $form['id'] ) {
+		return $fields_array;
+	}
+
+	return array( '6', '7' );
+}
+
+add_filter( 'gravityview/maps/markers/lat_long/fields_id', 'example_gv_maps_lat_long_fields', 10, 2 );
+```
+
+Here's an example of several forms with different field IDs:
+
+```php
+
+function example_gv_maps_lat_long_fields( $fields_array = array(), $gravityview_view = null ) {
+
+	$form = $gravityview_view->getForm();
+	$formid = (int) $form['id'];
+	
+	switch ($formid) {
+	    case 41: // form ID = 41
+	        return array( '1', '2' );
+	        break;
+	    case 42: // form ID = 42
+	        return array( '3', '4' );
+	        break;
+	    case 43: // form ID = 43
+	        return array( '6', '7' );
+	        break;
+	    default:
+	       return $fields_array;
+	}
+
+}
+add_filter( 'gravityview/maps/markers/lat_long/fields_id', 'example_gv_maps_lat_long_fields', 10, 2 );
+```
 
 ### Modify the code below for your own site
 
 Modify the code below with your own form ID, longitude field ID and latitude field id:
 
-<script src="https://gist.github.com/zackkatz/b6bf5f3a49b2408801feca6b855d2374.js" type="text/javascript"></script>
+```php
+
+/**
+* Use the coordinates (Latitude, Longitude) instead of the address to position the markers over the Maps
+* 
+* Replace 'MY_LATITUDE_FIELD_ID', 'MY_LONGITUDE_FIELD_ID' with field ids containing the latitude and longitude values
+*
+* @param array $fields_array Gravity Forms fields IDs containing the latitude and longitude
+* @param GravityView_View $gravityview_view Current View object
+*
+* @return array Array with field IDs of latitude and longitude fields (Example: [ 5, 6 ] ). Empty array if not the form we want to override.
+*/
+function my_gv_maps_lat_long_fields( $fields_array = array(), $gravityview_view = null ) {
+
+	$form = $gravityview_view->getForm();
+
+	// Only use these fields to provide the coordinates for Form ID #123
+	if ( 123 !== (int) $form['id'] ) {
+		return $fields_array;
+	}
+
+	return array( 'MY_LATITUDE_FIELD_ID', 'MY_LONGITUDE_FIELD_ID' );
+}
+
+add_filter( 'gravityview/maps/markers/lat_long/fields_id', 'my_gv_maps_lat_long_fields', 10, 2 );
+```
+
+
+:::info
+
+Read here how to add these code samples to your website: [Where to put code samples.](https://docs.gravitykit.com/article/210-where-to-put-code-samples)
+
+:::
+
+ 

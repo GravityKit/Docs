@@ -1,0 +1,48 @@
+---
+id: "646d26f8c137130e75d14633"
+number: "934"
+collectionId: "54d1a05ce4b086c0c0964ccd"
+publicUrl: "https://docs.gravitykit.com/article/934-how-to-customize-the-loading-data-text"
+viewCount: "5"
+lastPublishedAt: "2023-05-23T20:53:31Z"
+changeOrigin: "hsapp-js"
+name: "How to customize the \"Loading data\" text"
+slug: "934-how-to-customize-the-loading-data-text"
+status: "published"
+categories: 
+  - "54d1a06ee4b086c0c0964cd1"
+related: 
+  - "54fee2a9e4b034c37ea948ea"
+createdBy: "80506"
+createdAt: "2023-05-23T20:50:00Z"
+updatedBy: "80506"
+updatedAt: "2023-05-23T20:53:31Z"
+title: "How to customize the \"Loading data\" text"
+hsEditUrl: "https://secure.helpscout.net/docs/54d1a05ce4b086c0c0964ccd/article/646d26f8c137130e75d14633"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2023-05-23T20:53:31Z
+  author: "Rafael Ehlers"
+---
+
+# How to customize the "Loading data" text
+
+If you are using the DataTables extension and would like to customize the text of the message "Loading data..." when the table is being processed (e.g. a sort), then change the `LOADING...` text below and add the following code to your website:
+
+```php
+function my_gv_dt_custom_loading_message( $loading_text, $view ) {
+	$loading_text = 'LOADING...';
+	return $loading_text;
+}
+add_filter( 'gravityview_datatables_loading_text', 'my_gv_dt_custom_loading_message', 10, 2 );
+```
+
+
+:::info
+
+Read here how to add these code samples to your website: [Where to put code samples.](https://docs.gravitykit.com/article/210-where-to-put-code-samples)
+
+:::
+
+  Having this message enabled is particularly useful for tables with large amounts of data where it can take a noticeable amount of time to sort the entries.

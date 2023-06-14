@@ -4,10 +4,10 @@ number: "203"
 collectionId: "54d1a05ce4b086c0c0964ccd"
 popularity: "2.3"
 publicUrl: "https://docs.gravitykit.com/article/203-how-to-show-only-results-submitted-by-the-current-user"
-viewCount: "21798"
-lastPublishedAt: "2022-12-27T21:05:22Z"
-changeOrigin: "external"
-name: "How to show only results submitted by the current user"
+viewCount: "22484"
+lastPublishedAt: "2023-05-22T15:16:33Z"
+changeOrigin: "hsapp-js"
+name: "How to show only entries created by the currently logged-in user"
 slug: "203-how-to-show-only-results-submitted-by-the-current-user"
 status: "published"
 categories: 
@@ -26,18 +26,18 @@ related:
   - "5b468ecd0428630abc0bf955"
   - "5b9bf3022c7d3a03f89ec79d"
 createdBy: "59634"
-updatedBy: "59634"
-updatedAt: "2022-12-27T21:05:22Z"
-title: "How to show only results submitted by the current user"
+updatedBy: "80506"
+updatedAt: "2023-05-22T15:16:33Z"
+title: "How to show only entries created by the currently logged-in user"
 hsEditUrl: "https://secure.helpscout.net/docs/54d1a05ce4b086c0c0964ccd/article/54d1a33ae4b086c0c0964ce9"
 pagination_prev: 
 pagination_next: 
 last_update:
-  date: 2022-12-27T21:05:22Z
-  author: "Zack Katz"
+  date: 2023-05-22T15:16:33Z
+  author: "Rafael Ehlers"
 ---
 
-# How to show only results submitted by the current user
+# How to show only entries created by the currently logged-in user
 
 
 :::info
@@ -70,9 +70,18 @@ Click on the "Any form field" dropdown and choose the option titled "Created By"
 
 ![Screenshot of filter 'Created By' 'is' 'Currently Logged-in User'](https://i.gravitykit.com/TnDqS1+)
 
-### You can exclude Administrators from being filtered.
+### You can exclude Administrators\* from being filtered.
 
 If you want Administrators to be able to see all entries, that's possible too! Just select the next option: "Currently Logged-in User (disabled for Admins)".
+
+
+:::caution
+
+* Editors or custom roles with the following capabilities `manage_options`, `gravityforms_view_entries`, `gravityview_edit_others_entries` are also included in this option. Read more about [capabilities in GravityView](https://docs.gravitykit.com/article/311-gravityview-capabilities).
+
+:::
+
+
 
 ![Dropdown of options for 'Created By' filter, with 'Currently Logged-in User (disabled for Admins)' selected.](https://i.gravitykit.com/lFh0Zg+)
 

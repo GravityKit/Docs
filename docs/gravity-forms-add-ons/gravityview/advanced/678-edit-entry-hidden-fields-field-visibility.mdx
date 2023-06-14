@@ -4,9 +4,9 @@ number: "678"
 collectionId: "566dfabbc6979143615564bf"
 popularity: "0.4"
 publicUrl: "https://docs.gravitykit.com/article/678-edit-entry-hidden-fields-field-visibility"
-viewCount: "2116"
-lastPublishedAt: "2022-12-27T21:05:46Z"
-changeOrigin: "external"
+viewCount: "2254"
+lastPublishedAt: "2023-04-13T01:26:27Z"
+changeOrigin: "hsapp-js"
 name: "How does Edit Entry handle hidden fields and field visibility settings?"
 slug: "678-edit-entry-hidden-fields-field-visibility"
 status: "published"
@@ -15,15 +15,15 @@ categories:
   - "5e1b6d5d04286364bc93c665"
 createdBy: "59634"
 createdAt: "2020-02-21T01:50:16Z"
-updatedBy: "59634"
-updatedAt: "2022-12-27T21:05:46Z"
+updatedBy: "80506"
+updatedAt: "2023-04-13T01:26:27Z"
 title: "How does Edit Entry handle hidden fields and field visibility settings?"
 hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5e4f37582c7d3a7e9ae815dd"
 pagination_prev: 
 pagination_next: 
 last_update:
-  date: 2022-12-27T21:05:46Z
-  author: "Zack Katz"
+  date: 2023-04-13T01:26:27Z
+  author: "Rafael Ehlers"
 ---
 
 # How does Edit Entry handle hidden fields and field visibility settings?
@@ -79,20 +79,29 @@ These filters only work for Hidden fields. They don't work on fields with visibi
   To make Hidden fields **visible** and **editable** in Edit Entry:
 
 ```php
+
 // Converts `<input type="hidden">` to `<input type="text">`
 add_filter( 'gravityview/edit_entry/reveal_hidden_field', '__return_true' );
-```
+```php
 
 To prevent Hidden fields from being output on the Edit Entry form HTML, add the following filter:
 
 ```php
+
 // Prevent hidden fields from being output in HTML at all
 add_filter( 'gravityview/edit_entry/render_hidden_field', '__return_false' );
 ```
 
 Note: you can also modify fields displayed in Edit Entry by using the `gravityview/edit_entry/form_fields` filter.
 
----
+
+:::info
+
+Read here how to add these code samples to your website: [Where to put code samples.](https://docs.gravitykit.com/article/210-where-to-put-code-samples)
+
+:::
+
+ ---
 
 ## A timeline of changes regarding rendering Hidden Field fields in Edit Entry
 

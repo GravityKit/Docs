@@ -4,7 +4,7 @@ number: "277"
 collectionId: "566dfabbc6979143615564bf"
 popularity: "0.4"
 publicUrl: "https://docs.gravitykit.com/article/277-using-the-foobox-lightbox-plugin-instead-of-the-default"
-viewCount: "1856"
+viewCount: "1895"
 lastPublishedAt: "2022-10-07T22:02:57Z"
 changeOrigin: "unknown"
 name: "[Deprecated] Using the FooBox Lightbox plugin instead of the default Thickbox"
@@ -47,7 +47,7 @@ You may want to use a different lightbox solution. If you use the [FooBox Image 
 
 Paste the following code into your theme's functions.php file ([see how](https://docs.gravitykit.com/article/210-where-to-put-code-samples)):
 
-```
+```php
 // GravityView: Override the default lightbox by FooBox
 add_filter( 'gravityview/fields/fileupload/link_atts', 'my_gv_image_link_atts', 10, 2 );
 function my_gv_image_link_atts( $link_atts, $field ) { 	

@@ -3,7 +3,7 @@ id: "635b005a73d6a22819f071d0"
 number: "886"
 collectionId: "6076f9478996210f18bd33df"
 publicUrl: "https://docs.gravitykit.com/article/886-restarting-a-gravity-flow-workflow-after-editing-a-field-with-gravityedit"
-viewCount: "57"
+viewCount: "111"
 lastPublishedAt: "2022-11-15T22:47:17Z"
 changeOrigin: "unknown"
 name: "Restarting a Gravity Flow workflow after editing a field with GravityEdit"
@@ -40,7 +40,7 @@ The code sample below targets specific forms by their IDs. Make sure to change t
 
 The code below restarts a Gravity Flow workflow after editing a field with **GravityEdit** (formerly known as **Inline Edit**).
 
-```
+```php
 add_filter( 'gravityview-inline-edit/entry-updated', 'gravityedit_trigger_workflow', 10, 5 );
 
 function gravityedit_trigger_workflow( $update_result, $entry = array(), $form_id = 0, $gf_field = null, $original_entry = array() ) { 

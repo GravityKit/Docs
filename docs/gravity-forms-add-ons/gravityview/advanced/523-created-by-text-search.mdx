@@ -4,7 +4,7 @@ number: "523"
 collectionId: "566dfabbc6979143615564bf"
 popularity: "0.2"
 publicUrl: "https://docs.gravitykit.com/article/523-created-by-text-search"
-viewCount: "901"
+viewCount: "943"
 lastPublishedAt: "2022-12-27T20:44:47Z"
 changeOrigin: "external"
 name: "How to change what fields are searched by the Search Bar \"Created By\" text input."
@@ -67,7 +67,7 @@ This allows searching entry creator by username, email address, or display name.
 
 The search will still query the username and display name of the user who created an entry, but the email will no longer be searched:
 
-```
+```php
 add_filter( 'gravityview/widgets/search/created_by/user_fields', 'gv_created_by_no_email_search', 10, 2 );
 
 /**
@@ -104,7 +104,7 @@ If you want to modify the user meta fields that are searched, use the `gravityvi
 
 If you also want to search the users' description, use the code below:
 
-```
+```php
 add_filter( 'gravityview/widgets/search/created_by/user_meta_fields', 'gv_created_by_also_search_description', 10, 2 );
 
 /**
@@ -123,7 +123,7 @@ function gv_created_by_also_search_description( $user_meta_fields, $view ) {
 
 If you want to prevent the Created By search from searching any meta fields, use this code:
 
-```
+```php
 add_filter( 'gravityview/widgets/search/created_by/user_meta_fields', '__return_empty_array' );
 	
 ```

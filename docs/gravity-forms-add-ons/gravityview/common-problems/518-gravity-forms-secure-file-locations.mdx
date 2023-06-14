@@ -4,7 +4,7 @@ number: "518"
 collectionId: "566dfabbc6979143615564bf"
 popularity: "0.2"
 publicUrl: "https://docs.gravitykit.com/article/518-gravity-forms-secure-file-locations"
-viewCount: "940"
+viewCount: "1033"
 lastPublishedAt: "2023-01-18T02:08:41Z"
 changeOrigin: "hsapp-js"
 name: "Problems loading images: Gravity Forms Secure File Download Location"
@@ -46,7 +46,7 @@ Note how the secure link doesn't show the name of the file, but the insecure lin
 
 Adding the code below will direct GravityView to use the insecure path to the image when displaying it.
 
-```
+```php
 
 add_filter( 'gform_secure_file_download_location', '__return_false' );
 ```

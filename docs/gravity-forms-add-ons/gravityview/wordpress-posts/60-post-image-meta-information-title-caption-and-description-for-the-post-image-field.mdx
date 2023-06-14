@@ -4,7 +4,7 @@ number: "60"
 collectionId: "566dfabbc6979143615564bf"
 popularity: "0.3"
 publicUrl: "https://docs.gravitykit.com/article/60-post-image-meta-information-title-caption-and-description-for-the-post-image-field"
-viewCount: "1544"
+viewCount: "1574"
 lastPublishedAt: "2018-03-30T14:01:12Z"
 changeOrigin: "unknown"
 name: "Post Image Meta information: Title, Caption and Description for the Post Image field"
@@ -61,7 +61,7 @@ The `gravityview_post_image_meta` filter passes an array with `title`, `caption`
 
 If you don't want to display any image meta, you can use the following code:
 
-```
+```php
 add_filter('gravityview_post_image_meta', '__return_empty_array' );
 ```
 
@@ -69,7 +69,7 @@ add_filter('gravityview_post_image_meta', '__return_empty_array' );
 
 To hide the caption, you can use the code below:
 
-```
+```php
 add_filter('gravityview_post_image_meta', 'remove_caption_from_gravityview_post_image_meta' );
 function remove_caption_from_gravityview_post_image_meta( $image_meta ) {
    unset( $image_meta['caption'] );
@@ -83,6 +83,6 @@ GravityView also has a `gravityview_post_image_meta_show_labels` filter, which a
 
 If you want to display the value without the labels, use the code below:
 
-```
+```php
 add_filter('gravityview_post_image_meta_show_labels', '__return_false');
 ```

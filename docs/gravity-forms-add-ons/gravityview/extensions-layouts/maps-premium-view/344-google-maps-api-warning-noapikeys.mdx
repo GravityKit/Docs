@@ -4,10 +4,10 @@ number: "344"
 collectionId: "54d1a05ce4b086c0c0964ccd"
 popularity: "2.3"
 publicUrl: "https://docs.gravitykit.com/article/344-google-maps-api-warning-noapikeys"
-viewCount: "21951"
-lastPublishedAt: "2022-10-13T23:26:00Z"
-changeOrigin: "unknown"
-name: "I see a warning \"Google Maps API warning: NoApiKeys\""
+viewCount: "22127"
+lastPublishedAt: "2023-03-09T19:51:11Z"
+changeOrigin: "hsapp-js"
+name: "Error: Google Maps API warning: NoApiKeys"
 slug: "344-google-maps-api-warning-noapikeys"
 status: "published"
 categories: 
@@ -20,32 +20,32 @@ keywords:
   - "noapikeys"
 related: 
   - "5605872bc6979105f62b023a"
+  - "632e1171c5dd38351401b31e"
 createdBy: "59634"
 createdAt: "2016-04-06T17:21:09Z"
 updatedBy: "80506"
-updatedAt: "2022-10-13T23:26:00Z"
-title: "I see a warning \"Google Maps API warning: NoApiKeys\""
+updatedAt: "2023-03-09T19:51:11Z"
+title: "Error: Google Maps API warning: NoApiKeys"
 hsEditUrl: "https://secure.helpscout.net/docs/54d1a05ce4b086c0c0964ccd/article/57054585903360288a7807f9"
 pagination_prev: 
 pagination_next: 
 last_update:
-  date: 2022-10-13T23:26:00Z
+  date: 2023-03-09T19:51:11Z
   author: "Rafael Ehlers"
 ---
 
-# I see a warning "Google Maps API warning: NoApiKeys"
+# Error: Google Maps API warning: NoApiKeys
 
+![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/640a35bdcde27207000227d9/file-8OQTzQLdQv.png)
 
-:::caution
+If you see a warning in your browser's Javascript console that says `Google Maps JavaScript API warning: NoApiKeys https://developers.google.com/maps/documentation/javascript/error-messages#no-api-keys` the reason is that you haven't configured your Google Maps API keys or there's a conflict with another plugin/theme trying to load the Google Maps script at the same time.
 
-**Notice**: Beginning on June 11, 2018, an API Key is now **required** for every map project using the Google Maps library. You can read more about [this Google guideline here](https://cloud.google.com/maps-platform/user-guide/).
+There are two ways to fix this problem:
 
-:::
+### 1) Add your Google Maps API key in the GravityKit's Settings screen
 
+![Screenshot showing GravityKit's Settings page to input the Google Maps API Key](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/640a374c3387cb3e147b74b5/file-MTjwaiexCZ.png)
 
+### 2) Add your Google Maps API key on the settings page of other plugins or your currently active theme
 
-![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/570545d0903360288a7807fb/file-QCFxL8DMPW.png)
-
-If you see a warning in your browser's Javascript console that says "Google Maps API warning: NoApiKeys [https://developers.google.com/maps/documentation/javascript/error-messages#no-api-keys](https://developers.google.com/maps/documentation/javascript/error-messages#no-api-keys)", the reason is that you haven't configured your Google Maps API keys yet.
-
-Please enter your Google Maps API key in the GravityView Settings screen. Learn more in this article: [Signing up for a Google Maps API key](https://docs.gravitykit.com/article/306-signing-up-for-a-google-maps-api-key).
+Read more about that here: [Error: This page can't load Google Maps correctly](https://docs.gravitykit.com/article/870-this-page-cant-load-google-maps-correctly)

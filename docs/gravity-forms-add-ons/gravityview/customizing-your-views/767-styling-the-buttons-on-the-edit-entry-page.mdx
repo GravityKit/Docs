@@ -4,9 +4,9 @@ number: "767"
 collectionId: "566dfabbc6979143615564bf"
 popularity: "0.1"
 publicUrl: "https://docs.gravitykit.com/article/767-styling-the-buttons-on-the-edit-entry-page"
-viewCount: "375"
-lastPublishedAt: "2022-10-07T22:13:56Z"
-changeOrigin: "unknown"
+viewCount: "512"
+lastPublishedAt: "2023-05-15T21:23:35Z"
+changeOrigin: "hsapp-js"
 name: "Styling the Buttons on the Edit Entry Page"
 slug: "767-styling-the-buttons-on-the-edit-entry-page"
 status: "published"
@@ -19,13 +19,13 @@ related:
 createdBy: "543004"
 createdAt: "2021-04-16T16:42:41Z"
 updatedBy: "80506"
-updatedAt: "2022-10-07T22:13:56Z"
+updatedAt: "2023-05-15T21:23:35Z"
 title: "Styling the Buttons on the Edit Entry Page"
 hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/6079be814466ce6ddc5f575a"
 pagination_prev: 
 pagination_next: 
 last_update:
-  date: 2022-10-07T22:13:56Z
+  date: 2023-05-15T21:23:35Z
   author: "Rafael Ehlers"
 ---
 
@@ -96,4 +96,64 @@ For example, if the form linked to your View has an ID of “3”, your CSS woul
 
  ###  Example Styles
 
-<script src="https://gist.github.com/crbdev/d388d2c2c02f70dc7976dc9fd0d31534.js" type="text/javascript"></script>
+```
+#publishing-action{
+	width: 100%;
+}
+
+/* Update button */
+#publishing-action .gv-button-update {
+	background-color: #4CAF50;
+ 	border: 2px solid #4CAF50;
+ 	color: #ffffff;
+ 	padding: 15px 32px;
+ 	text-align: center;
+ 	font-size: 16px;
+}
+
+#publishing-action .gv-button-update:hover {
+	background-color: #46a04a;
+	border: 2px solid #46a04a;
+	cursor: pointer;
+}
+
+/* Cancel button */
+#publishing-action .gv-button-cancel {
+background-color: #fff;
+ 	border: 1px solid #000;
+ 	color: #000000;
+ 	padding: 15px 32px;
+ 	text-align: center;
+ 	text-decoration: none;
+ 	font-size: 16px;
+}
+
+#publishing-action .gv-button-cancel:hover {
+	background-color: #f3f3f3;
+}
+
+/* Delete button */
+#publishing-action .gv-button-delete {
+background-color: #F44336;
+ 	border: 1px solid #F44336;
+ 	color: #ffffff;
+ 	padding: 15px 32px;
+ 	text-align: center;
+ 	text-decoration: none;
+ 	font-size: 16px;
+}
+
+#publishing-action .gv-button-delete:hover {
+	background-color: #f21c0d;
+	border: 1px solid #F44336;
+}
+```
+
+
+:::info
+
+Read here how to add these CSS samples to your website: [Adding custom CSS to your website](https://docs.gravitykit.com/article/246-adding-custom-css-to-your-website)
+
+:::
+
+ 

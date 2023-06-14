@@ -4,7 +4,7 @@ number: "299"
 collectionId: "566dfabbc6979143615564bf"
 popularity: "0.2"
 publicUrl: "https://docs.gravitykit.com/article/299-change-the-delete-entry-mode-from-delete-to-trash"
-viewCount: "960"
+viewCount: "1003"
 lastPublishedAt: "2022-11-01T22:12:14Z"
 changeOrigin: "unknown"
 name: "Change the Delete Entry mode from \"Delete\" to \"Trash\""
@@ -37,7 +37,7 @@ last_update:
 
 The entry is permanently deleted when deleting it in GravityView ( [see more here](https://docs.gravitykit.com/article/66-configuring-delete-entry)). If you want to have the entry moved to the **trash** instead, please use the code snippet below:
 
-```
+```php
 add_filter( 'gravityview/delete-entry/mode', 'gk_delete_entry_mode_return_trash' );
 
 function gk_delete_entry_mode_return_trash() {
@@ -49,7 +49,7 @@ function gk_delete_entry_mode_return_trash() {
 
 If you wish to apply this setting to a specific View only instead of changing the mode for all Views, then use the code below by making sure to replace "123" with the ID of your View:
 
-```
+```php
 add_filter( 'gravityview/delete-entry/mode', 'gk_delete_entry_mode_return_trash' );
 
 function gk_delete_entry_mode_return_trash() {

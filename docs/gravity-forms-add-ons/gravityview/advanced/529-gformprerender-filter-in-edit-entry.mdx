@@ -4,7 +4,7 @@ number: "529"
 collectionId: "566dfabbc6979143615564bf"
 popularity: "0.2"
 publicUrl: "https://docs.gravitykit.com/article/529-gformprerender-filter-in-edit-entry"
-viewCount: "1216"
+viewCount: "1263"
 lastPublishedAt: "2020-01-12T19:07:33Z"
 changeOrigin: "unknown"
 name: "How to use the gform_pre_render filter in Edit Entry"
@@ -34,14 +34,14 @@ The important thing is to set the priority to a number higher than 5000.
 
 Instead of:
 
-```
+```php
 
 add_filter( 'gform_pre_render_12', 'my_custom_function_to_populate_fields' );
 ```
 
 Use this instead:
 
-```
+```php
 
 add_filter( 'gform_pre_render_12', 'my_custom_function_to_populate_fields', 5001 );
 ```

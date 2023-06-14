@@ -3,9 +3,9 @@ id: "62f664ed829a3853b6926306"
 number: "857"
 collectionId: "6076f9478996210f18bd33df"
 publicUrl: "https://docs.gravitykit.com/article/857-gravitycharts-merge-tag"
-viewCount: "118"
-lastPublishedAt: "2022-08-17T17:00:28Z"
-changeOrigin: "unknown"
+viewCount: "172"
+lastPublishedAt: "2023-04-26T15:20:23Z"
+changeOrigin: "hsapp-js"
 name: "The {gravitycharts} Merge Tag"
 slug: "857-gravitycharts-merge-tag"
 status: "published"
@@ -13,15 +13,15 @@ categories:
   - "6261683a93a48c44483342eb"
 createdBy: "59634"
 createdAt: "2022-08-12T14:34:21Z"
-updatedBy: "59634"
-updatedAt: "2022-08-17T17:00:28Z"
+updatedBy: "543004"
+updatedAt: "2023-04-26T15:20:23Z"
 title: "The {gravitycharts} Merge Tag"
 hsEditUrl: "https://secure.helpscout.net/docs/6076f9478996210f18bd33df/article/62f664ed829a3853b6926306"
 pagination_prev: 
 pagination_next: 
 last_update:
-  date: 2022-08-17T17:00:28Z
-  author: "Zack Katz"
+  date: 2023-04-26T15:20:23Z
+  author: "Casey Burridge"
 ---
 
 # The {gravitycharts} Merge Tag
@@ -29,7 +29,7 @@ last_update:
 
 :::caution
 
-**This feature is currently in beta!** If you encounter any issues, please let our support know.
+**This feature is currently in beta!** If you encounter any issues, please let our [support](https://www.gravitykit.com/support/) know.
 
 :::
 
@@ -44,7 +44,7 @@ The structure of the Merge Tag is:
 **Merge Tag Attributes:**
 
 - `[feed id]` is the ID of the chart feed.
-- `[shortcode attributes]` Optional. An ampersand-separated list of shortcode attributes that will override default values (see examples below).
+- `[shortcode attributes]` Optional. An ampersand-separated list of [shortcode attributes](https://docs.gravitykit.com/article/850-gravitycharts-shortcode) that will override default values (see examples below).
 
 ## Merge Tag examples
 
@@ -53,6 +53,12 @@ The structure of the Merge Tag is:
 This Merge Tag will be replaced by an image of chart feed #123 using the default width of an image chart (500px) and the default height of an image chart (300px).
 
 `{gravitycharts:123}`
+
+### Chart a single entry on the form confirmation page
+
+By including `entry=true`, you can add the `{gravitycharts}` merge tag to a Gravity Forms confirmation to display a chart that showcases the data for the entry just submitted.
+
+`{gravitycharts:123:entry=true}`
 
 ### Setting chart width and height
 

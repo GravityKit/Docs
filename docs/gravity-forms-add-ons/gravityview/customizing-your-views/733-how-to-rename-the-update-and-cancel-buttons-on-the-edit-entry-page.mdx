@@ -3,9 +3,9 @@ id: "5f8de7384cedfd0017dd32e1"
 number: "733"
 collectionId: "566dfabbc6979143615564bf"
 publicUrl: "https://docs.gravitykit.com/article/733-how-to-rename-the-update-and-cancel-buttons-on-the-edit-entry-page"
-viewCount: "225"
-lastPublishedAt: "2020-10-19T19:29:18Z"
-changeOrigin: "unknown"
+viewCount: "253"
+lastPublishedAt: "2023-04-17T03:36:29Z"
+changeOrigin: "hsapp-js"
 name: "How to rename the Update and Cancel buttons on the Edit Entry page"
 slug: "733-how-to-rename-the-update-and-cancel-buttons-on-the-edit-entry-page"
 status: "published"
@@ -17,13 +17,13 @@ related:
 createdBy: "80506"
 createdAt: "2020-10-19T19:21:28Z"
 updatedBy: "80506"
-updatedAt: "2020-10-19T19:29:18Z"
+updatedAt: "2023-04-17T03:36:29Z"
 title: "How to rename the Update and Cancel buttons on the Edit Entry page"
 hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5f8de7384cedfd0017dd32e1"
 pagination_prev: 
 pagination_next: 
 last_update:
-  date: 2020-10-19T19:29:18Z
+  date: 2023-04-17T03:36:29Z
   author: "Rafael Ehlers"
 ---
 
@@ -35,6 +35,28 @@ It's possible to customize the labels of the Update and Cancel buttons on the Ed
 
 This code snippet helps you do that:
 
-<script src="https://gist.github.com/rafaehlers/724c9d6c4f36b3ae3d71d7b7800bffe3.js" type="text/javascript"></script> Here's the output after using the code above:
+```php
+
+add_filter( 'gravityview/edit_entry/button_labels', 'gv_modify_edit_entry_buttons', 10, 4 );
+
+function gv_modify_edit_entry_buttons( $labels, $form, $entry, $view_id ){
+	$labels = array(
+		'cancel' => __( 'Cancel Update', 'gravityview' ),
+		'submit' => __( 'Update Entry', 'gravityview'),
+		'next' => __( 'Next page', 'gravityview'), // for multi-page forms
+		'previous' => __( 'Previous page', 'gravityview') // for multi-page forms
+	);
+		return $labels;
+}
+```
+
+
+:::info
+
+Read here how to add these code samples to your website: [Where to put code samples.](https://docs.gravitykit.com/article/210-where-to-put-code-samples)
+
+:::
+
+  Here's the output after using the code above:
 
 ![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/5f8de88fc9e77c001621937f/file-WT5PjZY9rt.png)

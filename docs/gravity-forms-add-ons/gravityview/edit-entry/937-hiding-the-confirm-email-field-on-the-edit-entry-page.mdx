@@ -1,0 +1,92 @@
+---
+id: "647f9eab4f581963a7ea042c"
+number: "937"
+collectionId: "566dfabbc6979143615564bf"
+publicUrl: "https://docs.gravitykit.com/article/937-hiding-the-confirm-email-field-on-the-edit-entry-page"
+viewCount: "5"
+lastPublishedAt: "2023-06-06T22:08:50Z"
+changeOrigin: "hsapp-js"
+name: "Hiding the Confirm Email field on the Edit Entry page"
+slug: "937-hiding-the-confirm-email-field-on-the-edit-entry-page"
+status: "published"
+categories: 
+  - "5e1b6d5d04286364bc93c665"
+createdBy: "80506"
+createdAt: "2023-06-06T21:01:31Z"
+updatedBy: "336675"
+updatedAt: "2023-06-06T22:08:50Z"
+title: "Hiding the Confirm Email field on the Edit Entry page"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/647f9eab4f581963a7ea042c"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2023-06-06T22:08:50Z
+  author: "Vlad K."
+---
+
+# Hiding the Confirm Email field on the Edit Entry page
+
+If your form is using the Confirmation Email field option on your form to prevent typos, you might want to disable this field on the Edit Entry page of your View.
+
+![Screenshot showing the form with the Confirm Email field included](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/647f9fdf6dd58d2d26c3e378/file-oIXN5wghRW.png)  
+![Screenshot showing the edit entry page of the View with the Confirm Email field included](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/647f9f85969cec658daaf271/file-8Y1DpNnM00.png)
+
+Below is the code snippet you'll need to hide the Confirm Email from the Edit Entry page of your View:
+
+```PHP
+add_filter( 'gravityview/edit_entry/form_fields', function ( $fields ) {
+	$view_id = GravityView_View::getInstance()->getViewId();
+
+	if ( $view_id !== 321 ) { // CHANGE 321 TO YOUR VIEW ID
+		return $fields;
+	}
+
+	foreach ( $fields as &$field ) {
+		if ( 'email' === $field->type && $field->emailConfirmEnabled ) {
+			$field->emailConfirmEnabled = false;
+		}
+	}
+
+	return $fields;
+} );
+
+add_filter( 'gravityview/edit_entry/field_value', function ( $value, $field ) {
+	$view_id = GravityView_View::getInstance()->getViewId();
+
+	if ( $view_id !== 321 ) { // CHANGE 321 TO YOUR VIEW ID
+		return $value;
+	}
+
+	if ( 'email' === $field->type && is_array( $value ) ) {
+		$value = implode( '', $value );
+	}
+
+	return $value;
+}, 10, 2 );
+```php
+
+
+:::info
+
+Read here how to add these code samples to your website: [Where to put code samples.](https://docs.gravitykit.com/article/210-where-to-put-code-samples)
+
+:::
+
+  If you don't want to hide that field, but instead want to automatically prefill it with the same email address from the entry, then that's possible with the code snippet below:
+
+```PHP
+add_filter( 'gravityview/edit_entry/field_value', function ( $field_value, $field ) {
+	if ( 'email' === $field->type && $field->emailConfirmEnabled && isset( $field_value[ $field->id ] ) ) {
+		$field_value = [
+			$field_value[ $field->id ],
+			$field_value[ $field->id ]
+		];
+	}
+
+	return $field_value;
+}, 10, 2 );
+```
+
+Here's how it will show up on the View:
+
+![Screenshot showing the Confirm Email field already prefilled with the email address from the entry](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/647fa3cd192ef80071ac62ac/file-zIRex9mdEx.png)

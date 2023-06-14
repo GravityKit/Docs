@@ -3,9 +3,9 @@ id: "61b8f7f851b4c537989a01dd"
 number: "814"
 collectionId: "6076f9478996210f18bd33df"
 publicUrl: "https://docs.gravitykit.com/article/814-calendar-week-start"
-viewCount: "228"
-lastPublishedAt: "2022-10-18T23:19:57Z"
-changeOrigin: "unknown"
+viewCount: "282"
+lastPublishedAt: "2023-03-21T01:59:15Z"
+changeOrigin: "hsapp-js"
 name: "How can I change the day weeks start on in Calendar?"
 slug: "814-calendar-week-start"
 status: "published"
@@ -14,13 +14,13 @@ categories:
 createdBy: "59634"
 createdAt: "2021-12-14T20:00:56Z"
 updatedBy: "80506"
-updatedAt: "2022-10-18T23:19:57Z"
+updatedAt: "2023-03-21T01:59:15Z"
 title: "How can I change the day weeks start on in Calendar?"
 hsEditUrl: "https://secure.helpscout.net/docs/6076f9478996210f18bd33df/article/61b8f7f851b4c537989a01dd"
 pagination_prev: 
 pagination_next: 
 last_update:
-  date: 2022-10-18T23:19:57Z
+  date: 2023-03-21T01:59:15Z
   author: "Rafael Ehlers"
 ---
 
@@ -30,10 +30,46 @@ last_update:
 
 The settings can be accessed by clicking on Settings in the sidebar in the WordPress dashboard, then clicking on "General".
 
-### Filters for people comfortable with code:
+## Filters for people comfortable with code:
 
-You can add this snippet to your site to modify the start day to Monday ([here's how to add the code](https://docs.gravitykit.com/article/210-where-to-put-code-samples)):
+You can add this snippet to your site to modify the start day to Monday:
 
-<script src="https://gist.github.com/zackkatz/f23b4712f4ef0b6b9b66d89deed58efd.js" type="text/javascript"></script> If you want to change the starting day, but only for a specific calendar feed, **update the code below** with the feed ID you're using:
+```php
 
-<script src="https://gist.github.com/zackkatz/656e70093cc3cc33f33fcd509ffccc8c.js" type="text/javascript"></script>
+add_filter( 'gravityview/calendar/options', function( $calendar_options, $form_id, $feed_id ) {
+
+	// Set the calendar week to start on Monday
+	$calendar_options['firstDay'] = 1;
+
+	return $calendar_options;
+});
+```
+
+If you want to change the starting day, but only for a specific calendar feed, **update the code below** with the feed ID you're using:
+
+```php
+
+add_filter( 'gravityview/calendar/options', function( $calendar_options, $form_id, $feed_id ) {
+
+	//
+	// REPLACE 4 WITH THE ID OF YOUR CALENDAR FEED!
+	//
+	if( 4 !== $feed_id ) {
+		return $calendar_options;
+	}
+	
+	// Set the calendar week to start on Monday
+	$calendar_options['firstDay'] = 1;
+
+	return $calendar_options;
+});
+```
+
+
+:::info
+
+Read here how to add these code samples to your website: [Where to put code samples.](https://docs.gravitykit.com/article/210-where-to-put-code-samples)
+
+:::
+
+ 

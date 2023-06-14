@@ -1,0 +1,56 @@
+---
+id: "6401182652af714471a18e2a"
+number: "918"
+collectionId: "5fe214556451e825e3b8d359"
+publicUrl: "https://docs.gravitykit.com/article/918-the-license-key-keeps-disappearing"
+viewCount: "22"
+lastPublishedAt: "2023-05-02T23:34:14Z"
+changeOrigin: "hsapp-js"
+name: "The license key keeps disappearing"
+slug: "918-the-license-key-keeps-disappearing"
+status: "published"
+categories: 
+  - "5fe214db6451e825e3b8d360"
+keywords: 
+  - "license"
+  - "unlicensed"
+createdBy: "80506"
+createdAt: "2023-03-02T21:41:58Z"
+updatedBy: "336675"
+updatedAt: "2023-05-02T23:34:14Z"
+title: "The license key keeps disappearing"
+hsEditUrl: "https://secure.helpscout.net/docs/5fe214556451e825e3b8d359/article/6401182652af714471a18e2a"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2023-05-02T23:34:14Z
+  author: "Vlad K."
+---
+
+# The license key keeps disappearing
+
+If you unexpectedly find your license key(s) missing from the GravityKit Products &amp; Licenses page, it is likely due to a change in WordPress's secret keys. These are typically [defined](https://api.wordpress.org/secret-key/1.1/salt/) in WordPress's configuration file (`wp-config.php`) and are used for various security purposes, including encryption/decryption of licensing data by our products. When these keys change, the licensing data can no longer be read, and the installed GravityKit products will appear as unlicensed.  
+  
+Plugins such as [Sucuri Security](https://wordpress.org/plugins/sucuri-scanner/) and [Salt Shaker](https://wordpress.org/plugins/salt-shaker/) can regenerate security keys automatically. Your hosting provider may also randomly rotate these keys.
+
+To prevent this from happening, you can:
+
+- Disable automatic security keys regeneration in Sucuri (as described below)
+- Deactivate and delete the Salt Shaker plugin
+- Ask your hosting provider to not change those keys;
+- [Hard-code GravityKit licenses](https://docs.gravitykit.com/article/54-hard-coding-your-license-key)
+
+
+:::info
+
+If you are confident that your security keys haven't changed and you are still experiencing the disappearing license keys issue, please [contact our support team](https://www.gravitykit.com/support) for further assistance.
+
+:::
+
+ ## Disabling security keys rotation in Sucuri Security
+
+1. Go to *Sucuri Security* → *Settings* in your WordPress admin dashboard
+2. Select the *Hardening* tab
+3. Disable the *Activate Automatic Secret Keys Updater* option
+
+![Screenshot of the Sucuri Settings page](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/640118923c396c395ec0f6f4/file-vY1UlP0teS.png)

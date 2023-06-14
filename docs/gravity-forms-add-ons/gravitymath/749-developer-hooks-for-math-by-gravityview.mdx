@@ -3,7 +3,7 @@ id: "601ab3552042ff6d1b2aa36e"
 number: "749"
 collectionId: "6076f9478996210f18bd33df"
 publicUrl: "https://docs.gravitykit.com/article/749-developer-hooks-for-math-by-gravityview"
-viewCount: "175"
+viewCount: "201"
 lastPublishedAt: "2022-12-14T21:30:22Z"
 changeOrigin: "hsapp-js"
 name: "Developer Hooks for GravityMath"
@@ -63,7 +63,7 @@ Since 1.0
 
 Here's an example to display `0` when the calculation result is empty for some reason:
 
-```
+```php
 
 add_filter('gravityview/math/shortcode/output', function( $result) {
 	return ($result === '') ? 0 : $result;

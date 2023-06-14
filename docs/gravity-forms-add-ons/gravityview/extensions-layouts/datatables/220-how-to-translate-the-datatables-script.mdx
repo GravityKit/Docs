@@ -4,9 +4,9 @@ number: "220"
 collectionId: "54d1a05ce4b086c0c0964ccd"
 popularity: "0.1"
 publicUrl: "https://docs.gravitykit.com/article/220-how-to-translate-the-datatables-script"
-viewCount: "737"
-lastPublishedAt: "2022-10-13T23:15:45Z"
-changeOrigin: "unknown"
+viewCount: "795"
+lastPublishedAt: "2023-04-17T03:29:01Z"
+changeOrigin: "hsapp-js"
 name: "How to translate the DataTables script"
 slug: "220-how-to-translate-the-datatables-script"
 status: "published"
@@ -19,20 +19,48 @@ keywords:
 createdBy: "59634"
 createdAt: "2015-02-10T15:53:45Z"
 updatedBy: "80506"
-updatedAt: "2022-10-13T23:15:45Z"
+updatedAt: "2023-04-17T03:29:01Z"
 title: "How to translate the DataTables script"
 hsEditUrl: "https://secure.helpscout.net/docs/54d1a05ce4b086c0c0964ccd/article/54da2989e4b034c37ea8e757"
 pagination_prev: 
 pagination_next: 
 last_update:
-  date: 2022-10-13T23:15:45Z
+  date: 2023-04-17T03:29:01Z
   author: "Rafael Ehlers"
 ---
 
 # How to translate the DataTables script
 
-### As of Version 1.2.3, translation is now built into the DataTables Extension.
 
-The DataTables Extension will automatically use the language of the WordPress installation. If you would like to override the translation used, you can [add the code below to your theme's functions.php](https://docs.gravitykit.com/article/210-where-to-put-code-samples):
+:::caution
 
-<script src="https://gist.github.com/zackkatz/b2250947eda3cb1bdcc1.js" type="text/javascript"></script>
+As of Version 1.2.3, translation is now built into the DataTables Extension.
+
+:::
+
+
+
+The DataTables Extension will automatically use the language of the WordPress installation. If you would like to override the translation used, you can add the code below to your theme's functions.php:
+
+```php
+add_filter( 'gravityview/datatables/config/locale', 'modify_gravityview_datatables_locale', 10, 2 );
+
+/**
+* Modify the locale used in the DataTables translation
+*/
+function modify_gravityview_datatables_locale( $existing_locale, $translations ) {
+
+	// Define the Locale Code, as shown here: http://wpcentral.io/internationalization/
+	// We're using German in this example:
+	return 'de_DE';
+}
+```
+
+
+:::info
+
+Read here how to add these code samples to your website: [Where to put code samples.](https://docs.gravitykit.com/article/210-where-to-put-code-samples)
+
+:::
+
+ 

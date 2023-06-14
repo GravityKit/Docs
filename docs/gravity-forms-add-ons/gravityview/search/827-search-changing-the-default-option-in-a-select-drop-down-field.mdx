@@ -3,9 +3,9 @@ id: "61e0b6c4c73ba12e69a4fcfe"
 number: "827"
 collectionId: "566dfabbc6979143615564bf"
 publicUrl: "https://docs.gravitykit.com/article/827-search-changing-the-default-option-in-a-select-drop-down-field"
-viewCount: "115"
-lastPublishedAt: "2022-10-07T22:14:39Z"
-changeOrigin: "unknown"
+viewCount: "147"
+lastPublishedAt: "2023-04-17T03:44:08Z"
+changeOrigin: "hsapp-js"
 name: "Search: Changing the default option in a select (drop down) field"
 slug: "827-search-changing-the-default-option-in-a-select-drop-down-field"
 status: "published"
@@ -19,13 +19,13 @@ related:
 createdBy: "80506"
 createdAt: "2022-01-13T23:33:24Z"
 updatedBy: "80506"
-updatedAt: "2022-10-07T22:14:40Z"
+updatedAt: "2023-04-17T03:44:08Z"
 title: "Search: Changing the default option in a select (drop down) field"
 hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/61e0b6c4c73ba12e69a4fcfe"
 pagination_prev: 
 pagination_next: 
 last_update:
-  date: 2022-10-07T22:14:40Z
+  date: 2023-04-17T03:44:08Z
   author: "Rafael Ehlers"
 ---
 
@@ -37,7 +37,34 @@ By default, the first option of a drop-down field (also called a "select") on a 
 
 We can change that to a more intuitive text like "-- Select --" by using this code below:
 
-<script src="https://gist.github.com/zackkatz/cd247e65b346b9d014f80220673f0088.js" type="text/javascript"></script> Here's how it'll look now:
+```php
+
+/**
+* Modify the text for the default option in a select (multi or single dropdown)
+*
+* @param string $default_option Default: `&mdash;` (—)
+* @param string $field_type Field type: "select" or "multiselect"
+* 
+* @return string
+*/
+add_filter( 'gravityview/extension/search/select_default', function( $default, $select_type = 'select' ) {
+
+	if( 'select' === $select_type ) {
+		return '-- Select --';
+	}
+	
+	return '-- Select One or More --';
+}, 10, 2 );
+```
+
+
+:::info
+
+Read here how to add these code samples to your website: [Where to put code samples.](https://docs.gravitykit.com/article/210-where-to-put-code-samples)
+
+:::
+
+  Here's how it'll look now:
 
 ![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/61e0b78cb54d116b7c397427/file-C3DCXVBQ8y.png)
 

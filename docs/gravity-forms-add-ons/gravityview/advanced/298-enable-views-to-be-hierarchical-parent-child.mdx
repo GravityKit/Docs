@@ -4,31 +4,43 @@ number: "298"
 collectionId: "566dfabbc6979143615564bf"
 popularity: "0.2"
 publicUrl: "https://docs.gravitykit.com/article/298-enable-views-to-be-hierarchical-parent-child"
-viewCount: "1164"
-lastPublishedAt: "2019-04-02T22:41:27Z"
-changeOrigin: "unknown"
+viewCount: "1202"
+lastPublishedAt: "2023-04-17T03:32:53Z"
+changeOrigin: "hsapp-js"
 name: "Enable Views to be hierarchical (parent/child)"
 slug: "298-enable-views-to-be-hierarchical-parent-child"
 status: "published"
 categories: 
   - "579aa642c6979160ca148ba9"
 createdBy: "59634"
-updatedBy: "59634"
-updatedAt: "2019-04-02T22:41:27Z"
+updatedBy: "80506"
+updatedAt: "2023-04-17T03:32:53Z"
 title: "Enable Views to be hierarchical (parent/child)"
 hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/55e23fbac69791085647d68a"
 pagination_prev: 
 pagination_next: 
 last_update:
-  date: 2019-04-02T22:41:27Z
-  author: "Zack Katz"
+  date: 2023-04-17T03:32:53Z
+  author: "Rafael Ehlers"
 ---
 
 # Enable Views to be hierarchical (parent/child)
 
 If you want to define a View as a parent to another View, you should add the following code to your functions.php file:
 
-<script src="https://gist.github.com/zackkatz/16f22a28c255ef931c1d.js" type="text/javascript"></script> There will be no functionality changes to GravityView by enabling this configuration.
+```php
+
+add_filter( 'gravityview_is_hierarchical', '__return_true' );
+```
+
+
+:::info
+
+Read here how to add these code samples to your website: [Where to put code samples.](https://docs.gravitykit.com/article/210-where-to-put-code-samples)
+
+:::
+
+  There will be no functionality changes to GravityView by enabling this configuration.
 
 ### If you experience 404 errors after adding this code:
 

@@ -3,9 +3,9 @@ id: "5e570d8904286364bc95ebbe"
 number: "682"
 collectionId: "6076f9478996210f18bd33df"
 publicUrl: "https://docs.gravitykit.com/article/682-determine-if-entry-is-revision"
-viewCount: "248"
-lastPublishedAt: "2022-10-19T01:10:11Z"
-changeOrigin: "unknown"
+viewCount: "272"
+lastPublishedAt: "2023-03-21T02:06:48Z"
+changeOrigin: "hsapp-js"
 name: "(Advanced) How to tell if an entry is a revision in PHP"
 slug: "682-determine-if-entry-is-revision"
 status: "published"
@@ -14,13 +14,13 @@ categories:
 createdBy: "59634"
 createdAt: "2020-02-27T00:30:01Z"
 updatedBy: "80506"
-updatedAt: "2022-10-19T01:10:11Z"
+updatedAt: "2023-03-21T02:06:48Z"
 title: "(Advanced) How to tell if an entry is a revision in PHP"
 hsEditUrl: "https://secure.helpscout.net/docs/6076f9478996210f18bd33df/article/5e570d8904286364bc95ebbe"
 pagination_prev: 
 pagination_next: 
 last_update:
-  date: 2022-10-19T01:10:11Z
+  date: 2023-03-21T02:06:48Z
   author: "Rafael Ehlers"
 ---
 
@@ -30,4 +30,20 @@ GravityRevisions have a custom entry status that you can check against in your c
 
 The easiest way to check whether an entry is a revision is to compare it against that status:
 
-<script src="https://gist.github.com/zackkatz/ece2e5b7a0ef064c98f4e5ecd2695d66.js" type="text/javascript"></script>
+```
+
+$entry = GFAPI::get_entry( 1234 ); // Replace '1234' with your own Entry ID
+
+if( 'gv-revision' === $entry['status'] ) {
+	// This entry is actually a revision!
+}
+```
+
+
+:::info
+
+Read here how to add these code samples to your website: [Where to put code samples.](https://docs.gravitykit.com/article/210-where-to-put-code-samples)
+
+:::
+
+ 

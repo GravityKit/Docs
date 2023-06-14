@@ -4,7 +4,7 @@ number: "534"
 collectionId: "566dfabbc6979143615564bf"
 popularity: "0.4"
 publicUrl: "https://docs.gravitykit.com/article/534-trigger-feeds-edit-entry"
-viewCount: "2002"
+viewCount: "2144"
 lastPublishedAt: "2023-02-01T13:45:46Z"
 changeOrigin: "hsapp-js"
 name: "How to trigger feeds after editing an entry"
@@ -75,7 +75,7 @@ function gravityview_trigger_feeds( $form, $entry_id, $object = null ) {
 	remove_filter( 'gform_is_feed_asynchronous', '__return_false', 1294873 );
    
 }
-```
+```php
 
 ## When using the [Zapier Add-On](https://www.gravityforms.com/add-ons/webhooks/)
 
@@ -119,7 +119,7 @@ function gravityview_trigger_webhooks_feed( $form, $entry_id, $object = null ) {
 
 	remove_filter( 'gform_is_feed_asynchronous', '__return_false', 1294873 );
 }
-```
+```php
 
 ## When using the [Slack Add-On](https://www.gravityforms.com/add-ons/slack/)
 

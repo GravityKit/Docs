@@ -3,7 +3,7 @@ id: "63f58fc081d3090330dcaa51"
 number: "914"
 collectionId: "6076f9478996210f18bd33df"
 publicUrl: "https://docs.gravitykit.com/article/914-restarting-a-gravity-flow-workflow-after-import"
-viewCount: "2"
+viewCount: "11"
 lastPublishedAt: "2023-02-22T03:47:11Z"
 changeOrigin: "hsapp-js"
 name: "Restarting a Gravity Flow workflow after import"
@@ -28,7 +28,7 @@ last_update:
 
 The code below restarts a Gravity Flow workflow after each row of a CSV file has been imported into a form as a new entry with GravityImport.
 
-```
+```php
 add_action( 'gravityview/import/entry/created', 'gravityimport_after_entry_created', 10, 2 );
 function gravityimport_after_entry_created ( $entry, $batch ){
 	

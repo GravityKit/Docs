@@ -4,7 +4,7 @@ number: "53"
 collectionId: "566dfabbc6979143615564bf"
 popularity: "1.1"
 publicUrl: "https://docs.gravitykit.com/article/53-displaying-the-text-label-not-the-value-of-a-dropdown-field"
-viewCount: "5933"
+viewCount: "6061"
 lastPublishedAt: "2022-10-07T21:56:21Z"
 changeOrigin: "unknown"
 name: "Displaying the text label (not the value) of a dropdown field"
@@ -31,7 +31,7 @@ The default behavior of GravityView is to display the value (not the label) of a
 
 To change this behavior for all your Views, just place the following code into [your theme's functions.php file](https://docs.gravitykit.com/article/210-where-to-put-code-samples):
 
-```
+```php
 add_filter( 'gravityview/fields/select/output_label', '__return_true' );
 ```
 
@@ -39,7 +39,7 @@ add_filter( 'gravityview/fields/select/output_label', '__return_true' );
 
 If you only pretend to enable the option's label in the Views associated with a certain Form ( `MY_FORM_ID` below) then use the following code snippet:
 
-```
+```php
 add_filter( 'gravityview/fields/select/output_label', 'gv_my_form_dropdown_output_label', 10, 3 );
 function gv_my_form_dropdown_output_label( $show_label, $entry, $field ) {
 	if( !empty( $entry['form_id'] ) && MY_FORM_ID == $entry['form_id'] ) {
@@ -53,7 +53,7 @@ function gv_my_form_dropdown_output_label( $show_label, $entry, $field ) {
 
 If you pretend to enable the option's label in a specific View ( `MY_VIEW_ID` below) then use the following code snippet:
 
-```
+```php
 add_filter( 'gravityview/fields/select/output_label', 'gv_my_view_dropdown_output_label', 10, 3 );
 function gv_my_view_dropdown_output_label( $show_label, $entry, $field ) {
 	if( function_exists( 'gravityview_get_view_id' ) && MY_VIEW_ID == gravityview_get_view_id() ) {

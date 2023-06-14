@@ -2,11 +2,11 @@
 id: "555a21a6e4b01a224b424c01"
 number: "273"
 collectionId: "566dfabbc6979143615564bf"
-popularity: "1.2"
+popularity: "1.3"
 publicUrl: "https://docs.gravitykit.com/article/273-shortening-the-displayed-url-in-a-website-field"
-viewCount: "6495"
-lastPublishedAt: "2022-12-27T20:44:28Z"
-changeOrigin: "external"
+viewCount: "7259"
+lastPublishedAt: "2023-04-17T04:02:40Z"
+changeOrigin: "hsapp-js"
 name: "Shortening the displayed URL in a Website field"
 slug: "273-shortening-the-displayed-url-in-a-website-field"
 status: "published"
@@ -18,15 +18,15 @@ related:
   - "54c67bbae4b0512429885518"
 createdBy: "59634"
 createdAt: "2015-05-18T17:30:14Z"
-updatedBy: "59634"
-updatedAt: "2022-12-27T20:44:28Z"
+updatedBy: "80506"
+updatedAt: "2023-04-17T04:02:40Z"
 title: "Shortening the displayed URL in a Website field"
 hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/555a21a6e4b01a224b424c01"
 pagination_prev: 
 pagination_next: 
 last_update:
-  date: 2022-12-27T20:44:28Z
-  author: "Zack Katz"
+  date: 2023-04-17T04:02:40Z
+  author: "Rafael Ehlers"
 ---
 
 # Shortening the displayed URL in a Website field
@@ -80,5 +80,72 @@ The following hooks are available to modify functionality. All filters have a `t
 - Query parameters ( http://example.com/?query=example =&gt; example.com )  
     Filter: `gravityview_anchor_text_noquerystring`
 
-**[See a code sample](https://gist.github.com/zackkatz/9c97c7fa87ff07ff52f0)** for disabling Shorten Link Display filters.
+**See some code samples below for disabling Shorten Link Display filters.**
+</div>```php
 
+/**
+* Examples of how to disable each of the "Shorten Link Display" methods for shortening the displayed URL.
+*/
+
+/**
+* Strip scheme from the displayed URL
+*
+* http://example.com => example.com
+*
+* @param boolean $enable Whether to strip the scheme. Return false to show scheme.
+*/
+add_filter( 'gravityview_anchor_text_striphttp', '__return_false' );
+
+/**
+* Strip www from the domain
+*
+* http://www.example.com => example.com
+*
+* @param boolean $enable Whether to strip www. Return false to show www.
+*/
+add_filter( 'gravityview_anchor_text_stripwww', '__return_false' );
+
+/**
+* Strip subdomains from the domain
+*
+* Enabled:
+* http://demo.example.com => example.com
+*
+* Disabled:
+* http://demo.example.com => demo.example.com
+*
+* @param boolean $enable Whether to strip subdomains. Return false to show subdomains.
+*/ 
+add_filter( 'gravityview_anchor_text_nosubdomain', '__return_false' );
+
+/**
+* Display link path going only to the base directory, not a sub-directory or file.
+*
+* When enabled:
+* http://example.com/sub/directory/page.html => example.com
+*
+* When disabled:
+* http://example.com/sub/directory/page.html => example.com/sub/directory/page.html
+*
+* @param boolean $enable Whether to enable "root only". Return false to show full path.
+*/
+add_filter( 'gravityview_anchor_text_rootonly', '__return_false' );
+
+/**
+* Whether to strip the query string from the end of the URL
+*
+* http://example.com/?query=example => example.com
+*
+* @param boolean $enable Whether to enable "root only". Return false to show full path.
+*/
+add_filter( 'gravityview_anchor_text_noquerystring', '__return_false' );
+```
+
+
+:::info
+
+Read here how to add these code samples to your website: [Where to put code samples.](https://docs.gravitykit.com/article/210-where-to-put-code-samples)
+
+:::
+
+ 

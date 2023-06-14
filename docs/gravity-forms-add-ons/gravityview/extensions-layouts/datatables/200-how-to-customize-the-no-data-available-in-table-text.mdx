@@ -4,10 +4,10 @@ number: "200"
 collectionId: "54d1a05ce4b086c0c0964ccd"
 popularity: "1"
 publicUrl: "https://docs.gravitykit.com/article/200-how-to-customize-the-no-data-available-in-table-text"
-viewCount: "9589"
-lastPublishedAt: "2022-10-13T23:10:00Z"
-changeOrigin: "unknown"
-name: "How to customize the \"No entries match your request.\" text"
+viewCount: "9715"
+lastPublishedAt: "2023-04-03T23:08:35Z"
+changeOrigin: "hsapp-js"
+name: "How to customize the \"No matching records found\" text"
 slug: "200-how-to-customize-the-no-data-available-in-table-text"
 status: "published"
 categories: 
@@ -15,22 +15,31 @@ categories:
 createdBy: "59634"
 createdAt: "2015-02-04T04:37:18Z"
 updatedBy: "80506"
-updatedAt: "2022-10-13T23:10:00Z"
-title: "How to customize the \"No entries match your request.\" text"
+updatedAt: "2023-04-03T23:08:35Z"
+title: "How to customize the \"No matching records found\" text"
 hsEditUrl: "https://secure.helpscout.net/docs/54d1a05ce4b086c0c0964ccd/article/54d1a1fee4b034c37ea8d1b8"
 pagination_prev: 
 pagination_next: 
 last_update:
-  date: 2022-10-13T23:10:00Z
+  date: 2023-04-03T23:08:35Z
   author: "Rafael Ehlers"
 ---
 
-# How to customize the "No entries match your request." text
+# How to customize the "No matching records found" text
 
-If you'd like to customize the text "No entries match your request." when your DataTables table is empty, you could use the plugin hook <tt>gravityview/datatables/config/language</tt> as follows:
 
-```
-// Replace empty table label, default: "No entries match your request."
+:::caution
+
+The information provided in this article **only applies** to Views using the DataTables layout. If you are using another layout, please take a look at [this other article instead](https://docs.gravitykit.com/article/51-modifying-the-text-displayed-when-there-are-no-entries).
+
+:::
+
+
+
+If you'd like to customize the text "No matching records found" when your DataTables table is empty, you could use the plugin hook `gravityview/datatables/config/language` as follows:
+
+```php
+// Replace empty table label, default: "No matching records found"
 add_filter( 'gravityview/datatables/config/language', 'my_gv_datatables_labels', 10, 1 );
 function my_gv_datatables_labels( $labels ) {
 	$labels['emptyTable'] = 'My new label when there are no results.';
@@ -38,4 +47,11 @@ function my_gv_datatables_labels( $labels ) {
 }
 ```
 
-Paste the code above [in your theme's functions.php file](https://docs.gravitykit.com/article/210-where-to-put-code-samples).
+
+:::info
+
+Read here how to add these code samples to your website: [Where to put code samples.](https://docs.gravitykit.com/article/210-where-to-put-code-samples)
+
+:::
+
+ 

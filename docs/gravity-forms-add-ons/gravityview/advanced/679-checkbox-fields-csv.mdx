@@ -2,10 +2,10 @@
 id: "5e54aa4c04286364bc95cbad"
 number: "679"
 collectionId: "566dfabbc6979143615564bf"
-popularity: "0.1"
+popularity: "0.2"
 publicUrl: "https://docs.gravitykit.com/article/679-checkbox-fields-csv"
-viewCount: "764"
-lastPublishedAt: "2023-01-18T02:05:21Z"
+viewCount: "831"
+lastPublishedAt: "2023-04-17T03:43:29Z"
 changeOrigin: "hsapp-js"
 name: "How to show checkbox fields as comma-separated instead of a bullet list"
 slug: "679-checkbox-fields-csv"
@@ -16,13 +16,13 @@ categories:
 createdBy: "59634"
 createdAt: "2020-02-25T05:02:04Z"
 updatedBy: "80506"
-updatedAt: "2023-01-18T02:05:21Z"
+updatedAt: "2023-04-17T03:43:29Z"
 title: "How to show checkbox fields as comma-separated instead of a bullet list"
 hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5e54aa4c04286364bc95cbad"
 pagination_prev: 
 pagination_next: 
 last_update:
-  date: 2023-01-18T02:05:21Z
+  date: 2023-04-17T03:43:29Z
   author: "Rafael Ehlers"
 ---
 
@@ -40,10 +40,30 @@ And this is how the field values look once converted to CSV.
 
 ### The required code
 
-<script src="https://gist.github.com/zackkatz/7a70ff61c7ff7c67adebc01fd3fc1a9d.js" type="text/javascript"></script>
+```php
+
+/**
+* Convert checkbox <ul> to CSV values
+*
+* @param string $output The current output.
+* @param \GV\Template_Context The template context this is being called from.
+*/
+add_filter( 'gravityview/template/field/checkbox/output', function( $output, $context ) {
+
+	$value = $context->value;
+
+	// If a checkbox value is '' (empty string), this removes it. If you want empty strings, remove the line below.
+	$value = array_filter( $value, 'gravityview_is_not_empty_string' );
+
+	return implode( ', ', $value );
+
+}, 10, 2 );
+```
+
+
 :::info
 
-[How to add this code snippet to your website](https://docs.gravitykit.com/article/210-where-to-put-code-samples).
+Read here how to add these code samples to your website: [Where to put code samples.](https://docs.gravitykit.com/article/210-where-to-put-code-samples)
 
 :::
 

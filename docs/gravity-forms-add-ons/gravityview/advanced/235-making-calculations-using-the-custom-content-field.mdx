@@ -4,9 +4,9 @@ number: "235"
 collectionId: "566dfabbc6979143615564bf"
 popularity: "0.6"
 publicUrl: "https://docs.gravitykit.com/article/235-making-calculations-using-the-custom-content-field"
-viewCount: "3009"
-lastPublishedAt: "2022-10-07T20:58:40Z"
-changeOrigin: "unknown"
+viewCount: "3091"
+lastPublishedAt: "2023-04-17T03:48:53Z"
+changeOrigin: "hsapp-js"
 name: "Making calculations using the custom content field"
 slug: "235-making-calculations-using-the-custom-content-field"
 status: "published"
@@ -15,13 +15,13 @@ categories:
 createdBy: "59635"
 createdAt: "2015-03-05T12:37:50Z"
 updatedBy: "80506"
-updatedAt: "2022-10-07T20:58:40Z"
+updatedAt: "2023-04-17T03:48:53Z"
 title: "Making calculations using the custom content field"
 hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/54f84e1ee4b086c0c096ba04"
 pagination_prev: 
 pagination_next: 
 last_update:
-  date: 2022-10-07T20:58:40Z
+  date: 2023-04-17T03:48:53Z
   author: "Rafael Ehlers"
 ---
 
@@ -31,7 +31,8 @@ last_update:
 
 Let's say you want to add the values from two fields: field "Number One" with an ID of 15 and "Number Two" with an ID of 37. You would just need to insert the Merge Tags of the fields and add them together inside the `[gv_math]` shortcode. Here's the code you would use:
 
-```
+```php
+
 [gv_math scope="entry"] {Number One:15} + {Number Two:37} [/gv_math]
 ```
 
@@ -45,6 +46,46 @@ To make sure you are addressing the correct custom content field, add a placehol
 
 ![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/570d06339033602796674c3e/file-lz6EKOSpIc.png)
 
-Then, to enable this logic, you would need to adapt and paste the following code into your theme's functions.php file ([see how](https://docs.gravitykit.com/article/210-where-to-put-code-samples)):
+Then, to enable this logic, you would need to adapt and paste the following code into your website:
 
-<script src="https://gist.github.com/zackkatz/7ada522a150c42626a6dd07c6203ea1e.js" type="text/javascript"></script>
+```
+
+/** Modify the content returned from the Custom Content field */
+add_filter( 'gravityview/fields/custom/content_before', 'my_gv_custom_content_before', 10, 2 );
+
+/**
+* Replaces the %CALC% placeholder by the result of a calc operation between entries' fields
+*
+* @param  string $content Custom Content field content
+* @param  \GV\Template_Context $context
+* @return string
+*/
+function my_gv_custom_content_before( $content, $context = null ) {
+
+	// this is the tag used inside the Custom Content Field
+	$tag = '%CALC%';
+
+	// Is the placeholder tag in the Custom Content field? If not, return original value.
+	if( false === strpos( $content, $tag ) ) {
+		return $content;
+	}
+
+	$replace = '';
+	
+	// If the fields used for the calculation are set, replace the tag with the calculation.
+	if( isset( $context->entry['15'] ) && isset( $context->entry['37'] ) ) {
+		$replace = $context->entry['15'] +  $context->entry['37'];
+	}
+
+	return str_replace( $tag, $replace, $content );
+}
+```
+
+
+:::info
+
+Read here how to add these code samples to your website: [Where to put code samples.](https://docs.gravitykit.com/article/210-where-to-put-code-samples)
+
+:::
+
+ 

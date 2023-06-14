@@ -3,7 +3,7 @@ id: "6322153ac713d51da3ede7d5"
 number: "861"
 collectionId: "566dfabbc6979143615564bf"
 publicUrl: "https://docs.gravitykit.com/article/861-why-is-my-view-slow-to-load"
-viewCount: "86"
+viewCount: "171"
 lastPublishedAt: "2022-11-22T20:33:36Z"
 changeOrigin: "unknown"
 name: "Why is my View slow to load?"
@@ -57,13 +57,13 @@ Note how the secure link doesn't show the file's name, but the insecure link doe
 
   Adding the code below will direct GravityView to use the insecure path to the image when displaying it.
 
-```
+```php
 add_filter( 'gform_secure_file_download_location', '__return_false' );
 ```
 
 If you want to make the file URLs visible for only one form, you can use this code instead (replacing `FORM_ID` with the form ID.)
 
-```
+```php
 add_filter( 'gform_secure_file_download_location_FORM_ID', '__return_false' );
 ```
 

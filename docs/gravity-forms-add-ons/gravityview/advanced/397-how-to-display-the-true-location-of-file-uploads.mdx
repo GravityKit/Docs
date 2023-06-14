@@ -4,7 +4,7 @@ number: "397"
 collectionId: "566dfabbc6979143615564bf"
 popularity: "0.4"
 publicUrl: "https://docs.gravitykit.com/article/397-how-to-display-the-true-location-of-file-uploads"
-viewCount: "1848"
+viewCount: "1998"
 lastPublishedAt: "2022-11-22T20:18:06Z"
 changeOrigin: "unknown"
 name: "How to display the true location of file uploads"
@@ -33,13 +33,13 @@ Gravity Forms hides the true location of uploaded files for security purposes. T
 
 But there are times when you want to display the actual URL of the file! So if you find yourself in that position, you can use this filter to disable the secure URL for all forms:
 
-```
+```php
 add_filter( 'gform_secure_file_download_location', '__return_false' );
 ```
 
 If you want to make the file URLs visible for only one form, you can use this code instead (replacing `{form ID}` with the form ID…
 
-```
+```php
 add_filter( 'gform_secure_file_download_location_{form ID}', '__return_false' );
 ```
 

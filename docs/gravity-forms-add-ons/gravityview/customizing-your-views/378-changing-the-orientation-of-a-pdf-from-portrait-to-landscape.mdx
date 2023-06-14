@@ -2,9 +2,9 @@
 id: "57d302809033602da7bdcb7f"
 number: "378"
 collectionId: "566dfabbc6979143615564bf"
-popularity: "0.3"
+popularity: "0.4"
 publicUrl: "https://docs.gravitykit.com/article/378-changing-the-orientation-of-a-pdf-from-portrait-to-landscape"
-viewCount: "1796"
+viewCount: "1900"
 lastPublishedAt: "2022-10-07T22:03:38Z"
 changeOrigin: "unknown"
 name: "Changing the orientation of a PDF from portrait to landscape"
@@ -41,7 +41,7 @@ If your View has lots of columns, this portrait mode can't quite accommodate all
 
 Here's how:
 
-```
+```php
 add_filter('gravityview/datatables/button_pdf','gravityview_landscape_pdf', 10 ,2);
 function gravityview_landscape_pdf( $button_config = array(), $view_id){
 	if( $view_id == 19 ) {

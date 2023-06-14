@@ -4,9 +4,9 @@ number: "212"
 collectionId: "566dfabbc6979143615564bf"
 popularity: "0.9"
 publicUrl: "https://docs.gravitykit.com/article/212-modifying-the-output-of-the-edit-entry-form"
-viewCount: "4479"
-lastPublishedAt: "2022-08-15T15:36:59Z"
-changeOrigin: "unknown"
+viewCount: "4600"
+lastPublishedAt: "2023-04-17T03:42:19Z"
+changeOrigin: "hsapp-js"
 name: "Modifying the output of the Edit Entry form"
 slug: "212-modifying-the-output-of-the-edit-entry-form"
 status: "published"
@@ -22,15 +22,15 @@ related:
   - "54d3a075e4b086c0c09652f4"
 createdBy: "59634"
 createdAt: "2015-02-06T21:24:49Z"
-updatedBy: "459439"
-updatedAt: "2022-08-15T15:36:59Z"
+updatedBy: "80506"
+updatedAt: "2023-04-17T03:42:19Z"
 title: "Modifying the output of the Edit Entry form"
 hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/54d53121e4b086c0c096592a"
 pagination_prev: 
 pagination_next: 
 last_update:
-  date: 2022-08-15T15:36:59Z
-  author: "Rafael Bennemann"
+  date: 2023-04-17T03:42:19Z
+  author: "Rafael Ehlers"
 ---
 
 # Modifying the output of the Edit Entry form
@@ -45,4 +45,58 @@ You can read a full write-up on the filter—including additional examples—on 
 
 Here's an example of using the filter to hide fields that have an empty value:
 
-<script src="https://gist.github.com/zackkatz/cdac4cb87ee6e9816a33.js" type="text/javascript"></script>
+```php
+
+/**
+* Add filters to the edit entry inputs when GravityView starts to render an entry.
+*/
+add_action( 'gravityview/edit-entry/render/before', function() {
+	// GravityView methods are run at priority 10; by running at 20, this will run after GV.
+	add_filter( 'gform_field_content', 'gravityview_hide_empty_fields_in_edit_entry', 20, 5 );
+} );
+
+/**
+* Remove the added filters.
+*/
+add_action( 'gravityview/edit-entry/render/after', function() {
+	remove_filter( 'gform_field_content', 'gravityview_hide_empty_fields_in_edit_entry', 20 );
+} );
+
+/**
+* Modify the Edit Entry field HTML so that inputs aren't displayed for fields with empty values
+*
+* @param string $content The edit entry field
+* @param array $field The Gravity Forms field array, with extra GravityView keys such as `gvCustomClass`
+* @param string $value The value of the field
+* @param int $entry_id The entry ID
+* @param int $form_id The form ID
+*
+* @return string HTML output for the field in the Edit Entry form
+*/
+function gravityview_hide_empty_fields_in_edit_entry( $content = '', $field = array(), $value = '', $lead_id = 0, $form_id = 0 ) {
+
+	// This code makes the private method `get_field_value()` available publicly.
+	$reflection = new \ReflectionClass( 'GravityView_Edit_Entry_Render' );
+	$method     = $reflection->getMethod( 'get_field_value' );
+	$method->setAccessible( true );
+
+	$value = $method->invokeArgs( GravityView_Edit_Entry::getInstance()->instances['render'], array( $field ) );
+
+	// If the value is empty, return nothing.
+	if ( '' === $value || is_array( $value ) && ! array_filter( $value ) ) {
+		return '';
+	}
+
+	// Otherwise, return the original HTML output
+	return $content;
+}
+```
+
+
+:::info
+
+Read here how to add these code samples to your website: [Where to put code samples.](https://docs.gravitykit.com/article/210-where-to-put-code-samples)
+
+:::
+
+ 

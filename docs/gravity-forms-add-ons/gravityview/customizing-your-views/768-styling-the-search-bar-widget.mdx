@@ -4,9 +4,9 @@ number: "768"
 collectionId: "566dfabbc6979143615564bf"
 popularity: "0.1"
 publicUrl: "https://docs.gravitykit.com/article/768-styling-the-search-bar-widget"
-viewCount: "384"
-lastPublishedAt: "2022-10-07T22:12:25Z"
-changeOrigin: "unknown"
+viewCount: "478"
+lastPublishedAt: "2023-04-17T04:19:12Z"
+changeOrigin: "hsapp-js"
 name: "Styling the Search Bar Widget"
 slug: "768-styling-the-search-bar-widget"
 status: "published"
@@ -29,13 +29,13 @@ related:
 createdBy: "543004"
 createdAt: "2021-05-19T09:53:55Z"
 updatedBy: "80506"
-updatedAt: "2022-10-07T22:12:25Z"
+updatedAt: "2023-04-17T04:19:12Z"
 title: "Styling the Search Bar Widget"
 hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/60a4e03313fd125a39b450a7"
 pagination_prev: 
 pagination_next: 
 last_update:
-  date: 2022-10-07T22:12:25Z
+  date: 2023-04-17T04:19:12Z
   author: "Rafael Ehlers"
 ---
 
@@ -43,14 +43,6 @@ last_update:
 
 GravityView includes a Search Bar [widget](https://docs.gravitykit.com/article/381-what-are-view-widgets-useful-for) that you can add to your View to improve your navigation among entries. Sometimes you may need to override the search bar default styling by adding your own custom CSS.
 
-
-:::note
-
-Not sure how to add custom CSS to your website? Read [Adding custom CSS to your website](https://docs.gravitykit.com/article/246-adding-custom-css-to-your-website).
-
-:::
-
- 
  **Search Bar widget without any styles applied (Divi theme):**
 
 [![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/60a4e8f6dca0fd46b9356b9f/file-RaQ4YEnXb0.png)](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/60a4e8f6dca0fd46b9356b9f/file-RaQ4YEnXb0.png)
@@ -114,4 +106,60 @@ If you want to change the label font and size, you can target the label element:
 
 ###  Example Styles 
 
-<script src="https://gist.github.com/crbdev/ef6abae284ba16b5bdba1da264785e29.js" type="text/javascript"></script>
+```
+
+/* Container */
+.gv-search-horizontal {
+	box-shadow: 0px 0px 5px 2px #b3b3b3;
+	padding:20px;
+	border-radius:17px;
+}
+
+/* search bar */
+.gv-search-box input[type=search] {
+   	border-radius: 10px;
+   	height: 50px;
+   	width: 100%;
+   	padding: 5px 10px 5px 10px;
+	background-color: #fff;
+	border: 5px solid #55aef6;
+}
+.gv-search-box input[type=text]:focus {
+	border-color:#0d8bf2;
+	box-shadow: 2px 2px 5px 2px #bfbfbf;
+}
+
+/* labels */
+.gv-search-box label {
+	font-size:20px;
+	font-family:'Montserrat',sans serrif;
+}
+
+/* search button */
+.gv-search-box .gv-search-button {
+	background-color: #55aef6; 
+	border: 2px solid #55aef6;
+	border-radius:10px;
+ 	color: #ffffff;
+ 	padding: 15px 32px;
+ 	text-align: center;
+ 	text-decoration: none;
+ 	font-size: 18px !important;
+	font-family:'Montserrat',sans serrif;
+	font-weight:500;
+}
+.gv-search-box .gv-search-button:hover {
+	background-color: #0d8bf2;
+	border: 2px solid #0d8bf2;
+	cursor:pointer;
+}
+```
+
+
+:::info
+
+Not sure how to add custom CSS to your website? Read [Adding custom CSS to your website](https://docs.gravitykit.com/article/246-adding-custom-css-to-your-website).
+
+:::
+
+ 

@@ -3,7 +3,7 @@ id: "632a2864656bd979ec8368fa"
 number: "864"
 collectionId: "6076f9478996210f18bd33df"
 publicUrl: "https://docs.gravitykit.com/article/864-how-to-log-the-user-that-modified-the-entry"
-viewCount: "49"
+viewCount: "74"
 lastPublishedAt: "2022-09-20T21:01:04Z"
 changeOrigin: "unknown"
 name: "How to log the user that modified the entry"
@@ -28,7 +28,7 @@ last_update:
 
 If you wish to log the last user who modified an entry with GravityEdit, you just need to add a new single line text field to your form, and use the code below:
 
-```
+```php
 add_filter( 'gravityview-inline-edit/entry-updated', 'gravityedit_custom_who_changed', 10, 5 );
 
 function gravityedit_custom_who_changed( $update_result, $entry = array(), $form_id = 0, $gf_field = null, $original_entry = array() ) { 

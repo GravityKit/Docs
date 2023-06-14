@@ -3,7 +3,7 @@ id: "63533637927a2c1634dfcd9d"
 number: "880"
 collectionId: "6076f9478996210f18bd33df"
 publicUrl: "https://docs.gravitykit.com/article/880-import-has-finished-with-errors-http-404"
-viewCount: "17"
+viewCount: "32"
 lastPublishedAt: "2023-02-21T20:43:36Z"
 changeOrigin: "hsapp-js"
 name: "Error: Import has finished with errors - HTTP 404"
@@ -38,7 +38,7 @@ That means you are trying to import a broken URL into a file upload field or any
 
 There are two ways to fix this error: By correcting the broken link, which means pointing to the correct URL on your CSV file, or by using the code snippet below to instruct the importer to ignore the URL check it performs.
 
-```
+```php
 add_filter( 'gravityview/import/run/batch', function ( $batch ) {
 	if ( empty( $batch['schema'] ) ) {
 		return $batch;

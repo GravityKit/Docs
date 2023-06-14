@@ -4,9 +4,9 @@ number: "502"
 collectionId: "6076f9478996210f18bd33df"
 popularity: "0.2"
 publicUrl: "https://docs.gravitykit.com/article/502-inline-edit-gravity-forms-actions-on-update"
-viewCount: "1648"
-lastPublishedAt: "2022-10-27T22:12:05Z"
-changeOrigin: "unknown"
+viewCount: "1796"
+lastPublishedAt: "2023-03-20T15:57:49Z"
+changeOrigin: "hsapp-js"
 name: "GravityEdit: How to trigger Gravity Forms actions when updating a field value"
 slug: "502-inline-edit-gravity-forms-actions-on-update"
 status: "published"
@@ -17,15 +17,15 @@ related:
   - "635b005a73d6a22819f071d0"
 createdBy: "59634"
 createdAt: "2018-10-30T05:57:40Z"
-updatedBy: "80506"
-updatedAt: "2022-10-27T22:12:05Z"
+updatedBy: "59634"
+updatedAt: "2023-03-20T15:57:49Z"
 title: "GravityEdit: How to trigger Gravity Forms actions when updating a field value"
 hsEditUrl: "https://secure.helpscout.net/docs/6076f9478996210f18bd33df/article/5bd7f2d404286356f0a53565"
 pagination_prev: 
 pagination_next: 
 last_update:
-  date: 2022-10-27T22:12:05Z
-  author: "Rafael Ehlers"
+  date: 2023-03-20T15:57:49Z
+  author: "Zack Katz"
 ---
 
 # GravityEdit: How to trigger Gravity Forms actions when updating a field value
@@ -45,7 +45,7 @@ But sometimes you want to turn on Gravity Forms actions. To do that, GravityEdit
 
 ### To trigger Gravity Forms actions when updating fields, add this code:
 
-```
+```php
 add_filter( 'gravityview-inline-edit/remove-gf-update-hooks', '__return_false' );
 ```
 
@@ -93,7 +93,7 @@ function gravityview_inline_edit_trigger_update_actions( $update_result, $entry 
 
 :::info
 
-Priority is set to something unlikely to be used by other codes (1294873). Feel free to use a different priority.
+Priority is set to something unlikely to be used by other code (1294873). Feel free to use a different priority.
 
 :::
 

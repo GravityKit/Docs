@@ -4,8 +4,8 @@ number: "58"
 collectionId: "566dfabbc6979143615564bf"
 popularity: "0.9"
 publicUrl: "https://docs.gravitykit.com/article/58-about-gravityview-caching"
-viewCount: "4937"
-lastPublishedAt: "2022-12-28T10:59:21Z"
+viewCount: "5078"
+lastPublishedAt: "2023-04-13T01:25:29Z"
 changeOrigin: "hsapp-js"
 name: "About GravityView Caching"
 slug: "58-about-gravityview-caching"
@@ -14,15 +14,15 @@ categories:
   - "579aa642c6979160ca148ba9"
 createdBy: "59634"
 createdAt: "2015-01-26T17:39:02Z"
-updatedBy: "459439"
-updatedAt: "2022-12-28T10:59:21Z"
+updatedBy: "80506"
+updatedAt: "2023-04-13T01:25:29Z"
 title: "About GravityView Caching"
 hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/54c67bb6e4b051242988550a"
 pagination_prev: 
 pagination_next: 
 last_update:
-  date: 2022-12-28T10:59:21Z
-  author: "Rafael Bennemann"
+  date: 2023-04-13T01:25:29Z
+  author: "Rafael Ehlers"
 ---
 
 # About GravityView Caching
@@ -30,8 +30,7 @@ last_update:
 
 :::info
 
-A quick way to clear a View's cache is by adding the ?cache parameter to the end of the URL where your View is located.   
-Example: https://example.com/view/directory/?cache
+A quick way to clear a View's cache is by adding the **?cache** parameter to the end of the URL where your View is located. Example: https://example.com/view/directory/**?cache**
 
 :::
 
@@ -77,18 +76,22 @@ Each request is cached separately, including each page of each View. This can ad
 
 ## How to disable the cache
 
-If you are logged in, and you can edit posts, you can temporarily disable the cache by adding `?cache` or `?nocache`.
+If you are logged in and you can edit posts, you can temporarily disable the cache by adding `?cache` or `?nocache`.
 
- **You can disable the cache permanently by [downloading and installing this plugin](https://github.com/katzwebservices/gv-snippets/archive/addon/2863-disable-cache.zip).**
+You can also disable the cache **permanently** by adding the code snippet below on your website:
 
-You can also add the following code [to your functions.php file](https://docs.gravitykit.com/article/210-where-to-put-code-samples):
-
-```
-
+```php
 add_filter('gravityview_use_cache', '__return_false');
 ```
 
-## GravityView Cache Filters
+
+:::info
+
+Read here how to add these code samples to your website: [Where to put code samples.](https://docs.gravitykit.com/article/210-where-to-put-code-samples)
+
+:::
+
+ ## GravityView Cache Filters
 
 You can use the following filters to modify the cache functionality:
 

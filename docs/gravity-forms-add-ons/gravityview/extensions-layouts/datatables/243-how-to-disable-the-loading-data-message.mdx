@@ -4,29 +4,64 @@ number: "243"
 collectionId: "54d1a05ce4b086c0c0964ccd"
 popularity: "0.3"
 publicUrl: "https://docs.gravitykit.com/article/243-how-to-disable-the-loading-data-message"
-viewCount: "3048"
-lastPublishedAt: "2022-10-13T23:12:46Z"
-changeOrigin: "unknown"
-name: "How to disable the \"Loading Data\" message"
+viewCount: "3209"
+lastPublishedAt: "2023-05-23T20:53:24Z"
+changeOrigin: "hsapp-js"
+name: "How to disable the \"Loading data\" message"
 slug: "243-how-to-disable-the-loading-data-message"
 status: "published"
 categories: 
   - "54d1a06ee4b086c0c0964cd1"
+related: 
+  - "646d26f8c137130e75d14633"
 createdBy: "59635"
 createdAt: "2015-03-10T12:25:13Z"
 updatedBy: "80506"
-updatedAt: "2022-10-13T23:12:46Z"
-title: "How to disable the \"Loading Data\" message"
+updatedAt: "2023-05-23T20:53:24Z"
+title: "How to disable the \"Loading data\" message"
 hsEditUrl: "https://secure.helpscout.net/docs/54d1a05ce4b086c0c0964ccd/article/54fee2a9e4b034c37ea948ea"
 pagination_prev: 
 pagination_next: 
 last_update:
-  date: 2022-10-13T23:12:46Z
+  date: 2023-05-23T20:53:24Z
   author: "Rafael Ehlers"
 ---
 
-# How to disable the "Loading Data" message
+# How to disable the "Loading data" message
 
-If you are using the DataTables extension and would like to disable the display of a 'processing' indicator, like the message "Loading Data..." when the table is being processed (e.g. a sort), then you'll need to add the following plugin to your installation. You may also just copy the code to your theme's functions.php file ([see how](https://docs.gravitykit.com/article/210-where-to-put-code-samples)):
+If you are using the DataTables extension and would like to disable the display of a 'processing' indicator, like the message "Loading data..." when the table is being processed (e.g. a sort), then you'll need to add the following code to your website:
 
-<script src="https://gist.github.com/luistinygod/119735824defc936fd2d.js" type="text/javascript"></script> Having this message enabled is particularly useful for tables with large amounts of data where it can take a noticeable amount of time to sort the entries.
+```php
+
+function my_gravityview_datatables_disable_processing( $dt_config, $view_id, $post ) {
+	$dt_config['processing'] = false;
+	return $dt_config;
+}
+
+add_filter( 'gravityview_datatables_js_options', 'my_gravityview_datatables_disable_processing', 10, 3 );
+```
+
+### Targeting a specific View ID
+
+If you wish to disable the loading message just for a specific View ID, then replace the text below where it's written `MY_VIEW_ID` with the ID of your View:
+
+```php
+
+function my_gravityview_datatables_disable_processing( $dt_config, $view_id, $post ) {
+	if( 'MY_VIEW_ID' == $view_id ) {
+	    $dt_config['processing'] = false;
+	}
+	return $dt_config;
+}
+
+add_filter( 'gravityview_datatables_js_options', 'my_gravityview_datatables_disable_processing', 10, 3 );
+```
+
+
+:::info
+
+Read here how to add these code samples to your website: [Where to put code samples.](https://docs.gravitykit.com/article/210-where-to-put-code-samples)
+
+:::
+
+  Having this message enabled is particularly useful for tables with large amounts of data where it can take a noticeable amount of time to sort the entries.

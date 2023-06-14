@@ -3,7 +3,7 @@ id: "635b02b873d6a22819f071df"
 number: "887"
 collectionId: "566dfabbc6979143615564bf"
 publicUrl: "https://docs.gravitykit.com/article/887-restarting-a-gravity-flow-workflow-after-editing-an-entry"
-viewCount: "66"
+viewCount: "127"
 lastPublishedAt: "2022-11-15T22:44:56Z"
 changeOrigin: "unknown"
 name: "Restarting a Gravity Flow workflow after editing an entry"
@@ -37,7 +37,7 @@ The code sample below targets specific forms by their IDs. Make sure to change t
 
 The code below restarts a Gravity Flow workflow after editing an entry in [GravityView's Edit Entry](https://docs.gravitykit.com/article/77-user-edit-allow-users-to-edit-their-own-entries) page.
 
-```
+```php
 add_action('gravityview/edit_entry/after_update', function ( $form = array(), $entry_id = array(), $object ) {
 
 	//The IDs of the Forms you'd like to affect. To target more forms, use [36,81,12] as an example

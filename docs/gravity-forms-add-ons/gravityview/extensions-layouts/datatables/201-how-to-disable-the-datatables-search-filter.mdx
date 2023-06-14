@@ -4,9 +4,9 @@ number: "201"
 collectionId: "54d1a05ce4b086c0c0964ccd"
 popularity: "0.8"
 publicUrl: "https://docs.gravitykit.com/article/201-how-to-disable-the-datatables-search-filter"
-viewCount: "7420"
-lastPublishedAt: "2022-10-13T23:10:53Z"
-changeOrigin: "unknown"
+viewCount: "7687"
+lastPublishedAt: "2023-04-17T22:15:35Z"
+changeOrigin: "hsapp-js"
 name: "How to Disable the DataTables Search Filter"
 slug: "201-how-to-disable-the-datatables-search-filter"
 status: "published"
@@ -15,18 +15,38 @@ categories:
 createdBy: "59634"
 createdAt: "2015-02-04T04:37:44Z"
 updatedBy: "80506"
-updatedAt: "2022-10-13T23:10:53Z"
+updatedAt: "2023-04-17T22:15:35Z"
 title: "How to Disable the DataTables Search Filter"
 hsEditUrl: "https://secure.helpscout.net/docs/54d1a05ce4b086c0c0964ccd/article/54d1a218e4b034c37ea8d1b9"
 pagination_prev: 
 pagination_next: 
 last_update:
-  date: 2022-10-13T23:10:53Z
+  date: 2023-04-17T22:15:35Z
   author: "Rafael Ehlers"
 ---
 
 # How to Disable the DataTables Search Filter
 
-When using the DataTables Extension, Views are displayed with a search input provided by the [DataTables script](http://datatables.net/). If you are also using the [GravityView Search Bar](https://docs.gravitykit.com/article/189-configuring-the-search-bar), you may not want both of these enabled.
+When using the DataTables Extension, Views are displayed with a search input (red outline) provided by the [DataTables script](http://datatables.net/). You may not want both of these enabled if you are also using the [GravityView Search Bar](https://docs.gravitykit.com/article/189-configuring-the-search-bar) (blue outline).
 
-To disable the DataTables search input, download and install this plugin: [GravityView - Disable DataTables Search Filter](https://github.com/katzwebservices/GravityView-Disable-DataTables-Search-Filter/archive/master.zip). Once the plugin is installed and activated, you will no longer see the DataTables search input.
+![Screenshot of the View showing two search inputs](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/643dc4667133de139103ec09/file-hoPdiIApIS.png)  
+To disable the DataTables built-in search input, use the code snippet below:
+
+```php
+
+add_filter( 'gravityview_datatables_js_options', function( $config ) {
+
+ $config['searching'] = false;
+
+ return $config;
+}, 20 );
+```
+
+
+:::info
+
+Read here how to add these code samples to your website: [Where to put code samples.](https://docs.gravitykit.com/article/210-where-to-put-code-samples)
+
+:::
+
+ 

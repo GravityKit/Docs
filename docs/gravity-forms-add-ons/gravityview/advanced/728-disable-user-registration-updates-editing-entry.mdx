@@ -4,9 +4,9 @@ number: "728"
 collectionId: "566dfabbc6979143615564bf"
 popularity: "0.1"
 publicUrl: "https://docs.gravitykit.com/article/728-disable-user-registration-updates-editing-entry"
-viewCount: "343"
-lastPublishedAt: "2022-10-07T20:32:27Z"
-changeOrigin: "unknown"
+viewCount: "385"
+lastPublishedAt: "2023-04-17T03:41:08Z"
+changeOrigin: "hsapp-js"
 name: "Edit Entry: How to disable Gravity Forms User Registration feeds from being updated"
 slug: "728-disable-user-registration-updates-editing-entry"
 status: "published"
@@ -15,20 +15,31 @@ categories:
 createdBy: "59634"
 createdAt: "2020-09-17T14:18:47Z"
 updatedBy: "80506"
-updatedAt: "2022-10-07T20:32:27Z"
+updatedAt: "2023-04-17T03:41:08Z"
 title: "Edit Entry: How to disable Gravity Forms User Registration feeds from being updated"
 hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5f637047c9e77c001603a30c"
 pagination_prev: 
 pagination_next: 
 last_update:
-  date: 2022-10-07T20:32:27Z
+  date: 2023-04-17T03:41:08Z
   author: "Rafael Ehlers"
 ---
 
 # Edit Entry: How to disable Gravity Forms User Registration feeds from being updated
 
-GravityView's Edit Entry functionality automatically updates users when a form is connected to the Gravity Forms User Registration Add-on. This is the case even when the User Registration Add-on action is set to "Create" and not set to "Update".
+GravityView's Edit Entry functionality automatically updates users when a form is connected to the [Gravity Forms User Registration Add-on](https://www.gravityforms.com/add-ons/user-registration/). This is the case even when the User Registration Add-on action is set to "Create" and not set to "Update".
 
-To change this behavior, add the following code to your site ([here's how](https://docs.gravitykit.com/article/210-where-to-put-code-samples)):
+To change this behavior, add the following code to your website:
 
-<script src="https://gist.github.com/zackkatz/1cc9e5138eb1085f88d7.js" type="text/javascript"></script> After adding this code, User Registration feeds will not be processed when editing an entry in GravityView.
+```php
+add_filter( 'gravityview/edit_entry/user_registration/trigger_update', '__return_false' );
+```
+
+
+:::info
+
+Read here how to add these code samples to your website: [Where to put code samples.](https://docs.gravitykit.com/article/210-where-to-put-code-samples)
+
+:::
+
+  After adding this code, User Registration feeds will not be processed when editing an entry in GravityView.

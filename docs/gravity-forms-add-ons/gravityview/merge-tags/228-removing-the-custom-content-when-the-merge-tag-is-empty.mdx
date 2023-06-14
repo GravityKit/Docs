@@ -4,9 +4,9 @@ number: "228"
 collectionId: "566dfabbc6979143615564bf"
 popularity: "0.4"
 publicUrl: "https://docs.gravitykit.com/article/228-removing-the-custom-content-when-the-merge-tag-is-empty"
-viewCount: "1923"
-lastPublishedAt: "2022-10-12T21:47:03Z"
-changeOrigin: "unknown"
+viewCount: "1987"
+lastPublishedAt: "2023-04-17T03:35:16Z"
+changeOrigin: "hsapp-js"
 name: "Removing the custom content when the merge tag is empty"
 slug: "228-removing-the-custom-content-when-the-merge-tag-is-empty"
 status: "published"
@@ -15,13 +15,13 @@ categories:
 createdBy: "59635"
 createdAt: "2015-02-23T18:52:38Z"
 updatedBy: "80506"
-updatedAt: "2022-10-12T21:47:03Z"
+updatedAt: "2023-04-17T03:35:16Z"
 title: "Removing the custom content when the merge tag is empty"
 hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/54eb76f6e4b034c37ea9112c"
 pagination_prev: 
 pagination_next: 
 last_update:
-  date: 2022-10-12T21:47:03Z
+  date: 2023-04-17T03:35:16Z
   author: "Rafael Ehlers"
 ---
 
@@ -29,6 +29,37 @@ last_update:
 
 If you added a Custom Content field to your View and its content depends on a Merge Tag (relative to an entry's field), you probably would like to not show anything in case that entry's field is empty.
 
-To enable this logic, you would need to adapt and paste the following code into your theme's functions.php file ([see how](https://docs.gravitykit.com/article/210-where-to-put-code-samples)):
+To enable this logic, you would need to adapt and paste the following code into your theme's functions.php file:
 
-<script src="https://gist.github.com/zackkatz/ecf25bc35c026e617488.js" type="text/javascript"></script>
+```php
+
+add_filter( 'gravityview/fields/custom/content_before', 'my_gv_custom_content_before', 10, 2 );
+
+/** 
+* Removes the custom content field's content in case a certain entry field is empty
+* Replace the MY_FIELD_ID by the field id (check it on the Gravity Forms form definition)
+* 
+* @param  string 				$content Custom Content field content
+* @param  \GV\Template_Context $context
+* @return string
+*/
+function my_gv_custom_content_before( $content, $context = null ) {
+	
+	$id = 'MY_FIELD_ID';
+
+	if( empty( $context->entry["{$id}"] ) ) {
+		return '';
+	}
+
+	return $content;
+}
+```
+
+
+:::info
+
+Read here how to add these code samples to your website: [Where to put code samples.](https://docs.gravitykit.com/article/210-where-to-put-code-samples)
+
+:::
+
+ 

@@ -4,7 +4,7 @@ number: "759"
 collectionId: "566dfabbc6979143615564bf"
 popularity: "0.1"
 publicUrl: "https://docs.gravitykit.com/article/759-reserved-url-query-parameters"
-viewCount: "470"
+viewCount: "515"
 lastPublishedAt: "2021-03-10T14:14:37Z"
 changeOrigin: "unknown"
 name: "Reserved URL query parameters"
@@ -46,7 +46,7 @@ However, to prevent possible conflicts with other plugins that use the same URL 
 - `view_id`
 Occasionally, this may affect the behavior of your website. Should this happen, you can whitelist specific parameters by using the `gravityview/api/reserved_query_args` filter as follows:
 
-```
+```php
 function gv_whitelist_url_query_parameters( $reserved_parameters ) {
    unset( $reserved_parameters['parameter_name'] ); // replace `parameter_name` with the one being whitelisted
 

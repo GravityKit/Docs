@@ -4,7 +4,7 @@ number: "701"
 collectionId: "566dfabbc6979143615564bf"
 popularity: "0.3"
 publicUrl: "https://docs.gravitykit.com/article/701-show-choices-that-exist"
-viewCount: "1346"
+viewCount: "1606"
 lastPublishedAt: "2022-12-05T13:35:07Z"
 changeOrigin: "hsapp-js"
 name: "Only show choices in the Search Bar that exist in entries"
@@ -49,13 +49,13 @@ Now scroll down and check the box that says "Only show choices that exist in for
 
 To limit searchable **drop-down fields** to only values that have been submitted, add this filter:
 
-```
+```php
 <pre class="prettyprint" lang="php">add_filter( 'gravityview/search/sieve_choices', '__return_true' );
 ```
 
 If you want to limit this behavior to specific Views and specific form fields, modify this code:
 
-```
+```php
 <pre class="prettyprint">// Only show used choices in entries for View ID 4 and Field ID 6
 add_filter( 'gravityview/search/sieve_choices', function( $sieve, $filter, $context ) {
    if ( 4 === $context->view->ID && 6 === (int) $filter['field'] ) {

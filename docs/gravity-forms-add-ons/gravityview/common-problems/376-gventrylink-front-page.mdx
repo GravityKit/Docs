@@ -4,10 +4,10 @@ number: "376"
 collectionId: "566dfabbc6979143615564bf"
 popularity: "0.3"
 publicUrl: "https://docs.gravitykit.com/article/376-gventrylink-front-page"
-viewCount: "1759"
-lastPublishedAt: "2022-12-27T20:44:39Z"
-changeOrigin: "external"
-name: "Using the [gv_entry_link] on your home page"
+viewCount: "1856"
+lastPublishedAt: "2023-03-20T20:57:44Z"
+changeOrigin: "hsapp-js"
+name: "Pointing the [gv_entry_link] to a specific page"
 slug: "376-gventrylink-front-page"
 status: "published"
 categories: 
@@ -22,20 +22,21 @@ keywords:
   - "single entry link"
 related: 
   - "54c67bcce4b051242988553c"
+  - "558c76c0e4b01a224b42ec16"
 createdBy: "59634"
 createdAt: "2016-08-30T23:53:41Z"
-updatedBy: "59634"
-updatedAt: "2022-12-27T20:44:39Z"
-title: "Using the [gv_entry_link] on your home page"
+updatedBy: "80506"
+updatedAt: "2023-03-20T20:57:44Z"
+title: "Pointing the [gv_entry_link] to a specific page"
 hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/57c61c85c69791083999e22a"
 pagination_prev: 
 pagination_next: 
 last_update:
-  date: 2022-12-27T20:44:39Z
-  author: "Zack Katz"
+  date: 2023-03-20T20:57:44Z
+  author: "Rafael Ehlers"
 ---
 
-# Using the [gv_entry_link] on your home page
+# Pointing the [gv_entry_link] to a specific page
 
 
 
@@ -43,7 +44,7 @@ last_update:
 
 ![](https://www.gravitykit.com/wp-content/uploads/2018/01/here-s-a-gv_entry_link-shortcode-in-a-custom-content-field.png?1472600558)
 
-### The link points to the View, not to the home page.
+### The link points to the View, not to the page.
 
 Even though the View is embedded on the home page, the link is pointing to the View.
 
@@ -51,27 +52,25 @@ Even though the View is embedded on the home page, the link is pointing to the V
 
 ### So how to fix this?
 
-**We need to update the `[gv_entry_link]` shortcode** to be `[gv_entry_link post_id="#"]`, where the number is the page ID of the front page.
+We need to use the **post\_id** parameter on the \[gv\_entry\_link\] shortcode like this:
+
+`[gv_entry_link post_id="#"]`, where the # is the ID of the page where your View is embedded.
 
 ### Getting the Page ID
 
-If you know the page ID of the front page, update the shortcode to use it. For example, if the page ID is 2, the shortcode would be `[gv_entry_link post_id="2"]`. **The link should work now.**
+If you know the page ID of the page, update the shortcode to use it. For example, if the page ID is 2, the shortcode would be `[gv_entry_link post_id="2"]`. **The link should work now.**
 
 If you need help finding the page ID, read on!
 
-#### Go to the Settings &gt; Reading page from your Dashboard
+#### Go to the Pages menu
 
-There, you will see the "Front page" setting. That is the page we want to find more information about.
-
-![](https://www.gravitykit.com/wp-content/uploads/2018/01/go-to-the-settings-gt-reading-page-from-your-dashboard.png?1472600560)
-
-#### Click on the name of the page in the "Pages &gt; All Pages" list
+Click on the name of the page in the "Pages &gt; All Pages" list.
 
 ![](https://www.gravitykit.com/wp-content/uploads/2018/01/click-on-the-name-of-the-page-in-the-pages-gt-all-pages-list.png?1472600561)
 
-#### The page ID will be in the URL as "post=\[number\]"
+#### The page ID will be in the URL as the "post" parameter
 
-But this won't work for everyone, because browsers don't always show the full URL.
+But this won't work for everyone because browsers don't always show the full URL.
 
 ![](https://www.gravitykit.com/wp-content/uploads/2018/01/the-page-id-will-be-in-the-url-as-post-number-.png?1472600561)
 

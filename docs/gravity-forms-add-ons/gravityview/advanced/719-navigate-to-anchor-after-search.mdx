@@ -3,9 +3,9 @@ id: "5ed58e262c7d3a10cba83081"
 number: "719"
 collectionId: "566dfabbc6979143615564bf"
 publicUrl: "https://docs.gravitykit.com/article/719-navigate-to-anchor-after-search"
-viewCount: "170"
-lastPublishedAt: "2020-06-01T23:31:26Z"
-changeOrigin: "unknown"
+viewCount: "201"
+lastPublishedAt: "2023-03-21T02:07:26Z"
+changeOrigin: "hsapp-js"
 name: "How to navigate to an HTML anchor after search"
 slug: "719-navigate-to-anchor-after-search"
 status: "published"
@@ -16,19 +16,40 @@ related:
   - "54c67bb5e4b0512429885507"
 createdBy: "59634"
 createdAt: "2020-06-01T23:24:22Z"
-updatedBy: "59634"
-updatedAt: "2020-06-01T23:31:26Z"
+updatedBy: "80506"
+updatedAt: "2023-03-21T02:07:26Z"
 title: "How to navigate to an HTML anchor after search"
 hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5ed58e262c7d3a10cba83081"
 pagination_prev: 
 pagination_next: 
 last_update:
-  date: 2020-06-01T23:31:26Z
-  author: "Zack Katz"
+  date: 2023-03-21T02:07:26Z
+  author: "Rafael Ehlers"
 ---
 
 # How to navigate to an HTML anchor after search
 
 Do you want the Search Bar to navigate to an HTML anchor on the page after a search is performed? If so, you can add the following code to your site:
 
-<script src="https://gist.github.com/zackkatz/429e1546d4064a60dd7eaad76d53010c.js" type="text/javascript"></script>
+```php
+
+/**
+* Modify the action of the Search Bar form to navigate to #site-content anchor after search
+*
+* @param string $url Where the form submits to.
+*
+* @returns string Modified URL with anchor added
+*/
+add_filter( 'gravityview/widget/search/form/action', function ( $url ) {
+	return $url . '#site-content';
+} );
+```
+
+
+:::info
+
+Read here how to add these code samples to your website: [Where to put code samples.](https://docs.gravitykit.com/article/210-where-to-put-code-samples)
+
+:::
+
+ 

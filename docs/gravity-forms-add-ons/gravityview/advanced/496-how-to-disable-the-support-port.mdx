@@ -3,15 +3,15 @@ id: "5bce1b10042863158cc7b826"
 number: "496"
 collectionId: "566dfabbc6979143615564bf"
 publicUrl: "https://docs.gravitykit.com/article/496-how-to-disable-the-support-port"
-viewCount: "191"
+viewCount: "211"
 lastPublishedAt: "2022-12-27T21:04:55Z"
 changeOrigin: "external"
 name: "How to disable the Support Port from loading"
 slug: "496-how-to-disable-the-support-port"
 status: "published"
-categories:
+categories: 
   - "579aa642c6979160ca148ba9"
-keywords:
+keywords: 
   - "beacon"
   - "javascript"
   - "remote"
@@ -23,8 +23,8 @@ updatedBy: "59634"
 updatedAt: "2022-12-27T21:04:55Z"
 title: "How to disable the Support Port from loading"
 hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/5bce1b10042863158cc7b826"
-pagination_prev:
-pagination_next:
+pagination_prev: 
+pagination_next: 
 last_update:
   date: 2022-12-27T21:04:55Z
   author: "Zack Katz"
@@ -32,7 +32,7 @@ last_update:
 
 # How to disable the Support Port from loading
 
-![The Support Port lives in the bottom-right corner of the page (bottom-left on RTL sites)](https://i.gravitykit.com/rXIta3+) The "Support Port"
+width: 143.73913049697876px; margin: 0px 0px 20px 10px; text-align: center;"&gt; ![The Support Port lives in the bottom-right corner of the page (bottom-left on RTL sites)](https://i.gravitykit.com/rXIta3+) The "Support Port"
 
 On GravityView screens in the Dashboard, we show the Support Port. It's a little bubble that allows you to quickly search our support docs and also submit support requests.
 
@@ -65,7 +65,7 @@ On each user's profile page in WordPress, there is a setting for GravityView Sup
 
 Add this code to your functions.php file ( [here's how](https://docs.gravitykit.com/article/210-where-to-put-code-samples)):
 
-```
+```php
 add_filter( 'gravityview/support_port/display', '__return_false' );
 add_filter( 'gravityview/support_port/show_profile_setting', '__return_false' ); // Don't show Support Port option in Profile page
 ```

@@ -4,9 +4,9 @@ number: "681"
 collectionId: "6076f9478996210f18bd33df"
 popularity: "0.1"
 publicUrl: "https://docs.gravitykit.com/article/681-modifying-a-single-event"
-viewCount: "547"
-lastPublishedAt: "2022-10-18T23:07:27Z"
-changeOrigin: "unknown"
+viewCount: "665"
+lastPublishedAt: "2023-04-17T03:46:03Z"
+changeOrigin: "hsapp-js"
 name: "Modifying event colors"
 slug: "681-modifying-a-single-event"
 status: "published"
@@ -15,13 +15,13 @@ categories:
 createdBy: "59634"
 createdAt: "2020-02-26T06:22:43Z"
 updatedBy: "80506"
-updatedAt: "2022-10-18T23:07:27Z"
+updatedAt: "2023-04-17T03:46:03Z"
 title: "Modifying event colors"
 hsEditUrl: "https://secure.helpscout.net/docs/6076f9478996210f18bd33df/article/5e560eb32c7d3a7e9ae84e5a"
 pagination_prev: 
 pagination_next: 
 last_update:
-  date: 2022-10-18T23:07:27Z
+  date: 2023-04-17T03:46:03Z
   author: "Rafael Ehlers"
 ---
 
@@ -48,8 +48,79 @@ In the example below, we'll change the color of the events based on their type. 
 
 ### Example code
 
-<script src="https://gist.github.com/rafaehlers/5086fe06adf6aa9c33f469c0f3287623.js" type="text/javascript"></script>
+```php
 
-### The final Calendar with different event colors
+/**
+* Modify event array that is output to FullCalendar
+* In this sample code, we add a background color to a specific event
+*
+* @param array  $events    Array of events.
+* @param object $form      Calendar form.
+* @param object $feed      Calendar feed.
+* @param array  $field_map Array of feed fields mapped to calendar settings (e.g., start_time, end_time).
+* @param array  $entries   Array of entries being displayed in the calendar (Requires 1.5.2)
+*
+* @return array $events Modified events
+*/
+
+add_filter( 'gravityview/calendar/events', function ( $events, $form, $feed, $field_map = array(), $entries = array() ) {
+
+	if ( empty( $events ) || empty( $entries ) || $form['id'] !== 9 ) { // Replace 9 with your Form ID
+		return $events;
+	}
+	
+	$event_ids = wp_list_pluck( $events, 'event_id' );
+	
+	foreach ( $entries as $entry ) {		
+		
+		$event_key = array_search( $entry['id'], $event_ids );
+		
+		if ( false === $event_key ) {
+			
+			continue;
+		}
+
+		switch ($entry[5]) { // Replace 5 with the ID of your field
+				
+			case 'event':
+				$events[ $event_key ]['backgroundColor'] = 'red';
+				$events[ $event_key ]['borderColor']     = 'red';
+				$events[ $event_key ]['textColor']       = 'black';
+				break;
+				
+			case 'appointment':
+				$events[ $event_key ]['backgroundColor'] = 'blue';
+				$events[ $event_key ]['borderColor']     = 'blue';
+				$events[ $event_key ]['textColor']       = 'white';
+				break;
+				
+			case 'reminder':
+				$events[ $event_key ]['backgroundColor'] = 'yellow';
+				$events[ $event_key ]['borderColor']     = 'yellow';
+				$events[ $event_key ]['textColor']       = 'black';
+				break;
+			
+			default:
+				$events[ $event_key ]['backgroundColor'] = 'yellow';
+				$events[ $event_key ]['borderColor']     = 'blue';
+				$events[ $event_key ]['textColor']       = 'yellow';
+				break;
+		}
+		
+	}
+	
+	return $events;
+	
+}, 10, 5 );
+```
+
+
+:::info
+
+Read here how to add these code samples to your website: [Where to put code samples.](https://docs.gravitykit.com/article/210-where-to-put-code-samples)
+
+:::
+
+ ### The final Calendar with different event colors
 
 ![Screenshot of a Calendar showing various event types with different colors](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/618b0d1864e42a671b6350e7/file-IF7WBZf1as.png)

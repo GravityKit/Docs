@@ -4,7 +4,7 @@ number: "812"
 collectionId: "6076f9478996210f18bd33df"
 popularity: "0.1"
 publicUrl: "https://docs.gravitykit.com/article/812-calendar-developer-hooks"
-viewCount: "585"
+viewCount: "679"
 lastPublishedAt: "2022-10-18T23:11:36Z"
 changeOrigin: "unknown"
 name: "Calendar: Developer Hooks"
@@ -80,7 +80,7 @@ add_filter( 'gravityview/calendar/options', function ( $calendar_options, $form_
 
    return  $calendar_options;
 }, 10, 3 );
-```
+```php
 
 ### <a id="gravityviewcalendarextra_options_58"></a>`gravityview/calendar/extra_options`
 
@@ -157,7 +157,7 @@ array(
    ),
    [...]
 )
-```
+```php
 
 The entries array is parsed by the `GV_Extension_Calendar_Feed::calendar_events()` method, which transforms the array into the expected calendar format.
 

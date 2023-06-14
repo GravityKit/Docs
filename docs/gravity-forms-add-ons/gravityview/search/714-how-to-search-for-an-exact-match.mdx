@@ -4,7 +4,7 @@ number: "714"
 collectionId: "566dfabbc6979143615564bf"
 popularity: "0.1"
 publicUrl: "https://docs.gravitykit.com/article/714-how-to-search-for-an-exact-match"
-viewCount: "606"
+viewCount: "654"
 lastPublishedAt: "2022-10-12T22:01:43Z"
 changeOrigin: "unknown"
 name: "How to search for an exact match"
@@ -35,7 +35,7 @@ GravityView's current search functionality doesn't use an exact match, it uses t
 
 If you wish to change the search functionality to look for an exact match, then you need the function below:
 
-```
+```php
 
 add_filter( 'gravityview_search_operator', function( $operator, $filter = array() ){
 
@@ -67,7 +67,7 @@ If you have more than two fields on your Search Bar and leave one empty, the sea
 
 ![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/622b9874c1688a6d26a74667/file-J75A0CuA7m.png)But if you want to require users to fill all fields for results to appear, then you'll need also to add this other code snippet below:
 
-```
+```php
 // This disallows empty field values
 add_filter( 'gravityview/search/ignore-empty-values', function() {
 	return false;

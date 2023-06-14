@@ -1,0 +1,218 @@
+---
+id: "558c76c0e4b01a224b42ec16"
+number: "287"
+collectionId: "566dfabbc6979143615564bf"
+popularity: "2.5"
+publicUrl: "https://docs.gravitykit.com/article/287-gv-entry-link"
+viewCount: "13382"
+lastPublishedAt: "2023-03-20T20:57:13Z"
+changeOrigin: "hsapp-js"
+name: "The [gv_entry_link] Shortcode"
+slug: "287-gv-entry-link"
+status: "published"
+categories: 
+  - "566dfe4fc6979143615564d9"
+keywords: 
+  - "shortcode"
+  - "shortcodes"
+  - "edit entry"
+  - "delete entry"
+  - "link to entry"
+  - "link"
+  - "linking"
+  - "create link"
+related: 
+  - "54c67bb9e4b0512429885512"
+  - "54c67bb9e4b0512429885513"
+  - "54c67bcde4b051242988553e"
+  - "552355bfe4b0221aadf2572b"
+createdBy: "59634"
+updatedBy: "80506"
+updatedAt: "2023-03-20T20:57:13Z"
+title: "The [gv_entry_link] Shortcode"
+hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/558c76c0e4b01a224b42ec16"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2023-03-20T20:57:13Z
+  author: "Rafael Ehlers"
+---
+
+# The [gv_entry_link] Shortcode
+
+You can use the `[gv_entry_link]` shortcode to generate links to an entry. The shortcodes function in post or page content, as well as in a View. You can use the shortcode to generate links to view, edit or delete a specific entry.
+
+**Important**: If you're using the shortcode to display links to edit or delete an entry, the current user must have permission to edit or delete the entry to see the links. If the user is not logged in or does not have permission to edit or delete the entry, the shortcode will display nothing.
+
+Here's what we're going to cover in this article:
+
+- [Shortcode parameters](#shortcode-parameters)
+- [Examples and use cases](#examples)
+- [Notes on the \[gv\_edit\_entry\_link\] and \[gv\_delete\_entry\_link\] shortcodes](#notes)
+
+## Shortcode parameters
+
+The `[gv_entry_link]` shortcode accepts the following parameters:
+
+**Required**:
+
+- `view_id` - The ID of the View where the entry is displayed. Default: Uses the current View ID (if shortcode is used inside a View).
+- `entry_id` - The ID of the specific entry. Default: Uses the current Entry ID (if shortcode is used inside a View).
+
+**Optional**:
+
+- `action` - Define which type of link you want to display. Default: `read`
+   - `read` - Link to the entry. Default link text: `View Details`
+   - `edit` - Link to edit the entry. Default link text: `Edit Entry`
+   - `delete` - Link to delete the entry. Default text: `Delete Entry`
+- `post_id` - Pass the ID of the post or page where the View is embedded if you want the link to point to a page where the View is embedded instead of having the link pointing to the `/view/` custom post type by default. Default: `(empty)`  
+     
+   
+:::caution
+
+Read more about the **post\_id** parameter here: [Pointing the \[gv\_entry\_link\] to a specific page.](https://docs.gravitykit.com/article/376-gventrylink-front-page)
+
+:::
+
+
+- `return` - specify what the shortcode should return: an HTML anchor link (`html`) or the raw URL (`url`). Default: `html`
+- `link_atts` - Attributes to add to the `<a>` tag. Only used when `return` is not `url`. See below for examples. Default: `(empty)`
+- `field_values` - Parameters to pass URL arguments to the link. Can be used to pass field values to Edit Entry (see [Pass default field values](#field-values)). Default: `(empty)`
+
+## Shortcode examples and use cases
+
+Here are some of the most common use cases for the `[gv_entry_link]` shortcode:
+
+### Link to a specific entry
+
+If you want to link to a specific entry from a page or post, you will need to know the Entry ID and the View ID for the specific entry in question.
+
+Let's say you want to link to an entry, which is displayed in a View with ID '2' and has the Entry ID of '123'. Here is the shortcode you could use:
+
+```
+[gv_entry_link entry_id="123" view_id="2"]View profile[/gv_entry_link]
+```
+
+The shortcode outputs an HTML link, like this:
+
+```
+<a href="{entry URL}">View profile</a>
+```
+
+### Generate a link to edit a specific entry
+
+If you want to generate a link to edit a specific entry, you will need to specify the entry ID and set `action="edit"`.
+
+This shortcode will generate a link to edit an entry with ID '123' in a View with an ID '2'.
+
+```
+[gv_entry_link action="edit" entry_id="123" view_id="2" /]
+```
+
+### Generate a link to delete a specific entry
+
+If you want to generate a link to delete a specific entry, you will need to specify the entry ID and set `action="delete"`.
+
+This shortcode will generate a link to delete an entry with ID '123' in a View with an ID '2'.
+
+```
+[gv_entry_link action="delete" entry_id="123" view_id="2" /]
+```
+
+### Open links in a new window
+
+If you want links to open in a new window, you'll need to add `target="_blank"` to the HTML anchor link. You can do this by passing this attribute to the anchor link generator using the `link_atts` parameter. Here's an example:
+
+```
+[gv_entry_link action="edit" link_atts="target=_blank" /]
+```
+
+This will result in the following HTML output:
+
+```
+<a href="{url to edit entry}" target="_blank">Edit Entry</a>
+```
+
+### Changing the link text
+
+If you want to use different text for the anchor link, simply surround your chosen anchor text with the `[gv_entry_link]` shortcode.
+
+Here are some examples:
+
+```
+[gv_entry_link]Link to Entry[/gv_entry_link]
+[gv_entry_link action="edit"]Modify this Entry[/gv_entry_link]
+[gv_entry_link action="delete"]Remove this Entry[/gv_entry_link]
+```
+
+These will result in the following outputs:
+
+```
+<a href="[link to entry]">Link to Entry</a>
+<a href="[link to edit entry]">Modify this Entry</a>
+<a href="[link to delete entry]">Remove this Entry</a>
+```
+
+### Display the raw URL instead of an HTML anchor link
+
+By default, the `[gv_entry_link]` shortcode will return an HTML anchor tag, like this:
+
+```
+<a href="{url to delete entry}">Delete Entry</a>
+```
+
+However, you may wish to display the raw URL instead. If so, simply add `return="url"`, like this:
+
+```
+[gv_entry_link action="edit" return="url" /]
+```
+
+This will return the raw edit entry URL, which will look something like this:
+
+```
+http://example.com/view/test-view/entry/123/?page=gf_entries&view=entry&edit=123a1b2345
+```
+
+### Pass additional information in the URL
+
+If you want to add additional information to the URL, you can do that using the `field_values` parameter. This parameter can be used to pass default field values to Edit Entry (see "Pass default field values" below). It's also a powerful tool that can be combined with the [{get} Merge Tag](https://docs.gravitykit.com/article/314-the-get-merge-tag).
+
+This shortcode:
+
+```
+[gv_entry_link field_values="first-name=Floaty" /]
+```
+
+Will result in the following output:
+
+```
+<a href="[link to entry]?first-name=Floaty">View Details</a>
+```
+
+You can then display the `first-name` value on the View Details page by [following this how-to guide](https://docs.gravitykit.com/article/315-using-the-get-merge-tags-with-gvlogic-to-display-a-persons-name-in-a-custom-content-widget).
+
+### Pass default field values <a id="field-values"></a>
+
+If you have "Allow field to be populated dynamically" enabled for your Gravity Forms form fields, you can pass default values to empty fields. **Existing field values will not be overwritten, only empty or default values.**
+
+Here's an example of how it looks:
+
+```
+[gv_entry_link action="edit" field_values="parameter_name=value1&parameter_name2=value2" /]
+```
+
+
+:::info
+
+Not sure how this works exactly? [Learn more about dynamic population](https://www.gravitykit.com/gravity-forms-populate-fields-dynamically/) in Gravity Forms.
+
+:::
+
+ ## Notes on the \[gv\_edit\_entry\_link\] and \[gv\_delete\_entry\_link\] shortcodes
+
+Added in Version 1.9.2, the `[gv_edit_entry_link]` and `[gv_delete_entry_link]` shortcodes were used to generate Edit and Delete links.
+
+- `[gv_edit_entry_link]` is the same as `[gv_entry_link action="edit"]`
+- `[gv_delete_entry_link]` is the same as `[gv_entry_link action="delete"]`
+
+These shortcodes do not need to be replaced and will continue to function in future releases.

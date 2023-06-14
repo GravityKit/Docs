@@ -5,7 +5,7 @@ hasDraft: "1"
 collectionId: "566dfabbc6979143615564bf"
 popularity: "0.2"
 publicUrl: "https://docs.gravitykit.com/article/664-modifying-search-bar-inputs"
-viewCount: "1214"
+viewCount: "1301"
 lastPublishedAt: "2019-12-15T15:05:38Z"
 changeOrigin: "unknown"
 name: "Modifying Search Bar Inputs"
@@ -42,7 +42,7 @@ By default, all fields except File Upload, Post Image, Post ID and Section (Page
 
 An example where a special meta key needs to be output as search follows:
 
-```
+```php
 add_filter( 'gravityview/search/searchable_fields', function( $fields ) {
    $fields['mymeta'] = array(
        'text' => 'Entry Color',
@@ -62,7 +62,7 @@ There are 9 input types that are available by default. These are text, date, dat
 
 First of all, by using the `gravityview/search/input_labels` filter the color picker input needs to be declared:
 
-```
+```php
 add_filter( 'gravityview/search/input_labels', function( $labels ) {
    $labels['colorpicker'] = 'Color Picker';
    return $labels;
@@ -71,7 +71,7 @@ add_filter( 'gravityview/search/input_labels', function( $labels ) {
 
 Next, the `gravityview/search/input_types` filter should be used to create a new map between a new searchable field type (or an existing one) and an input type declared in the previous field (or an existing one):
 
-```
+```php
 add_filter( 'gravityview/search/input_types', function( $types ) {
    $types['date'][] = 'text_input';
    $types['color'] = array( 'colorpicker', 'select', 'radio' );

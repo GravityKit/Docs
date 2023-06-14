@@ -4,9 +4,9 @@ number: "402"
 collectionId: "566dfabbc6979143615564bf"
 popularity: "0.2"
 publicUrl: "https://docs.gravitykit.com/article/402-customizing-emails-sent-by-entry-notes"
-viewCount: "1223"
-lastPublishedAt: "2022-10-07T22:04:48Z"
-changeOrigin: "unknown"
+viewCount: "1277"
+lastPublishedAt: "2023-03-21T02:00:54Z"
+changeOrigin: "hsapp-js"
 name: "Customizing emails sent by Entry notes"
 slug: "402-customizing-emails-sent-by-entry-notes"
 status: "published"
@@ -27,13 +27,13 @@ related:
 createdBy: "80506"
 createdAt: "2017-01-16T15:04:20Z"
 updatedBy: "80506"
-updatedAt: "2022-10-07T22:04:48Z"
+updatedAt: "2023-03-21T02:00:54Z"
 title: "Customizing emails sent by Entry notes"
 hsEditUrl: "https://secure.helpscout.net/docs/566dfabbc6979143615564bf/article/587ce0f4c697915403a0ed1e"
 pagination_prev: 
 pagination_next: 
 last_update:
-  date: 2022-10-07T22:04:48Z
+  date: 2023-03-21T02:00:54Z
   author: "Rafael Ehlers"
 ---
 
@@ -53,10 +53,47 @@ Here's how that email (from the example above) will look:
 
 Let's say we want to make the *note body* more noticeable. Let's wrap the body message with an [H2 tag](http://www.w3schools.com/tags/tag_hn.asp). Here's the code to do that:
 
-<script src="https://gist.github.com/rafaehlers/b85b748c2373e0a4763c24f67ca69ee3.js" type="text/javascript"></script> Finally, here is how the emails will look after our little customization:
+```php
+
+add_filter( 'gravityview/field/notes/email_content', 'gv_modify_notes_email_content', 10, 4 );
+
+function gv_modify_notes_email_content( $email_settings ) {
+   extract( $email_settings );
+   $email_settings['message'] = '<h2>'.$message.'</h2>';
+   return $email_settings;
+}
+```
+
+Finally, here is how the emails will look after our little customization:
 
 ![](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/587ce46d90336009736c73b8/file-Sy5HUH0X2B.jpg)
 
 Neat, isn't it? Here are the other variables needed to modify all the other entry note email attributes:
 
-<script src="https://gist.github.com/rafaehlers/fe5af21ddd9a7c2d00c8c71f8d721059.js" type="text/javascript"></script> If you don't know where to place this code, check this other tutorial: [Where do I add the code samples you share?](https://docs.gravitykit.com/article/210-where-to-put-code-samples)
+```php
+
+add_filter( 'gravityview/field/notes/email_content', 'gv_modify_notes_email_content', 10, 4 );
+
+function gv_modify_notes_email_content( $email_settings ) {
+   extract( $email_settings );
+   $email_settings['from'] = $from; //example@gmail.com
+   $email_settings['to'] = $to; //example@gmail.com
+   $email_settings['bcc'] $bcc; //example@gmail.com 
+   $email_settings['reply_to'] = $reply_to; //example@gmail.com
+   $email_settings['subject'] = $subject; //subject of the email
+   $email_settings['message'] = $message; //body of the email (already in HTML format)
+   $email_settings['from_name'] = $from_name; //Example: GravityView Website
+   $email_settings['message_format'] = $message_format; //html
+   $email_settings['email_footer'] = $email_footer; //The text: This note was sent from {url}
+   return $email_settings;
+}
+```
+
+
+:::info
+
+Read here how to add these code samples to your website: [Where to put code samples.](https://docs.gravitykit.com/article/210-where-to-put-code-samples)
+
+:::
+
+ 

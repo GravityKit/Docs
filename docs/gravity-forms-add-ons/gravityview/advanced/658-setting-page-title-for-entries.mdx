@@ -4,7 +4,7 @@ number: "658"
 collectionId: "566dfabbc6979143615564bf"
 popularity: "0.1"
 publicUrl: "https://docs.gravitykit.com/article/658-setting-page-title-for-entries"
-viewCount: "490"
+viewCount: "522"
 lastPublishedAt: "2022-10-07T21:00:39Z"
 changeOrigin: "unknown"
 name: "Setting page title for Entries"
@@ -38,7 +38,7 @@ The code example below should be placed on your theme's `functions.php` file.
 
   Here's the most basic example, where the page title is set to the value of Field ID 1 for the View with ID 8:
 
-```
+```php
 add_filter( 'pre_get_document_title', 'gv_seo_title', 999, 1 );
 
 function gv_seo_title( $title ) {

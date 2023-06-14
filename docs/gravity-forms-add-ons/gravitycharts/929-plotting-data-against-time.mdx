@@ -1,0 +1,75 @@
+---
+id: "643e60f009df097d1b05ac04"
+number: "929"
+collectionId: "6076f9478996210f18bd33df"
+publicUrl: "https://docs.gravitykit.com/article/929-plotting-data-against-time"
+viewCount: "32"
+lastPublishedAt: "2023-05-11T14:50:37Z"
+changeOrigin: "hsapp-js"
+name: "Plotting data against time"
+slug: "929-plotting-data-against-time"
+status: "published"
+categories: 
+  - "6261683a93a48c44483342eb"
+keywords: 
+  - "time series chart"
+  - "data visualization over time"
+  - "temporal data graph"
+  - "interactive timeline chart"
+  - "date-based data plot"
+  - "chronological data visualization"
+  - "time-based charting"
+  - "time-series data analysis"
+  - "dynamic time plots"
+  - "historical data visualization"
+  - "time axis graphs"
+  - "timeline data representation"
+createdBy: "543004"
+createdAt: "2023-04-18T09:20:48Z"
+updatedBy: "59634"
+updatedAt: "2023-05-11T14:50:37Z"
+title: "Plotting data against time"
+hsEditUrl: "https://secure.helpscout.net/docs/6076f9478996210f18bd33df/article/643e60f009df097d1b05ac04"
+pagination_prev: 
+pagination_next: 
+last_update:
+  date: 2023-05-11T14:50:37Z
+  author: "Zack Katz"
+---
+
+# Plotting data against time
+
+GravityCharts allows you to plot data against time. In other words, you can have the date on the X axis and a numerical value on the Y axis. In this article, we will show you how to plot data against time and explain how this functionality works.
+
+## Example: Revenue / time
+
+Here's an example where we are plotting revenue in USD (on the Y axis) against the date (on the X axis).
+
+![a chart created with GravityCharts showing the date on the x-axis and revenue in USD on the y-axis](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/643e690a4b128526704535b8/file-c0Wdi6x14f.png)
+
+## How to create a timeline chart
+
+When you create a new chart in GravityCharts, you will see the option to "Show on Timeline" under "Data Type" in the "Chart Data" settings panel. After you select this option, you will need to specify the date field, timeline type, and data field.
+
+![The chart data options when creating a new chart in GravityCharts](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/643e716391f91f0beedfcf3e/file-oTxgJo7V7J.png)Here's an overview of the different options in a little more detail:
+
+- **Data type**: Plot data by field (default) or on a timeline.
+- **Date field**: Select the date field that should be used for the X axis. You can choose between the entry date or a specific "Date" field in your form.
+- **Timeline type**: Choose between "sum values", "average values" or "entry count".
+- **Data field**: If "timeline type" is set to "sum values" or "average values", you will need to specify a form field here with numerical data (this is the field you want to plot on the Y axis). If you selected "entry count" as your timeline type, there is no need to select a data field here, as GravityCharts will simply retrieve the number of entries received per date and plot that.
+
+## Timeline options
+
+When you open the "Axis" drop down, you will see the option to adjust the timeline scale and labels. You can set the scale to either "Day", "Week", "Month", "Quarter" or "Year".
+
+By default, the timeline labels option is set to "Automatic", meaning that all dates, irrespective of whether they have corresponding entries, will be displayed on the X axis, for the period of time between the first and last entry. If you set this option to "Data points only", then only the dates with entries will show up as labels on the X axis.
+
+![The timeline options in GravityCharts](https://s3.amazonaws.com/helpscout.net/docs/assets/54c58489e4b051242988532c/images/64465c9659e2f42e804e4ca3/file-5f3KNyUYnR.png)
+
+The chart preview will update in real-time as you make changes, so feel free to experiment with different options and configurations to get the graph you want.
+
+## Limitations for plotting data against time
+
+When plotting data against time, you have the option to plot the entry count by date, or the sum or average of a specific field by date. You cannot yet plot multiple datasets on a single chart.
+
+Plotting data against time is supported for Number and Pricing fields, as well as select fields (Radio Buttons, Checkboxes, and Drop Downs), provided they include a numerical "value" attribute.

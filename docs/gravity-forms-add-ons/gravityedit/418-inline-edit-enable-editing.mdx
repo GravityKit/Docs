@@ -4,9 +4,9 @@ number: "418"
 collectionId: "6076f9478996210f18bd33df"
 popularity: "0.2"
 publicUrl: "https://docs.gravitykit.com/article/418-inline-edit-enable-editing"
-viewCount: "1626"
-lastPublishedAt: "2022-10-18T23:36:04Z"
-changeOrigin: "unknown"
+viewCount: "1720"
+lastPublishedAt: "2023-04-07T08:47:38Z"
+changeOrigin: "hsapp-js"
 name: "GravityEdit: Turn on editing by default (without clicking the Toggle Inline Edit button)"
 slug: "418-inline-edit-enable-editing"
 status: "published"
@@ -21,15 +21,15 @@ keywords:
   - "make clickable"
 createdBy: "59634"
 createdAt: "2017-07-05T19:40:36Z"
-updatedBy: "80506"
-updatedAt: "2022-10-18T23:36:04Z"
+updatedBy: "459439"
+updatedAt: "2023-04-07T08:47:38Z"
 title: "GravityEdit: Turn on editing by default (without clicking the Toggle Inline Edit button)"
 hsEditUrl: "https://secure.helpscout.net/docs/6076f9478996210f18bd33df/article/595d40b40428637ff8d4523d"
 pagination_prev: 
 pagination_next: 
 last_update:
-  date: 2022-10-18T23:36:04Z
-  author: "Rafael Ehlers"
+  date: 2023-04-07T08:47:38Z
+  author: "Rafael Bennemann"
 ---
 
 # GravityEdit: Turn on editing by default (without clicking the Toggle Inline Edit button)
@@ -40,10 +40,44 @@ Why would you want to do this? One of our customers is the developer for a websi
 
 If you want Inline Edit enabled—without having to click the "Toggle Inline Edit" button—add this code to your website.
 
-<script src="https://gist.github.com/zackkatz/dfc8da743dec4e32ea819f7b07efda89.js" type="text/javascript"></script> Not sure how to add this code? [Here's how to add the code](https://docs.gravitykit.com/article/210-where-to-put-code-samples).
+```php
+add_action('gravityview/template/before', 'set_gravityview_inline_edit_cookies');
+/**
+* Set cookies toggling Inline Edit to on by default. Requires GravityView 2.0.
+*
+* @uses gravityview_get_current_view_data
+* @uses setcookie
+*
+* @return void
+*/
+function set_gravityview_inline_edit_cookies( \GV\Template_Context $gravityview = null ) {
+	wp_print_scripts( 'jquery-cookie' );
+?>
+	<script>
+		jQuery( window ).on( 'load', function() {
+			if( jQuery.cookie ) {
+			<?php
+				printf( "jQuery.cookie( 'gv-inline-edit-view-%d', 'enabled', { path: '%s', domain: '%s' } );", $gravityview->view->ID, COOKIEPATH, COOKIE_DOMAIN, is_ssl() );
+			?>
+			} else {
+				console.error("Could not set cookie for inline-edit.");
+			}
 
-A few notes:
+		}); 
+	</script>
+<?php
+}
+```
 
-- This still requires users have permission to edit an entry
+
+:::info
+
+Not sure how to add this code? [Where to put code samples](https://docs.gravitykit.com/article/210-where-to-put-code-samples).
+
+:::
+
+  A few notes:
+
+- This still requires users to have permission to edit an entry.
 - If the user clicks the "Toggle Inline Edit" button, their preference will be saved (disabled/enabled). This code just sets the default editing value to enabled.
 - The code does not provide cookie usage notice for users in the European Union—you will need to provide that separately if your site serves EU users.
