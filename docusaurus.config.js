@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'GravityKit',
   tagline: 'Essential add-ons for Gravity Forms.',
-  url: 'https://docs.gravitykit.com/',
+  url: 'https://beta.docs.gravitykit.com/',
   baseUrl: '/Docs/',
   deploymentBranch: 'main',
   onBrokenLinks: 'ignore',
